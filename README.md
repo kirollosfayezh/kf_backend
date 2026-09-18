@@ -170,19 +170,30 @@ src/
 
 ## Deploy to Render
 
-The repo root contains `kf_backend/render.yaml` (Blueprint). Either use it, or
-create a web service manually:
+This repo contains `render.yaml` (Blueprint). Either use it, or create a web
+service manually:
 
 | Setting | Value |
 |---|---|
 | Root directory | *(leave blank — this repo's root is the service)* |
-| Build command | `npm ci --include=dev && npm run build` |
+| Build command | `npm ci` |
 | Start command | `npm run start` |
 | Health check path | `/api/healthz` |
 
-Render sets `PORT` automatically. Set every non-optional env var from
-`.env.example` in the Render dashboard, then run `npm run seed-admin` once from
-the Render Shell to create the first admin.
+Render sets `PORT` itself — **do not set `PORT` as an env var**, or the health
+check will probe the wrong port. Set every non-optional env var from
+`.env.example` in the Render dashboard, then run `npm run seed-admin` and
+`npm run seed-content` once from the Render Shell.
+
+### Why the build works under `NODE_ENV=production`
+
+Render sets `NODE_ENV=production`, which makes npm skip `devDependencies`. So
+everything compilation needs — `typescript` and the `@types/*` packages — is a
+regular dependency, and `postinstall` runs the build. That means `npm ci` alone
+produces `dist/`, whatever Build Command the service ends up with. The two
+dev-only scripts (`smoke-test`, `dev-memory`) import devDependencies, so
+`tsconfig.build.json` excludes them from the compiled output; they are always
+run from source with `tsx` instead. `npm run typecheck` still covers everything.
 
 **MongoDB Atlas:** allow Render's egress IPs under Network Access, and use the
 Atlas connection string as `MONGODB_URI`.

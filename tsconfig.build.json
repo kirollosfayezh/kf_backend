@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "node_modules",
+    "dist",
+    // Dev-only tools: they import devDependencies (mongodb-memory-server,
+    // socket.io-client) that production installs don't have, and they are always
+    // run from source with tsx, never from dist.
+    "src/scripts/dev-memory.ts",
+    "src/scripts/smoke-test.ts"
+  ]
+}

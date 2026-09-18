@@ -10,15 +10,22 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "dev:memory": "tsx src/scripts/dev-memory.ts",
-    "build": "tsc -p tsconfig.json && cp src/scripts/*.json dist/scripts/",
+    "build": "tsc -p tsconfig.build.json && cp src/scripts/*.json dist/scripts/",
+    "postinstall": "npm run build",
     "start": "node dist/index.js",
     "typecheck": "tsc --noEmit",
-    "seed-admin": "tsx src/scripts/seed-admin.ts",
-    "seed-content": "tsx src/scripts/seed-content.ts",
+    "seed-admin": "npm run build && node dist/scripts/seed-admin.js",
+    "seed-content": "npm run build && node dist/scripts/seed-content.js",
     "smoke-test": "tsx src/scripts/smoke-test.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.700.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^2.1.0",
+    "@types/node": "^22.10.0",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
@@ -28,19 +35,13 @@
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^8.9.0",
     "multer": "^2.1.1",
-    "socket.io": "^4.8.1"
+    "socket.io": "^4.8.1",
+    "typescript": "^5.7.2"
   },
   "devDependencies": {
-    "@types/bcryptjs": "^2.4.6",
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.6",
-    "@types/jsonwebtoken": "^9.0.10",
-    "@types/multer": "^2.1.0",
-    "@types/node": "^22.10.0",
     "mongodb-memory-server": "^11.2.0",
     "socket.io-client": "^4.8.3",
-    "tsx": "^4.22.2",
-    "typescript": "^5.7.2"
+    "tsx": "^4.22.2"
   },
   "private": true
 }

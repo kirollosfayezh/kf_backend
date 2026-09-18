@@ -1,0 +1,40 @@
+import { Schema, model } from "mongoose";
+import type { SiteSettings } from "../shared/types.js";
+
+// `_id: false` keeps Mongoose from stamping an _id onto these nested objects,
+// which would otherwise leak into every API response.
+const sub = (definition: Record<string, unknown>) => new Schema(definition, { _id: false });
+
+const localized = sub({ en: { type: String, default: "" }, ar: { type: String, default: "" } });
+
+const settingsSchema = new Schema<SiteSettings>({
+  siteName: { type: String, default: "KF Tech Solutions" },
+  tagline: { type: localized, default: () => ({ en: "", ar: "" }) },
+  logoUrl: String,
+  brandColors: { type: [String], default: ["#FF6A00", "#FF0080", "#9B5DE5", "#0A0A0D"] },
+  languages: {
+    type: [sub({ code: String, label: String, enabled: Boolean })],
+    default: [
+      { code: "en", label: "English", enabled: true },
+      { code: "ar", label: "العربية", enabled: true },
+      { code: "de", label: "Deutsch", enabled: false },
+      { code: "fr", label: "Français", enabled: false },
+    ],
+  },
+  defaultLanguage: { type: String, default: "en" },
+  seo: {
+    type: sub({ defaultTitle: String, defaultDescription: String }),
+    default: () => ({ defaultTitle: "KF Tech Solutions", defaultDescription: "" }),
+  },
+  pixels: {
+    type: sub({ googleAnalyticsId: String, metaPixelId: String }),
+    default: () => ({}),
+  },
+  contact: {
+    type: sub({ email: String, phone: String, whatsapp: String }),
+    default: () => ({}),
+  },
+  updatedAt: { type: String, required: true },
+});
+
+export const SettingsModel = model<SiteSettings>("SiteSettings", settingsSchema, "siteSettings");

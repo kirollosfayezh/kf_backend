@@ -1,0 +1,11 @@
+node_modules/
+dist/
+uploads/
+.env
+*.log
+
+# OS
+.DS_Store
+
+# TypeScript incremental build cache
+*.tsbuildinfo

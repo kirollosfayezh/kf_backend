@@ -1,0 +1,332 @@
+/**
+ * End-to-end smoke test against a throwaway in-memory MongoDB.
+ * Exercises auth, content, leads, settings and the full realtime chat round-trip.
+ * Usage: npm run smoke-test
+ */
+import { MongoMemoryServer } from "mongodb-memory-server";
+import { createServer } from "node:http";
+import { io as ioClient } from "socket.io-client";
+import type { Socket } from "socket.io-client";
+
+let passed = 0;
+let failed = 0;
+
+function check(label: string, condition: boolean, detail?: unknown) {
+  if (condition) {
+    passed++;
+    console.log(`  PASS  ${label}`);
+  } else {
+    failed++;
+    console.error(`  FAIL  ${label}`, detail ?? "");
+  }
+}
+
+function waitForEvent<T>(socket: Socket, event: string, timeoutMs = 4000): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error(`timeout waiting for "${event}"`)), timeoutMs);
+    socket.once(event, (payload: T) => {
+      clearTimeout(timer);
+      resolve(payload);
+    });
+  });
+}
+
+async function main() {
+  const mongo = await MongoMemoryServer.create();
+  process.env.MONGODB_URI = mongo.getUri("kf_smoke");
+  process.env.JWT_ADMIN_SECRET = "smoke-test-secret";
+  process.env.SUPERADMIN_EMAIL = "smoke@kftech.solutions";
+  process.env.SUPERADMIN_PASSWORD = "SmokeTest123!";
+
+  // Imported after env is set, since config/env.ts reads process.env at import time.
+  const { connectDb } = await import("../db/connect.js");
+  const { app } = await import("../app.js");
+  const { initIo } = await import("../realtime/io.js");
+  const { repos } = await import("../repositories/index.js");
+  const { hashPassword } = await import("../shared/services/auth.service.js");
+  const mongoose = (await import("mongoose")).default;
+
+  await connectDb();
+
+  await repos.adminUsers.create({
+    email: "smoke@kftech.solutions",
+    passwordHash: await hashPassword("SmokeTest123!"),
+    role: "admin",
+    createdAt: new Date().toISOString(),
+  });
+
+  const httpServer = createServer(app);
+  initIo(httpServer);
+  await new Promise<void>((resolve) => httpServer.listen(0, resolve));
+  const port = (httpServer.address() as { port: number }).port;
+  const base = `http://127.0.0.1:${port}`;
+
+  const call = async (path: string, init?: RequestInit) => {
+    const res = await fetch(`${base}${path}`, init);
+    const body = await res.json().catch(() => null);
+    return { status: res.status, body } as { status: number; body: any };
+  };
+
+  console.log("\nHealth + auth");
+  const health = await call("/api/healthz");
+  check("GET /api/healthz", health.status === 200 && health.body?.ok === true, health);
+
+  const badLogin = await call("/api/admin/auth/login", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ email: "smoke@kftech.solutions", password: "wrong" }),
+  });
+  check("login rejects a bad password", badLogin.status === 401, badLogin);
+
+  const login = await call("/api/admin/auth/login", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ email: "smoke@kftech.solutions", password: "SmokeTest123!" }),
+  });
+  const token: string = login.body?.data?.token;
+  check("login returns a token", login.status === 200 && Boolean(token), login);
+
+  const authHeaders = {
+    "content-type": "application/json",
+    authorization: `Bearer ${token}`,
+  };
+
+  const me = await call("/api/admin/auth/me", { headers: authHeaders });
+  check("GET /api/admin/auth/me", me.status === 200 && me.body?.data?.email === "smoke@kftech.solutions", me);
+
+  const noAuth = await call("/api/admin/leads");
+  check("admin routes reject anonymous requests", noAuth.status === 401, noAuth);
+
+  console.log("\nContent CRUD + public visibility");
+  const created = await call("/api/admin/content/services", {
+    method: "POST",
+    headers: authHeaders,
+    body: JSON.stringify({
+      slug: "pos-systems",
+      published: false,
+      order: 1,
+      title: { en: "POS Systems", ar: "أنظمة نقاط البيع" },
+      summary: { en: "Point of sale", ar: "نقطة بيع" },
+    }),
+  });
+  const itemId: string = created.body?.data?.id;
+  check("create a service", created.status === 201 && Boolean(itemId), created);
+
+  const publicHidden = await call("/api/content/services");
+  check(
+    "unpublished item is hidden from the public API",
+    publicHidden.status === 200 && publicHidden.body?.data?.length === 0,
+    publicHidden
+  );
+
+  const published = await call(`/api/admin/content/services/${itemId}`, {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ published: true }),
+  });
+  check("publish the service", published.status === 200 && published.body?.data?.published === true, published);
+
+  const publicVisible = await call("/api/content/services");
+  check(
+    "published item appears in the public API",
+    publicVisible.body?.data?.length === 1 && publicVisible.body.data[0].title.en === "POS Systems",
+    publicVisible
+  );
+
+  const badCollection = await call("/api/content/not-a-collection");
+  check("unknown collection returns 404", badCollection.status === 404, badCollection);
+
+  const serialized = JSON.stringify(publicVisible.body.data[0]);
+  check(
+    "responses carry no Mongoose _id noise in nested objects",
+    !serialized.includes("_id"),
+    serialized
+  );
+
+  console.log("\nContent seeding (idempotent re-runs)");
+  const { seedContent } = await import("../scripts/seed-content.js");
+  await seedContent();
+  const firstPass = await call("/api/content/services");
+  const seededCount = firstPass.body?.data?.length ?? 0;
+  check("seed-content populates the catalog", seededCount > 1, seededCount);
+
+  await seedContent();
+  const secondPass = await call("/api/content/services");
+  check(
+    "re-running seed-content does not duplicate",
+    secondPass.body?.data?.length === seededCount,
+    `${seededCount} -> ${secondPass.body?.data?.length}`
+  );
+
+  console.log("\nLeads");
+  const lead = await call("/api/leads", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      source: "contact",
+      name: "Test Visitor",
+      email: "visitor@example.com",
+      message: "I need a POS system",
+      projectType: "POS",
+    }),
+  });
+  const leadId: string = lead.body?.data?.id;
+  check("public lead submission", lead.status === 201 && Boolean(leadId), lead);
+
+  const invalidLead = await call("/api/leads", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ source: "contact", name: "No Email", message: "hi" }),
+  });
+  check("lead validation rejects a missing email", invalidLead.status === 400, invalidLead);
+
+  const inbox = await call("/api/admin/leads", { headers: authHeaders });
+  check("lead shows up in the admin inbox", inbox.body?.data?.length === 1, inbox);
+
+  const statusUpdate = await call(`/api/admin/leads/${leadId}/status`, {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ status: "contacted" }),
+  });
+  check("lead status update", statusUpdate.body?.data?.status === "contacted", statusUpdate);
+
+  const filtered = await call("/api/admin/leads?status=new", { headers: authHeaders });
+  check("lead status filter", filtered.body?.data?.length === 0, filtered);
+
+  console.log("\nSettings");
+  const settings = await call("/api/content/settings");
+  check("public settings are seeded with defaults", settings.body?.data?.siteName === "KF Tech Solutions", settings);
+
+  check(
+    "settings carry no Mongoose _id noise",
+    !JSON.stringify(settings.body.data).includes("_id"),
+    settings.body.data
+  );
+
+  const patched = await call("/api/admin/settings", {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ siteName: "KF Tech" }),
+  });
+  check("settings update", patched.body?.data?.siteName === "KF Tech", patched);
+  check(
+    "updated settings carry no _id noise either",
+    !JSON.stringify(patched.body.data).includes("_id"),
+    patched.body.data
+  );
+
+  console.log("\nRealtime chat");
+  const visitorId = "visitor-smoke-1";
+
+  const visitorSocket = ioClient(base, { auth: { visitorId }, transports: ["websocket"] });
+  const adminSocket = ioClient(base, { auth: { token }, transports: ["websocket"] });
+  await Promise.all([
+    waitForEvent(visitorSocket, "connect"),
+    waitForEvent(adminSocket, "connect"),
+  ]);
+  check("visitor + admin sockets connect", visitorSocket.connected && adminSocket.connected);
+
+  const rejectedSocket = ioClient(base, { auth: { token: "not-a-real-token" }, transports: ["websocket"] });
+  await waitForEvent(rejectedSocket, "disconnect", 4000).catch(() => null);
+  check("socket with an invalid admin token is disconnected", !rejectedSocket.connected);
+
+  adminSocket.emit("chat:watch", visitorId);
+  await new Promise((r) => setTimeout(r, 150));
+
+  const adminNotified = waitForEvent<{ message: { text: string } }>(adminSocket, "chat:thread-updated");
+  const visitorMsg = await call(`/api/chat/threads/${visitorId}/messages`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ text: "Hello, are you there?" }),
+  });
+  check("visitor sends a message", visitorMsg.status === 201, visitorMsg);
+
+  const notified = await adminNotified.catch((e) => ({ message: { text: `ERROR: ${e.message}` } }));
+  check(
+    "admin is notified live of the visitor message",
+    notified.message?.text === "Hello, are you there?",
+    notified
+  );
+
+  const threads = await call("/api/admin/chat/threads", { headers: authHeaders });
+  check("thread appears in the admin thread list", threads.body?.data?.length === 1, threads);
+
+  const visitorReceives = waitForEvent<{ text: string; from: string }>(visitorSocket, "chat:message");
+  const agentReply = await call(`/api/admin/chat/threads/${visitorId}/messages`, {
+    method: "POST",
+    headers: authHeaders,
+    body: JSON.stringify({ text: "Yes! How can I help?" }),
+  });
+  check("agent replies", agentReply.status === 201 && agentReply.body?.data?.from === "agent", agentReply);
+
+  const received = await visitorReceives.catch((e) => ({ text: `ERROR: ${e.message}`, from: "" }));
+  check(
+    "visitor receives the agent reply live",
+    received.text === "Yes! How can I help?" && received.from === "agent",
+    received
+  );
+
+  const history = await call(`/api/chat/threads/${visitorId}/messages`);
+  check("chat history persists both messages", history.body?.data?.length === 2, history);
+
+  const typingNotice = waitForEvent<{ typing: boolean }>(adminSocket, "chat:typing");
+  await call(`/api/chat/threads/${visitorId}/typing`, {
+    method: "PATCH",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ typing: true }),
+  });
+  const typing = await typingNotice.catch(() => ({ typing: false }));
+  check("typing indicator reaches the admin", typing.typing === true, typing);
+
+  console.log("\nAbuse protection");
+  // Runs last: it deliberately exhausts the lead limiter for this IP/window.
+  let sawRateLimit = false;
+  for (let i = 0; i < 8; i++) {
+    const res = await call("/api/leads", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        source: "contact",
+        name: `Flood ${i}`,
+        email: "flood@example.com",
+        message: "flood",
+      }),
+    });
+    if (res.status === 429) {
+      sawRateLimit = true;
+      break;
+    }
+  }
+  check("repeated lead submissions get rate limited", sawRateLimit);
+
+  const rejectedUpload = await call("/api/admin/media", {
+    method: "POST",
+    headers: { authorization: `Bearer ${token}` },
+    body: (() => {
+      const form = new FormData();
+      form.append("file", new Blob(["<svg onload=alert(1)>"], { type: "image/svg+xml" }), "x.svg");
+      return form;
+    })(),
+  });
+  check(
+    "media upload rejects a disallowed file type (svg)",
+    rejectedUpload.status === 400,
+    rejectedUpload
+  );
+
+  visitorSocket.close();
+  adminSocket.close();
+  rejectedSocket.close();
+  httpServer.closeAllConnections();
+  await new Promise<void>((resolve) => httpServer.close(() => resolve()));
+  await mongoose.disconnect();
+  await mongo.stop();
+
+  console.log(`\n${passed} passed, ${failed} failed\n`);
+  process.exit(failed === 0 ? 0 : 1);
+}
+
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

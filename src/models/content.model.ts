@@ -1,0 +1,38 @@
+import { Schema, model } from "mongoose";
+import type { Model } from "mongoose";
+import type { ContentCollection, ContentItem } from "../shared/types.js";
+
+// `_id: false` keeps Mongoose from stamping an _id onto these nested objects,
+// which would otherwise leak into every API response.
+const localized = new Schema(
+  { en: { type: String, default: "" }, ar: { type: String, default: "" } },
+  { _id: false }
+);
+
+const contentSchema = new Schema<ContentItem>({
+  slug: { type: String, required: true },
+  published: { type: Boolean, default: false },
+  order: { type: Number, default: 0 },
+  title: { type: localized, required: true },
+  summary: { type: localized, required: false },
+  body: { type: localized, required: false },
+  media: { type: [String], default: [] },
+  meta: { type: Schema.Types.Mixed, default: {} },
+  createdAt: { type: String, required: true },
+  updatedAt: { type: String, required: true },
+});
+
+const CONTENT_COLLECTIONS: ContentCollection[] = [
+  "projects",
+  "services",
+  "solutions",
+  "testimonials",
+  "faqs",
+  "blogPosts",
+  "aboutSections",
+];
+
+/** One Mongoose model per content collection, all sharing the same schema shape. */
+export const contentModels = Object.fromEntries(
+  CONTENT_COLLECTIONS.map((name) => [name, model<ContentItem>(name, contentSchema, name)])
+) as Record<ContentCollection, Model<ContentItem>>;

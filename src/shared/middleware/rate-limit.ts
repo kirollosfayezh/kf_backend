@@ -43,3 +43,12 @@ export const loginRateLimit = rateLimit({
   skipSuccessfulRequests: true,
   handler: limitReached,
 });
+
+/** Analytics beacons: batched, so this is per batch rather than per event. */
+export const analyticsRateLimit = rateLimit({
+  windowMs: 60 * 1000,
+  limit: 60,
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: limitReached,
+});

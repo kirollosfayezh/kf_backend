@@ -61,6 +61,32 @@ export interface MediaItem extends Record<string, unknown> {
   createdAt: string;
 }
 
+export type AnalyticsEventType = "pageview" | "click";
+export type DeviceKind = "mobile" | "tablet" | "desktop";
+
+export interface AnalyticsEvent extends Record<string, unknown> {
+  type: AnalyticsEventType;
+  path: string;
+  label?: string;
+  visitorId?: string;
+  referrer?: string;
+  lang?: string;
+  device?: DeviceKind;
+  ts: number;
+  day: string;
+  createdAt?: Date;
+}
+
+export interface AnalyticsSummary extends Record<string, unknown> {
+  range: { from: string; to: string; days: number };
+  totals: { pageviews: number; clicks: number; visitors: number; leads: number };
+  daily: { day: string; pageviews: number; clicks: number }[];
+  topPages: { path: string; views: number }[];
+  topClicks: { label: string; clicks: number }[];
+  topReferrers: { referrer: string; count: number }[];
+  devices: { device: string; count: number }[];
+}
+
 export interface AdminUser extends Record<string, unknown> {
   email: string;
   passwordHash: string;

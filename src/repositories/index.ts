@@ -1,4 +1,5 @@
 import { MongoRepository } from "./mongo/mongo-repo.js";
+import { SeoRepository } from "./mongo/seo.repo.js";
 import { MongoSingletonRepository } from "./mongo/mongo-singleton-repo.js";
 import { ChatRepository } from "./mongo/chat.repo.js";
 import { AnalyticsRepository } from "./mongo/analytics.repo.js";
@@ -42,8 +43,8 @@ const defaultSettings: SiteSettings = {
   languages: [
     { code: "en", label: "English", enabled: true },
     { code: "ar", label: "العربية", enabled: true },
-    { code: "de", label: "Deutsch", enabled: false },
-    { code: "fr", label: "Français", enabled: false },
+    { code: "de", label: "Deutsch", enabled: true },
+    { code: "fr", label: "Français", enabled: true },
   ],
   defaultLanguage: "en",
   seo: { defaultTitle: "KF Tech Solutions", defaultDescription: "" },
@@ -63,4 +64,5 @@ export const repos = {
   ) as SingletonRepository<SiteSettings>,
   chat: new ChatRepository(),
   analytics: new AnalyticsRepository(),
+  seo: new SeoRepository(),
 };

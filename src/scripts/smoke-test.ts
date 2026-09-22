@@ -133,6 +133,57 @@ async function main() {
     publicVisible
   );
 
+  // The site links articles as /blog/<slug>, so slug resolution is load-bearing
+  // for every article URL, the sitemap and the prerendered pages.
+  const createdSlug: string = created.body?.data?.slug;
+  const bySlug = await call(`/api/content/services/${createdSlug}`);
+  check(
+    "public item resolves by slug",
+    bySlug.status === 200 && bySlug.body?.data?.id === itemId,
+    bySlug
+  );
+
+  const byId = await call(`/api/content/services/${itemId}`);
+  check("public item still resolves by id", byId.status === 200 && byId.body?.data?.id === itemId, byId);
+
+  const missingSlug = await call("/api/content/services/no-such-slug");
+  check("unknown slug returns 404", missingSlug.status === 404, missingSlug);
+
+  // SEO overrides: the dashboard writes them, the site and the build read them.
+  const seoEmpty = await call("/api/seo");
+  check("public SEO list starts empty", seoEmpty.status === 200 && Array.isArray(seoEmpty.body?.data), seoEmpty);
+
+  const seoSaved = await call("/api/admin/seo/services", {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ title: "Edited title", description: "Edited description", noindex: false }),
+  });
+  check(
+    "SEO override saves",
+    seoSaved.status === 200 && seoSaved.body?.data?.title === "Edited title",
+    seoSaved
+  );
+
+  const seoPublic = await call("/api/seo");
+  check(
+    "saved override is readable by the site and the build",
+    seoPublic.body?.data?.some((r: { key: string; title: string }) => r.key === "services" && r.title === "Edited title"),
+    seoPublic
+  );
+
+  const seoBadKey = await call("/api/admin/seo/not-a-page", {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ title: "nope" }),
+  });
+  check("unknown SEO page key is rejected", seoBadKey.status === 404, seoBadKey);
+
+  const seoNoAuth = await call("/api/admin/seo/services", {
+    method: "PATCH",
+    body: JSON.stringify({ title: "nope" }),
+  });
+  check("SEO writes require auth", seoNoAuth.status === 401, seoNoAuth);
+
   const badCollection = await call("/api/content/not-a-collection");
   check("unknown collection returns 404", badCollection.status === 404, badCollection);
 

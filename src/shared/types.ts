@@ -77,9 +77,37 @@ export interface AnalyticsEvent extends Record<string, unknown> {
   createdAt?: Date;
 }
 
+/**
+ * A per-page SEO override. Every field is optional in effect: the site treats a
+ * blank string (or a null `noindex`) as "use the built-in default", so partial
+ * documents are the normal case rather than an error.
+ */
+export interface SeoPage extends Record<string, unknown> {
+  key: string;
+  title?: string;
+  description?: string;
+  keywords?: string;
+  image?: string;
+  noindex?: boolean | null;
+  updatedAt?: string;
+}
+
+export interface AnalyticsTotals {
+  pageviews: number;
+  clicks: number;
+  visitors: number;
+  leads: number;
+}
+
 export interface AnalyticsSummary extends Record<string, unknown> {
   range: { from: string; to: string; days: number };
-  totals: { pageviews: number; clicks: number; visitors: number; leads: number };
+  totals: AnalyticsTotals;
+  /**
+   * The same totals for the window immediately before this one, so the screen
+   * can show direction of travel. "180 visitors" alone says nothing about
+   * whether the site is growing.
+   */
+  previous: AnalyticsTotals;
   daily: { day: string; pageviews: number; clicks: number }[];
   topPages: { path: string; views: number }[];
   topClicks: { label: string; clicks: number }[];

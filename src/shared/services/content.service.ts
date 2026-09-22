@@ -16,10 +16,35 @@ export function listContent(collection: ContentCollection, publishedOnly: boolea
   });
 }
 
-export async function getContent(collection: ContentCollection, id: string) {
-  const item = await repos.content[collection].get(id);
-  if (!item) throw AppError.notFound(`${collection} item not found`);
-  return item;
+/** A Mongo ObjectId is exactly 24 hex characters; no slug we generate is. */
+const OBJECT_ID = /^[a-f0-9]{24}$/i;
+
+/**
+ * Resolves an item by slug as well as by id.
+ *
+ * The site's article URLs are `/blog/<slug>` — readable, keyword-bearing and
+ * stable across a reseed, where a raw ObjectId is none of those things. Ids
+ * still resolve, so existing links, the dashboard and any bookmarked URL keep
+ * working; the site's canonical tag points at the slug form, which is what
+ * tells a search engine the two are the same page.
+ *
+ * The slug lookup goes through the repository's own `list` filter rather than a
+ * new method, so the "nothing outside repositories/mongo imports a model"
+ * boundary holds and a future non-Mongo repository needs no extra work.
+ */
+export async function getContent(collection: ContentCollection, idOrSlug: string) {
+  if (OBJECT_ID.test(idOrSlug)) {
+    const byId = await repos.content[collection].get(idOrSlug);
+    if (byId) return byId;
+  }
+
+  const [bySlug] = await repos.content[collection].list({
+    where: { slug: idOrSlug },
+    limit: 1,
+  });
+  if (bySlug) return bySlug;
+
+  throw AppError.notFound(`${collection} item not found`);
 }
 
 export function createContent(collection: ContentCollection, input: NewContentItem) {

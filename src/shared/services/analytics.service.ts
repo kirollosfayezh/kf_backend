@@ -63,6 +63,8 @@ export async function recordEvents(incoming: IncomingEvent[]): Promise<number> {
 }
 
 export function getSummary(days: number) {
-  const window = Number.isFinite(days) ? Math.min(Math.max(Math.trunc(days), 1), 180) : 30;
+  // 365 so the dashboard can offer a full year; anything longer is a report,
+  // not a dashboard, and the unindexed scan cost stops being worth it.
+  const window = Number.isFinite(days) ? Math.min(Math.max(Math.trunc(days), 1), 365) : 30;
   return repos.analytics.summary(window);
 }

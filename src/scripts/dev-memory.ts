@@ -33,6 +33,12 @@ async function main() {
   const { seedContent } = await import("./seed-content.js");
   await seedContent();
 
+  // Backdated analytics, so the dashboard's charts have a realistic series to
+  // render against in development. Throwaway database — nothing persists.
+  const { seedAnalytics } = await import("./dev-seed-analytics.js");
+  const events = await seedAnalytics();
+  console.log(`analytics: ${events} sample events`);
+
   const httpServer = createServer(app);
   initIo(httpServer);
   httpServer.listen(env.port, () => {

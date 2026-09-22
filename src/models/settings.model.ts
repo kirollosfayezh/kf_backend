@@ -14,11 +14,15 @@ const settingsSchema = new Schema<SiteSettings>({
   brandColors: { type: [String], default: ["#FF6A00", "#FF0080", "#9B5DE5", "#0A0A0D"] },
   languages: {
     type: [sub({ code: String, label: String, enabled: Boolean })],
+    // All four ship real translations (ported from the design export's
+    // kf-i18n.js), so all four are on by default. Turning one off here removes
+    // it from the site's switcher — the site reads this list rather than
+    // hardcoding its own.
     default: [
       { code: "en", label: "English", enabled: true },
       { code: "ar", label: "العربية", enabled: true },
-      { code: "de", label: "Deutsch", enabled: false },
-      { code: "fr", label: "Français", enabled: false },
+      { code: "de", label: "Deutsch", enabled: true },
+      { code: "fr", label: "Français", enabled: true },
     ],
   },
   defaultLanguage: { type: String, default: "en" },

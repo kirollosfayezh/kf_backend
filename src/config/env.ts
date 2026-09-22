@@ -27,6 +27,17 @@ export const env = {
   },
 };
 
+/**
+ * `publicUrl` is part of the gate on purpose. Without it the upload still
+ * succeeded but returned a *relative* `/media/...` URL, which 404s from the
+ * site's own origin — a silent half-configured state that looks like a broken
+ * image rather than a missing setting. Missing it now falls back to local disk,
+ * which at least serves a URL that works.
+ */
 export const r2Enabled = Boolean(
-  env.r2.accountId && env.r2.accessKeyId && env.r2.secretAccessKey && env.r2.bucket
+  env.r2.accountId &&
+    env.r2.accessKeyId &&
+    env.r2.secretAccessKey &&
+    env.r2.bucket &&
+    env.r2.publicUrl
 );

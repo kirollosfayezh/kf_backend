@@ -149,6 +149,50 @@ async function main() {
   const missingSlug = await call("/api/content/services/no-such-slug");
   check("unknown slug returns 404", missingSlug.status === 404, missingSlug);
 
+  /**
+   * German and French round-trip through the CMS.
+   *
+   * The localized sub-schema only declared `en` and `ar`, so Mongoose dropped
+   * `de` and `fr` on the way in — the write returned 200, the dashboard showed
+   * the text it had just sent from its own state, and the values were simply
+   * gone on the next read. A silent drop like that needs a test that reads the
+   * value back from the API rather than trusting the write's response.
+   */
+  const withDeFr = await call(`/api/admin/content/services/${itemId}`, {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({
+      title: { en: "POS Systems", ar: "أنظمة نقاط البيع", de: "Kassensysteme", fr: "Systèmes de caisse" },
+    }),
+  });
+  const reread = await call(`/api/content/services/${itemId}`);
+  check(
+    "German and French survive a write",
+    withDeFr.status === 200 &&
+      reread.body?.data?.title?.de === "Kassensysteme" &&
+      reread.body?.data?.title?.fr === "Systèmes de caisse",
+    reread
+  );
+
+  /** Project links live in `meta`, which is Mixed — new keys must not need a
+   *  schema change, and an edit must not clobber the keys it did not send. */
+  const withLinks = await call(`/api/admin/content/services/${itemId}`, {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({
+      meta: { demoUrl: "https://demo.example.com", repoUrl: "https://github.com/kf/x", year: "2026" },
+    }),
+  });
+  const rereadMeta = await call(`/api/content/services/${itemId}`);
+  check(
+    "project links round-trip through meta",
+    withLinks.status === 200 &&
+      rereadMeta.body?.data?.meta?.demoUrl === "https://demo.example.com" &&
+      rereadMeta.body?.data?.meta?.repoUrl === "https://github.com/kf/x" &&
+      rereadMeta.body?.data?.meta?.year === "2026",
+    rereadMeta
+  );
+
   // SEO overrides: the dashboard writes them, the site and the build read them.
   const seoEmpty = await call("/api/seo");
   check("public SEO list starts empty", seoEmpty.status === 200 && Array.isArray(seoEmpty.body?.data), seoEmpty);

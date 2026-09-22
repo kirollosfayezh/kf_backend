@@ -4,8 +4,16 @@ import type { ContentCollection, ContentItem } from "../shared/types.js";
 
 // `_id: false` keeps Mongoose from stamping an _id onto these nested objects,
 // which would otherwise leak into every API response.
+// All four languages the site serves. `de` and `fr` were missing, so Mongoose
+// silently dropped anything typed into those fields — German and French content
+// could be entered in the dashboard, saved without error, and never come back.
 const localized = new Schema(
-  { en: { type: String, default: "" }, ar: { type: String, default: "" } },
+  {
+    en: { type: String, default: "" },
+    ar: { type: String, default: "" },
+    de: { type: String, default: "" },
+    fr: { type: String, default: "" },
+  },
   { _id: false }
 );
 

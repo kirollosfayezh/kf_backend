@@ -17,14 +17,25 @@ export interface Lead extends Record<string, unknown> {
   updatedAt: string;
 }
 
+/**
+ * A translatable field. `de` and `fr` are optional because every document
+ * written before they existed lacks them; readers fall back to English.
+ */
+export interface LocalizedText {
+  en: string;
+  ar: string;
+  de?: string;
+  fr?: string;
+}
+
 /** Shared shape for every "content" collection (projects, services, solutions, testimonials, faqs, blogPosts, about). */
 export interface ContentItem extends Record<string, unknown> {
   slug: string;
   published: boolean;
   order: number;
-  title: { en: string; ar: string };
-  summary?: { en: string; ar: string };
-  body?: { en: string; ar: string };
+  title: LocalizedText;
+  summary?: LocalizedText;
+  body?: LocalizedText;
   media?: string[];
   meta?: Record<string, unknown>;
   createdAt: string;
@@ -42,7 +53,7 @@ export type ContentCollection =
 
 export interface SiteSettings extends Record<string, unknown> {
   siteName: string;
-  tagline: { en: string; ar: string };
+  tagline: LocalizedText;
   logoUrl?: string;
   brandColors: string[];
   languages: { code: string; label: string; enabled: boolean }[];

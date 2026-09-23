@@ -38,11 +38,12 @@ interface Front {
   ctaUrl?: string;
   startsAt?: string;
   endsAt?: string;
+  delaySeconds?: string;
 }
 
 /** Front-matter keys copied straight into `meta` when present. Keeping this a
  *  list rather than a chain of ifs means a new optional field is one entry. */
-const PASSTHROUGH = ["badge", "ctaLabel", "ctaUrl", "startsAt", "endsAt"] as const;
+const PASSTHROUGH = ["badge", "ctaLabel", "ctaUrl", "startsAt", "endsAt", "delaySeconds"] as const;
 
 interface ParsedArticle {
   front: Front;

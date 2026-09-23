@@ -13,6 +13,7 @@ import { pathToFileURL } from "node:url";
 import mongoose from "mongoose";
 import { connectDb } from "../db/connect.js";
 import { repos } from "../repositories/index.js";
+import { loadArticles } from "./seed-articles.js";
 import type { ContentCollection, ContentItem } from "../shared/types.js";
 
 interface SeedItem {
@@ -30,11 +31,16 @@ interface SeedItem {
 }
 
 const DATA_URL = new URL("./seed-content.data.json", import.meta.url);
+const ARTICLES_URL = new URL("./articles/", import.meta.url);
 
 /** Exported so `dev-memory.ts` can populate its throwaway database too. */
 export async function seedContent(): Promise<{ created: number; updated: number }> {
   const raw = await readFile(DATA_URL, "utf8");
   const data = JSON.parse(raw) as Record<string, SeedItem[]>;
+
+  // Articles are authored as Markdown files, not as JSON strings — see
+  // `seed-articles.ts`. They replace any `blogPosts` entry with the same slug.
+  const articles = await loadArticles(ARTICLES_URL);
 
   let created = 0;
   let updated = 0;
@@ -51,15 +57,19 @@ export async function seedContent(): Promise<{ created: number; updated: number 
 
     for (const item of items) {
       const now = new Date().toISOString();
-      // Arabic is intentionally left empty — the site falls back to English
-      // until translations are supplied through the dashboard.
+      // Translations are left empty on purpose: the site falls back to its own
+      // dictionary, then to English, so the catalogue reads correctly in every
+      // language until real copy is supplied through the dashboard. All four
+      // keys are written because the schema now stores four — omitting `de` and
+      // `fr` here would leave the fields absent rather than empty.
+      const blank = (en: string) => ({ en, ar: "", de: "", fr: "" });
       const payload: Partial<ContentItem> = {
         slug: item.slug,
         published: true,
         order: item.order,
-        title: { en: item.title, ar: "" },
-        summary: { en: item.summary ?? "", ar: "" },
-        body: { en: item.summary ?? "", ar: "" },
+        title: blank(item.title),
+        summary: blank(item.summary ?? ""),
+        body: blank(item.summary ?? ""),
         media: item.media ?? [],
         meta: {
           tag: item.tag,
@@ -81,6 +91,26 @@ export async function seedContent(): Promise<{ created: number; updated: number 
     }
 
     console.log(`${collection}: ${items.length} items`);
+  }
+
+  // Written last so a Markdown article wins over any JSON entry sharing its
+  // slug — the .md file is the source of truth for anything with one.
+  if (articles.length) {
+    const repo = repos.content.blogPosts;
+    const bySlug = new Map((await repo.list()).map((item) => [item.slug, item]));
+    for (const article of articles) {
+      const now = new Date().toISOString();
+      const payload = { ...article, updatedAt: now };
+      const match = bySlug.get(article.slug as string);
+      if (match) {
+        await repo.update(match.id, payload);
+        updated++;
+      } else {
+        await repo.create({ ...payload, createdAt: now } as ContentItem);
+        created++;
+      }
+    }
+    console.log(`blogPosts: ${articles.length} full articles from Markdown`);
   }
 
   return { created, updated };

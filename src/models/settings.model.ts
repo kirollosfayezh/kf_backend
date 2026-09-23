@@ -30,8 +30,23 @@ const settingsSchema = new Schema<SiteSettings>({
     type: sub({ defaultTitle: String, defaultDescription: String }),
     default: () => ({ defaultTitle: "KF Tech Solutions", defaultDescription: "" }),
   },
+  // Extended in place rather than renamed to `tracking`: the path already holds
+  // saved values, and Mongoose `strict` silently drops anything not declared —
+  // which is exactly how `de`/`fr` went missing from content for months.
   pixels: {
-    type: sub({ googleAnalyticsId: String, metaPixelId: String }),
+    type: sub({
+      gtmId: String,
+      googleAnalyticsId: String,
+      googleAdsId: String,
+      googleAdsLabel: String,
+      metaPixelId: String,
+      tiktokPixelId: String,
+      snapchatPixelId: String,
+      events: { type: Schema.Types.Mixed, default: {} },
+      respectDnt: { type: Boolean, default: true },
+      consentMode: { type: Boolean, default: false },
+      debug: { type: Boolean, default: false },
+    }),
     default: () => ({}),
   },
   contact: {

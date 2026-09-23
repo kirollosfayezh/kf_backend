@@ -310,6 +310,49 @@ async function main() {
     patched.body.data
   );
 
+  /**
+   * Marketing tags round-trip.
+   *
+   * Every field here lives inside a declared Mongoose sub-schema, so a key that
+   * is added to the dashboard but not to the model is silently dropped on write
+   * and reads back as absent — the same failure that hid `de` and `fr` on
+   * content for months. Reading the values back from the public endpoint, which
+   * is what the site actually consumes, is the only check that catches it.
+   */
+  const tracking = {
+    gtmId: "GTM-ABC1234",
+    googleAnalyticsId: "G-DH49NSL0SS",
+    googleAdsId: "AW-123456789",
+    googleAdsLabel: "AbC-D_efG-h12_34-567",
+    metaPixelId: "123456789012345",
+    tiktokPixelId: "CABCDEFGHIJKLMNOPQRS",
+    snapchatPixelId: "11111111-2222-3333-4444-555555555555",
+    events: { lead: true, cta: false },
+    respectDnt: false,
+    consentMode: true,
+    debug: true,
+  };
+  const savedTracking = await call("/api/admin/settings", {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ pixels: tracking }),
+  });
+  const publicSettings = await call("/api/content/settings");
+  const back = publicSettings.body?.data?.pixels ?? {};
+  const missing = Object.keys(tracking).filter(
+    (k) => JSON.stringify(back[k]) !== JSON.stringify(tracking[k as keyof typeof tracking])
+  );
+  check(
+    "every marketing tag field survives a write",
+    savedTracking.status === 200 && missing.length === 0,
+    { missing, back }
+  );
+  check(
+    "marketing tags reach the public settings the site reads",
+    back.gtmId === "GTM-ABC1234" && back.events?.cta === false,
+    back
+  );
+
   console.log("\nRealtime chat");
   const visitorId = "visitor-smoke-1";
 

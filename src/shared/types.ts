@@ -51,6 +51,39 @@ export type ContentCollection =
   | "blogPosts"
   | "aboutSections";
 
+/**
+ * Marketing tags for the public site.
+ *
+ * Still called `pixels` in the stored document because that is what already
+ * exists there; renaming the path would orphan every saved value for a cosmetic
+ * gain. `googleAnalyticsId` and `metaPixelId` predate the rest and keep their
+ * names for the same reason.
+ *
+ * Everything is optional and empty by default: a site with nothing configured
+ * loads no third-party script and sets no third-party cookie.
+ */
+export interface TrackingSettings {
+  /** GTM-XXXXXXX. When set, the container is expected to own the other tags. */
+  gtmId?: string;
+  /** G-XXXXXXXXXX */
+  googleAnalyticsId?: string;
+  /** AW-123456789 */
+  googleAdsId?: string;
+  /** The conversion label that pairs with `googleAdsId`; both are required. */
+  googleAdsLabel?: string;
+  metaPixelId?: string;
+  tiktokPixelId?: string;
+  snapchatPixelId?: string;
+  /** Site event key -> whether it is forwarded to the marketing tags. */
+  events?: Record<string, boolean>;
+  /** Honour the browser's Do Not Track header by loading nothing. */
+  respectDnt?: boolean;
+  /** Google Consent Mode v2: start denied until the visitor accepts. */
+  consentMode?: boolean;
+  /** Log what would be sent instead of sending it. */
+  debug?: boolean;
+}
+
 export interface SiteSettings extends Record<string, unknown> {
   siteName: string;
   tagline: LocalizedText;
@@ -59,7 +92,7 @@ export interface SiteSettings extends Record<string, unknown> {
   languages: { code: string; label: string; enabled: boolean }[];
   defaultLanguage: string;
   seo: { defaultTitle: string; defaultDescription: string };
-  pixels: { googleAnalyticsId?: string; metaPixelId?: string };
+  pixels: TrackingSettings;
   contact: { email?: string; phone?: string; whatsapp?: string };
   updatedAt: string;
 }

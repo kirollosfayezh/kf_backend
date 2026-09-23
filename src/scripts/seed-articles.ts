@@ -32,7 +32,17 @@ interface Front {
   /** `value|label; value|label` — the design's "rough math" band. */
   stats?: string;
   order?: string;
+  /** Offer fields, read by the site's promo popup. */
+  badge?: string;
+  ctaLabel?: string;
+  ctaUrl?: string;
+  startsAt?: string;
+  endsAt?: string;
 }
+
+/** Front-matter keys copied straight into `meta` when present. Keeping this a
+ *  list rather than a chain of ifs means a new optional field is one entry. */
+const PASSTHROUGH = ["badge", "ctaLabel", "ctaUrl", "startsAt", "endsAt"] as const;
 
 interface ParsedArticle {
   front: Front;
@@ -121,6 +131,9 @@ export async function loadArticles(dir: URL): Promise<Partial<ContentItem>[]> {
         caption: en.front.caption,
         alt: en.front.alt,
         stats: pairs(en.front.stats),
+        ...Object.fromEntries(
+          PASSTHROUGH.filter((k) => en.front[k]).map((k) => [k, en.front[k]]),
+        ),
       },
     });
   }

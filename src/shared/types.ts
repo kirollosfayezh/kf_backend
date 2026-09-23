@@ -50,7 +50,8 @@ export type ContentCollection =
   | "faqs"
   | "blogPosts"
   | "aboutSections"
-  | "legalPages";
+  | "legalPages"
+  | "promos";
 
 /**
  * Marketing tags for the public site.

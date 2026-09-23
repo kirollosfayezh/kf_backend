@@ -35,6 +35,7 @@ const contentRepos: Record<ContentCollection, Repository<ContentItem>> = {
   blogPosts: new MongoRepository<ContentItem>(contentModels.blogPosts),
   aboutSections: new MongoRepository<ContentItem>(contentModels.aboutSections),
   legalPages: new MongoRepository<ContentItem>(contentModels.legalPages),
+  promos: new MongoRepository<ContentItem>(contentModels.promos),
 };
 
 const defaultSettings: SiteSettings = {

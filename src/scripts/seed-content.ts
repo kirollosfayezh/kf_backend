@@ -44,6 +44,7 @@ const ARTICLES_URL = new URL("./articles/", import.meta.url);
 // Legal documents use the same Markdown-per-language format as articles, so
 // they load through the same reader.
 const LEGAL_URL = new URL("./legal/", import.meta.url);
+const PROMOS_URL = new URL("./promos/", import.meta.url);
 
 /** Exported so `dev-memory.ts` can populate its throwaway database too. */
 export async function seedContent(): Promise<{ created: number; updated: number }> {
@@ -54,6 +55,7 @@ export async function seedContent(): Promise<{ created: number; updated: number 
   // `seed-articles.ts`. They replace any `blogPosts` entry with the same slug.
   const articles = await loadArticles(ARTICLES_URL);
   const legal = await loadArticles(LEGAL_URL);
+  const promos = await loadArticles(PROMOS_URL);
 
   let created = 0;
   let updated = 0;
@@ -165,6 +167,24 @@ export async function seedContent(): Promise<{ created: number; updated: number 
       }
     }
     console.log(`legalPages: ${legal.length} documents from Markdown`);
+  }
+
+  if (promos.length) {
+    const repo = repos.content.promos;
+    const bySlug = new Map((await repo.list()).map((item) => [item.slug, item]));
+    for (const promo of promos) {
+      const now = new Date().toISOString();
+      const payload = { ...promo, updatedAt: now };
+      const match = bySlug.get(promo.slug as string);
+      if (match) {
+        await repo.update(match.id, payload);
+        updated++;
+      } else {
+        await repo.create({ ...payload, createdAt: now } as ContentItem);
+        created++;
+      }
+    }
+    console.log(`promos: ${promos.length} offers from Markdown`);
   }
 
   return { created, updated };

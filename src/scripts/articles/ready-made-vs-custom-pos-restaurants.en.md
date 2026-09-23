@@ -4,7 +4,7 @@ summary: A test you can run in one week, before you talk to a single vendor, tha
 tag: POS System
 tags: POS, restaurants, custom software, buy vs build
 order: 3
-media: https://images.unsplash.com/photo-1414235077428-338989a2e8c0
+media: https://images.unsplash.com/photo-1552566626-52f8b828add9
 alt: A busy restaurant service counter
 caption: The right answer is decided on a Friday night, not in a showroom.
 stats: 1 week|of observation before any vendor conversation; 20-40 min|a manager spends closing a till by hand each night; 3|questions that decide buy vs build

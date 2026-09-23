@@ -11,16 +11,8 @@ import {
   updateContent,
 } from "../../shared/services/content.service.js";
 import type { ContentCollection } from "../../shared/types.js";
+import { CONTENT_COLLECTIONS } from "../../models/content.model.js";
 
-const CONTENT_COLLECTIONS: ContentCollection[] = [
-  "projects",
-  "services",
-  "solutions",
-  "testimonials",
-  "faqs",
-  "blogPosts",
-  "aboutSections",
-];
 
 function assertCollection(raw: string | string[]): ContentCollection {
   const value = paramStr(raw);

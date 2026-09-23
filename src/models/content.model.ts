@@ -30,7 +30,15 @@ const contentSchema = new Schema<ContentItem>({
   updatedAt: { type: String, required: true },
 });
 
-const CONTENT_COLLECTIONS: ContentCollection[] = [
+/**
+ * The one list of content collections.
+ *
+ * It used to be written out three times — here, and again in the public and
+ * admin route guards — so adding a collection meant remembering all three, and
+ * forgetting one produced "Unknown content collection" at runtime with
+ * everything else type-checking cleanly. Both routers now import this.
+ */
+export const CONTENT_COLLECTIONS: ContentCollection[] = [
   "projects",
   "services",
   "solutions",
@@ -38,6 +46,7 @@ const CONTENT_COLLECTIONS: ContentCollection[] = [
   "faqs",
   "blogPosts",
   "aboutSections",
+  "legalPages",
 ];
 
 /** One Mongoose model per content collection, all sharing the same schema shape. */

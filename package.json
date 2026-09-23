@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "dev:memory": "tsx src/scripts/dev-memory.ts",
-    "build": "tsc -p tsconfig.build.json && cp src/scripts/*.json dist/scripts/ && mkdir -p dist/scripts/articles && cp src/scripts/articles/*.md dist/scripts/articles/",
+    "build": "tsc -p tsconfig.build.json && cp src/scripts/*.json dist/scripts/ && mkdir -p dist/scripts/articles && cp src/scripts/articles/*.md dist/scripts/articles/ && mkdir -p dist/scripts/legal && cp src/scripts/legal/*.md dist/scripts/legal/",
     "postinstall": "npm run build",
     "start": "node dist/index.js",
     "typecheck": "tsc --noEmit",

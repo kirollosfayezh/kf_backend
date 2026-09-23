@@ -215,7 +215,9 @@
         "React",
         "Node.js",
         "PostgreSQL"
-      ]
+      ],
+      "year": "2026",
+      "duration": "14 weeks"
     },
     {
       "slug": "real-estate-portal",
@@ -231,7 +233,9 @@
         "Next.js",
         "Supabase",
         "Maps API"
-      ]
+      ],
+      "year": "2025",
+      "duration": "10 weeks"
     },
     {
       "slug": "retail-analytics-dashboard",
@@ -247,7 +251,9 @@
         "React",
         "Python",
         "MySQL"
-      ]
+      ],
+      "year": "2025",
+      "duration": "8 weeks"
     },
     {
       "slug": "ai-assistant-app",
@@ -263,7 +269,9 @@
         "Flutter",
         "Firebase",
         "AI"
-      ]
+      ],
+      "year": "2026",
+      "duration": "12 weeks"
     },
     {
       "slug": "workflow-automation-suite",
@@ -279,7 +287,9 @@
         "Node.js",
         "REST APIs",
         "Docker"
-      ]
+      ],
+      "year": "2025",
+      "duration": "6 weeks"
     },
     {
       "slug": "connected-devices-dashboard",
@@ -295,7 +305,9 @@
         "IoT",
         "Python",
         "Cloudflare"
-      ]
+      ],
+      "year": "2026",
+      "duration": "9 weeks"
     }
   ],
   "blogPosts": [
@@ -506,6 +518,44 @@
       "title": "Do you provide hosting and deployment?",
       "summary": "Yes. We handle deployment, hosting setup and monitoring, and can manage everything for you after launch.",
       "media": []
+    }
+  ],
+  "testimonials": [
+    {
+      "slug": "testimonial-1",
+      "order": 1,
+      "published": false,
+      "title": "Client name",
+      "summary": "Replace with a real quote. Two sentences works best: what was broken before, and the specific outcome after.",
+      "tag": "Role, Company",
+      "media": [
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80&auto=format&fit=crop"
+      ],
+      "alt": "Portrait placeholder"
+    },
+    {
+      "slug": "testimonial-2",
+      "order": 2,
+      "published": false,
+      "title": "Client name",
+      "summary": "Replace with a real quote. Quotes that name a number — hours saved, waste cut, orders handled — outperform general praise.",
+      "tag": "Role, Company",
+      "media": [
+        "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80&auto=format&fit=crop"
+      ],
+      "alt": "Portrait placeholder"
+    },
+    {
+      "slug": "testimonial-3",
+      "order": 3,
+      "published": false,
+      "title": "Client name",
+      "summary": "Replace with a real quote. Ask the client for permission to use their name and company — an attributed quote is worth several anonymous ones.",
+      "tag": "Role, Company",
+      "media": [
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80&auto=format&fit=crop"
+      ],
+      "alt": "Portrait placeholder"
     }
   ]
 }

@@ -49,7 +49,8 @@ export type ContentCollection =
   | "testimonials"
   | "faqs"
   | "blogPosts"
-  | "aboutSections";
+  | "aboutSections"
+  | "legalPages";
 
 /**
  * Marketing tags for the public site.

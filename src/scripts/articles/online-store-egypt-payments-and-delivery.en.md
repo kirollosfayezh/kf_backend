@@ -4,7 +4,7 @@ summary: The two problems that decide whether an Egyptian e-commerce build succe
 tag: Web Development
 tags: e-commerce, payments, Egypt, delivery, cash on delivery
 order: 15
-media: https://images.unsplash.com/photo-1556742049-0cfed4f6a45d
+media: https://images.unsplash.com/photo-1563013544-824ae1b704d3
 alt: An online store being browsed on a laptop
 caption: The storefront is the easy part. Money in and goods out are where the work is.
 stats: 2|problems that decide the outcome, neither of them the website; 30-70%|of orders that may arrive as cash on delivery; 1|reconciliation job that prevents most disputes

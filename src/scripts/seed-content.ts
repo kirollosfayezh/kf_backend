@@ -14,7 +14,7 @@ import mongoose from "mongoose";
 import { connectDb } from "../db/connect.js";
 import { repos } from "../repositories/index.js";
 import { loadArticles } from "./seed-articles.js";
-import type { ContentCollection, ContentItem } from "../shared/types.js";
+import type { ContentCollection, ContentItem, LocalizedText } from "../shared/types.js";
 
 interface SeedItem {
   slug: string;
@@ -57,19 +57,38 @@ export async function seedContent(): Promise<{ created: number; updated: number 
 
     for (const item of items) {
       const now = new Date().toISOString();
-      // Translations are left empty on purpose: the site falls back to its own
-      // dictionary, then to English, so the catalogue reads correctly in every
-      // language until real copy is supplied through the dashboard. All four
-      // keys are written because the schema now stores four — omitting `de` and
-      // `fr` here would leave the fields absent rather than empty.
-      const blank = (en: string) => ({ en, ar: "", de: "", fr: "" });
+      const match = bySlug.get(item.slug);
+
+      /**
+       * English comes from the seed file; every other language is preserved.
+       *
+       * This used to write `{ en, ar: "", de: "", fr: "" }` unconditionally,
+       * which meant re-running the seeder silently destroyed every Arabic,
+       * German and French translation an editor had typed into the dashboard
+       * for a seeded slug. That was harmless while the schema only stored
+       * `en`/`ar` and the seeds were the only writer — it is not now that the
+       * CMS stores four languages and holds real translated copy.
+       *
+       * All four keys are still written, because the schema declares four and
+       * omitting one leaves the field absent rather than empty.
+       */
+      const keep = (
+        current: LocalizedText | undefined,
+        en: string,
+      ): LocalizedText => ({
+        en,
+        ar: current?.ar ?? "",
+        de: current?.de ?? "",
+        fr: current?.fr ?? "",
+      });
+
       const payload: Partial<ContentItem> = {
         slug: item.slug,
         published: true,
         order: item.order,
-        title: blank(item.title),
-        summary: blank(item.summary ?? ""),
-        body: blank(item.summary ?? ""),
+        title: keep(match?.title, item.title),
+        summary: keep(match?.summary, item.summary ?? ""),
+        body: keep(match?.body, item.summary ?? ""),
         media: item.media ?? [],
         meta: {
           tag: item.tag,
@@ -80,7 +99,6 @@ export async function seedContent(): Promise<{ created: number; updated: number 
         updatedAt: now,
       };
 
-      const match = bySlug.get(item.slug);
       if (match) {
         await repo.update(match.id, payload);
         updated++;

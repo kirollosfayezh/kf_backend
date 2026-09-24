@@ -39,6 +39,25 @@ interface SeedItem {
   duration?: string;
 }
 
+/**
+ * Whether the photos stored on a row are still the ones a seed run put there.
+ *
+ * Re-seeding used to overwrite `media` unconditionally, so a photo an editor
+ * uploaded through the dashboard for a seeded slug was silently swapped back
+ * for the stock one. Seed photos now only replace stored photos that are
+ * themselves seed photos: exactly what the last run recorded in
+ * `meta.seedMedia`, or — for rows seeded before that was recorded — stock
+ * Unsplash URLs, which the dashboard's upload (R2 or /uploads) never produces.
+ */
+export function isSeedMedia(current: string[] | undefined, meta: Record<string, unknown> | undefined): boolean {
+  if (!current || current.length === 0) return true;
+  const recorded = meta?.seedMedia;
+  if (Array.isArray(recorded)) {
+    return recorded.length === current.length && recorded.every((url, i) => url === current[i]);
+  }
+  return current.every((url) => url.startsWith("https://images.unsplash.com/"));
+}
+
 const DATA_URL = new URL("./seed-content.data.json", import.meta.url);
 const ARTICLES_URL = new URL("./articles/", import.meta.url);
 // Legal documents use the same Markdown-per-language format as articles, so
@@ -104,11 +123,14 @@ export async function seedContent(): Promise<{ created: number; updated: number 
         title: keep(match?.title, item.title),
         summary: keep(match?.summary, item.summary ?? ""),
         body: keep(match?.body, item.summary ?? ""),
-        media: item.media ?? [],
+        media: match && !isSeedMedia(match.media, match.meta) ? match.media : (item.media ?? []),
         // Existing meta is spread first so a key an editor set through the
         // dashboard — a demo URL, a client name — is not wiped by a re-seed.
         meta: {
           ...(match?.meta ?? {}),
+          // What this run would write, so the next run can tell a seed photo
+          // from one an editor chose (see isSeedMedia).
+          seedMedia: item.media ?? [],
           tag: item.tag,
           points: item.points ?? [],
           alt: item.alt,

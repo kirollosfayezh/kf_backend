@@ -1,4 +1,4 @@
-import { parsePhoneNumberFromString, type CountryCode } from "libphonenumber-js/max";
+import { getCountryCallingCode, parsePhoneNumberFromString, type CountryCode } from "libphonenumber-js/max";
 
 /**
  * Phone numbers from the chat widget, checked against Google's full numbering
@@ -48,7 +48,9 @@ function isCountry(value: unknown): value is CountryCode {
 export function normalizePhone(raw: unknown, countryHint?: unknown): NormalizedPhone | null {
   if (typeof raw !== "string" || raw.length > 40) return null;
   const input = cleanPhoneInput(raw);
-  if (input.replace(/\D/g, "").length < 6) return null;
+  // Four digits is the shortest real number anywhere (Tokelau, Tristan da
+  // Cunha); anything shorter is noise, and the metadata rejects the rest.
+  if (input.replace(/\D/g, "").length < 4) return null;
 
   const hint = isCountry(countryHint) ? countryHint : undefined;
   // Two readings of a number typed without "+": a national number in the
@@ -57,18 +59,26 @@ export function normalizePhone(raw: unknown, countryHint?: unknown): NormalizedP
   // people chat from mobiles — and a tie keeps the national reading.
   const attempts = input.startsWith("+") ? [input] : [input, `+${input}`];
 
-  let best: { parsed: NonNullable<ReturnType<typeof parsePhoneNumberFromString>>; score: number } | null = null;
+  let best: {
+    parsed: NonNullable<ReturnType<typeof parsePhoneNumberFromString>>;
+    score: number;
+    national: boolean;
+  } | null = null;
   for (const candidate of attempts) {
     const parsed = parsePhoneNumberFromString(candidate, hint);
     if (!parsed?.isValid()) continue;
     const type = parsed.getType();
     const score = type === "MOBILE" || type === "FIXED_LINE_OR_MOBILE" ? 2 : 1;
-    if (!best || score > best.score) best = { parsed, score };
+    if (!best || score > best.score) best = { parsed, score, national: candidate === input && !input.startsWith("+") };
   }
   if (!best) return null;
+  // A local number read in the visitor's chosen country keeps that country,
+  // even where it shares a numbering plan with a larger one (Isle of Man and
+  // the UK, Åland and Finland) that the metadata files the number under.
+  const local = !!hint && best.national && best.parsed.countryCallingCode === getCountryCallingCode(hint);
   return {
     e164: best.parsed.number,
-    country: best.parsed.country,
+    country: local ? hint : best.parsed.country,
     international: best.parsed.formatInternational(),
     type: best.parsed.getType(),
   };

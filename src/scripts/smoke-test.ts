@@ -427,6 +427,42 @@ async function main() {
   adminSocket.emit("chat:watch", visitorId);
   await new Promise((r) => setTimeout(r, 150));
 
+  const json = { "content-type": "application/json" };
+  const noPhone = await call(`/api/chat/threads/${visitorId}/messages`, {
+    method: "POST",
+    headers: json,
+    body: JSON.stringify({ text: "no phone yet" }),
+  });
+  check(
+    "a visitor cannot chat before giving a phone",
+    noPhone.status === 400 && noPhone.body?.errors?.[0]?.code === "PHONE_REQUIRED",
+    noPhone
+  );
+
+  const badPhone = await call("/api/chat/session", {
+    method: "POST",
+    headers: json,
+    body: JSON.stringify({ visitorId, phone: "12345", country: "EG" }),
+  });
+  check("an invalid phone is rejected", badPhone.status === 400 && badPhone.body?.errors?.[0]?.code === "INVALID_PHONE", badPhone);
+
+  const session = await call("/api/chat/session", {
+    method: "POST",
+    headers: json,
+    // Arabic-Indic digits and a national number: stored as E.164 all the same.
+    body: JSON.stringify({ visitorId, phone: "٠١٠١٢٣٤٥٦٧٨", country: "EG", name: "Smoke" }),
+  });
+  check(
+    "a valid phone starts the session, normalised to E.164",
+    session.status === 200 &&
+      session.body?.data?.thread?.visitorId === visitorId &&
+      session.body?.data?.thread?.phone === "+201012345678" &&
+      session.body?.data?.resumed === false,
+    session
+  );
+  // Let the session's own thread-updated push land before listening for the next one.
+  await new Promise((r) => setTimeout(r, 150));
+
   const adminNotified = waitForEvent<{ message: { text: string } }>(adminSocket, "chat:thread-updated");
   const visitorMsg = await call(`/api/chat/threads/${visitorId}/messages`, {
     method: "POST",
@@ -462,6 +498,34 @@ async function main() {
 
   const history = await call(`/api/chat/threads/${visitorId}/messages`);
   check("chat history persists both messages", history.body?.data?.length === 2, history);
+
+  // The same number from another browser picks the conversation back up.
+  const resumed = await call("/api/chat/session", {
+    method: "POST",
+    headers: json,
+    body: JSON.stringify({ visitorId: "visitor-smoke-other-device", phone: "+20 101 234 5678" }),
+  });
+  check(
+    "entering the same phone elsewhere resumes the last chat",
+    resumed.body?.data?.resumed === true &&
+      resumed.body?.data?.thread?.visitorId === visitorId &&
+      resumed.body?.data?.messages?.length === 2,
+    resumed
+  );
+
+  // A different number on a browser whose thread already has a phone gets its own thread.
+  const shared = await call("/api/chat/session", {
+    method: "POST",
+    headers: json,
+    body: JSON.stringify({ visitorId, phone: "+971501234567" }),
+  });
+  check(
+    "a second person on the same browser gets a separate thread",
+    shared.body?.data?.resumed === false &&
+      shared.body?.data?.thread?.visitorId !== visitorId &&
+      shared.body?.data?.messages?.length === 0,
+    shared
+  );
 
   const typingNotice = waitForEvent<{ typing: boolean }>(adminSocket, "chat:typing");
   await call(`/api/chat/threads/${visitorId}/typing`, {

@@ -2,7 +2,14 @@ import { Router } from "express";
 import { asyncHandler } from "../../shared/http/async-handler.js";
 import { ok } from "../../shared/http/api-response.js";
 import { paramStr } from "../../shared/http/params.js";
-import { listMessages, openThread, sendMessage, setTyping } from "../../shared/services/chat.service.js";
+import {
+  getThread,
+  listMessages,
+  openThread,
+  sendMessage,
+  setTyping,
+  startSession,
+} from "../../shared/services/chat.service.js";
 
 /**
  * Visitor-side chat. A visitor is identified only by the random `visitorId` their
@@ -11,6 +18,26 @@ import { listMessages, openThread, sendMessage, setTyping } from "../../shared/s
  * replaces).
  */
 export const publicChatRouter = Router();
+
+/**
+ * The widget's phone step: validates the number for its country, then starts a
+ * thread or resumes the latest one for that number. See `startSession`.
+ */
+publicChatRouter.post(
+  "/session",
+  asyncHandler(async (req, res) => {
+    const { visitorId, phone, country, name } = req.body ?? {};
+    ok(res, await startSession({ visitorId, phone, country, name }));
+  })
+);
+
+/** This browser's thread, or null — lets the widget know whether a phone is on file. */
+publicChatRouter.get(
+  "/threads/:visitorId",
+  asyncHandler(async (req, res) => {
+    ok(res, await getThread(paramStr(req.params.visitorId)));
+  })
+);
 
 publicChatRouter.post(
   "/threads/:visitorId",

@@ -55,6 +55,50 @@ export class ChatRepository {
     return plain<ChatThread>(doc!);
   }
 
+  async getThread(visitorId: string): Promise<WithId<ChatThread> | null> {
+    const doc = await ChatThreadModel.findOne({ visitorId }).exec();
+    return doc ? plain<ChatThread>(doc) : null;
+  }
+
+  /** The most recently active thread for this phone (E.164), if any. */
+  async findLatestByPhone(phone: string): Promise<WithId<ChatThread> | null> {
+    const doc = await ChatThreadModel.findOne({ phone }).sort({ lastMessageAt: -1 }).exec();
+    return doc ? plain<ChatThread>(doc) : null;
+  }
+
+  /** Attaches a verified phone (and, when given, a name) to a thread, creating it if needed. */
+  async setPhone(
+    visitorId: string,
+    phone: string,
+    phoneCountry: string | undefined,
+    name?: string
+  ): Promise<WithId<ChatThread>> {
+    await this.getOrCreateThread(visitorId);
+    const update: Record<string, string> = { phone, "visitorMeta.contact": phone };
+    if (phoneCountry) update.phoneCountry = phoneCountry;
+    if (name) update["visitorMeta.name"] = name;
+    const doc = await ChatThreadModel.findOneAndUpdate({ visitorId }, update, { new: true }).exec();
+    return plain<ChatThread>(doc!);
+  }
+
+  /**
+   * Folds one thread into another: its messages move across and it is removed.
+   * Used when a visitor who chatted anonymously in this browser turns out to
+   * already have a thread under their phone number.
+   */
+  async mergeThreads(fromVisitorId: string, intoVisitorId: string): Promise<void> {
+    if (fromVisitorId === intoVisitorId) return;
+    await ChatMessageModel.updateMany({ threadId: fromVisitorId }, { threadId: intoVisitorId }).exec();
+    await ChatThreadModel.deleteOne({ visitorId: fromVisitorId }).exec();
+    const last = await ChatMessageModel.findOne({ threadId: intoVisitorId }).sort({ ts: -1 }).exec();
+    if (last) {
+      await ChatThreadModel.updateOne(
+        { visitorId: intoVisitorId },
+        { lastMessageAt: new Date(last.ts).toISOString() }
+      ).exec();
+    }
+  }
+
   async setTyping(visitorId: string, typing: boolean): Promise<void> {
     await ChatThreadModel.updateOne({ visitorId }, { userTyping: typing }).exec();
   }

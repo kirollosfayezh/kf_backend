@@ -6,6 +6,9 @@ const visitorMetaSchema = new Schema({ name: String, contact: String }, { _id: f
 const threadSchema = new Schema<ChatThread>({
   visitorId: { type: String, required: true, unique: true },
   visitorMeta: { type: visitorMetaSchema, default: () => ({}) },
+  // Indexed: entering a phone number in the widget looks its thread up by this.
+  phone: { type: String, index: true },
+  phoneCountry: String,
   userTyping: { type: Boolean, default: false },
   lastMessageAt: { type: String, required: true },
   createdAt: { type: String, required: true },

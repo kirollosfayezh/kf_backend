@@ -34,6 +34,15 @@ export const chatRateLimit = rateLimit({
   handler: limitReached,
 });
 
+/** Quote links and bookings: a person clicks a few times; a script guessing tokens or slots does not get far. */
+export const salesRateLimit = rateLimit({
+  windowMs: 10 * 60 * 1000,
+  limit: 30,
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: limitReached,
+});
+
 /** Login attempts, to blunt credential stuffing against the admin account. */
 export const loginRateLimit = rateLimit({
   windowMs: 15 * 60 * 1000,

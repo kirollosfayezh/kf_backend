@@ -13,7 +13,7 @@ publicAnalyticsRouter.post(
   "/events",
   asyncHandler(async (req, res) => {
     const events = Array.isArray(req.body) ? req.body : req.body?.events;
-    const written = await recordEvents(events);
+    const written = await recordEvents(events, { userAgent: req.get("user-agent") });
     ok(res, { written }, 202);
   })
 );

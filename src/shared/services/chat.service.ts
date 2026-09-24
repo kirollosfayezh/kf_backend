@@ -3,6 +3,8 @@ import { emitToAdmins, emitToThread } from "../../realtime/io.js";
 import { randomUUID } from "node:crypto";
 import { AppError } from "../errors/app-error.js";
 import { normalizePhone } from "../phone.js";
+import { addActivity, resolveContact } from "./contacts.service.js";
+import { notify } from "./notify.service.js";
 import type { ChatSender } from "../types.js";
 
 /** Browser-minted ids are UUIDs or a short fallback — never anything this long. */
@@ -84,6 +86,28 @@ export async function startSession(input: {
 
   emitToAdmins("chat:thread-updated", { thread, mergedFrom });
 
+  // File the person in the CRM, with both browsers: the thread's, and the one
+  // they are on now (different when they resumed from another device).
+  try {
+    const resolved = await resolveContact({
+      phone: phone.e164,
+      name: name || undefined,
+      visitorId: thread.visitorId,
+      extraVisitorIds: [visitorId],
+      source: "chat",
+    });
+    if (resolved) {
+      await addActivity(
+        resolved.contact.id,
+        existing ? "chat_resumed" : "chat_started",
+        existing ? "Came back to the live chat" : "Started a live chat",
+        { visitorId: thread.visitorId }
+      );
+    }
+  } catch (err) {
+    console.error("CRM: could not file chat", err);
+  }
+
   return {
     thread,
     messages,
@@ -98,11 +122,13 @@ export async function sendMessage(visitorId: string, from: ChatSender, text: str
 
   // A visitor must have given a valid phone first — it is how the team follows
   // up, and how the visitor gets this conversation back later.
+  let quietSince: string | undefined;
   if (from === "visitor") {
     const thread = await repos.chat.getThread(visitorId);
     if (!thread?.phone) {
       throw new AppError(400, "PHONE_REQUIRED", "Please add your phone number to start the chat.");
     }
+    quietSince = thread.lastMessageAt;
   }
 
   const message = await repos.chat.addMessage(visitorId, from, text.trim());
@@ -110,6 +136,23 @@ export async function sendMessage(visitorId: string, from: ChatSender, text: str
 
   emitToThread(visitorId, "chat:message", message);
   emitToAdmins("chat:thread-updated", { thread, message });
+
+  // One alert per conversation burst, not per message: the first message, or
+  // the first after 30 quiet minutes.
+  if (from === "visitor") {
+    const prior = (await repos.chat.listMessages(visitorId)).length - 1;
+    const quiet = !quietSince || Date.now() - Date.parse(quietSince) > 30 * 60 * 1000;
+    if (prior === 0 || quiet) {
+      const contact = await repos.contacts.findByVisitor(visitorId).catch(() => null);
+      void notify({
+        type: "chat",
+        title: `Live chat: ${thread.visitorMeta?.name || thread.phone || "a visitor"}`,
+        body: message.text,
+        link: contact ? `/contacts/${contact.id}` : "/chat",
+        contactId: contact?.id,
+      });
+    }
+  }
 
   return message;
 }

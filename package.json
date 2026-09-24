@@ -16,6 +16,7 @@
     "typecheck": "tsc --noEmit",
     "seed-admin": "npm run build && node dist/scripts/seed-admin.js",
     "seed-content": "npm run build && node dist/scripts/seed-content.js",
+    "backfill-contacts": "npm run build && node dist/scripts/backfill-contacts.js",
     "smoke-test": "tsx src/scripts/smoke-test.ts",
     "test": "tsx --test \"src/**/*.test.ts\""
   },
@@ -29,6 +30,7 @@
     "@types/node": "^22.10.0",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
+    "countries-and-timezones": "^3.10.0",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "express-rate-limit": "^8.7.0",

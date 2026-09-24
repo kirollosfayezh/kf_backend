@@ -16,6 +16,8 @@ export const env = {
     .split(",")
     .map((s) => s.trim())
     .filter(Boolean),
+  /** The dashboard's public URL, so Telegram alerts can link straight to the contact. Optional. */
+  dashboardUrl: (process.env.DASHBOARD_URL ?? "").trim().replace(/\/+$/, ""),
   superadminEmail: process.env.SUPERADMIN_EMAIL ?? "admin@kftech.solutions",
   superadminPassword: process.env.SUPERADMIN_PASSWORD ?? "ChangeMe123!",
   r2: {

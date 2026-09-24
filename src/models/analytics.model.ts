@@ -8,6 +8,8 @@ const analyticsSchema = new Schema<AnalyticsEvent>({
   label: String,
   /** Anonymous per-browser id, so repeat visits can be told apart without cookies. */
   visitorId: { type: String, index: true },
+  /** One browser tab's visit, so a visitor's journey can be split into sessions. */
+  sessionId: String,
   referrer: String,
   lang: String,
   device: { type: String, enum: ["mobile", "tablet", "desktop"] },

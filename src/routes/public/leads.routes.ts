@@ -9,7 +9,7 @@ export const publicLeadsRouter = Router();
 publicLeadsRouter.post(
   "/",
   asyncHandler(async (req, res) => {
-    const { source, name, email, phone, company, projectType, budget, message } = req.body ?? {};
+    const { source, name, email, phone, company, projectType, budget, message, visitorId } = req.body ?? {};
     if (source !== "contact" && source !== "campaign") {
       throw AppError.badRequest('source must be "contact" or "campaign"');
     }
@@ -22,6 +22,7 @@ publicLeadsRouter.post(
       projectType,
       budget,
       message,
+      visitorId,
     });
     ok(res, lead, 201);
   })

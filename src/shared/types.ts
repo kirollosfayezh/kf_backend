@@ -13,6 +13,8 @@ export interface Lead extends Record<string, unknown> {
   projectType?: string;
   budget?: string;
   message: string;
+  visitorId?: string;
+  contactId?: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -115,6 +117,7 @@ export interface AnalyticsEvent extends Record<string, unknown> {
   path: string;
   label?: string;
   visitorId?: string;
+  sessionId?: string;
   referrer?: string;
   lang?: string;
   device?: DeviceKind;
@@ -205,4 +208,244 @@ export interface ChatThread extends Record<string, unknown> {
   userTyping: boolean;
   lastMessageAt: string;
   createdAt: string;
+}
+
+/* ================================================================ CRM ===== */
+
+/** Where a visit came from: the referrer host plus any campaign parameters. */
+export interface TouchInfo {
+  referrer?: string;
+  landingPath?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmTerm?: string;
+  utmContent?: string;
+  /** Google Ads / Meta click ids — present when the visit came from a paid ad. */
+  gclid?: string;
+  fbclid?: string;
+  at?: string;
+}
+
+export type ConsentStatus = "granted" | "denied";
+
+/**
+ * One browser, identified by the `kf-visitor-id` the site keeps in
+ * localStorage (the same id the chat and analytics use).
+ */
+export interface Visitor extends Record<string, unknown> {
+  visitorId: string;
+  firstSeenAt: string;
+  lastSeenAt: string;
+  sessions: number;
+  pageviews: number;
+  clicks: number;
+  firstTouch?: TouchInfo;
+  lastTouch?: TouchInfo;
+  device?: DeviceKind;
+  browser?: string;
+  os?: string;
+  lang?: string;
+  timezone?: string;
+  /** ISO country, from the device time zone. */
+  country?: string;
+  screen?: string;
+  consent?: { status: ConsentStatus; at: string };
+  /** Set once the visitor is identified (chat phone, form, booking, quote). */
+  contactId?: string;
+}
+
+/** Append-only proof of each cookie choice. */
+export interface ConsentRecord extends Record<string, unknown> {
+  visitorId?: string;
+  status: ConsentStatus;
+  /** "banner" (first answer) or "settings" (changed later from the footer link). */
+  source: "banner" | "settings";
+  policyVersion: string;
+  userAgent?: string;
+  at: string;
+}
+
+export const CONTACT_STAGES = ["new", "qualified", "proposal", "won", "lost"] as const;
+export type ContactStage = (typeof CONTACT_STAGES)[number];
+
+export type ContactSource = "chat" | "contact" | "campaign" | "booking" | "quote" | "manual";
+
+export interface Contact extends Record<string, unknown> {
+  name?: string;
+  /** E.164 */
+  phones: string[];
+  /** lower-case */
+  emails: string[];
+  company?: string;
+  country?: string;
+  sources: ContactSource[];
+  visitorIds: string[];
+  stage: ContactStage;
+  /** Estimated deal value, in `currency`. */
+  value?: number;
+  currency: string;
+  tags: string[];
+  lostReason?: string;
+  nextFollowUpAt?: string;
+  followUpNotifiedFor?: string;
+  lastActivityAt: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export type ActivityType =
+  | "lead"
+  | "chat_started"
+  | "chat_resumed"
+  | "booking"
+  | "booking_status"
+  | "quote_sent"
+  | "quote_viewed"
+  | "quote_accepted"
+  | "quote_declined"
+  | "note"
+  | "stage_change"
+  | "contact_created";
+
+export interface Activity extends Record<string, unknown> {
+  contactId: string;
+  type: ActivityType;
+  text?: string;
+  meta?: Record<string, unknown>;
+  /** "system", or the admin's email for things done in the dashboard. */
+  by: string;
+  at: string;
+}
+
+export type NotificationType =
+  | "lead"
+  | "chat"
+  | "booking"
+  | "quote_viewed"
+  | "quote_accepted"
+  | "quote_declined"
+  | "followup_due"
+  | "call_soon"
+  | "test";
+
+export interface AdminNotification extends Record<string, unknown> {
+  type: NotificationType;
+  title: string;
+  body?: string;
+  /** A dashboard path, e.g. "/contacts/abc". */
+  link?: string;
+  contactId?: string;
+  readAt?: string;
+  createdAt: string;
+}
+
+/** One opening window in a day, "HH:mm" in the booking time zone. */
+export interface TimeWindow {
+  start: string;
+  end: string;
+}
+
+/** One weekday's opening hours. Empty `windows` = closed that day. */
+export interface DayHours {
+  windows: TimeWindow[];
+}
+
+export interface BookingSettings {
+  /**
+   * Seven entries, index 0 = Sunday … 6 = Saturday, like `Date#getDay`.
+   * Objects rather than a list of lists, which not every Mongo-compatible
+   * store accepts.
+   */
+  weekly: DayHours[];
+  slotMinutes: number;
+  bufferMinutes: number;
+  minNoticeHours: number;
+  daysAhead: number;
+  timezone: string;
+  /** "YYYY-MM-DD" days with no bookings (holidays, travel). */
+  blockedDates: string[];
+  enabled: boolean;
+}
+
+export interface QuoteSettings {
+  companyName: string;
+  address?: string;
+  email?: string;
+  phone?: string;
+  taxId?: string;
+  footer?: string;
+  defaultCurrency: string;
+  defaultTaxRate: number;
+  defaultValidDays: number;
+}
+
+export interface TelegramSettings {
+  botToken?: string;
+  chatId?: string;
+  enabled: boolean;
+  /** NotificationType -> forwarded to Telegram. Missing means on. */
+  events: Record<string, boolean>;
+}
+
+/** Admin-only settings — never served by the public settings endpoint. */
+export interface CrmSettings extends Record<string, unknown> {
+  telegram: TelegramSettings;
+  booking: BookingSettings;
+  quotes: QuoteSettings;
+  updatedAt: string;
+}
+
+export type QuoteStatus = "draft" | "sent" | "viewed" | "accepted" | "declined" | "expired";
+
+export interface QuoteLineItem {
+  description: string;
+  qty: number;
+  unitPrice: number;
+}
+
+export interface Quote extends Record<string, unknown> {
+  number: string;
+  token: string;
+  contactId?: string;
+  title: string;
+  /** en | ar | de | fr — the language the client sees it in. */
+  language: string;
+  currency: string;
+  lineItems: QuoteLineItem[];
+  discountType: "percent" | "amount";
+  discountValue: number;
+  taxRate: number;
+  notes?: string;
+  validUntil?: string;
+  status: QuoteStatus;
+  total: number;
+  sentAt?: string;
+  viewedAt?: string;
+  acceptedAt?: string;
+  acceptedBy?: string;
+  declinedAt?: string;
+  declineReason?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export type BookingStatus = "confirmed" | "completed" | "no_show" | "cancelled";
+
+export interface Booking extends Record<string, unknown> {
+  start: string;
+  end: string;
+  name?: string;
+  /** E.164 — the number we call on WhatsApp. */
+  phone: string;
+  phoneCountry?: string;
+  topic?: string;
+  lang?: string;
+  visitorId?: string;
+  contactId?: string;
+  status: BookingStatus;
+  remindedAt?: string;
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
 }

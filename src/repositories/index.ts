@@ -1,6 +1,9 @@
 import { MongoRepository } from "./mongo/mongo-repo.js";
 import { SeoRepository } from "./mongo/seo.repo.js";
 import { TranslationRepository } from "./mongo/translation.repo.js";
+import { ConsentRepository, ContactRepository, VisitorRepository } from "./mongo/crm.repo.js";
+import { CrmSettingsRepository, NotificationRepository } from "./mongo/notifications.repo.js";
+import { BookingRepository, QuoteRepository } from "./mongo/sales.repo.js";
 import { MongoSingletonRepository } from "./mongo/mongo-singleton-repo.js";
 import { ChatRepository } from "./mongo/chat.repo.js";
 import { AnalyticsRepository } from "./mongo/analytics.repo.js";
@@ -74,4 +77,11 @@ export const repos = {
   analytics: new AnalyticsRepository(),
   seo: new SeoRepository(),
   translations: new TranslationRepository(),
+  visitors: new VisitorRepository(),
+  consent: new ConsentRepository(),
+  contacts: new ContactRepository(),
+  notifications: new NotificationRepository(),
+  crmSettings: new CrmSettingsRepository(),
+  quotes: new QuoteRepository(),
+  bookings: new BookingRepository(),
 };

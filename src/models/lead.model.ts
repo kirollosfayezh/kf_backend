@@ -11,6 +11,9 @@ const leadSchema = new Schema<Lead>({
   projectType: String,
   budget: String,
   message: { type: String, required: true },
+  /** The browser that sent it, and the CRM contact it was filed under. */
+  visitorId: String,
+  contactId: { type: String, index: true },
   createdAt: { type: String, required: true },
   updatedAt: { type: String, required: true },
 });

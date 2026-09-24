@@ -17,12 +17,21 @@ import { adminChatRouter } from "./routes/admin/chat.routes.js";
 import { adminAnalyticsRouter } from "./routes/admin/analytics.routes.js";
 import { adminSeoRouter } from "./routes/admin/seo.routes.js";
 import { adminTranslationsRouter } from "./routes/admin/translations.routes.js";
+import { adminContactsRouter, adminCrmRouter } from "./routes/admin/crm.routes.js";
+import {
+  adminBookingsRouter,
+  adminCrmSettingsRouter,
+  adminNotificationsRouter,
+  adminQuotesRouter,
+} from "./routes/admin/sales.routes.js";
+import { publicBookingsRouter, publicQuotesRouter } from "./routes/public/sales.routes.js";
 import { requireAdmin } from "./shared/middleware/auth.js";
 import {
   analyticsRateLimit,
   chatRateLimit,
   leadsRateLimit,
   loginRateLimit,
+  salesRateLimit,
 } from "./shared/middleware/rate-limit.js";
 import { errorHandler, notFoundHandler } from "./shared/middleware/error-handler.js";
 import { env } from "./config/env.js";
@@ -58,6 +67,8 @@ api.get("/healthz", (_req, res) => {
 api.use("/content", publicContentRouter);
 api.use("/seo", publicSeoRouter);
 api.use("/translations", publicTranslationsRouter);
+api.use("/quotes", salesRateLimit, publicQuotesRouter);
+api.use("/bookings", salesRateLimit, publicBookingsRouter);
 api.use("/leads", leadsRateLimit, publicLeadsRouter);
 api.use("/chat", chatRateLimit, publicChatRouter);
 // Beacons arrive in batches and are cheap to write; the ceiling only stops floods.
@@ -73,6 +84,12 @@ api.use("/admin/chat", requireAdmin, adminChatRouter);
 api.use("/admin/analytics", requireAdmin, adminAnalyticsRouter);
 api.use("/admin/seo", requireAdmin, adminSeoRouter);
 api.use("/admin/translations", requireAdmin, adminTranslationsRouter);
+api.use("/admin/contacts", requireAdmin, adminContactsRouter);
+api.use("/admin/crm", requireAdmin, adminCrmRouter);
+api.use("/admin/quotes", requireAdmin, adminQuotesRouter);
+api.use("/admin/bookings", requireAdmin, adminBookingsRouter);
+api.use("/admin/notifications", requireAdmin, adminNotificationsRouter);
+api.use("/admin/crm-settings", requireAdmin, adminCrmSettingsRouter);
 
 app.use("/api", api);
 

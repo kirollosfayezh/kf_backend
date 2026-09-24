@@ -1,5 +1,6 @@
 import { MongoRepository } from "./mongo/mongo-repo.js";
 import { SeoRepository } from "./mongo/seo.repo.js";
+import { TranslationRepository } from "./mongo/translation.repo.js";
 import { MongoSingletonRepository } from "./mongo/mongo-singleton-repo.js";
 import { ChatRepository } from "./mongo/chat.repo.js";
 import { AnalyticsRepository } from "./mongo/analytics.repo.js";
@@ -40,7 +41,12 @@ const contentRepos: Record<ContentCollection, Repository<ContentItem>> = {
 
 const defaultSettings: SiteSettings = {
   siteName: "KF Tech Solutions",
-  tagline: { en: "Software that fits how your business works", ar: "برمجيات تناسب طريقة عمل شركتك" },
+  tagline: {
+    en: "Software that fits how your business works",
+    ar: "برمجيات تناسب طريقة عمل شركتك",
+    de: "Software, die zu Ihrer Arbeitsweise passt",
+    fr: "Des logiciels adaptés à votre façon de travailler",
+  },
   brandColors: ["#FF6A00", "#FF0080", "#9B5DE5", "#0A0A0D"],
   languages: [
     { code: "en", label: "English", enabled: true },
@@ -67,4 +73,5 @@ export const repos = {
   chat: new ChatRepository(),
   analytics: new AnalyticsRepository(),
   seo: new SeoRepository(),
+  translations: new TranslationRepository(),
 };

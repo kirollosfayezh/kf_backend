@@ -138,6 +138,20 @@ export interface SeoPage extends Record<string, unknown> {
   updatedAt?: string;
 }
 
+/**
+ * A dashboard override for one piece of the site's interface copy, keyed by the
+ * English string the site translates. Blank languages fall back to the site's
+ * shipped dictionary.
+ */
+export interface TranslationOverride extends Record<string, unknown> {
+  key: string;
+  en?: string;
+  ar?: string;
+  de?: string;
+  fr?: string;
+  updatedAt?: string;
+}
+
 export interface AnalyticsTotals {
   pageviews: number;
   clicks: number;

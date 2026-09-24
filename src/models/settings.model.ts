@@ -5,11 +5,18 @@ import type { SiteSettings } from "../shared/types.js";
 // which would otherwise leak into every API response.
 const sub = (definition: Record<string, unknown>) => new Schema(definition, { _id: false });
 
-const localized = sub({ en: { type: String, default: "" }, ar: { type: String, default: "" } });
+// All four languages — declaring only en/ar made Mongoose `strict` silently drop
+// the German and French tagline the dashboard sends.
+const localized = sub({
+  en: { type: String, default: "" },
+  ar: { type: String, default: "" },
+  de: { type: String, default: "" },
+  fr: { type: String, default: "" },
+});
 
 const settingsSchema = new Schema<SiteSettings>({
   siteName: { type: String, default: "KF Tech Solutions" },
-  tagline: { type: localized, default: () => ({ en: "", ar: "" }) },
+  tagline: { type: localized, default: () => ({ en: "", ar: "", de: "", fr: "" }) },
   logoUrl: String,
   brandColors: { type: [String], default: ["#FF6A00", "#FF0080", "#9B5DE5", "#0A0A0D"] },
   languages: {

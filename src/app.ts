@@ -7,6 +7,7 @@ import { publicLeadsRouter } from "./routes/public/leads.routes.js";
 import { publicChatRouter } from "./routes/public/chat.routes.js";
 import { publicAnalyticsRouter } from "./routes/public/analytics.routes.js";
 import { publicSeoRouter } from "./routes/public/seo.routes.js";
+import { publicTranslationsRouter } from "./routes/public/translations.routes.js";
 import { adminAuthRouter } from "./routes/admin/auth.routes.js";
 import { adminLeadsRouter } from "./routes/admin/leads.routes.js";
 import { adminContentRouter } from "./routes/admin/content.routes.js";
@@ -15,6 +16,7 @@ import { adminMediaRouter } from "./routes/admin/media.routes.js";
 import { adminChatRouter } from "./routes/admin/chat.routes.js";
 import { adminAnalyticsRouter } from "./routes/admin/analytics.routes.js";
 import { adminSeoRouter } from "./routes/admin/seo.routes.js";
+import { adminTranslationsRouter } from "./routes/admin/translations.routes.js";
 import { requireAdmin } from "./shared/middleware/auth.js";
 import {
   analyticsRateLimit,
@@ -55,6 +57,7 @@ api.get("/healthz", (_req, res) => {
 // Public (site). Reads are unlimited; the unauthenticated writes are throttled.
 api.use("/content", publicContentRouter);
 api.use("/seo", publicSeoRouter);
+api.use("/translations", publicTranslationsRouter);
 api.use("/leads", leadsRateLimit, publicLeadsRouter);
 api.use("/chat", chatRateLimit, publicChatRouter);
 // Beacons arrive in batches and are cheap to write; the ceiling only stops floods.
@@ -69,6 +72,7 @@ api.use("/admin/media", requireAdmin, adminMediaRouter);
 api.use("/admin/chat", requireAdmin, adminChatRouter);
 api.use("/admin/analytics", requireAdmin, adminAnalyticsRouter);
 api.use("/admin/seo", requireAdmin, adminSeoRouter);
+api.use("/admin/translations", requireAdmin, adminTranslationsRouter);
 
 app.use("/api", api);
 

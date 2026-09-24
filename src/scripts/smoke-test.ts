@@ -228,6 +228,62 @@ async function main() {
   });
   check("SEO writes require auth", seoNoAuth.status === 401, seoNoAuth);
 
+  // Translation overrides: the dashboard edits the site's interface copy.
+  const trKey = "Forecast demand / weekly?";
+  const trSaved = await call("/api/admin/translations", {
+    method: "PUT",
+    headers: authHeaders,
+    body: JSON.stringify({ key: trKey, ar: "توقّع الطلب", de: "" }),
+  });
+  check("translation override saves", trSaved.status === 200 && trSaved.body?.data?.ar === "توقّع الطلب", trSaved);
+
+  const trPublic = await call("/api/translations/ar");
+  check("site reads one language as a flat map", trPublic.body?.data?.[trKey] === "توقّع الطلب", trPublic);
+
+  const trDe = await call("/api/translations/de");
+  check("blank languages are left out of the map", trDe.status === 200 && !(trKey in (trDe.body?.data ?? {})), trDe);
+
+  const trBadLang = await call("/api/translations/xx");
+  check("unknown translation language is rejected", trBadLang.status === 400, trBadLang);
+
+  const trNoAuth = await call("/api/admin/translations", { method: "PUT", body: JSON.stringify({ key: "x", ar: "y" }) });
+  check("translation writes require auth", trNoAuth.status === 401, trNoAuth);
+
+  const trCleared = await call("/api/admin/translations", {
+    method: "PUT",
+    headers: authHeaders,
+    body: JSON.stringify({ key: trKey, ar: "" }),
+  });
+  const trAfter = await call("/api/admin/translations", { headers: authHeaders });
+  check(
+    "clearing every language removes the override",
+    trCleared.status === 200 && !trAfter.body?.data?.some((r: { key: string }) => r.key === trKey),
+    trAfter
+  );
+
+  const trImport = await call("/api/admin/translations/import", {
+    method: "POST",
+    headers: authHeaders,
+    body: JSON.stringify({ rows: [{ key: "Home", fr: "Accueil!" }, { key: "About", de: "Über" }] }),
+  });
+  check("bulk import saves every row", trImport.status === 200 && trImport.body?.data?.saved === 2, trImport);
+
+  const trDelete = await call("/api/admin/translations", {
+    method: "DELETE",
+    headers: authHeaders,
+    body: JSON.stringify({ key: "Home" }),
+  });
+  const trFr = await call("/api/translations/fr");
+  check("deleted override is gone", trDelete.status === 200 && !("Home" in (trFr.body?.data ?? {})), trFr);
+
+  // The tagline used to lose de/fr: the schema only declared en/ar.
+  const tagline = await call("/api/admin/settings", {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ tagline: { en: "E", ar: "A", de: "D", fr: "F" } }),
+  });
+  check("settings keep German and French tagline", tagline.body?.data?.tagline?.de === "D" && tagline.body?.data?.tagline?.fr === "F", tagline);
+
   const badCollection = await call("/api/content/not-a-collection");
   check("unknown collection returns 404", badCollection.status === 404, badCollection);
 

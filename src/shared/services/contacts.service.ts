@@ -1,6 +1,7 @@
 import { repos } from "../../repositories/index.js";
 import { AppError } from "../errors/app-error.js";
 import { cleanIdentity, hasIdentity, mergeIdentity, pickMatch, type IdentityInput } from "../contact-merge.js";
+import { channelOf } from "../tracking.js";
 import { ChatMessageModel, ChatThreadModel } from "../../models/chat.model.js";
 import { LeadModel } from "../../models/lead.model.js";
 import { CONTACT_STAGES, type Activity, type ActivityType, type Contact, type ContactStage } from "../types.js";
@@ -99,7 +100,15 @@ export async function getContactDetail(id: string) {
     const { _id, ...rest } = d;
     return { id: String(_id), ...rest };
   };
-  return { contact, activities, visitors, journey, consent, threads: threads.map(strip), leads: leads.map(strip) };
+  return {
+    contact,
+    activities,
+    visitors: visitors.map((v) => ({ ...v, channel: channelOf(v.firstTouch) })),
+    journey,
+    consent,
+    threads: threads.map(strip),
+    leads: leads.map(strip),
+  };
 }
 
 const STAGE_LABEL: Record<ContactStage, string> = {
@@ -245,7 +254,13 @@ export async function crmOverview() {
   const names = await repos.contacts.namesFor([...new Set(recent.map((a) => a.contactId))]);
   return {
     stages,
-    openPipelineValue: stages.filter((s) => !["won", "lost"].includes(s.stage)).reduce((sum, s) => sum + s.value, 0),
+    /** Open deals' value per currency, e.g. { EGP: 120000, EUR: 4500 }. */
+    openPipeline: stages
+      .filter((s) => !["won", "lost"].includes(s.stage))
+      .reduce<Record<string, number>>((acc, s) => {
+        for (const [cur, v] of Object.entries(s.values)) acc[cur] = (acc[cur] ?? 0) + v;
+        return acc;
+      }, {}),
     newContacts7,
     newContacts30,
     visitors30,

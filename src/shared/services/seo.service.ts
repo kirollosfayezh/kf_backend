@@ -13,6 +13,7 @@ const KEYS = [
   "contact",
   "blog",
   "campaign",
+  "book",
 ] as const;
 
 export type SeoKey = (typeof KEYS)[number];

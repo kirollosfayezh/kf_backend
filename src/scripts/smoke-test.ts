@@ -770,7 +770,12 @@ async function main() {
   check("the public settings never include CRM secrets", !JSON.stringify(publicSettings2.body).includes("AAFakeToken"), null);
 
   const overview = await call("/api/admin/crm/overview", { headers: authHeaders });
-  check("CRM overview reports stages and new contacts", overview.body?.data?.newContacts7 >= 1 && Array.isArray(overview.body?.data?.stages), overview.body?.data);
+  check(
+    "CRM overview reports stages, new contacts and won value per currency",
+    overview.body?.data?.newContacts7 >= 1 &&
+      overview.body?.data?.stages?.some((s: { stage: string; values: Record<string, number> }) => s.stage === "qualified" || s.stage === "won"),
+    overview.body?.data
+  );
 
   const unauth = await call("/api/admin/contacts");
   check("CRM endpoints require auth", unauth.status === 401, unauth);

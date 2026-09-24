@@ -26,20 +26,49 @@ We use it to reply to you and to keep a record of the enquiry. Nothing more.
 
 ### When you use the live chat
 
-Messages you send in the chat widget are stored so the conversation can be
-continued and so we can answer you. A random visitor identifier is kept in your
-browser to reconnect you to your own conversation; it is not linked to your name
-unless you give it.
+Before the chat starts we ask for your **phone number** (and, optionally, your
+name). We check it is a valid number for its country and store it in
+international format. We use it to follow up with you, and to **bring back your
+earlier conversation** when you enter the same number again — even on another
+device. The messages you send are stored so the conversation can continue.
+
+Because the number is what reopens a conversation, anyone who enters your
+number in the chat would see that conversation. Don't share anything in the
+chat you would not want reopened that way; for sensitive details, ask us for
+email or a call instead.
+
+### When you book a call
+
+The booking page asks for the **time you choose, your phone number**, and
+optionally your name and what you want to talk about. We use them to call you
+on WhatsApp at that time and to remind ourselves shortly before.
+
+### When we send you a quote
+
+A quote is shared through a private link. We record **when the link is first
+opened**, and — if you accept or decline — **the name you type, your answer and
+the time**, as the record of what was agreed.
 
 ### Automatically, as you browse
 
-We record **page views and clicks on tracked controls**, together with your
-approximate device type, screen size, referring site, and a short-lived,
-randomly generated visitor identifier. This is first-party analytics — the data
-stays with us and is used to understand which pages are useful.
+Your browser gets a **random visitor identifier**, kept in its storage. With it
+we record the **pages you view and the tracked buttons you click**, when you
+visited, the site or ad campaign that sent you (the referring site and any
+`utm_…`, `gclid` or `fbclid` tags on the link), your device type, browser and
+operating-system family, screen size, language and time zone — from which we
+derive an approximate **country**. We do not collect your precise location or
+your IP address in these records.
 
-We do **not** collect your precise location, and we do not build advertising
-profiles from this.
+**If you later contact us** — through the chat, a form, a booking or by
+accepting a quote — we link that visitor identifier to your contact record.
+Your earlier browsing on this site then appears alongside your enquiry, so we
+understand what you were interested in. We use this only to serve you better
+and to learn which pages and campaigns bring enquiries; we do not sell it or
+use it to build profiles for anyone else.
+
+We also keep a **record of your cookie choice** — accepted or declined, when,
+from the banner or the footer's Cookie settings, the version of this policy in
+force, and your browser type — as proof of how consent was collected.
 
 ### Advertising and measurement cookies — only if you accept
 
@@ -56,7 +85,9 @@ using **Cookie settings** in the footer.
 | `kf-consent` | Remembers whether you accepted or declined cookies | Until you clear it |
 | `kf-theme` | Remembers light or dark mode | Until you clear it |
 | Language preference | Keeps the site in the language you chose | Until you clear it |
-| Visitor identifier | Lets us count unique visits and reconnect your chat | Short-lived |
+| `kf-visitor-id` (visitor identifier) | Counts visits, links your browsing to your enquiry if you contact us, reconnects your chat | Until you clear it |
+| `kf-session-id` | Groups the pages of one visit | Until you close the tab |
+| `kf-chat-phone` | Remembers the number you used in the chat, so you skip that step next time | Until you clear it |
 | Third-party measurement | Only after you accept — see above | Set by that provider |
 
 The first three are strictly functional: without them the site forgets your
@@ -66,15 +97,19 @@ choices on every page.
 
 - **To answer you.** When you send a form or a chat message, we process it to
   respond — that is the point of you sending it.
-- **Our legitimate interest.** Basic, first-party analytics to understand what
-  is useful on our own site.
+- **Our legitimate interest.** First-party analytics to understand what is
+  useful on our own site, and — once you contact us — linking your earlier
+  browsing here to your enquiry, so we can answer what you were actually
+  looking for. You can object to this at any time.
 - **Your consent.** Everything advertising-related. Given through the cookie
   banner, withdrawable at any time.
 
 ## Who else sees it
 
 Our hosting, database and email providers process data on our behalf so the site
-can run. Advertising platforms receive data only with your consent, as above. We
+can run. Alerts about new enquiries, chats, bookings and quote replies — which
+include your name, contact details and message — are sent to our team through
+**Telegram**. Advertising platforms receive data only with your consent, as above. We
 do not sell your data, and we do not share it for anyone else's marketing.
 
 Some of these providers operate outside Egypt and outside the EU. Where that
@@ -83,16 +118,22 @@ safeguards.
 
 ## How long we keep it
 
-- **Enquiries and chat transcripts:** while we may still need them for the
-  relationship, then deleted on request.
-- **Analytics events:** aggregated over time; individual events are not kept
-  indefinitely.
-- **Your cookie choice:** until you clear it or change it.
+- **Anonymous visitor profiles** (no enquiry linked): deleted automatically
+  13 months after your last visit.
+- **Page-by-page browsing events:** deleted automatically after 180 days.
+- **Contact records** — your details, enquiries, chats, bookings, quotes and the
+  browsing linked to them: while we are working together or may reasonably
+  follow up, and deleted when you ask.
+- **Cookie-choice records:** kept as proof of consent; once your visitor
+  profile is deleted they no longer identify you.
+- **Your cookie choice in your browser:** until you clear it or change it.
 
 ## Your rights
 
 You can ask us to **show you** what we hold about you, **correct** it,
-**delete** it, or **stop** using it. You can withdraw cookie consent at any time
+**delete** it, or **stop** using it. Deleting removes everything linked to you:
+your contact record, enquiries, chats, bookings, quotes and the browsing history
+tied to them. You can withdraw cookie consent at any time
 without affecting anything that happened before. Write to us using the contact
 page and we will respond.
 

@@ -30,10 +30,50 @@ Runs on **http://localhost:4000**. Health check: `GET /api/healthz`.
 | `npm run seed-content` | Load the real site content — services, solutions, projects, blog posts, FAQs, about sections (idempotent, matches on `slug`) |
 | `npm run dev:memory` | Run the real server against a throwaway in-memory MongoDB, pre-seeded with the admin and all content — no MongoDB install needed |
 | `npm run smoke-test` | Full end-to-end test against a throwaway in-memory MongoDB |
+| `npm test` | Unit tests: phone rules for every country, identity matching, UA/UTM parsing, quote totals, booking slots |
+| `npm run backfill-contacts` | File existing leads and chats into CRM contacts (idempotent) — run once after deploying the CRM |
 
 `npm run smoke-test` needs no configuration — it spins up its own MongoDB, boots
-the server, and exercises auth, content, leads, settings and the realtime chat
-round-trip. Run it after any backend change.
+the server, and exercises auth, content, leads, settings, the realtime chat
+round-trip and the whole CRM cycle (visitor → consent → lead/chat → contact →
+quote → booking → alerts). Run it after any backend change.
+
+Where MongoDB binaries cannot be downloaded, point it at any running server
+instead: `SMOKE_MONGODB_URI=mongodb://127.0.0.1:27017 npm run smoke-test` (each
+run uses a fresh database). Against FerretDB add `SMOKE_SKIP_SEED=1` — it cannot
+store the seed data's nested arrays — and expect the analytics-summary checks to
+fail, as FerretDB lacks `$cond`.
+
+## CRM
+
+- **Visitors.** The site's analytics beacon also sends a `session` event (referrer,
+  UTM/click ids, time zone, screen) and the cookie choice. Each browser gets a
+  profile; anonymous ones expire 13 months after the last visit.
+- **Contacts.** Leads, chat sessions, bookings and accepted quotes are matched
+  by E.164 phone or email into one contact (`resolveContact` in
+  `shared/services/contacts.service.ts`), which collects every linked browser's
+  journey. `DELETE /api/admin/contacts/:id` erases the person and everything
+  linked (GDPR).
+- **Quotes** are shared by a random token link (`/q/<token>` on the site).
+- **Bookings** use the opening hours in CRM settings, in the business time zone.
+- **Alerts** go to the dashboard (live) and, when configured, Telegram. The
+  token lives in the admin-only `crmSettings` document and is never returned.
+
+### Telegram alerts
+
+1. In Telegram, message **@BotFather** → `/newbot` → copy the token.
+2. Open your bot and press **Start**.
+3. Get your chat id from **@userinfobot** (or a group's id).
+4. Dashboard → **Alerts** → paste both, switch on, **Send test**.
+5. Optionally set `DASHBOARD_URL` so each alert links to the contact.
+
+### Reminders on a sleeping host
+
+"Call in 15 minutes" and "follow-up due" alerts come from a timer in the running
+server. Render's free tier sleeps after 15 idle minutes, and nothing fires while
+it sleeps (the dashboard also triggers the check whenever it is opened). To keep
+reminders on time, add a free uptime monitor (e.g. UptimeRobot, cron-job.org)
+that requests `/api/healthz` every 10 minutes, or use a paid instance.
 
 ## Default admin (after seeding)
 
@@ -60,6 +100,14 @@ All routes are under `/api`. Responses use a consistent envelope:
 | `GET /api/chat/threads/:visitorId/messages` | Chat history |
 | `POST /api/chat/threads/:visitorId/messages` | Send a visitor message (`{text}`) |
 | `PATCH /api/chat/threads/:visitorId/typing` | Visitor typing indicator (`{typing}`) |
+| `POST /api/chat/session` | Phone step: `{visitorId, phone, country?, name?}` → starts or resumes the latest chat for that number |
+| `GET /api/chat/threads/:visitorId` | This browser's thread (or `null`) |
+| `POST /api/analytics/events` | Beacon batch: `pageview`, `click`, `session`, `consent` |
+| `GET /api/translations/:lang` | Dashboard translation overrides for one language |
+| `GET /api/bookings/slots` | Free call slots |
+| `POST /api/bookings` | Book a call `{start, phone, name?, topic?, visitorId?, lang?}` |
+| `GET /api/quotes/:token` | A client's quote (records the first view) |
+| `POST /api/quotes/:token/accept` / `decline` | Answer a quote (`{name}` / `{reason}`) |
 
 ### Admin (dashboard — requires `Authorization: Bearer <JWT>`)
 
@@ -79,6 +127,17 @@ All routes are under `/api`. Responses use a consistent envelope:
 | `GET /api/admin/chat/threads/:visitorId/messages` | Thread history |
 | `POST /api/admin/chat/threads/:visitorId/messages` | Reply as the agent (`{text}`) |
 | `PATCH /api/admin/chat/threads/:visitorId/typing` | Agent typing indicator (`{typing}`) |
+| `GET/POST /api/admin/contacts` | List (`?q=&stage=&source=`) / add a contact |
+| `GET/PATCH/DELETE /api/admin/contacts/:id` | Contact detail (timeline, journey, consent, chats, leads) / update / erase |
+| `POST /api/admin/contacts/:id/notes` | Add a note to the timeline |
+| `GET /api/admin/crm/overview` | Pipeline, new contacts, online now, follow-ups, recent activity |
+| `GET /api/admin/crm/visitors[/:visitorId]` | Visitor profiles and journeys |
+| `GET /api/admin/crm/consent` | Cookie-consent log and totals |
+| `GET/POST/PATCH/DELETE /api/admin/quotes[/:id]`, `POST …/:id/sent` | Quotes |
+| `GET /api/admin/bookings`, `PATCH /api/admin/bookings/:id` | Bookings |
+| `GET /api/admin/notifications`, `GET …/count`, `POST …/read`, `POST …/check` | Alert feed |
+| `GET/PATCH /api/admin/crm-settings`, `POST …/telegram/test` | Booking hours, quote details, Telegram |
+| `GET/PUT/DELETE /api/admin/translations`, `POST …/import` | Site translation overrides |
 
 ## Realtime chat (Socket.io)
 

@@ -234,12 +234,24 @@ export class ContactRepository {
     return docs.map((d) => withId<Contact>(d as never));
   }
 
-  async stageTotals(): Promise<{ stage: string; count: number; value: number }[]> {
-    const rows = await ContactModel.aggregate<{ _id: string; count: number; value: number }>([
-      // $sum skips missing values, so contacts without a value count as 0.
-      { $group: { _id: "$stage", count: { $sum: 1 }, value: { $sum: "$value" } } },
-    ]);
-    return rows.map((r) => ({ stage: r._id, count: r.count, value: r.value }));
+  /**
+   * Deals per stage, with values kept per currency — adding euros to pounds
+   * would be meaningless. Done in code rather than an aggregation: it is a
+   * small scan and stays portable across Mongo-compatible stores.
+   */
+  async stageTotals(): Promise<{ stage: string; count: number; values: Record<string, number> }[]> {
+    const docs = await ContactModel.find({}, { stage: 1, value: 1, currency: 1 }).lean().exec();
+    const by = new Map<string, { stage: string; count: number; values: Record<string, number> }>();
+    for (const d of docs) {
+      const row = by.get(d.stage) ?? { stage: d.stage, count: 0, values: {} };
+      row.count += 1;
+      if (typeof d.value === "number" && d.value > 0) {
+        const cur = d.currency || "EGP";
+        row.values[cur] = Math.round(((row.values[cur] ?? 0) + d.value) * 100) / 100;
+      }
+      by.set(d.stage, row);
+    }
+    return [...by.values()];
   }
 
   async countSince(since: string): Promise<number> {

@@ -25,19 +25,51 @@ nutzen das, um zu antworten und die Anfrage zu dokumentieren. Mehr nicht.
 
 ### Wenn Sie den Live-Chat nutzen
 
-Nachrichten aus dem Chat werden gespeichert, damit das Gespräch fortgesetzt und
-beantwortet werden kann. Eine zufällige Besucherkennung in Ihrem Browser
-verbindet Sie wieder mit Ihrem eigenen Gespräch; sie ist nicht mit Ihrem Namen
-verknüpft, sofern Sie ihn nicht angeben.
+Bevor der Chat beginnt, fragen wir nach Ihrer **Telefonnummer** (und optional
+Ihrem Namen). Wir prüfen, ob sie für ihr Land gültig ist, und speichern sie im
+internationalen Format. Wir nutzen sie, um uns bei Ihnen zu melden und Ihnen
+Ihren **bisherigen Chat wieder anzuzeigen**, wenn Sie dieselbe Nummer erneut
+eingeben — auch auf einem anderen Gerät. Ihre Nachrichten werden gespeichert,
+damit das Gespräch weitergehen kann.
+
+Da die Nummer ein Gespräch wieder öffnet, würde jeder, der Ihre Nummer im Chat
+eingibt, dieses Gespräch sehen. Teilen Sie dort nichts, was nicht auf diese
+Weise wieder geöffnet werden sollte; für vertrauliche Angaben bitten Sie uns um
+E-Mail oder einen Anruf.
+
+### Wenn Sie einen Anruf buchen
+
+Die Buchungsseite fragt nach der **gewählten Uhrzeit und Ihrer Telefonnummer**,
+optional nach Ihrem Namen und Thema. Wir nutzen sie, um Sie zu dieser Zeit per
+WhatsApp anzurufen und uns kurz vorher daran zu erinnern.
+
+### Wenn wir Ihnen ein Angebot senden
+
+Angebote werden über einen privaten Link geteilt. Wir erfassen, **wann der Link
+zuerst geöffnet wird**, und — wenn Sie annehmen oder ablehnen — **den
+eingegebenen Namen, Ihre Antwort und die Uhrzeit** als Nachweis der Vereinbarung.
 
 ### Automatisch beim Surfen
 
-Wir erfassen **Seitenaufrufe und Klicks auf erfasste Elemente**, dazu ungefähren
-Gerätetyp, Bildschirmgröße, verweisende Website und eine kurzlebige, zufällig
-erzeugte Besucherkennung. Das ist First-Party-Analyse — die Daten bleiben bei
-uns und dienen dem Verständnis, welche Seiten nützlich sind.
+Ihr Browser erhält eine **zufällige Besucherkennung** in seinem Speicher. Damit
+erfassen wir die **aufgerufenen Seiten und Klicks auf erfasste Schaltflächen**,
+den Zeitpunkt, die verweisende Website oder Werbekampagne (inklusive
+`utm_…`-, `gclid`- oder `fbclid`-Parametern im Link), Gerätetyp, Browser- und
+Betriebssystemfamilie, Bildschirmgröße, Sprache und Zeitzone — daraus leiten wir
+das ungefähre **Land** ab. Genauen Standort oder IP-Adresse speichern wir in
+diesen Daten nicht.
 
-Wir erheben **keinen** genauen Standort und bilden daraus keine Werbeprofile.
+**Wenn Sie uns später kontaktieren** — per Chat, Formular, Buchung oder durch
+Annahme eines Angebots — verknüpfen wir diese Besucherkennung mit Ihrem
+Kontakteintrag. Ihr bisheriges Surfen auf dieser Website erscheint dann neben
+Ihrer Anfrage, damit wir verstehen, wofür Sie sich interessiert haben. Wir nutzen
+dies nur, um Sie besser zu betreuen und zu lernen, welche Seiten und Kampagnen
+Anfragen bringen; wir verkaufen es nicht und erstellen daraus keine Profile für
+Dritte.
+
+Außerdem speichern wir einen **Nachweis Ihrer Cookie-Entscheidung** —
+angenommen oder abgelehnt, wann, ob über das Banner oder die Cookie-Einstellungen
+im Footer, die gültige Version dieser Erklärung und Ihren Browsertyp.
 
 ## Werbe- und Messcookies — nur mit Ihrer Einwilligung
 
@@ -54,7 +86,9 @@ Entscheidung jederzeit über **Cookie-Einstellungen** im Fußbereich ändern.
 | `kf-consent` | Merkt sich Ihre Cookie-Entscheidung | Bis Sie ihn löschen |
 | `kf-theme` | Merkt sich hell oder dunkel | Bis Sie ihn löschen |
 | Sprachwahl | Hält die Website in Ihrer Sprache | Bis Sie sie löschen |
-| Besucherkennung | Zählt eindeutige Besuche, verbindet Ihren Chat | Kurzlebig |
+| `kf-visitor-id` (Besucherkennung) | Zählt Besuche, verknüpft Ihr Surfen mit Ihrer Anfrage, falls Sie uns kontaktieren, verbindet Ihren Chat | Bis Sie sie löschen |
+| `kf-session-id` | Fasst die Seiten eines Besuchs zusammen | Bis Sie den Tab schließen |
+| `kf-chat-phone` | Merkt sich Ihre Chat-Nummer, damit Sie den Schritt überspringen | Bis Sie sie löschen |
 | Messung durch Dritte | Nur nach Zustimmung — siehe oben | Vom Anbieter gesetzt |
 
 Die ersten drei sind rein funktional: ohne sie vergisst die Website Ihre
@@ -64,8 +98,10 @@ Einstellungen bei jedem Seitenwechsel.
 
 - **Zur Beantwortung.** Senden Sie ein Formular oder eine Chatnachricht,
   verarbeiten wir sie, um zu antworten — genau dafür haben Sie sie gesendet.
-- **Berechtigtes Interesse.** Einfache First-Party-Analyse, um die eigene
-  Website zu verstehen.
+- **Berechtigtes Interesse.** First-Party-Analyse, um die eigene Website zu
+  verstehen, und — sobald Sie uns kontaktieren — die Verknüpfung Ihres
+  bisherigen Surfens hier mit Ihrer Anfrage, damit wir gezielt antworten können.
+  Sie können dem jederzeit widersprechen.
 - **Ihre Einwilligung.** Alles Werbliche. Über das Cookie-Banner erteilt,
   jederzeit widerrufbar.
 
@@ -74,7 +110,7 @@ Einstellungen bei jedem Seitenwechsel.
 Unsere Hosting-, Datenbank- und E-Mail-Dienstleister verarbeiten Daten in
 unserem Auftrag, damit die Website läuft. Werbeplattformen erhalten Daten nur
 mit Ihrer Einwilligung. Wir verkaufen Ihre Daten nicht und geben sie nicht für
-fremdes Marketing weiter.
+fremdes Marketing weiter. Hinweise zu neuen Anfragen, Chats, Buchungen und Angebotsantworten — mit Ihrem Namen, Ihren Kontaktdaten und Ihrer Nachricht — erhält unser Team über **Telegram**.
 
 Einige dieser Anbieter arbeiten außerhalb Ägyptens und außerhalb der EU. Soweit
 das Besucher aus der EU oder dem UK betrifft, stützen sich Übermittlungen auf
@@ -82,18 +118,22 @@ die geeigneten Garantien.
 
 ## Speicherdauer
 
-- **Anfragen und Chatverläufe:** solange wir sie für die Geschäftsbeziehung
-  benötigen, danach auf Wunsch gelöscht.
-- **Analyse-Ereignisse:** werden über die Zeit aggregiert; Einzelereignisse
-  werden nicht unbegrenzt aufbewahrt.
-- **Ihre Cookie-Entscheidung:** bis Sie sie löschen oder ändern.
+- **Anonyme Besucherprofile** (ohne verknüpfte Anfrage): automatisch gelöscht
+  13 Monate nach Ihrem letzten Besuch.
+- **Einzelne Seitenaufrufe:** automatisch nach 180 Tagen gelöscht.
+- **Kontakteinträge** — Ihre Angaben, Anfragen, Chats, Buchungen, Angebote und
+  das damit verknüpfte Surfen: solange wir zusammenarbeiten oder uns sinnvoll
+  melden können; auf Wunsch gelöscht.
+- **Nachweise der Cookie-Entscheidung:** als Einwilligungsnachweis aufbewahrt;
+  nach Löschung Ihres Besucherprofils identifizieren sie Sie nicht mehr.
+- **Ihre Cookie-Entscheidung im Browser:** bis Sie sie löschen oder ändern.
 
 ## Ihre Rechte
 
 Sie können **Auskunft** verlangen, **Berichtigung**, **Löschung** oder
 **Einschränkung** der Verarbeitung. Sie können die Cookie-Einwilligung jederzeit
 widerrufen, ohne dass die Rechtmäßigkeit der vorherigen Verarbeitung berührt
-wird. Schreiben Sie uns über die Kontaktseite.
+wird. Schreiben Sie uns über die Kontaktseite. Eine Löschung entfernt alles, was mit Ihnen verknüpft ist: Kontakteintrag, Anfragen, Chats, Buchungen, Angebote und den dazugehörigen Surfverlauf.
 
 Sind Sie in der EU oder im UK und meinen, wir seien mit Ihren Daten falsch
 umgegangen, können Sie sich bei Ihrer Aufsichtsbehörde beschweren.

@@ -412,6 +412,12 @@ export interface BookingSettings {
   timezone: string;
   /** "YYYY-MM-DD" days with no bookings (holidays, travel). */
   blockedDates: string[];
+  /**
+   * Hours for one specific date, replacing that weekday's `weekly` entry:
+   * a shorter day, an extra evening, or (empty `windows`) a day off. Keyed
+   * by "YYYY-MM-DD" in the booking time zone.
+   */
+  dateOverrides?: Record<string, DayHours>;
   enabled: boolean;
 }
 

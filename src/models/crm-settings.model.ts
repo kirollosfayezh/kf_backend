@@ -28,6 +28,8 @@ const crmSettingsSchema = new Schema<CrmSettings>(
         daysAhead: { type: Number, default: 14 },
         timezone: { type: String, default: "Africa/Cairo" },
         blockedDates: { type: [String], default: [] },
+        // Per-date hours ("YYYY-MM-DD" → { windows }), see BookingSettings.
+        dateOverrides: { type: Schema.Types.Mixed, default: () => ({}) },
         enabled: { type: Boolean, default: true },
       }),
       default: () => ({}),

@@ -57,19 +57,33 @@ export async function updateCrmSettings(input: Record<string, unknown>) {
       if (!Array.isArray(bk.blockedDates)) throw AppError.badRequest("blockedDates must be a list");
       set["booking.blockedDates"] = [...new Set(bk.blockedDates.filter((d): d is string => typeof d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d)))].sort();
     }
+    const cleanWindows = (windows: unknown, where: string): TimeWindow[] => {
+      if (!Array.isArray(windows)) throw AppError.badRequest(`${where} needs a list of opening windows`);
+      return (windows as TimeWindow[]).slice(0, 6).map((w) => {
+        if (!isHHMM(w?.start) || !isHHMM(w?.end) || w.start >= w.end) {
+          throw AppError.badRequest("Each opening window needs a start before its end (HH:mm).");
+        }
+        return { start: w.start, end: w.end };
+      });
+    };
     if ("weekly" in bk) {
       if (!Array.isArray(bk.weekly) || bk.weekly.length !== 7) throw AppError.badRequest("weekly must list 7 days");
-      set["booking.weekly"] = bk.weekly.map((day: { windows?: unknown }, i) => {
-        if (!day || !Array.isArray(day.windows)) throw AppError.badRequest(`Day ${i} needs a list of opening windows`);
-        return {
-          windows: (day.windows as TimeWindow[]).slice(0, 6).map((w) => {
-            if (!isHHMM(w?.start) || !isHHMM(w?.end) || w.start >= w.end) {
-              throw AppError.badRequest("Each opening window needs a start before its end (HH:mm).");
-            }
-            return { start: w.start, end: w.end };
-          }),
-        };
-      });
+      set["booking.weekly"] = bk.weekly.map((day: { windows?: unknown }, i) => ({ windows: cleanWindows(day?.windows, `Day ${i}`) }));
+    }
+    // Per-date hours: a whole map each time (the calendar in the dashboard
+    // edits it as one thing), dates in the past dropped so it never grows.
+    if ("dateOverrides" in bk) {
+      const raw = bk.dateOverrides;
+      if (!raw || typeof raw !== "object" || Array.isArray(raw)) throw AppError.badRequest("dateOverrides must be a map of dates");
+      const today = new Date().toISOString().slice(0, 10);
+      const overrides: Record<string, { windows: TimeWindow[] }> = {};
+      for (const [date, day] of Object.entries(raw as Record<string, { windows?: unknown }>)) {
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw AppError.badRequest(`"${date}" is not a date (YYYY-MM-DD).`);
+        if (date < today) continue;
+        overrides[date] = { windows: cleanWindows(day?.windows, date) };
+      }
+      if (Object.keys(overrides).length > 366) throw AppError.badRequest("Too many dated exceptions — at most a year's worth.");
+      set["booking.dateOverrides"] = overrides;
     }
   }
 

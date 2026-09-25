@@ -16,10 +16,16 @@ async function freeSlots(now = Date.now()) {
   return { booking, slots: computeSlots(booking, now, taken) };
 }
 
-/** What the site's booking page lists. */
+/** What the site's booking page lists. `daysAhead` bounds its calendar. */
 export async function publicSlots() {
   const { booking, slots } = await freeSlots();
-  return { enabled: booking.enabled, timezone: booking.timezone, slotMinutes: booking.slotMinutes, slots };
+  return {
+    enabled: booking.enabled,
+    timezone: booking.timezone,
+    slotMinutes: booking.slotMinutes,
+    daysAhead: Math.min(booking.daysAhead, 90),
+    slots,
+  };
 }
 
 /** The business's own wall-clock time for a booking, for alerts ("Sun 11 Jan, 10:30"). */

@@ -897,6 +897,24 @@ async function main() {
   const badHours = await patch("/api/admin/crm-settings", { booking: { weekly: [{ windows: [{ start: "18:00", end: "09:00" }] }, closed, closed, closed, closed, closed, closed] } });
   check("an opening window that ends before it starts is rejected", badHours.status === 400, badHours);
 
+  // Dated exceptions: the calendar in the dashboard closes a day or gives it its own hours.
+  const cairoDay = (when: number) => new Intl.DateTimeFormat("en-CA", { timeZone: "Africa/Cairo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(when));
+  const cairoTime = (iso: string) => new Intl.DateTimeFormat("en-GB", { timeZone: "Africa/Cairo", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(new Date(iso));
+  const tomorrow = cairoDay(Date.now() + 86400000);
+  const onDay = (list: { start: string }[] | undefined, day: string) => (list ?? []).filter((s) => cairoDay(Date.parse(s.start)) === day);
+  const closedDay = await patch("/api/admin/crm-settings", { booking: { dateOverrides: { [tomorrow]: { windows: [] } } } });
+  check("a dated exception saves", closedDay.status === 200 && closedDay.body?.data?.booking?.dateOverrides?.[tomorrow]?.windows?.length === 0, closedDay.body?.data?.booking?.dateOverrides);
+  const slotsClosed = await call("/api/bookings/slots");
+  check("a date closed by exception has no times", onDay(slotsClosed.body?.data?.slots, tomorrow).length === 0 && slotsClosed.body?.data?.daysAhead >= 1, onDay(slotsClosed.body?.data?.slots, tomorrow).length);
+  await patch("/api/admin/crm-settings", { booking: { dateOverrides: { [tomorrow]: { windows: [{ start: "13:00", end: "14:00" }] } } } });
+  const slotsCustom = await call("/api/bookings/slots");
+  const customTimes = onDay(slotsCustom.body?.data?.slots, tomorrow).map((s) => cairoTime(s.start));
+  check("a date's own hours replace the weekday's", customTimes.join(",") === "13:00,13:30", customTimes);
+  const pastOverride = await patch("/api/admin/crm-settings", { booking: { dateOverrides: { "2020-01-01": { windows: [] } } } });
+  check("a past dated exception is dropped", pastOverride.status === 200 && Object.keys(pastOverride.body?.data?.booking?.dateOverrides ?? { x: 1 }).length === 0, pastOverride.body?.data?.booking?.dateOverrides);
+  const badOverride = await patch("/api/admin/crm-settings", { booking: { dateOverrides: { "next tuesday": { windows: [] } } } });
+  check("a malformed exception date is rejected", badOverride.status === 400, badOverride);
+
   const slots = await call("/api/bookings/slots");
   const slot = slots.body?.data?.slots?.[0];
   check("public slots are listed", slots.status === 200 && !!slot?.start, slots.body?.data?.slots?.length);

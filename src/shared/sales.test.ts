@@ -79,6 +79,16 @@ test("slots: buffer spacing, bookings, blocked dates, notice, disabled", () => {
   assert.equal(computeSlots({ ...base, enabled: false }, NOW, []).length, 0);
 });
 
+test("slots: a date's own hours replace the weekday's, and empty hours close it", () => {
+  // Sunday 2026-01-11 normally 10:00–12:00 Cairo; this Sunday runs 15:00–16:00 instead.
+  const custom = computeSlots({ ...base, dateOverrides: { "2026-01-11": { windows: [{ start: "15:00", end: "16:00" }] } } }, NOW, []);
+  assert.deepEqual(custom.map((s) => s.start), ["2026-01-11T13:00:00.000Z", "2026-01-11T13:30:00.000Z"]);
+  assert.equal(computeSlots({ ...base, dateOverrides: { "2026-01-11": { windows: [] } } }, NOW, []).length, 0);
+  // An override on a normally closed day opens it.
+  const opened = computeSlots({ ...base, dateOverrides: { "2026-01-10": { windows: [{ start: "09:00", end: "10:00" }] } } }, NOW, []);
+  assert.equal(opened.filter((s) => s.start.startsWith("2026-01-10")).length, 2);
+});
+
 test("slots: a Cairo summer day uses the summer offset", () => {
   const summerNow = Date.UTC(2026, 6, 3, 8); // Friday 3 July 2026
   assert.equal(computeSlots(base, summerNow, [])[0].start, "2026-07-05T07:00:00.000Z");

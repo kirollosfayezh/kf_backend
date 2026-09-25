@@ -70,10 +70,18 @@ export interface Slot {
   end: string;
 }
 
+/** The opening windows for one date: its own override if set, else the weekday's. */
+export function windowsFor(settings: BookingSettings, date: string, weekday: number) {
+  const override = settings.dateOverrides?.[date];
+  if (override && Array.isArray(override.windows)) return override.windows;
+  return settings.weekly?.[weekday]?.windows ?? [];
+}
+
 /**
  * Every free slot from now to `daysAhead` days out. A slot is free when it is
- * inside opening hours, at least `minNoticeHours` away, not on a blocked date,
- * and at least `bufferMinutes` clear of every existing booking.
+ * inside opening hours (that date's own hours when set, else the weekday's),
+ * at least `minNoticeHours` away, not on a blocked date, and at least
+ * `bufferMinutes` clear of every existing booking.
  */
 export function computeSlots(settings: BookingSettings, now: number, taken: { start: string; end: string }[]): Slot[] {
   if (!settings.enabled) return [];
@@ -89,7 +97,7 @@ export function computeSlots(settings: BookingSettings, now: number, taken: { st
     // Noon avoids landing on the wrong date near midnight in any zone.
     const { date, weekday } = zonedDate(now + d * 86400000, tz);
     if (blocked.has(date)) continue;
-    for (const w of settings.weekly?.[weekday]?.windows ?? []) {
+    for (const w of windowsFor(settings, date, weekday)) {
       if (!isHHMM(w.start) || !isHHMM(w.end)) continue;
       const open = zonedToUtc(date, w.start, tz);
       const close = zonedToUtc(date, w.end, tz);

@@ -1,5 +1,6 @@
 import { repos } from "../../repositories/index.js";
 import { AppError } from "../errors/app-error.js";
+import { requestSiteRebuild } from "./deploy-hook.service.js";
 import type { TranslationOverride } from "../types.js";
 
 const LANGS = ["en", "ar", "de", "fr"] as const;
@@ -56,6 +57,10 @@ export async function upsertTranslation(input: Record<string, unknown>): Promise
   // An override with every language blank means "back to the shipped copy" —
   // keeping an empty row would only clutter the dashboard's Edited filter.
   const saved = await repos.translations.upsert(key, patch);
+  // Edited copy is baked into the prerendered pages, so it reaches crawlers
+  // on the next deploy — which this asks for (debounced, so a bulk import is
+  // one rebuild, not one per row).
+  requestSiteRebuild("translations");
   if (LANGS.every((l) => !(saved[l] ?? "").trim())) {
     await repos.translations.delete(key);
     return { key, en: "", ar: "", de: "", fr: "", updatedAt: patch.updatedAt };
@@ -78,4 +83,5 @@ export async function importTranslations(rows: unknown): Promise<{ saved: number
 
 export async function deleteTranslation(key: unknown): Promise<void> {
   await repos.translations.delete(cleanKey(key));
+  requestSiteRebuild("translations");
 }

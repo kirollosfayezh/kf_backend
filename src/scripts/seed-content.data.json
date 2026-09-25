@@ -217,7 +217,8 @@
         "PostgreSQL"
       ],
       "year": "2026",
-      "duration": "14 weeks"
+      "duration": "14 weeks",
+      "sample": true
     },
     {
       "slug": "real-estate-portal",
@@ -235,7 +236,8 @@
         "Maps API"
       ],
       "year": "2025",
-      "duration": "10 weeks"
+      "duration": "10 weeks",
+      "sample": true
     },
     {
       "slug": "retail-analytics-dashboard",
@@ -253,7 +255,8 @@
         "MySQL"
       ],
       "year": "2025",
-      "duration": "8 weeks"
+      "duration": "8 weeks",
+      "sample": true
     },
     {
       "slug": "ai-assistant-app",
@@ -271,7 +274,8 @@
         "AI"
       ],
       "year": "2026",
-      "duration": "12 weeks"
+      "duration": "12 weeks",
+      "sample": true
     },
     {
       "slug": "workflow-automation-suite",
@@ -289,7 +293,8 @@
         "Docker"
       ],
       "year": "2025",
-      "duration": "6 weeks"
+      "duration": "6 weeks",
+      "sample": true
     },
     {
       "slug": "connected-devices-dashboard",
@@ -307,7 +312,8 @@
         "Cloudflare"
       ],
       "year": "2026",
-      "duration": "9 weeks"
+      "duration": "9 weeks",
+      "sample": true
     }
   ],
   "blogPosts": [

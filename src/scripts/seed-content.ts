@@ -37,6 +37,12 @@ interface SeedItem {
   /** Project detail fields, surfaced on the case-study page. */
   year?: string;
   duration?: string;
+  /**
+   * An illustrative layout rather than a delivered project. The site labels
+   * these and drops its "sample" block once a real project exists; a project
+   * an editor adds through the dashboard never carries it.
+   */
+  sample?: boolean;
 }
 
 /**
@@ -137,6 +143,7 @@ export async function seedContent(): Promise<{ created: number; updated: number 
           result: item.result,
           ...(item.year ? { year: item.year } : {}),
           ...(item.duration ? { duration: item.duration } : {}),
+          ...(item.sample ? { sample: true } : {}),
         },
         updatedAt: now,
       };

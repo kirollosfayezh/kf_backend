@@ -75,8 +75,9 @@ du recueil du consentement.
 ## Cookies publicitaires et de mesure — uniquement avec votre accord
 
 Uniquement si vous acceptez dans le bandeau, nous pouvons charger des outils de
-mesure de Google, Meta, TikTok ou Snapchat. Ces sociétés reçoivent alors des
-informations sur votre visite, selon leurs propres politiques. Si vous refusez,
+mesure de Google, Meta, TikTok, Snapchat, LinkedIn ou Microsoft Clarity (qui
+enregistre la façon dont les pages sont utilisées). Ces sociétés reçoivent
+alors des informations sur votre visite, selon leurs propres politiques. Si vous refusez,
 aucun n'est chargé et aucun de leurs cookies n'est déposé. Vous pouvez changer
 d'avis à tout moment via **Paramètres des cookies** en pied de page.
 
@@ -95,6 +96,12 @@ d'avis à tout moment via **Paramètres des cookies** en pied de page.
 Les trois premiers sont strictement fonctionnels : sans eux, le site oublie vos
 choix à chaque page.
 
+### Newsletter
+
+Si vous vous abonnez à la newsletter, nous conservons votre adresse e-mail,
+votre langue et la date de votre inscription. Nous ne la vendons pas et vous
+pouvez nous demander de la supprimer à tout moment par e-mail.
+
 ## Bases légales
 
 - **Pour vous répondre.** Un formulaire ou un message de chat est traité pour y
@@ -103,8 +110,8 @@ choix à chaque page.
   notre propre site et — une fois que vous nous contactez — le lien entre votre
   navigation antérieure ici et votre demande, pour répondre à ce que vous
   cherchiez vraiment. Vous pouvez vous y opposer à tout moment.
-- **Votre consentement.** Tout ce qui relève de la publicité. Donné via le
-  bandeau, révocable à tout moment.
+- **Votre consentement.** Tout ce qui relève de la publicité, et la newsletter.
+  Donné via le bandeau ou le formulaire d'inscription, révocable à tout moment.
 
 ## Qui d'autre y a accès
 

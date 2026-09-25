@@ -32,6 +32,7 @@ Runs on **http://localhost:4000**. Health check: `GET /api/healthz`.
 | `npm run smoke-test` | Full end-to-end test against a throwaway in-memory MongoDB |
 | `npm test` | Unit tests: phone rules for every country, identity matching, UA/UTM parsing, quote totals, booking slots |
 | `npm run backfill-contacts` | File existing leads and chats into CRM contacts (idempotent) — run once after deploying the CRM |
+| `npm run update-privacy-policy` | Refresh the stored Privacy Policy from `src/scripts/legal/` where the text is still the seeded wording; dry run by default, `-- --apply` writes |
 
 `npm run smoke-test` needs no configuration — it spins up its own MongoDB, boots
 the server, and exercises auth, content, leads, settings, the realtime chat
@@ -102,7 +103,8 @@ All routes are under `/api`. Responses use a consistent envelope:
 | `PATCH /api/chat/threads/:visitorId/typing` | Visitor typing indicator (`{typing}`) |
 | `POST /api/chat/session` | Phone step: `{visitorId, phone, country?, name?}` → starts or resumes the latest chat for that number |
 | `GET /api/chat/threads/:visitorId` | This browser's thread (or `null`) |
-| `POST /api/analytics/events` | Beacon batch: `pageview`, `click`, `session`, `consent` |
+| `POST /api/analytics/events` | Beacon batch: `pageview`, `click`, `conversion`, `session`, `consent` |
+| `POST /api/newsletter` | Subscribe `{email, lang?, source?, visitorId?}` — 201 when new, 200 when already subscribed |
 | `GET /api/translations/:lang` | Dashboard translation overrides for one language |
 | `GET /api/bookings/slots` | Free call slots |
 | `POST /api/bookings` | Book a call `{start, phone, name?, topic?, visitorId?, lang?}` |
@@ -138,6 +140,7 @@ All routes are under `/api`. Responses use a consistent envelope:
 | `GET /api/admin/notifications`, `GET …/count`, `POST …/read`, `POST …/check` | Alert feed |
 | `GET/PATCH /api/admin/crm-settings`, `POST …/telegram/test` | Booking hours, quote details, Telegram |
 | `GET/PUT/DELETE /api/admin/translations`, `POST …/import` | Site translation overrides |
+| `GET /api/admin/newsletter?q=&format=csv`, `DELETE …/:id` | Newsletter subscribers (list, search, CSV export, remove) |
 
 ## Realtime chat (Socket.io)
 
@@ -176,6 +179,7 @@ The unauthenticated endpoints are rate limited per IP (see
 | Endpoint | Limit |
 |---|---|
 | `POST /api/leads` | 5 per 10 minutes |
+| `POST /api/newsletter` | 5 per 10 minutes |
 | `/api/chat/*` writes | 30 per minute |
 | `POST /api/admin/auth/login` | 10 failed attempts per 15 minutes |
 
@@ -260,3 +264,17 @@ Atlas connection string as `MONGODB_URI`.
 **CORS:** set `CORS_ORIGINS` to the deployed site + dashboard URLs
 (comma-separated, no trailing slash). It also governs which origins may open a
 Socket.io connection.
+
+### Site rebuilds after edits
+
+The site prerenders its pages, sitemap and feeds at build time, so a blog post
+or SEO override saved in the dashboard only reaches crawlers at the next
+deploy. Set `VERCEL_DEPLOY_HOOK_URL` (Vercel → Project → Settings → Git →
+Deploy Hooks) and the API requests a rebuild after any content, settings or SEO
+write — debounced to one request per minute of activity, never more than one in
+flight, and never failing the write itself. Without the variable nothing is
+requested.
+
+| Variable | Purpose |
+|---|---|
+| `VERCEL_DEPLOY_HOOK_URL` | Optional. Deploy Hook URL that rebuilds the site after CMS/SEO/settings edits |

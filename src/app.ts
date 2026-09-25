@@ -25,12 +25,15 @@ import {
   adminQuotesRouter,
 } from "./routes/admin/sales.routes.js";
 import { publicBookingsRouter, publicQuotesRouter } from "./routes/public/sales.routes.js";
+import { publicNewsletterRouter } from "./routes/public/newsletter.routes.js";
+import { adminNewsletterRouter } from "./routes/admin/newsletter.routes.js";
 import { requireAdmin } from "./shared/middleware/auth.js";
 import {
   analyticsRateLimit,
   chatRateLimit,
   leadsRateLimit,
   loginRateLimit,
+  newsletterRateLimit,
   salesRateLimit,
 } from "./shared/middleware/rate-limit.js";
 import { errorHandler, notFoundHandler } from "./shared/middleware/error-handler.js";
@@ -70,6 +73,7 @@ api.use("/translations", publicTranslationsRouter);
 api.use("/quotes", salesRateLimit, publicQuotesRouter);
 api.use("/bookings", salesRateLimit, publicBookingsRouter);
 api.use("/leads", leadsRateLimit, publicLeadsRouter);
+api.use("/newsletter", newsletterRateLimit, publicNewsletterRouter);
 api.use("/chat", chatRateLimit, publicChatRouter);
 // Beacons arrive in batches and are cheap to write; the ceiling only stops floods.
 api.use("/analytics", analyticsRateLimit, publicAnalyticsRouter);
@@ -90,6 +94,7 @@ api.use("/admin/quotes", requireAdmin, adminQuotesRouter);
 api.use("/admin/bookings", requireAdmin, adminBookingsRouter);
 api.use("/admin/notifications", requireAdmin, adminNotificationsRouter);
 api.use("/admin/crm-settings", requireAdmin, adminCrmSettingsRouter);
+api.use("/admin/newsletter", requireAdmin, adminNewsletterRouter);
 
 app.use("/api", api);
 

@@ -73,10 +73,11 @@ force, and your browser type — as proof of how consent was collected.
 ### Advertising and measurement cookies — only if you accept
 
 If, and only if, you accept cookies in the banner, we may load measurement tools
-from Google, Meta, TikTok or Snapchat. Those companies then receive information
-about your visit under their own privacy policies. If you decline, none of them
-load and none of their cookies are set. You can change your mind at any time
-using **Cookie settings** in the footer.
+from Google, Meta, TikTok, Snapchat, LinkedIn or Microsoft Clarity (which
+records how pages are used). Those companies then receive information about
+your visit under their own privacy policies. If you decline, none of them load
+and none of their cookies are set. You can change your mind at any time using
+**Cookie settings** in the footer.
 
 ## Cookies and browser storage
 
@@ -93,6 +94,12 @@ using **Cookie settings** in the footer.
 The first three are strictly functional: without them the site forgets your
 choices on every page.
 
+### Newsletter
+
+If you subscribe to the newsletter we store your email address, your language
+and the time you subscribed. We do not sell it and you can ask us to remove it
+at any time by emailing us.
+
 ## Why we are allowed to do this
 
 - **To answer you.** When you send a form or a chat message, we process it to
@@ -101,8 +108,8 @@ choices on every page.
   useful on our own site, and — once you contact us — linking your earlier
   browsing here to your enquiry, so we can answer what you were actually
   looking for. You can object to this at any time.
-- **Your consent.** Everything advertising-related. Given through the cookie
-  banner, withdrawable at any time.
+- **Your consent.** Everything advertising-related, and the newsletter. Given
+  through the cookie banner or the sign-up form, withdrawable at any time.
 
 ## Who else sees it
 

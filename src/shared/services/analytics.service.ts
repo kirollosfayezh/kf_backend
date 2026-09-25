@@ -4,21 +4,22 @@ import { cleanTouch, countryFromTimezone, parseUserAgent } from "../tracking.js"
 import type { AnalyticsEvent, AnalyticsEventType, ConsentStatus, DeviceKind } from "../types.js";
 import type { VisitorTouch } from "../../repositories/mongo/crm.repo.js";
 
-const TYPES: AnalyticsEventType[] = ["pageview", "click"];
+const TYPES: AnalyticsEventType[] = ["pageview", "click", "conversion"];
 
 /**
  * Bumped whenever the cookie wording or the Privacy Policy's cookie section
  * changes, so each consent record says which text the visitor agreed to.
  */
-export const CONSENT_POLICY_VERSION = "2026-09";
+export const CONSENT_POLICY_VERSION = "2026-09-25";
 const DEVICES: DeviceKind[] = ["mobile", "tablet", "desktop"];
 
 export interface IncomingEvent {
-  /** pageview | click, plus two that are not stored as events:
+  /** pageview | click | conversion, plus two that are not stored as events:
    *  `session` (once per tab: where the visit came from) and
    *  `consent` (the visitor's cookie choice). */
   type?: string;
   path?: string;
+  /** Click: the control's label. Conversion: the kind (lead, booking, chat_start, quote_accepted, newsletter). */
   label?: string;
   visitorId?: string;
   sessionId?: string;
@@ -109,8 +110,10 @@ export async function recordEvents(incoming: IncomingEvent[], context: { userAge
 
     if (vid && !ua.bot) {
       const t = touchFor(vid, ts);
+      // A conversion is neither: it shows in the visitor's journey, but must
+      // not inflate the profile's click count or the dashboard's click totals.
       if (type === "pageview") t.pageviews += 1;
-      else t.clicks += 1;
+      else if (type === "click") t.clicks += 1;
       t.device = device ?? t.device;
       t.lang = clean(raw.lang, 8) ?? t.lang;
     }

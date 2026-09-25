@@ -31,7 +31,8 @@ export interface Identity {
   source: ContactSource;
 }
 
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+/** "Something@something.something" — the same test every public form applies. */
+export const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function text(value: unknown, max: number): string | undefined {
   if (typeof value !== "string") return undefined;

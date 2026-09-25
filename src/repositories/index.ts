@@ -4,6 +4,7 @@ import { TranslationRepository } from "./mongo/translation.repo.js";
 import { ConsentRepository, ContactRepository, VisitorRepository } from "./mongo/crm.repo.js";
 import { CrmSettingsRepository, NotificationRepository } from "./mongo/notifications.repo.js";
 import { BookingRepository, QuoteRepository } from "./mongo/sales.repo.js";
+import { SubscriberRepository } from "./mongo/newsletter.repo.js";
 import { MongoSingletonRepository } from "./mongo/mongo-singleton-repo.js";
 import { ChatRepository } from "./mongo/chat.repo.js";
 import { AnalyticsRepository } from "./mongo/analytics.repo.js";
@@ -61,6 +62,7 @@ const defaultSettings: SiteSettings = {
   seo: { defaultTitle: "KF Tech Solutions", defaultDescription: "" },
   pixels: {},
   contact: {},
+  social: {},
   updatedAt: new Date().toISOString(),
 };
 
@@ -84,4 +86,5 @@ export const repos = {
   crmSettings: new CrmSettingsRepository(),
   quotes: new QuoteRepository(),
   bookings: new BookingRepository(),
+  subscribers: new SubscriberRepository(),
 };

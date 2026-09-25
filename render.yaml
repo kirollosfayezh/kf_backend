@@ -31,3 +31,5 @@ services:
         sync: false
       - key: CLOUDFLARE_R2_PUBLIC_URL
         sync: false
+      - key: VERCEL_DEPLOY_HOOK_URL
+        sync: false

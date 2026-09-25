@@ -25,6 +25,15 @@ export const leadsRateLimit = rateLimit({
   handler: limitReached,
 });
 
+/** Newsletter sign-ups: same shape as leads — one address per person, a few retries at most. */
+export const newsletterRateLimit = rateLimit({
+  windowMs: 10 * 60 * 1000,
+  limit: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: limitReached,
+});
+
 /** Chat messages: a real conversation is chatty, so this is much higher. */
 export const chatRateLimit = rateLimit({
   windowMs: 60 * 1000,

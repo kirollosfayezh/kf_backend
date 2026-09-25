@@ -74,7 +74,8 @@ im Footer, die gültige Version dieser Erklärung und Ihren Browsertyp.
 ## Werbe- und Messcookies — nur mit Ihrer Einwilligung
 
 Nur wenn Sie im Banner zustimmen, laden wir gegebenenfalls Messwerkzeuge von
-Google, Meta, TikTok oder Snapchat. Diese Unternehmen erhalten dann nach ihren
+Google, Meta, TikTok, Snapchat, LinkedIn oder Microsoft Clarity (das aufzeichnet,
+wie Seiten genutzt werden). Diese Unternehmen erhalten dann nach ihren
 eigenen Datenschutzerklärungen Informationen über Ihren Besuch. Lehnen Sie ab,
 wird keines davon geladen und kein Cookie davon gesetzt. Sie können Ihre
 Entscheidung jederzeit über **Cookie-Einstellungen** im Fußbereich ändern.
@@ -94,6 +95,12 @@ Entscheidung jederzeit über **Cookie-Einstellungen** im Fußbereich ändern.
 Die ersten drei sind rein funktional: ohne sie vergisst die Website Ihre
 Einstellungen bei jedem Seitenwechsel.
 
+### Newsletter
+
+Wenn Sie den Newsletter abonnieren, speichern wir Ihre E-Mail-Adresse, Ihre
+Sprache und den Zeitpunkt der Anmeldung. Wir verkaufen diese Daten nicht, und
+Sie können uns jederzeit per E-Mail bitten, sie zu löschen.
+
 ## Rechtsgrundlagen
 
 - **Zur Beantwortung.** Senden Sie ein Formular oder eine Chatnachricht,
@@ -102,8 +109,8 @@ Einstellungen bei jedem Seitenwechsel.
   verstehen, und — sobald Sie uns kontaktieren — die Verknüpfung Ihres
   bisherigen Surfens hier mit Ihrer Anfrage, damit wir gezielt antworten können.
   Sie können dem jederzeit widersprechen.
-- **Ihre Einwilligung.** Alles Werbliche. Über das Cookie-Banner erteilt,
-  jederzeit widerrufbar.
+- **Ihre Einwilligung.** Alles Werbliche, und der Newsletter. Über das
+  Cookie-Banner bzw. das Anmeldeformular erteilt, jederzeit widerrufbar.
 
 ## Wer es sonst sieht
 

@@ -17,6 +17,7 @@
     "seed-admin": "npm run build && node dist/scripts/seed-admin.js",
     "seed-content": "npm run build && node dist/scripts/seed-content.js",
     "backfill-contacts": "npm run build && node dist/scripts/backfill-contacts.js",
+    "update-privacy-policy": "npm run build && node dist/scripts/update-privacy-policy.js",
     "smoke-test": "tsx src/scripts/smoke-test.ts",
     "test": "tsx --test \"src/**/*.test.ts\""
   },

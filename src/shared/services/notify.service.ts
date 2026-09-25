@@ -41,6 +41,7 @@ const ICON: Record<NotificationType, string> = {
   quote_declined: "❌",
   followup_due: "⏰",
   call_soon: "📞",
+  newsletter: "📰",
   test: "🔔",
 };
 

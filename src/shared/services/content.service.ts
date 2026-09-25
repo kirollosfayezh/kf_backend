@@ -1,5 +1,6 @@
 import { repos } from "../../repositories/index.js";
 import { AppError } from "../errors/app-error.js";
+import { requestSiteRebuild } from "./deploy-hook.service.js";
 import type { ContentCollection, ContentItem } from "../types.js";
 
 /** Generic CRUD used by every content type (projects, services, solutions, about, blog, testimonials, faq). */
@@ -8,6 +9,26 @@ type NewContentItem = Pick<
   ContentItem,
   "slug" | "published" | "order" | "title" | "summary" | "body" | "media" | "meta"
 >;
+
+/**
+ * Collections the site bakes into static HTML at build time (pages, sitemap,
+ * feeds, JSON-LD). A write to one of these is invisible to crawlers until the
+ * site rebuilds, so it asks for one. The rest — about sections, promos — are
+ * only ever fetched at runtime.
+ */
+const PRERENDERED: ReadonlySet<ContentCollection> = new Set([
+  "blogPosts",
+  "projects",
+  "legalPages",
+  "services",
+  "solutions",
+  "faqs",
+  "testimonials",
+]);
+
+function rebuildIfPrerendered(collection: ContentCollection, what: string): void {
+  if (PRERENDERED.has(collection)) requestSiteRebuild(`${collection} ${what}`);
+}
 
 export function listContent(collection: ContentCollection, publishedOnly: boolean) {
   return repos.content[collection].list({
@@ -47,13 +68,15 @@ export async function getContent(collection: ContentCollection, idOrSlug: string
   throw AppError.notFound(`${collection} item not found`);
 }
 
-export function createContent(collection: ContentCollection, input: NewContentItem) {
+export async function createContent(collection: ContentCollection, input: NewContentItem) {
   if (!input.slug?.trim()) throw AppError.badRequest("slug is required");
   if (!input.title?.en?.trim()) throw AppError.badRequest("title.en is required");
 
   const now = new Date().toISOString();
   const item: ContentItem = { ...input, createdAt: now, updatedAt: now };
-  return repos.content[collection].create(item);
+  const created = await repos.content[collection].create(item);
+  rebuildIfPrerendered(collection, created.slug);
+  return created;
 }
 
 export async function updateContent(
@@ -63,11 +86,14 @@ export async function updateContent(
 ) {
   const existing = await repos.content[collection].get(id);
   if (!existing) throw AppError.notFound(`${collection} item not found`);
-  return repos.content[collection].update(id, { ...input, updatedAt: new Date().toISOString() });
+  const updated = await repos.content[collection].update(id, { ...input, updatedAt: new Date().toISOString() });
+  rebuildIfPrerendered(collection, updated.slug);
+  return updated;
 }
 
 export async function deleteContent(collection: ContentCollection, id: string) {
   const existing = await repos.content[collection].get(id);
   if (!existing) throw AppError.notFound(`${collection} item not found`);
   await repos.content[collection].delete(id);
+  rebuildIfPrerendered(collection, existing.slug);
 }

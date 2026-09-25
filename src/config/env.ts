@@ -18,6 +18,13 @@ export const env = {
     .filter(Boolean),
   /** The dashboard's public URL, so Telegram alerts can link straight to the contact. Optional. */
   dashboardUrl: (process.env.DASHBOARD_URL ?? "").trim().replace(/\/+$/, ""),
+  /**
+   * A Vercel Deploy Hook for the site. When set, a content, settings or SEO
+   * edit triggers a rebuild so the prerendered pages and sitemap catch up
+   * (see deploy-hook.service.ts). Optional: without it edits reach the site
+   * only through its runtime fetches, and crawlers see them at the next deploy.
+   */
+  vercelDeployHookUrl: (process.env.VERCEL_DEPLOY_HOOK_URL ?? "").trim(),
   superadminEmail: process.env.SUPERADMIN_EMAIL ?? "admin@kftech.solutions",
   superadminPassword: process.env.SUPERADMIN_PASSWORD ?? "ChangeMe123!",
   r2: {

@@ -1,7 +1,8 @@
 /**
  * End-to-end smoke test against a throwaway in-memory MongoDB.
- * Exercises auth, content, leads, settings, the full realtime chat round-trip and
- * the CRM cycle: visitor → consent → lead/chat → contact → quote → booking → alerts.
+ * Exercises auth, content, SEO overrides, leads, settings, the full realtime chat
+ * round-trip, the CRM cycle (visitor → consent → lead/chat → contact → quote →
+ * booking → alerts) and the newsletter.
  * Usage: npm run smoke-test
  */
 import { MongoMemoryServer } from "mongodb-memory-server";
@@ -42,6 +43,8 @@ async function main() {
   process.env.JWT_ADMIN_SECRET = "smoke-test-secret";
   process.env.SUPERADMIN_EMAIL = "smoke@kftech.solutions";
   process.env.SUPERADMIN_PASSWORD = "SmokeTest123!";
+  // Never let a hook URL from a local .env trigger a real site rebuild from here.
+  process.env.VERCEL_DEPLOY_HOOK_URL = "";
 
   // Imported after env is set, since config/env.ts reads process.env at import time.
   const { connectDb } = await import("../db/connect.js");
@@ -49,7 +52,21 @@ async function main() {
   const { initIo } = await import("../realtime/io.js");
   const { repos } = await import("../repositories/index.js");
   const { hashPassword } = await import("../shared/services/auth.service.js");
+  const deployHook = await import("../shared/services/deploy-hook.service.js");
   const mongoose = (await import("mongoose")).default;
+
+  // A fake Vercel hook, so the test can see that content, settings and SEO
+  // writes ask for a rebuild without anything leaving the machine.
+  let rebuilds: string[] = [];
+  deployHook._configureForTests({
+    url: "https://hook.test/deploy",
+    delayMs: 40,
+    fetch: async (url) => {
+      rebuilds.push(url);
+      return new Response(null, { status: 201 });
+    },
+  });
+  const rebuildRequested = () => new Promise<number>((resolve) => setTimeout(() => resolve(rebuilds.length), 120));
 
   await connectDb();
 
@@ -116,6 +133,7 @@ async function main() {
   });
   const itemId: string = created.body?.data?.id;
   check("create a service", created.status === 201 && Boolean(itemId), created);
+  check("a content write asks the site to rebuild (once, after the debounce)", (await rebuildRequested()) === 1, rebuilds);
 
   const publicHidden = await call("/api/content/services");
   check(
@@ -209,15 +227,101 @@ async function main() {
   });
   check(
     "SEO override saves",
-    seoSaved.status === 200 && seoSaved.body?.data?.title === "Edited title",
+    seoSaved.status === 200 && seoSaved.body?.data?.title?.en === "Edited title",
     seoSaved
   );
 
   const seoPublic = await call("/api/seo");
   check(
     "saved override is readable by the site and the build",
-    seoPublic.body?.data?.some((r: { key: string; title: string }) => r.key === "services" && r.title === "Edited title"),
+    seoPublic.body?.data?.some((r: { key: string; title: { en: string } }) => r.key === "services" && r.title?.en === "Edited title"),
     seoPublic
+  );
+
+  /**
+   * Overrides are per language. A saved title used to be one string, which
+   * made every override English-only — an Arabic reader of a page with a saved
+   * title got the English one. Each language is now written and read back on
+   * its own, a save of one language leaves the others alone, and rows from
+   * before the change still read (and save) as the new shape.
+   */
+  const seoRow = (key: string, rows: { key: string }[] | undefined) => (rows ?? []).find((r) => r.key === key) as any;
+  const seoLangs = await call("/api/admin/seo/services", {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ title: { en: "Services", ar: "خدماتنا", de: "Leistungen", fr: "Services FR" }, description: { ar: "وصف" } }),
+  });
+  const seoLangsPublic = seoRow("services", (await call("/api/seo")).body?.data);
+  check(
+    "SEO override round-trips every language",
+    seoLangs.status === 200 &&
+      seoLangsPublic?.title?.ar === "خدماتنا" &&
+      seoLangsPublic?.title?.de === "Leistungen" &&
+      seoLangsPublic?.title?.fr === "Services FR" &&
+      seoLangsPublic?.description?.ar === "وصف" &&
+      seoLangsPublic?.description?.en === "Edited description",
+    seoLangsPublic
+  );
+
+  const seoMerge = await call("/api/admin/seo/services", {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ title: { de: "Neu" } }),
+  });
+  const seoMerged = seoRow("services", (await call("/api/seo")).body?.data);
+  check(
+    "saving one SEO language keeps the others",
+    seoMerge.status === 200 && seoMerged?.title?.de === "Neu" && seoMerged?.title?.en === "Services" && seoMerged?.title?.ar === "خدماتنا",
+    seoMerged?.title
+  );
+
+  const seoPlain = await call("/api/admin/seo/services", {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ title: "Plain string" }),
+  });
+  const seoPlained = seoRow("services", (await call("/api/seo")).body?.data);
+  check(
+    "a plain-string SEO title lands in English and keeps the rest",
+    seoPlain.status === 200 && seoPlained?.title?.en === "Plain string" && seoPlained?.title?.ar === "خدماتنا",
+    seoPlained?.title
+  );
+
+  // A row saved before per-language overrides holds plain strings. Inserted
+  // straight into the collection, bypassing the schema, exactly as it sits in
+  // production.
+  const seoCollection = mongoose.connection.collection("seopages");
+  await seoCollection.insertOne({
+    key: "about",
+    title: "Legacy title",
+    description: "Legacy description",
+    keywords: "",
+    image: "",
+    noindex: null,
+    updatedAt: new Date().toISOString(),
+  });
+  const seoLegacy = seoRow("about", (await call("/api/seo")).body?.data);
+  check(
+    "a legacy string SEO row reads back as an object",
+    seoLegacy?.title?.en === "Legacy title" && seoLegacy?.title?.ar === "" && seoLegacy?.description?.en === "Legacy description",
+    seoLegacy
+  );
+  const seoLegacyPatch = await call("/api/admin/seo/about", {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ title: { fr: "Titre" } }),
+  });
+  const seoLegacyStored = await seoCollection.findOne({ key: "about" });
+  check(
+    "a legacy SEO row accepts a per-language save and is migrated in place",
+    seoLegacyPatch.status === 200 &&
+      seoLegacyPatch.body?.data?.title?.en === "Legacy title" &&
+      seoLegacyPatch.body?.data?.title?.fr === "Titre" &&
+      typeof seoLegacyStored?.title === "object" &&
+      seoLegacyStored?.title?.fr === "Titre" &&
+      typeof seoLegacyStored?.description === "object" &&
+      seoLegacyStored?.description?.en === "Legacy description",
+    seoLegacyStored
   );
 
   const seoBadKey = await call("/api/admin/seo/not-a-page", {
@@ -232,6 +336,11 @@ async function main() {
     body: JSON.stringify({ title: "nope" }),
   });
   check("SEO writes require auth", seoNoAuth.status === 401, seoNoAuth);
+
+  await rebuildRequested(); // let the rebuild queued by the writes above go out first
+  rebuilds = [];
+  await call("/api/admin/seo/home", { method: "PATCH", headers: authHeaders, body: JSON.stringify({ keywords: "pos" }) });
+  check("an SEO override asks the site to rebuild", (await rebuildRequested()) === 1, rebuilds);
 
   // Translation overrides: the dashboard edits the site's interface copy.
   const trKey = "Forecast demand / weekly?";
@@ -288,6 +397,14 @@ async function main() {
     body: JSON.stringify({ tagline: { en: "E", ar: "A", de: "D", fr: "F" } }),
   });
   check("settings keep German and French tagline", tagline.body?.data?.tagline?.de === "D" && tagline.body?.data?.tagline?.fr === "F", tagline);
+  await rebuildRequested(); // the tagline write above queued one; let it go out first
+  rebuilds = [];
+  await call("/api/admin/settings", { method: "PATCH", headers: authHeaders, body: JSON.stringify({ tagline: { en: "E2", ar: "A", de: "D", fr: "F" } }) });
+  check("a settings write asks the site to rebuild", (await rebuildRequested()) === 1, rebuilds);
+  // From here on nothing should reach the hook: later sections write content
+  // too, and a stray POST would only be noise in the assertions above.
+  deployHook._resetForTests();
+  process.env.VERCEL_DEPLOY_HOOK_URL = "";
 
   const badCollection = await call("/api/content/not-a-collection");
   check("unknown collection returns 404", badCollection.status === 404, badCollection);
@@ -315,6 +432,15 @@ async function main() {
       "re-running seed-content does not duplicate",
       secondPass.body?.data?.length === seededCount,
       `${seededCount} -> ${secondPass.body?.data?.length}`
+    );
+
+    // The seeded projects are illustrative layouts; the site labels them and
+    // hides its sample block once a real project (no flag) exists.
+    const seededProjects = (await call("/api/content/projects")).body?.data ?? [];
+    check(
+      "seeded projects are flagged as samples",
+      seededProjects.length === 6 && seededProjects.every((p: { meta?: { sample?: boolean } }) => p.meta?.sample === true),
+      seededProjects.map((p: { slug: string; meta?: { sample?: boolean } }) => [p.slug, p.meta?.sample])
     );
   }
 
@@ -392,6 +518,9 @@ async function main() {
     metaPixelId: "123456789012345",
     tiktokPixelId: "CABCDEFGHIJKLMNOPQRS",
     snapchatPixelId: "11111111-2222-3333-4444-555555555555",
+    linkedinPartnerId: "1234567",
+    linkedinConversionId: "12345678",
+    clarityId: "abcdefghij",
     events: { lead: true, cta: false },
     respectDnt: false,
     consentMode: true,
@@ -417,6 +546,34 @@ async function main() {
     back.gtmId === "GTM-ABC1234" && back.events?.cta === false,
     back
   );
+
+  /** Social profiles: the footer and the Organization schema read these. `x`
+   *  is stored as "@handle" because it doubles as the `twitter:site` tag. */
+  const socialSaved = await call("/api/admin/settings", {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ social: { facebook: "https://facebook.com/kftech", x: "kftech", youtube: "" } }),
+  });
+  const socialPublic = (await call("/api/content/settings")).body?.data?.social;
+  check(
+    "social profiles round-trip and the X handle is normalised",
+    socialSaved.status === 200 &&
+      socialPublic?.facebook === "https://facebook.com/kftech" &&
+      socialPublic?.x === "@kftech" &&
+      socialPublic?.youtube === "",
+    socialPublic
+  );
+  check(
+    "social profiles carry no _id noise",
+    !JSON.stringify(socialSaved.body?.data?.social).includes("_id"),
+    socialSaved.body?.data?.social
+  );
+  const badHandle = await call("/api/admin/settings", {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ social: { x: "bad handle!" } }),
+  });
+  check("a malformed X handle is rejected", badHandle.status === 400, badHandle);
 
   console.log("\nRealtime chat");
   const visitorId = "visitor-smoke-1";
@@ -556,11 +713,13 @@ async function main() {
         { type: "pageview", path: "/", visitorId: "v2", device: "mobile", ts: Date.now() },
         { type: "click", path: "/", label: "hero.start-project", visitorId: "v2", device: "mobile", ts: Date.now() },
         { type: "click", path: "/", label: "hero.start-project", visitorId: "v1", device: "desktop", ts: Date.now() },
+        // A goal completed — sent once by the site when the server accepted the lead, not on the click.
+        { type: "conversion", path: "/contact", label: "lead", visitorId: "v1", ts: Date.now() },
         { type: "nonsense", path: "/", ts: Date.now() },
       ],
     }),
   });
-  check("analytics beacon accepted (invalid events dropped)", beacon.status === 202 && beacon.body?.data?.written === 5, beacon);
+  check("analytics beacon accepted (invalid events dropped)", beacon.status === 202 && beacon.body?.data?.written === 6, beacon);
 
   // `navigator.sendBeacon` is a credentialed request: without this header the
   // browser drops every beacon at preflight and analytics silently stays empty.
@@ -593,6 +752,18 @@ async function main() {
   );
   check("summary breaks down devices", s?.devices?.length === 2, s?.devices);
   check("summary reports referrers", s?.topReferrers?.[0]?.referrer === "https://google.com", s?.topReferrers);
+  check(
+    "conversions are stored but never counted as clicks",
+    s?.totals?.clicks === 2 && !s?.topClicks?.some((c: { label: string }) => c.label === "lead"),
+    s?.topClicks
+  );
+  const v1Detail = await call("/api/admin/crm/visitors/v1", { headers: authHeaders });
+  check(
+    "a conversion shows in the visitor's journey with its kind",
+    v1Detail.body?.data?.journey?.some((e: { type: string; label?: string }) => e.type === "conversion" && e.label === "lead") &&
+      v1Detail.body?.data?.visitor?.clicks === 1,
+    v1Detail.body?.data
+  );
 
   console.log("\nCRM: visitors, consent, contacts, pipeline");
   const J = { "content-type": "application/json" };
@@ -786,6 +957,105 @@ async function main() {
   const quoteGone = await call(`/api/quotes/${qd.token}`);
   check("erasing a contact removes them, their browsing and their quotes", erased.status === 200 && gone.status === 404 && v1Gone.status === 404 && quoteGone.status === 404, [gone.status, v1Gone.status, quoteGone.status]);
 
+  console.log("\nNewsletter");
+  const subscribed = await post("/api/newsletter", {
+    email: "News.Reader@Example.com",
+    lang: "ar",
+    source: "footer",
+    visitorId: "newsletter-visitor-1",
+  });
+  const subscriberId: string = subscribed.body?.data?.id;
+  check(
+    "a new address subscribes (201, created)",
+    subscribed.status === 201 && subscribed.body?.data?.created === true && !!subscriberId,
+    subscribed
+  );
+  const subscribedAgain = await post("/api/newsletter", { email: "news.reader@example.com", source: "article" });
+  check(
+    "the same address again is a 200, not a duplicate",
+    subscribedAgain.status === 200 && subscribedAgain.body?.data?.created === false && subscribedAgain.body?.data?.id === subscriberId,
+    subscribedAgain
+  );
+  const badEmail = await post("/api/newsletter", { email: "not-an-email" });
+  check("an invalid email is rejected", badEmail.status === 400, badEmail);
+  // The hidden `website` field: a bot fills it, gets its 201, and nothing is stored.
+  const honeypot = await post("/api/newsletter", { email: "bot@example.com", website: "http://spam.example" });
+  check("the honeypot answers 201 to the bot", honeypot.status === 201 && honeypot.body?.data?.created === true, honeypot);
+  const secondSubscriber = await post("/api/newsletter", { email: "Other.Person@Example.org", lang: "de", source: "popup" });
+  check("a second address subscribes", secondSubscriber.status === 201, secondSubscriber);
+
+  const subscribers = await call("/api/admin/newsletter", { headers: authHeaders });
+  const subRows: { id: string; email: string; lang?: string; source: string; contactId?: string }[] = subscribers.body?.data ?? [];
+  const reader = subRows.find((r) => r.id === subscriberId);
+  check(
+    "admin list has the address lower-cased, filed under a contact, and never the bot",
+    subRows.length === 2 &&
+      reader?.email === "news.reader@example.com" &&
+      reader?.lang === "ar" &&
+      reader?.source === "footer" &&
+      !!reader?.contactId &&
+      !subRows.some((r) => r.email === "bot@example.com"),
+    subRows
+  );
+  const subscriberContact = await call(`/api/admin/contacts/${reader?.contactId}`, { headers: authHeaders });
+  check(
+    "the subscriber's contact carries the newsletter source and a timeline entry",
+    subscriberContact.body?.data?.contact?.sources?.includes("newsletter") &&
+      subscriberContact.body?.data?.contact?.emails?.includes("news.reader@example.com") &&
+      subscriberContact.body?.data?.contact?.visitorIds?.includes("newsletter-visitor-1") &&
+      subscriberContact.body?.data?.activities?.some((a: { type: string }) => a.type === "newsletter"),
+    subscriberContact.body?.data
+  );
+  const subscriberSearch = await call("/api/admin/newsletter?q=other.person", { headers: authHeaders });
+  check(
+    "subscribers can be searched by email",
+    subscriberSearch.body?.data?.length === 1 && subscriberSearch.body.data[0].email === "other.person@example.org",
+    subscriberSearch.body?.data
+  );
+
+  const csvRes = await fetch(`${base}/api/admin/newsletter?format=csv`, { headers: authHeaders });
+  // Raw bytes: `Response.text()` (and TextDecoder by default) strip a leading
+  // BOM, which is exactly the byte this checks for.
+  const csvBytes = new Uint8Array(await csvRes.arrayBuffer());
+  const csvHasBom = csvBytes[0] === 0xef && csvBytes[1] === 0xbb && csvBytes[2] === 0xbf;
+  const csv = new TextDecoder().decode(csvBytes);
+  const csvLines = csv.split("\r\n");
+  check(
+    "CSV export has the right headers, a BOM, and every subscriber",
+    csvRes.headers.get("content-type") === "text/csv; charset=utf-8" &&
+      csvRes.headers.get("content-disposition") === 'attachment; filename="subscribers.csv"' &&
+      csvHasBom &&
+      csvLines[0] === "email,lang,source,consentAt,unsubscribedAt,createdAt" &&
+      csvLines.some((l) => l.startsWith("news.reader@example.com,ar,footer,")) &&
+      csvLines.some((l) => l.startsWith("other.person@example.org,de,popup,")),
+    { headers: Object.fromEntries(csvRes.headers), csv }
+  );
+
+  const newsletterAlerts = await call("/api/admin/notifications?limit=50", { headers: authHeaders });
+  check(
+    "a new subscriber raises an alert linked to the contact",
+    (newsletterAlerts.body?.data ?? []).some(
+      (n: { type: string; contactId?: string }) => n.type === "newsletter" && n.contactId === reader?.contactId
+    ),
+    (newsletterAlerts.body?.data ?? []).map((n: { type: string }) => n.type)
+  );
+
+  const removedReader = await call(`/api/admin/newsletter/${subscriberId}`, { method: "DELETE", headers: authHeaders });
+  const removedOther = await call(`/api/admin/newsletter/${subscriberSearch.body?.data?.[0]?.id}`, {
+    method: "DELETE",
+    headers: authHeaders,
+  });
+  const afterRemove = await call("/api/admin/newsletter", { headers: authHeaders });
+  check(
+    "subscribers can be removed",
+    removedReader.status === 200 && removedOther.status === 200 && afterRemove.body?.data?.length === 0,
+    afterRemove.body?.data
+  );
+  const removeMissing = await call("/api/admin/newsletter/000000000000000000000000", { method: "DELETE", headers: authHeaders });
+  check("removing an unknown subscriber is a 404", removeMissing.status === 404, removeMissing);
+  const newsletterNoAuth = await call("/api/admin/newsletter");
+  check("the subscriber list requires auth", newsletterNoAuth.status === 401, newsletterNoAuth);
+
   console.log("\nAbuse protection");
   // Runs last: it deliberately exhausts the lead limiter for this IP/window.
   let sawRateLimit = false;
@@ -806,6 +1076,17 @@ async function main() {
     }
   }
   check("repeated lead submissions get rate limited", sawRateLimit);
+
+  // Distinct addresses, so it is the limiter and not the idempotent 200 that stops the flood.
+  let sawNewsletterLimit = false;
+  for (let i = 0; i < 8; i++) {
+    const res = await post("/api/newsletter", { email: `flood${i}@example.com` });
+    if (res.status === 429) {
+      sawNewsletterLimit = true;
+      break;
+    }
+  }
+  check("repeated newsletter sign-ups get rate limited", sawNewsletterLimit);
 
   const rejectedUpload = await call("/api/admin/media", {
     method: "POST",

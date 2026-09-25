@@ -9,12 +9,30 @@ import type { SeoPage } from "../shared/types.js";
  * value rather than blanking the tag. That keeps an empty database and a
  * half-filled form both safe.
  */
+
+// `title` and `description` used to be plain strings, which made every override
+// English-only — an Arabic reader of a page with a saved title got the English
+// one. Rows written back then still hold a string; the repository normalises
+// them on read and the first save through the service rewrites them in this
+// shape (a dotted `$set` into a string field would fail, so it is always the
+// whole object).
+const localized = new Schema(
+  {
+    en: { type: String, default: "" },
+    ar: { type: String, default: "" },
+    de: { type: String, default: "" },
+    fr: { type: String, default: "" },
+  },
+  { _id: false },
+);
+const blank = () => ({ en: "", ar: "", de: "", fr: "" });
+
 const seoPageSchema = new Schema<SeoPage>(
   {
     // Matches the key in the site's PAGES table (home, services, …).
     key: { type: String, required: true, unique: true, index: true },
-    title: { type: String, default: "" },
-    description: { type: String, default: "" },
+    title: { type: localized, default: blank },
+    description: { type: localized, default: blank },
     keywords: { type: String, default: "" },
     /** Absolute URL of the share image; blank uses the site-wide default. */
     image: { type: String, default: "" },

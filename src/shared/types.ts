@@ -78,6 +78,12 @@ export interface TrackingSettings {
   metaPixelId?: string;
   tiktokPixelId?: string;
   snapchatPixelId?: string;
+  /** LinkedIn Insight Tag partner id (numeric). */
+  linkedinPartnerId?: string;
+  /** The LinkedIn conversion id that pairs with `linkedinPartnerId`; optional. */
+  linkedinConversionId?: string;
+  /** Microsoft Clarity project id. */
+  clarityId?: string;
   /** Site event key -> whether it is forwarded to the marketing tags. */
   events?: Record<string, boolean>;
   /** Honour the browser's Do Not Track header by loading nothing. */
@@ -86,6 +92,22 @@ export interface TrackingSettings {
   consentMode?: boolean;
   /** Log what would be sent instead of sending it. */
   debug?: boolean;
+}
+
+/**
+ * The company's public profiles, shown in the site footer and listed as
+ * `sameAs` in its Organization schema. Every entry is a full https URL except
+ * `x`, which is stored as `@handle` so it can double as `twitter:site`.
+ * Blank means "not on that network".
+ */
+export interface SocialLinks {
+  facebook?: string;
+  instagram?: string;
+  linkedin?: string;
+  x?: string;
+  github?: string;
+  youtube?: string;
+  tiktok?: string;
 }
 
 export interface SiteSettings extends Record<string, unknown> {
@@ -98,6 +120,7 @@ export interface SiteSettings extends Record<string, unknown> {
   seo: { defaultTitle: string; defaultDescription: string };
   pixels: TrackingSettings;
   contact: { email?: string; phone?: string; whatsapp?: string };
+  social: SocialLinks;
   updatedAt: string;
 }
 
@@ -109,12 +132,19 @@ export interface MediaItem extends Record<string, unknown> {
   createdAt: string;
 }
 
-export type AnalyticsEventType = "pageview" | "click";
+/**
+ * `conversion` is a goal the visitor completed (a lead accepted by the server,
+ * a booking, a chat started…), sent once on success rather than on the click
+ * that attempted it. It is kept apart from `click` so the dashboard's click
+ * totals and "most-clicked control" ranking are not inflated by it.
+ */
+export type AnalyticsEventType = "pageview" | "click" | "conversion";
 export type DeviceKind = "mobile" | "tablet" | "desktop";
 
 export interface AnalyticsEvent extends Record<string, unknown> {
   type: AnalyticsEventType;
   path: string;
+  /** Clicks: which control was used. Conversions: the kind (lead, booking, chat_start…). */
   label?: string;
   visitorId?: string;
   sessionId?: string;
@@ -127,14 +157,29 @@ export interface AnalyticsEvent extends Record<string, unknown> {
 }
 
 /**
+ * One SEO text in every site language. Unlike `LocalizedText` all four keys are
+ * always present once read back from the API: the repository fills the gaps,
+ * and turns the plain string that rows saved before per-language overrides
+ * hold into `{ en: <that string>, ar: "", de: "", fr: "" }`.
+ */
+export interface SeoLocalizedText {
+  en: string;
+  ar: string;
+  de: string;
+  fr: string;
+}
+
+/**
  * A per-page SEO override. Every field is optional in effect: the site treats a
  * blank string (or a null `noindex`) as "use the built-in default", so partial
- * documents are the normal case rather than an error.
+ * documents are the normal case rather than an error. A blank language inside
+ * `title`/`description` falls back to the English override, then to the
+ * built-in text.
  */
 export interface SeoPage extends Record<string, unknown> {
   key: string;
-  title?: string;
-  description?: string;
+  title?: SeoLocalizedText;
+  description?: SeoLocalizedText;
   keywords?: string;
   image?: string;
   noindex?: boolean | null;
@@ -269,7 +314,7 @@ export interface ConsentRecord extends Record<string, unknown> {
 export const CONTACT_STAGES = ["new", "qualified", "proposal", "won", "lost"] as const;
 export type ContactStage = (typeof CONTACT_STAGES)[number];
 
-export type ContactSource = "chat" | "contact" | "campaign" | "booking" | "quote" | "manual";
+export type ContactSource = "chat" | "contact" | "campaign" | "booking" | "quote" | "manual" | "newsletter";
 
 export interface Contact extends Record<string, unknown> {
   name?: string;
@@ -306,7 +351,8 @@ export type ActivityType =
   | "quote_declined"
   | "note"
   | "stage_change"
-  | "contact_created";
+  | "contact_created"
+  | "newsletter";
 
 export interface Activity extends Record<string, unknown> {
   contactId: string;
@@ -327,6 +373,7 @@ export type NotificationType =
   | "quote_declined"
   | "followup_due"
   | "call_soon"
+  | "newsletter"
   | "test";
 
 export interface AdminNotification extends Record<string, unknown> {
@@ -426,6 +473,32 @@ export interface Quote extends Record<string, unknown> {
   acceptedBy?: string;
   declinedAt?: string;
   declineReason?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+/* ========================================================= Newsletter ===== */
+
+/** Which form the subscription came from. */
+export type SubscriberSource = "footer" | "article" | "popup";
+
+/**
+ * A newsletter subscriber. Stored only — nothing is sent yet (no email
+ * provider). The email is the identity: lower-cased, one row per address.
+ */
+export interface Subscriber extends Record<string, unknown> {
+  /** lower-case */
+  email: string;
+  /** The site language at the time of subscribing (en | ar | de | fr). */
+  lang?: string;
+  source: SubscriberSource;
+  visitorId?: string;
+  /** The CRM contact this address was filed under, when that succeeded. */
+  contactId?: string;
+  /** When consent was (last) given — re-subscribing refreshes it. */
+  consentAt: string;
+  /** Set when the person asks to be removed; cleared if they subscribe again. */
+  unsubscribedAt?: string;
   createdAt: string;
   updatedAt: string;
 }

@@ -49,6 +49,9 @@ const settingsSchema = new Schema<SiteSettings>({
       metaPixelId: String,
       tiktokPixelId: String,
       snapchatPixelId: String,
+      linkedinPartnerId: String,
+      linkedinConversionId: String,
+      clarityId: String,
       events: { type: Schema.Types.Mixed, default: {} },
       respectDnt: { type: Boolean, default: true },
       consentMode: { type: Boolean, default: false },
@@ -58,6 +61,20 @@ const settingsSchema = new Schema<SiteSettings>({
   },
   contact: {
     type: sub({ email: String, phone: String, whatsapp: String }),
+    default: () => ({}),
+  },
+  // Public profiles: full URLs, except `x`, which settings.service stores as
+  // "@handle" (it doubles as the `twitter:site` card tag).
+  social: {
+    type: sub({
+      facebook: String,
+      instagram: String,
+      linkedin: String,
+      x: String,
+      github: String,
+      youtube: String,
+      tiktok: String,
+    }),
     default: () => ({}),
   },
   updatedAt: { type: String, required: true },

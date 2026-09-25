@@ -2,9 +2,9 @@ import { Schema, model } from "mongoose";
 import type { AnalyticsEvent } from "../shared/types.js";
 
 const analyticsSchema = new Schema<AnalyticsEvent>({
-  type: { type: String, enum: ["pageview", "click"], required: true, index: true },
+  type: { type: String, enum: ["pageview", "click", "conversion"], required: true, index: true },
   path: { type: String, required: true, index: true },
-  /** For clicks: which control was used, e.g. "hero.start-project". */
+  /** Clicks: which control was used, e.g. "hero.start-project". Conversions: the kind, e.g. "lead". */
   label: String,
   /** Anonymous per-browser id, so repeat visits can be told apart without cookies. */
   visitorId: { type: String, index: true },

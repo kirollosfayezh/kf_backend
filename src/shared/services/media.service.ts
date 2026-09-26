@@ -3,6 +3,7 @@ import { mkdir, writeFile, unlink } from "node:fs/promises";
 import path from "node:path";
 import { lookup } from "node:dns/promises";
 import type { Readable } from "node:stream";
+import sharp from "sharp";
 import { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 import { env, r2Enabled } from "../../config/env.js";
 import { repos } from "../../repositories/index.js";
@@ -61,12 +62,41 @@ export async function getMediaObject(key: string): Promise<{ body: Readable; con
   }
 }
 
+/**
+ * Uploaded photos are re-encoded before they are stored: WebP, at most 2000 px
+ * wide (and 4000 tall, for full-page phone captures), EXIF orientation
+ * applied and metadata dropped. A screenshot straight off a laptop was an
+ * 8 MB, 3580 px PNG that every visitor of that project would have downloaded;
+ * the same picture is a few hundred kB this way and looks identical at any
+ * size the site shows it. GIFs (animation), SVG, video and PDF pass through.
+ */
+const OPTIMIZABLE = new Set(["image/jpeg", "image/png", "image/webp", "image/avif"]);
+export async function optimizeImage(buffer: Buffer, contentType: string): Promise<{ buffer: Buffer; contentType: string; ext: string } | null> {
+  if (!OPTIMIZABLE.has(contentType)) return null;
+  try {
+    const out = await sharp(buffer, { failOn: "none" })
+      .rotate()
+      .resize({ width: 2000, height: 4000, fit: "inside", withoutEnlargement: true })
+      .webp({ quality: 80, effort: 5 })
+      .toBuffer();
+    // Keep the original when re-encoding would not help (an already tiny file).
+    if (out.length >= buffer.length && contentType === "image/webp") return null;
+    return { buffer: out, contentType: "image/webp", ext: "webp" };
+  } catch {
+    return null; // not decodable as an image: store it as it came
+  }
+}
+
 export function listMedia() {
   return repos.media.list({ orderBy: { field: "createdAt", direction: "desc" } });
 }
 
 export async function uploadMedia(file: Express.Multer.File, publicBaseUrl: string) {
-  const ext = file.originalname.includes(".") ? file.originalname.split(".").pop() : "bin";
+  const optimized = await optimizeImage(file.buffer, file.mimetype);
+  if (optimized) {
+    file = { ...file, buffer: optimized.buffer, mimetype: optimized.contentType, size: optimized.buffer.length };
+  }
+  const ext = optimized?.ext ?? (file.originalname.includes(".") ? file.originalname.split(".").pop() : "bin");
   const key = `media/${randomUUID()}.${ext}`;
 
   let url: string;
@@ -77,6 +107,7 @@ export async function uploadMedia(file: Express.Multer.File, publicBaseUrl: stri
         Key: key,
         Body: file.buffer,
         ContentType: file.mimetype,
+        CacheControl: "public, max-age=31536000, immutable",
       })
     );
     url = (await publicUrlWorks())

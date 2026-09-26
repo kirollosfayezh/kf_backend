@@ -21,6 +21,7 @@
     "import-portfolio": "npm run build && node dist/scripts/import-portfolio.js",
     "r2-upload": "npm run build && node dist/scripts/r2-upload.js",
     "fix-media-urls": "npm run build && node dist/scripts/fix-media-urls.js",
+    "optimize-media": "npm run build && node dist/scripts/optimize-media.js",
     "smoke-test": "tsx src/scripts/smoke-test.ts",
     "test": "tsx --test \"src/**/*.test.ts\""
   },
@@ -43,6 +44,7 @@
     "libphonenumber-js": "^1.13.14",
     "mongoose": "^8.9.0",
     "multer": "^2.1.1",
+    "sharp": "^0.35.4",
     "socket.io": "^4.8.1",
     "typescript": "^5.7.2"
   },

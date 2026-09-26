@@ -8,7 +8,11 @@ import { MongoMemoryServer } from "mongodb-memory-server";
 import { createServer } from "node:http";
 
 async function main() {
-  const mongo = await MongoMemoryServer.create();
+  // DEV_MEMORY_MONGO_PORT pins the port, so a script run from another shell
+  // (an importer, a migration) can be tried against this throwaway database
+  // with MONGODB_URI=mongodb://127.0.0.1:<port>/kf_dev_memory instead of prod.
+  const port = Number(process.env.DEV_MEMORY_MONGO_PORT) || undefined;
+  const mongo = await MongoMemoryServer.create(port ? { instance: { port } } : undefined);
   process.env.MONGODB_URI = mongo.getUri("kf_dev_memory");
 
   const { env } = await import("../config/env.js");

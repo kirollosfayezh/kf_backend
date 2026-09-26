@@ -1,0 +1,277 @@
+{
+  "_comment": "Real projects imported from github.com/koko619911/my-portfolio (2026-09-26). English, Arabic and German copy come from the portfolio's own strings; French was written for this import. `tag` and `result` are stored in English and translated by the site's dictionary, so their other languages live in kf_site/src/lib/dict. Re-running the importer rewrites every field below in all four languages.",
+  "projects": [
+    {
+      "slug": "alkhameesi",
+      "order": 1,
+      "year": "2024",
+      "demoUrl": "https://alkhameesi.com/en",
+      "points": ["Next.js", "i18n", "Full-stack"],
+      "media": ["alkhameesi.webp"],
+      "alt": "Alkhameesi export platform, hero screen on a phone",
+      "title": { "en": "Alkhameesi", "ar": "الخميسي", "de": "Alkhameesi", "fr": "Alkhameesi" },
+      "tag": { "en": "Vegetable export", "ar": "تصدير خضروات", "de": "Gemüse-Export", "fr": "Export de légumes" },
+      "result": "Live in production",
+      "summary": {
+        "en": "B2B export platform showcasing Egyptian fresh produce to international markets with a multilingual catalog and inquiry flow.",
+        "ar": "منصة B2B لتصدير المنتجات الزراعية المصرية بكتالوج متعدد اللغات وتدفق استفسارات.",
+        "de": "B2B-Exportplattform für ägyptisches Frischobst & -gemüse mit mehrsprachigem Katalog und Anfrage-Flow.",
+        "fr": "Plateforme B2B d'export présentant les produits frais égyptiens aux marchés internationaux, avec catalogue multilingue et parcours de demande de devis."
+      },
+      "body": {
+        "en": "A B2B export platform for an Egyptian fresh-produce exporter, built to present the catalogue to international buyers in several languages and turn interest into inquiries.\n\nThe site carries a multilingual product catalogue, an inquiry flow that leads from any product to a quote request, and the content pages an exporter needs to earn trust abroad. Delivered as a full-stack Next.js build and live in production.",
+        "ar": "منصة تصدير B2B لمُصدِّر مصري للمنتجات الزراعية الطازجة، بُنيت لعرض الكتالوج للمشترين الدوليين بعدة لغات وتحويل الاهتمام إلى استفسارات.\n\nيضم الموقع كتالوج منتجات متعدد اللغات، وتدفق استفسارات يقود من أي منتج إلى طلب عرض سعر، وصفحات المحتوى التي يحتاجها المُصدِّر لكسب الثقة في الخارج. نُفِّذ كمشروع Next.js متكامل ويعمل الآن.",
+        "de": "Eine B2B-Exportplattform für einen ägyptischen Exporteur von Frischprodukten, gebaut, um den Katalog internationalen Käufern mehrsprachig zu präsentieren und Interesse in Anfragen zu verwandeln.\n\nDie Seite bietet einen mehrsprachigen Produktkatalog, einen Anfrage-Flow von jedem Produkt zur Angebotsanfrage und die Inhaltsseiten, die ein Exporteur im Ausland für Vertrauen braucht. Als Full-Stack-Next.js-Projekt umgesetzt und live.",
+        "fr": "Une plateforme d'export B2B pour un exportateur égyptien de produits frais, conçue pour présenter le catalogue aux acheteurs internationaux en plusieurs langues et transformer l'intérêt en demandes.\n\nLe site comprend un catalogue produits multilingue, un parcours de demande qui mène de chaque produit à une demande de devis, et les pages de contenu dont un exportateur a besoin pour inspirer confiance à l'étranger. Réalisé en full-stack avec Next.js et en production."
+      }
+    },
+    {
+      "slug": "solana-red-sea",
+      "order": 2,
+      "year": "2024",
+      "demoUrl": "https://solana-redsea.com/",
+      "points": ["Next.js", "Real Estate", "Full-stack"],
+      "media": ["solana-red-sea.webp"],
+      "alt": "Solana Red Sea real-estate site, hero screen on a phone",
+      "title": { "en": "Solana Red Sea", "ar": "سولانا البحر الأحمر", "de": "Solana Red Sea", "fr": "Solana Red Sea" },
+      "tag": { "en": "Luxury real estate", "ar": "عقارات فاخرة", "de": "Luxus-Immobilien", "fr": "Immobilier de luxe" },
+      "result": "Live in production",
+      "summary": {
+        "en": "Luxury Red Sea real-estate platform with property listings, gallery-rich detail pages, and lead capture.",
+        "ar": "منصة عقارية فاخرة في البحر الأحمر مع قوائم خصائص وصفحات تفاصيل غنية بالصور والتقاط العملاء.",
+        "de": "Luxus-Immobilienplattform am Roten Meer mit Listings, bildreichen Detailseiten und Lead-Capture.",
+        "fr": "Plateforme immobilière de luxe sur la mer Rouge avec annonces, pages détaillées riches en galeries et capture de prospects."
+      },
+      "body": {
+        "en": "A real-estate platform for luxury homes and investment properties along Egypt's Red Sea coast.\n\nBuyers browse property listings, open gallery-rich detail pages and book a viewing or ask for a call; every enquiry lands with the sales team as a lead. Delivered as a full-stack Next.js build and live in production.",
+        "ar": "منصة عقارية للمنازل الفاخرة والفرص الاستثمارية على ساحل البحر الأحمر في مصر.\n\nيتصفح المشترون قوائم العقارات، ويفتحون صفحات تفاصيل غنية بالصور، ويحجزون معاينة أو يطلبون مكالمة؛ ويصل كل استفسار إلى فريق المبيعات كعميل محتمل. نُفِّذ كمشروع Next.js متكامل ويعمل الآن.",
+        "de": "Eine Immobilienplattform für Luxusobjekte und Kapitalanlagen an Ägyptens Rotem Meer.\n\nKäufer durchsuchen Listings, öffnen bildreiche Detailseiten und buchen eine Besichtigung oder bitten um einen Rückruf; jede Anfrage erreicht das Vertriebsteam als Lead. Als Full-Stack-Next.js-Projekt umgesetzt und live.",
+        "fr": "Une plateforme immobilière pour les résidences de luxe et les biens d'investissement sur la côte égyptienne de la mer Rouge.\n\nLes acheteurs parcourent les annonces, ouvrent des pages détaillées riches en galeries et réservent une visite ou demandent un appel ; chaque demande arrive à l'équipe commerciale comme prospect. Réalisé en full-stack avec Next.js et en production."
+      }
+    },
+    {
+      "slug": "gentrack",
+      "order": 3,
+      "year": "2025",
+      "demoUrl": "https://generator-system.web.app",
+      "points": ["IoT", "SaaS", "Full-stack"],
+      "media": ["gentrack.webp"],
+      "alt": "GenTrack ERP mobile app showing generators live on a map of Cairo",
+      "title": { "en": "GenTrack", "ar": "GenTrack", "de": "GenTrack", "fr": "GenTrack" },
+      "tag": { "en": "IoT generator SaaS", "ar": "منصة IoT للمولدات", "de": "IoT-Generator-SaaS", "fr": "SaaS IoT pour groupes électrogènes" },
+      "result": "Live in production",
+      "summary": {
+        "en": "Multi-tenant SaaS for generator rental companies in Egypt — the first local solution combining real-time IoT monitoring of 500+ generators, fuel-anomaly detection, remote device management, and a cost-optimized cloud ERP with web dashboard, mobile app, and custom IoT hardware.",
+        "ar": "منصة SaaS متعددة المستأجرين لشركات تأجير المولدات في مصر — أول حل محلي يجمع مراقبة IoT في الوقت الفعلي لأكثر من ٥٠٠ مولد، واكتشاف الشذوذ في الوقود، وإدارة الأجهزة عن بُعد، مع ERP سحابي مُحسَّن التكلفة ولوحة تحكم وتطبيق جوال وعتاد IoT مخصّص.",
+        "de": "Multi-Tenant-SaaS-Plattform für Generator-Vermietungen in Ägypten — die erste lokale Lösung mit Echtzeit-IoT-Überwachung von 500+ Generatoren, Kraftstoff-Anomalie-Erkennung, Remote-Geräteverwaltung und kostenoptimierter Cloud-ERP inkl. Web-Dashboard, Mobile-App und eigener IoT-Hardware.",
+        "fr": "SaaS multi-locataires pour les loueurs de groupes électrogènes en Égypte — la première solution locale réunissant la supervision IoT en temps réel de plus de 500 groupes, la détection d'anomalies de carburant, la gestion à distance des appareils et un ERP cloud optimisé avec tableau de bord web, application mobile et matériel IoT sur mesure."
+      },
+      "body": {
+        "en": "GenTrack is a multi-tenant SaaS platform for generator rental companies in Egypt, the first local solution to combine real-time IoT monitoring of the fleet with the business side of renting it out.\n\nThe platform tracks 500+ generators live on a map, detects fuel anomalies, manages devices remotely and runs a cost-optimised cloud ERP for contracts and operations, through a web dashboard, a mobile app and custom IoT hardware installed on each unit. Live in production.",
+        "ar": "GenTrack منصة SaaS متعددة المستأجرين لشركات تأجير المولدات في مصر، وأول حل محلي يجمع بين مراقبة IoT للأسطول في الوقت الفعلي والجانب التجاري لتأجيره.\n\nتتابع المنصة أكثر من ٥٠٠ مولد على الخريطة لحظيًا، وتكتشف الشذوذ في استهلاك الوقود، وتدير الأجهزة عن بُعد، وتشغّل نظام ERP سحابيًا مُحسَّن التكلفة للعقود والتشغيل، من خلال لوحة تحكم ويب وتطبيق جوال وعتاد IoT مخصص يُركَّب على كل وحدة. تعمل الآن.",
+        "de": "GenTrack ist eine Multi-Tenant-SaaS-Plattform für Generator-Vermieter in Ägypten – die erste lokale Lösung, die Echtzeit-IoT-Überwachung der Flotte mit dem Vermietgeschäft verbindet.\n\nDie Plattform verfolgt 500+ Generatoren live auf der Karte, erkennt Kraftstoff-Anomalien, verwaltet Geräte aus der Ferne und betreibt ein kostenoptimiertes Cloud-ERP für Verträge und Betrieb – über ein Web-Dashboard, eine Mobile-App und eigene IoT-Hardware an jeder Einheit. Live im Einsatz.",
+        "fr": "GenTrack est une plateforme SaaS multi-locataires pour les loueurs de groupes électrogènes en Égypte, la première solution locale à réunir la supervision IoT en temps réel de la flotte et la gestion de la location.\n\nLa plateforme suit plus de 500 groupes en direct sur la carte, détecte les anomalies de carburant, gère les appareils à distance et fait tourner un ERP cloud optimisé pour les contrats et l'exploitation, via un tableau de bord web, une application mobile et un matériel IoT sur mesure installé sur chaque unité. En production."
+      }
+    },
+    {
+      "slug": "eltayib",
+      "order": 4,
+      "year": "2024",
+      "demoUrl": "https://altayibtow.com/",
+      "points": ["Next.js", "Node.js", "Firebase"],
+      "media": ["eltayib.webp"],
+      "alt": "Eltayib towing service website, hero with a tow truck at night",
+      "title": { "en": "Eltayib", "ar": "الطيب", "de": "Eltayib", "fr": "Eltayib" },
+      "tag": { "en": "Car towing & roadside", "ar": "ونش سيارات", "de": "Abschlepp- & Pannenhilfe", "fr": "Dépannage et remorquage" },
+      "result": "Live in production",
+      "summary": {
+        "en": "Car towing and roadside assistance platform with real-time request tracking and service management.",
+        "ar": "منصة خدمة ونش السيارات والمساعدة على الطريق مع تتبع الطلبات في الوقت الفعلي وإدارة الخدمات.",
+        "de": "Abschlepp- und Pannenhilfe-Plattform mit Echtzeit-Auftragsverfolgung und Serviceverwaltung.",
+        "fr": "Plateforme de remorquage et d'assistance routière avec suivi des demandes en temps réel et gestion des services."
+      },
+      "body": {
+        "en": "A towing and roadside-assistance service in Cairo needed to take requests around the clock and get a truck moving fast.\n\nThe platform lets a driver request help in a few taps, tracks the request in real time and gives the operator one place to manage services, coverage and the fleet. Built on Next.js and Node.js with Firebase, and live in production.",
+        "ar": "احتاجت خدمة ونش ومساعدة على الطريق في القاهرة إلى استقبال الطلبات على مدار الساعة وتحريك الونش بسرعة.\n\nتتيح المنصة للسائق طلب المساعدة بضغطات قليلة، وتتابع الطلب في الوقت الفعلي، وتمنح المشغّل مكانًا واحدًا لإدارة الخدمات والتغطية والأسطول. بُنيت بـ Next.js وNode.js مع Firebase، وتعمل الآن.",
+        "de": "Ein Abschlepp- und Pannendienst in Kairo musste rund um die Uhr Aufträge annehmen und schnell einen Wagen losschicken.\n\nDie Plattform lässt Fahrer mit wenigen Taps Hilfe anfordern, verfolgt den Auftrag in Echtzeit und gibt dem Betreiber einen Ort, um Leistungen, Abdeckung und Flotte zu verwalten. Mit Next.js und Node.js auf Firebase gebaut und live.",
+        "fr": "Un service de remorquage et d'assistance routière au Caire devait recevoir des demandes 24 h/24 et faire partir un camion rapidement.\n\nLa plateforme permet à un conducteur de demander de l'aide en quelques gestes, suit la demande en temps réel et donne à l'exploitant un seul endroit pour gérer les services, la couverture et la flotte. Construite avec Next.js et Node.js sur Firebase, et en production."
+      }
+    },
+    {
+      "slug": "horus",
+      "order": 5,
+      "year": "2024",
+      "demoUrl": "https://horus-mentalh.com/",
+      "points": ["Next.js", "React", "Healthcare"],
+      "media": ["horus.webp"],
+      "alt": "Horus mental-health clinic website, hero with the clinic building",
+      "title": { "en": "Horus", "ar": "حورس", "de": "Horus", "fr": "Horus" },
+      "tag": { "en": "Mental health platform", "ar": "منصة صحة نفسية", "de": "Mental-Health-Plattform", "fr": "Plateforme de santé mentale" },
+      "result": "Live in production",
+      "summary": {
+        "en": "Mental-health platform connecting patients with licensed therapists for online sessions, booking, and follow-up support.",
+        "ar": "منصة للصحة النفسية تربط المرضى بالمعالجين المرخصين لجلسات إلكترونية وحجز مواعيد ودعم نفسي متواصل.",
+        "de": "Plattform für psychische Gesundheit, die Patienten mit lizenzierten Therapeut:innen für Online-Sitzungen und Begleitung verbindet.",
+        "fr": "Plateforme de santé mentale reliant les patients à des thérapeutes agréés pour des séances en ligne, la prise de rendez-vous et le suivi."
+      },
+      "body": {
+        "en": "A mental-health platform for a clinic with several branches, connecting patients with licensed therapists.\n\nPatients find a doctor, book an online or in-person session and stay in touch for follow-up; the clinic presents its branches, doctors and services from one site. Built with Next.js and React, and live in production.",
+        "ar": "منصة للصحة النفسية لعيادة متعددة الفروع، تربط المرضى بمعالجين مرخصين.\n\nيجد المريض الطبيب المناسب، ويحجز جلسة إلكترونية أو حضورية، ويبقى على تواصل للمتابعة؛ وتعرض العيادة فروعها وأطباءها وخدماتها من موقع واحد. بُنيت بـ Next.js وReact، وتعمل الآن.",
+        "de": "Eine Mental-Health-Plattform für eine Klinik mit mehreren Standorten, die Patienten mit lizenzierten Therapeut:innen verbindet.\n\nPatienten finden eine Ärztin oder einen Arzt, buchen eine Online- oder Vor-Ort-Sitzung und bleiben zur Nachsorge in Kontakt; die Klinik präsentiert Standorte, Ärzte und Leistungen auf einer Seite. Mit Next.js und React gebaut und live.",
+        "fr": "Une plateforme de santé mentale pour une clinique à plusieurs succursales, reliant les patients à des thérapeutes agréés.\n\nLes patients trouvent un médecin, réservent une séance en ligne ou sur place et restent en contact pour le suivi ; la clinique présente ses succursales, ses médecins et ses services sur un seul site. Construite avec Next.js et React, et en production."
+      }
+    },
+    {
+      "slug": "church-scout",
+      "order": 6,
+      "year": "2023",
+      "demoUrl": "https://church-d97a7.web.app/",
+      "points": ["Node.js", "Firebase", "Cloud Functions"],
+      "media": ["https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1200&q=80"],
+      "alt": "Church interior",
+      "title": { "en": "Church Scout", "ar": "كشافة الكنيسة", "de": "Church Scout", "fr": "Church Scout" },
+      "tag": { "en": "Management system", "ar": "نظام إدارة", "de": "Management-System", "fr": "Système de gestion" },
+      "result": "Internal system",
+      "summary": {
+        "en": "Full web system for church scouts: exams, attendance, spiritual notes, and email reminders.",
+        "ar": "نظام ويب كامل لكشافة الكنيسة: امتحانات، حضور، ملاحظات روحية، تذكيرات بريد إلكتروني.",
+        "de": "Vollständiges Websystem für Kirchpfadfinder: Prüfungen, Anwesenheit, geistliche Notizen, E-Mail-Erinnerungen.",
+        "fr": "Système web complet pour les scouts d'une église : examens, présences, notes spirituelles et rappels par e-mail."
+      },
+      "body": {
+        "en": "A management system for a church scouting group that had been running on paper.\n\nLeaders record attendance, run exams and keep spiritual notes per member, and the system sends email reminders on its own. Built on Node.js and Firebase with Cloud Functions; used internally by the group.",
+        "ar": "نظام إدارة لمجموعة كشافة كنسية كانت تُدار على الورق.\n\nيسجّل القادة الحضور، ويجرون الامتحانات، ويحتفظون بملاحظات روحية لكل عضو، ويرسل النظام تذكيرات بالبريد الإلكتروني تلقائيًا. بُني بـ Node.js وFirebase مع Cloud Functions؛ ويُستخدم داخليًا في المجموعة.",
+        "de": "Ein Verwaltungssystem für eine kirchliche Pfadfindergruppe, die bisher auf Papier arbeitete.\n\nLeiter erfassen Anwesenheit, führen Prüfungen durch und halten geistliche Notizen je Mitglied fest; das System verschickt E-Mail-Erinnerungen von selbst. Mit Node.js und Firebase samt Cloud Functions gebaut; intern in der Gruppe im Einsatz.",
+        "fr": "Un système de gestion pour un groupe de scouts paroissial qui fonctionnait sur papier.\n\nLes responsables enregistrent les présences, organisent les examens et tiennent des notes spirituelles par membre, et le système envoie des rappels par e-mail tout seul. Construit sur Node.js et Firebase avec Cloud Functions ; utilisé en interne par le groupe."
+      }
+    },
+    {
+      "slug": "ai-try-on",
+      "order": 7,
+      "year": "2023",
+      "demoUrl": "https://virtualfittinroom.web.app/",
+      "points": ["React", "AI/ML", "Next.js"],
+      "media": ["https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80"],
+      "alt": "Clothes on a rail in a shop",
+      "title": { "en": "AI Try-On", "ar": "تجربة AI", "de": "AI Try-On", "fr": "Essayage IA" },
+      "tag": { "en": "Virtual fitting", "ar": "غرفة قياس افتراضية", "de": "Virtuelle Anprobe", "fr": "Cabine d'essayage virtuelle" },
+      "result": "Private build",
+      "summary": {
+        "en": "AI-based fitting solution combining user images with clothing using advanced algorithms.",
+        "ar": "حل تجربة ملابس بالذكاء الاصطناعي يجمع صور المستخدم مع الملابس باستخدام خوارزميات متقدمة.",
+        "de": "KI-gestützte Anprobe-Lösung, die Nutzer:innenbilder mit Kleidung durch fortschrittliche Algorithmen kombiniert.",
+        "fr": "Solution d'essayage par IA qui combine les photos de l'utilisateur avec des vêtements grâce à des algorithmes avancés."
+      },
+      "body": {
+        "en": "A virtual fitting room: the shopper uploads a photo, picks a garment and sees it on themselves.\n\nThe AI pipeline combines the user's image with the clothing item, and a React and Next.js front end wraps it in a simple try-on flow. A private build.",
+        "ar": "غرفة قياس افتراضية: يرفع المتسوق صورته، ويختار قطعة الملابس، ويراها عليه.\n\nيجمع خط معالجة الذكاء الاصطناعي بين صورة المستخدم وقطعة الملابس، وتغلّفه واجهة React وNext.js في تدفق تجربة بسيط. مشروع خاص.",
+        "de": "Eine virtuelle Umkleide: Kund:innen laden ein Foto hoch, wählen ein Kleidungsstück und sehen es an sich selbst.\n\nDie KI-Pipeline kombiniert das Nutzerbild mit dem Kleidungsstück, ein Frontend in React und Next.js verpackt das in einen einfachen Anprobe-Flow. Ein privates Projekt.",
+        "fr": "Une cabine d'essayage virtuelle : l'acheteur téléverse une photo, choisit un vêtement et le voit sur lui.\n\nLe pipeline IA combine l'image de l'utilisateur avec le vêtement, et une interface React et Next.js l'habille d'un parcours d'essayage simple. Un projet privé."
+      }
+    },
+    {
+      "slug": "smart-balance",
+      "order": 8,
+      "year": "2023",
+      "demoUrl": null,
+      "points": ["Raspberry Pi", "IoT", "Python"],
+      "media": ["https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"],
+      "alt": "Close-up of a circuit board",
+      "title": { "en": "Smart Balance", "ar": "ميزان ذكي", "de": "Smart Balance", "fr": "Smart Balance" },
+      "tag": { "en": "IoT scale", "ar": "ميزان IoT", "de": "IoT-Waage", "fr": "Balance IoT" },
+      "result": "Hardware prototype",
+      "summary": {
+        "en": "Raspberry Pi-driven digital scale streaming live weight to a mobile app in real time.",
+        "ar": "ميزان رقمي بـ Raspberry Pi يبثّ الوزن مباشرة إلى تطبيق الموبايل في الوقت الفعلي.",
+        "de": "Raspberry-Pi-getriebene Digitalwaage, die Live-Gewicht in Echtzeit an eine Mobile-App streamt.",
+        "fr": "Balance numérique pilotée par Raspberry Pi qui transmet le poids en direct à une application mobile."
+      },
+      "body": {
+        "en": "A connected digital scale built around a Raspberry Pi.\n\nThe load cell is read in Python on the Pi and the weight is streamed live to a mobile app, so a reading is available anywhere the moment it changes. A hardware prototype.",
+        "ar": "ميزان رقمي متصل مبني حول Raspberry Pi.\n\nتُقرأ خلية الوزن بلغة Python على الجهاز ويُبث الوزن مباشرة إلى تطبيق الموبايل، فتكون القراءة متاحة من أي مكان لحظة تغيّرها. نموذج عتادي.",
+        "de": "Eine vernetzte Digitalwaage rund um einen Raspberry Pi.\n\nDie Wägezelle wird in Python auf dem Pi ausgelesen und das Gewicht live an eine Mobile-App gestreamt, sodass ein Messwert überall verfügbar ist, sobald er sich ändert. Ein Hardware-Prototyp.",
+        "fr": "Une balance numérique connectée construite autour d'un Raspberry Pi.\n\nLa cellule de charge est lue en Python sur le Pi et le poids est transmis en direct à une application mobile, si bien qu'une mesure est disponible partout dès qu'elle change. Un prototype matériel."
+      }
+    },
+    {
+      "slug": "random-audit",
+      "order": 9,
+      "year": "2024",
+      "demoUrl": null,
+      "points": ["Firebase", "Cloud Functions", "Automation"],
+      "media": ["https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"],
+      "alt": "Analytics dashboard on a laptop screen",
+      "title": { "en": "Random Audit", "ar": "تدقيق عشوائي", "de": "Random Audit", "fr": "Audit aléatoire" },
+      "tag": { "en": "Automation pipeline", "ar": "أتمتة", "de": "Automatisierung", "fr": "Pipeline d'automatisation" },
+      "result": "Internal system",
+      "summary": {
+        "en": "Cloud Functions automation for random audits and secure store transfers.",
+        "ar": "أتمتة Cloud Functions للتدقيق العشوائي ونقل المتاجر الآمن.",
+        "de": "Cloud-Functions-Automatisierung für Zufallsprüfungen und sichere Filialübertragungen.",
+        "fr": "Automatisation par Cloud Functions pour des audits aléatoires et des transferts sécurisés entre magasins."
+      },
+      "body": {
+        "en": "Back-office automation for a retail operation with several stores.\n\nCloud Functions pick stores for random audits, run the audit workflow and handle stock transfers between stores securely, without anyone triggering the steps by hand. Built on Firebase; used internally.",
+        "ar": "أتمتة للمكتب الخلفي لعملية تجزئة متعددة المتاجر.\n\nتختار Cloud Functions المتاجر للتدقيق العشوائي، وتشغّل سير عمل التدقيق، وتتولى نقل المخزون بين المتاجر بأمان، دون أن يطلق أحد الخطوات يدويًا. بُنيت على Firebase؛ وتُستخدم داخليًا.",
+        "de": "Backoffice-Automatisierung für einen Einzelhändler mit mehreren Filialen.\n\nCloud Functions wählen Filialen für Zufallsprüfungen aus, führen den Prüfablauf aus und wickeln Warentransfers zwischen Filialen sicher ab, ohne dass jemand die Schritte von Hand anstößt. Auf Firebase gebaut; intern im Einsatz.",
+        "fr": "Automatisation back-office pour un commerce de détail à plusieurs magasins.\n\nDes Cloud Functions choisissent les magasins à auditer au hasard, exécutent le déroulé de l'audit et gèrent les transferts de stock entre magasins de façon sécurisée, sans qu'on déclenche les étapes à la main. Construit sur Firebase ; utilisé en interne."
+      }
+    },
+    {
+      "slug": "bone-fracture-ai",
+      "order": 10,
+      "year": "2022",
+      "demoUrl": null,
+      "points": ["AI/ML", "Python", "React"],
+      "media": ["https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=1200&q=80"],
+      "alt": "X-ray images on a light board",
+      "title": { "en": "Bone Fracture AI", "ar": "كسور العظام AI", "de": "Bone Fracture AI", "fr": "IA fractures osseuses" },
+      "tag": { "en": "Medical imaging", "ar": "تصوير طبي", "de": "Medizinische Bildgebung", "fr": "Imagerie médicale" },
+      "result": "Research project",
+      "summary": {
+        "en": "Graduation project using AI to detect bone fractures from X-ray images.",
+        "ar": "مشروع التخرج باستخدام الذكاء الاصطناعي لاكتشاف كسور العظام من صور الأشعة السينية.",
+        "de": "Abschlussprojekt: KI erkennt Knochenbrüche in Röntgenbildern.",
+        "fr": "Projet de fin d'études utilisant l'IA pour détecter les fractures osseuses sur des radiographies."
+      },
+      "body": {
+        "en": "A computer-vision model that flags bone fractures in X-ray images, built as a graduation project.\n\nThe model was trained in Python and served behind a React interface where a radiograph is uploaded and the suspected fracture is highlighted. A research project.",
+        "ar": "نموذج رؤية حاسوبية يرصد كسور العظام في صور الأشعة السينية، بُني كمشروع تخرج.\n\nدُرِّب النموذج بلغة Python وقُدِّم خلف واجهة React تُرفع فيها صورة الأشعة ويُبرَز الكسر المشتبه به. مشروع بحثي.",
+        "de": "Ein Computer-Vision-Modell, das Knochenbrüche in Röntgenbildern markiert, entstanden als Abschlussprojekt.\n\nDas Modell wurde in Python trainiert und hinter einer React-Oberfläche bereitgestellt, in der ein Röntgenbild hochgeladen und der vermutete Bruch hervorgehoben wird. Ein Forschungsprojekt.",
+        "fr": "Un modèle de vision par ordinateur qui repère les fractures osseuses sur des radiographies, réalisé comme projet de fin d'études.\n\nLe modèle a été entraîné en Python et exposé derrière une interface React où l'on téléverse une radiographie et où la fracture suspectée est mise en évidence. Un projet de recherche."
+      }
+    },
+    {
+      "slug": "egypt-eta",
+      "order": 11,
+      "year": "2024",
+      "demoUrl": null,
+      "points": ["Node.js", "Cloud Functions", "API"],
+      "media": ["https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80"],
+      "alt": "Invoices and a calculator on a desk",
+      "title": { "en": "Egypt ETA", "ar": "ETA المصرية", "de": "Egypt ETA", "fr": "ETA Égypte" },
+      "tag": { "en": "e-Receipt integration", "ar": "تكامل الإيصال الإلكتروني", "de": "E-Receipt-Integration", "fr": "Intégration e-Receipt" },
+      "result": "Live in production",
+      "summary": {
+        "en": "Complete integration with the Egyptian ETA e-Receipt API via Node.js Cloud Functions for compliant invoice submission.",
+        "ar": "تكامل كامل مع واجهة ETA للإيصالات الإلكترونية باستخدام Node.js Cloud Functions.",
+        "de": "Vollständige Integration der ägyptischen ETA-E-Receipt-API über Node.js Cloud Functions.",
+        "fr": "Intégration complète de l'API e-Receipt de l'ETA égyptienne via des Cloud Functions Node.js pour une soumission conforme des factures."
+      },
+      "body": {
+        "en": "An integration with the Egyptian Tax Authority's e-Receipt system, so a business can submit receipts electronically and stay compliant.\n\nNode.js Cloud Functions sign and submit each receipt to the ETA API, handle its responses and keep the submission status with the sale. Live in production.",
+        "ar": "تكامل مع منظومة الإيصال الإلكتروني لمصلحة الضرائب المصرية، ليتمكن النشاط التجاري من إرسال الإيصالات إلكترونيًا والبقاء ملتزمًا.\n\nتوقّع Cloud Functions بـ Node.js كل إيصال وترسله إلى واجهة ETA، وتعالج ردودها، وتحفظ حالة الإرسال مع عملية البيع. يعمل الآن.",
+        "de": "Eine Integration mit dem E-Receipt-System der ägyptischen Steuerbehörde, damit ein Unternehmen Belege elektronisch einreicht und konform bleibt.\n\nNode.js Cloud Functions signieren jeden Beleg, reichen ihn bei der ETA-API ein, verarbeiten die Antworten und halten den Einreichungsstatus beim Verkauf fest. Live im Einsatz.",
+        "fr": "Une intégration avec le système e-Receipt de l'administration fiscale égyptienne, pour qu'une entreprise soumette ses reçus électroniquement et reste conforme.\n\nDes Cloud Functions Node.js signent et soumettent chaque reçu à l'API de l'ETA, traitent ses réponses et conservent le statut de soumission avec la vente. En production."
+      }
+    }
+  ],
+  "dictionary": {
+    "_comment": "Translations for the English `tag` and `result` strings above; applied to kf_site/src/lib/dict/{ar,de,fr}.json by scripts/apply-portfolio-dict.mjs",
+    "Live in production": { "ar": "يعمل الآن", "de": "Live im Einsatz", "fr": "En production" },
+    "Internal system": { "ar": "نظام داخلي", "de": "Internes System", "fr": "Système interne" },
+    "Private build": { "ar": "مشروع خاص", "de": "Privates Projekt", "fr": "Projet privé" },
+    "Hardware prototype": { "ar": "نموذج عتادي", "de": "Hardware-Prototyp", "fr": "Prototype matériel" },
+    "Research project": { "ar": "مشروع بحثي", "de": "Forschungsprojekt", "fr": "Projet de recherche" }
+  }
+}

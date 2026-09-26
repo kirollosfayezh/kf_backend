@@ -18,6 +18,8 @@
     "seed-content": "npm run build && node dist/scripts/seed-content.js",
     "backfill-contacts": "npm run build && node dist/scripts/backfill-contacts.js",
     "update-privacy-policy": "npm run build && node dist/scripts/update-privacy-policy.js",
+    "import-portfolio": "npm run build && node dist/scripts/import-portfolio.js",
+    "r2-upload": "npm run build && node dist/scripts/r2-upload.js",
     "smoke-test": "tsx src/scripts/smoke-test.ts",
     "test": "tsx --test \"src/**/*.test.ts\""
   },

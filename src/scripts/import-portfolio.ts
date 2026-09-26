@@ -73,7 +73,13 @@ async function main() {
   let updated = 0;
   for (const e of entries) {
     const match = bySlug.get(e.slug);
-    const media = e.media.map((m) => (/^https?:\/\//.test(m) ? m : `${mediaBase}/${m}`));
+    const fromData = e.media.map((m) => (/^https?:\/\//.test(m) ? m : `${mediaBase}/${m}`));
+    // Photos an editor added in the dashboard stay, after the data file's own.
+    // Earlier imports' files (anything under the media base) are replaced.
+    const added = (match?.media ?? []).filter(
+      (m) => !m.startsWith(`${mediaBase}/`) && !fromData.includes(m) && !e.media.some((d) => /^https?:/.test(d) && d === m),
+    );
+    const media = [...fromData, ...added];
     const now = new Date().toISOString();
     // Existing meta first, so a key set in the dashboard survives — including
     // the "Illustrative sample" switch, which only a person can turn on for an

@@ -1,5 +1,5 @@
 {
-  "_comment": "Real projects imported from github.com/koko619911/my-portfolio (2026-09-26). English, Arabic and German copy come from the portfolio's own strings; French was written for this import. `tag` and `result` are stored in English and translated by the site's dictionary, so their other languages live in kf_site/src/lib/dict. Re-running the importer rewrites every field below in all four languages. Media: the first entry is the main image (cards, share image); every entry rotates in the site's gallery. The six projects without real screenshots use the portfolio's own illustration first and its stock photo second.",
+  "_comment": "Real projects imported from github.com/koko619911/my-portfolio (2026-09-26). English, Arabic and German copy come from the portfolio's own strings; French was written for this import. `tag` and `result` are stored in English and translated by the site's dictionary, so their other languages live in kf_site/src/lib/dict. Re-running the importer rewrites every field below in all four languages. Media: the first entry is the main image (cards, share image); every entry rotates in the site's gallery. The six projects without real screenshots use the portfolio's own illustration first and its stock photo second. A `#desktop` or `#mobile` suffix marks a screenshot: the site draws it in a browser window or a phone.",
   "projects": [
     {
       "slug": "alkhameesi",
@@ -12,7 +12,7 @@
         "Full-stack"
       ],
       "media": [
-        "alkhameesi.webp"
+        "alkhameesi-mobile.webp#mobile"
       ],
       "alt": "Alkhameesi export platform, hero screen on a phone",
       "title": {
@@ -52,7 +52,7 @@
         "Full-stack"
       ],
       "media": [
-        "solana-red-sea.webp"
+        "solana-red-sea-mobile.webp#mobile"
       ],
       "alt": "Solana Red Sea real-estate site, hero screen on a phone",
       "title": {
@@ -92,7 +92,7 @@
         "Full-stack"
       ],
       "media": [
-        "gentrack.webp"
+        "gentrack-mobile.webp#mobile"
       ],
       "alt": "GenTrack ERP mobile app showing generators live on a map of Cairo",
       "title": {
@@ -132,7 +132,7 @@
         "Firebase"
       ],
       "media": [
-        "eltayib.webp"
+        "eltayib-desktop.webp#desktop"
       ],
       "alt": "Eltayib towing service website, hero with a tow truck at night",
       "title": {
@@ -172,7 +172,7 @@
         "Healthcare"
       ],
       "media": [
-        "horus.webp"
+        "horus-desktop.webp#desktop"
       ],
       "alt": "Horus mental-health clinic website, hero with the clinic building",
       "title": {

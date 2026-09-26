@@ -75,10 +75,10 @@ async function main() {
     const match = bySlug.get(e.slug);
     const media = e.media.map((m) => (/^https?:\/\//.test(m) ? m : `${mediaBase}/${m}`));
     const now = new Date().toISOString();
-    // Existing meta first, so a key set in the dashboard survives; `sample`
-    // and the seeder's `seedMedia` never belong on a real project.
+    // Existing meta first, so a key set in the dashboard survives — including
+    // the "Illustrative sample" switch, which only a person can turn on for an
+    // imported row. The seeder's `seedMedia` never belongs on a real project.
     const meta: Record<string, unknown> = { ...(match?.meta ?? {}) };
-    delete meta.sample;
     delete meta.seedMedia;
     Object.assign(meta, {
       tag: e.tag.en,
@@ -102,7 +102,8 @@ async function main() {
       meta,
       updatedAt: now,
     };
-    console.log(`  ${pad(match ? "update" : "create", 7)} ${pad(e.slug, 18)} ${pad(payload.published ? "published" : "draft", 10)} ${media[0]}`);
+    const note = meta.sample === true ? "  (marked \"Illustrative sample\" in the dashboard; kept)" : "";
+    console.log(`  ${pad(match ? "update" : "create", 7)} ${pad(e.slug, 18)} ${pad(payload.published ? "published" : "draft", 10)} ${media.length} photo(s), ${media[0]}${note}`);
     if (!apply) continue;
     if (match) {
       await repo.update(match.id, payload);

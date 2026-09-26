@@ -1,16 +1,32 @@
 {
-  "_comment": "Real projects imported from github.com/koko619911/my-portfolio (2026-09-26). English, Arabic and German copy come from the portfolio's own strings; French was written for this import. `tag` and `result` are stored in English and translated by the site's dictionary, so their other languages live in kf_site/src/lib/dict. Re-running the importer rewrites every field below in all four languages.",
+  "_comment": "Real projects imported from github.com/koko619911/my-portfolio (2026-09-26). English, Arabic and German copy come from the portfolio's own strings; French was written for this import. `tag` and `result` are stored in English and translated by the site's dictionary, so their other languages live in kf_site/src/lib/dict. Re-running the importer rewrites every field below in all four languages. Media: the first entry is the main image (cards, share image); every entry rotates in the site's gallery. The six projects without real screenshots use the portfolio's own illustration first and its stock photo second.",
   "projects": [
     {
       "slug": "alkhameesi",
       "order": 1,
       "year": "2024",
       "demoUrl": "https://alkhameesi.com/en",
-      "points": ["Next.js", "i18n", "Full-stack"],
-      "media": ["alkhameesi.webp"],
+      "points": [
+        "Next.js",
+        "i18n",
+        "Full-stack"
+      ],
+      "media": [
+        "alkhameesi.webp"
+      ],
       "alt": "Alkhameesi export platform, hero screen on a phone",
-      "title": { "en": "Alkhameesi", "ar": "الخميسي", "de": "Alkhameesi", "fr": "Alkhameesi" },
-      "tag": { "en": "Vegetable export", "ar": "تصدير خضروات", "de": "Gemüse-Export", "fr": "Export de légumes" },
+      "title": {
+        "en": "Alkhameesi",
+        "ar": "الخميسي",
+        "de": "Alkhameesi",
+        "fr": "Alkhameesi"
+      },
+      "tag": {
+        "en": "Vegetable export",
+        "ar": "تصدير خضروات",
+        "de": "Gemüse-Export",
+        "fr": "Export de légumes"
+      },
       "result": "Live in production",
       "summary": {
         "en": "B2B export platform showcasing Egyptian fresh produce to international markets with a multilingual catalog and inquiry flow.",
@@ -30,11 +46,27 @@
       "order": 2,
       "year": "2024",
       "demoUrl": "https://solana-redsea.com/",
-      "points": ["Next.js", "Real Estate", "Full-stack"],
-      "media": ["solana-red-sea.webp"],
+      "points": [
+        "Next.js",
+        "Real Estate",
+        "Full-stack"
+      ],
+      "media": [
+        "solana-red-sea.webp"
+      ],
       "alt": "Solana Red Sea real-estate site, hero screen on a phone",
-      "title": { "en": "Solana Red Sea", "ar": "سولانا البحر الأحمر", "de": "Solana Red Sea", "fr": "Solana Red Sea" },
-      "tag": { "en": "Luxury real estate", "ar": "عقارات فاخرة", "de": "Luxus-Immobilien", "fr": "Immobilier de luxe" },
+      "title": {
+        "en": "Solana Red Sea",
+        "ar": "سولانا البحر الأحمر",
+        "de": "Solana Red Sea",
+        "fr": "Solana Red Sea"
+      },
+      "tag": {
+        "en": "Luxury real estate",
+        "ar": "عقارات فاخرة",
+        "de": "Luxus-Immobilien",
+        "fr": "Immobilier de luxe"
+      },
       "result": "Live in production",
       "summary": {
         "en": "Luxury Red Sea real-estate platform with property listings, gallery-rich detail pages, and lead capture.",
@@ -54,11 +86,27 @@
       "order": 3,
       "year": "2025",
       "demoUrl": "https://generator-system.web.app",
-      "points": ["IoT", "SaaS", "Full-stack"],
-      "media": ["gentrack.webp"],
+      "points": [
+        "IoT",
+        "SaaS",
+        "Full-stack"
+      ],
+      "media": [
+        "gentrack.webp"
+      ],
       "alt": "GenTrack ERP mobile app showing generators live on a map of Cairo",
-      "title": { "en": "GenTrack", "ar": "GenTrack", "de": "GenTrack", "fr": "GenTrack" },
-      "tag": { "en": "IoT generator SaaS", "ar": "منصة IoT للمولدات", "de": "IoT-Generator-SaaS", "fr": "SaaS IoT pour groupes électrogènes" },
+      "title": {
+        "en": "GenTrack",
+        "ar": "GenTrack",
+        "de": "GenTrack",
+        "fr": "GenTrack"
+      },
+      "tag": {
+        "en": "IoT generator SaaS",
+        "ar": "منصة IoT للمولدات",
+        "de": "IoT-Generator-SaaS",
+        "fr": "SaaS IoT pour groupes électrogènes"
+      },
       "result": "Live in production",
       "summary": {
         "en": "Multi-tenant SaaS for generator rental companies in Egypt — the first local solution combining real-time IoT monitoring of 500+ generators, fuel-anomaly detection, remote device management, and a cost-optimized cloud ERP with web dashboard, mobile app, and custom IoT hardware.",
@@ -78,11 +126,27 @@
       "order": 4,
       "year": "2024",
       "demoUrl": "https://altayibtow.com/",
-      "points": ["Next.js", "Node.js", "Firebase"],
-      "media": ["eltayib.webp"],
+      "points": [
+        "Next.js",
+        "Node.js",
+        "Firebase"
+      ],
+      "media": [
+        "eltayib.webp"
+      ],
       "alt": "Eltayib towing service website, hero with a tow truck at night",
-      "title": { "en": "Eltayib", "ar": "الطيب", "de": "Eltayib", "fr": "Eltayib" },
-      "tag": { "en": "Car towing & roadside", "ar": "ونش سيارات", "de": "Abschlepp- & Pannenhilfe", "fr": "Dépannage et remorquage" },
+      "title": {
+        "en": "Eltayib",
+        "ar": "الطيب",
+        "de": "Eltayib",
+        "fr": "Eltayib"
+      },
+      "tag": {
+        "en": "Car towing & roadside",
+        "ar": "ونش سيارات",
+        "de": "Abschlepp- & Pannenhilfe",
+        "fr": "Dépannage et remorquage"
+      },
       "result": "Live in production",
       "summary": {
         "en": "Car towing and roadside assistance platform with real-time request tracking and service management.",
@@ -102,11 +166,27 @@
       "order": 5,
       "year": "2024",
       "demoUrl": "https://horus-mentalh.com/",
-      "points": ["Next.js", "React", "Healthcare"],
-      "media": ["horus.webp"],
+      "points": [
+        "Next.js",
+        "React",
+        "Healthcare"
+      ],
+      "media": [
+        "horus.webp"
+      ],
       "alt": "Horus mental-health clinic website, hero with the clinic building",
-      "title": { "en": "Horus", "ar": "حورس", "de": "Horus", "fr": "Horus" },
-      "tag": { "en": "Mental health platform", "ar": "منصة صحة نفسية", "de": "Mental-Health-Plattform", "fr": "Plateforme de santé mentale" },
+      "title": {
+        "en": "Horus",
+        "ar": "حورس",
+        "de": "Horus",
+        "fr": "Horus"
+      },
+      "tag": {
+        "en": "Mental health platform",
+        "ar": "منصة صحة نفسية",
+        "de": "Mental-Health-Plattform",
+        "fr": "Plateforme de santé mentale"
+      },
       "result": "Live in production",
       "summary": {
         "en": "Mental-health platform connecting patients with licensed therapists for online sessions, booking, and follow-up support.",
@@ -126,11 +206,28 @@
       "order": 6,
       "year": "2023",
       "demoUrl": "https://church-d97a7.web.app/",
-      "points": ["Node.js", "Firebase", "Cloud Functions"],
-      "media": ["https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1200&q=80"],
-      "alt": "Church interior",
-      "title": { "en": "Church Scout", "ar": "كشافة الكنيسة", "de": "Church Scout", "fr": "Church Scout" },
-      "tag": { "en": "Management system", "ar": "نظام إدارة", "de": "Management-System", "fr": "Système de gestion" },
+      "points": [
+        "Node.js",
+        "Firebase",
+        "Cloud Functions"
+      ],
+      "media": [
+        "church-scout.webp",
+        "https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "alt": "Church Scout management system",
+      "title": {
+        "en": "Church Scout",
+        "ar": "كشافة الكنيسة",
+        "de": "Church Scout",
+        "fr": "Church Scout"
+      },
+      "tag": {
+        "en": "Management system",
+        "ar": "نظام إدارة",
+        "de": "Management-System",
+        "fr": "Système de gestion"
+      },
       "result": "Internal system",
       "summary": {
         "en": "Full web system for church scouts: exams, attendance, spiritual notes, and email reminders.",
@@ -150,11 +247,28 @@
       "order": 7,
       "year": "2023",
       "demoUrl": "https://virtualfittinroom.web.app/",
-      "points": ["React", "AI/ML", "Next.js"],
-      "media": ["https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80"],
-      "alt": "Clothes on a rail in a shop",
-      "title": { "en": "AI Try-On", "ar": "تجربة AI", "de": "AI Try-On", "fr": "Essayage IA" },
-      "tag": { "en": "Virtual fitting", "ar": "غرفة قياس افتراضية", "de": "Virtuelle Anprobe", "fr": "Cabine d'essayage virtuelle" },
+      "points": [
+        "React",
+        "AI/ML",
+        "Next.js"
+      ],
+      "media": [
+        "ai-try-on.webp",
+        "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "alt": "AI virtual try-on system",
+      "title": {
+        "en": "AI Try-On",
+        "ar": "تجربة AI",
+        "de": "AI Try-On",
+        "fr": "Essayage IA"
+      },
+      "tag": {
+        "en": "Virtual fitting",
+        "ar": "غرفة قياس افتراضية",
+        "de": "Virtuelle Anprobe",
+        "fr": "Cabine d'essayage virtuelle"
+      },
       "result": "Private build",
       "summary": {
         "en": "AI-based fitting solution combining user images with clothing using advanced algorithms.",
@@ -174,11 +288,28 @@
       "order": 8,
       "year": "2023",
       "demoUrl": null,
-      "points": ["Raspberry Pi", "IoT", "Python"],
-      "media": ["https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"],
-      "alt": "Close-up of a circuit board",
-      "title": { "en": "Smart Balance", "ar": "ميزان ذكي", "de": "Smart Balance", "fr": "Smart Balance" },
-      "tag": { "en": "IoT scale", "ar": "ميزان IoT", "de": "IoT-Waage", "fr": "Balance IoT" },
+      "points": [
+        "Raspberry Pi",
+        "IoT",
+        "Python"
+      ],
+      "media": [
+        "smart-balance.webp",
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "alt": "Smart Balance scale streaming weight to the mobile app",
+      "title": {
+        "en": "Smart Balance",
+        "ar": "ميزان ذكي",
+        "de": "Smart Balance",
+        "fr": "Smart Balance"
+      },
+      "tag": {
+        "en": "IoT scale",
+        "ar": "ميزان IoT",
+        "de": "IoT-Waage",
+        "fr": "Balance IoT"
+      },
       "result": "Hardware prototype",
       "summary": {
         "en": "Raspberry Pi-driven digital scale streaming live weight to a mobile app in real time.",
@@ -198,11 +329,28 @@
       "order": 9,
       "year": "2024",
       "demoUrl": null,
-      "points": ["Firebase", "Cloud Functions", "Automation"],
-      "media": ["https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"],
-      "alt": "Analytics dashboard on a laptop screen",
-      "title": { "en": "Random Audit", "ar": "تدقيق عشوائي", "de": "Random Audit", "fr": "Audit aléatoire" },
-      "tag": { "en": "Automation pipeline", "ar": "أتمتة", "de": "Automatisierung", "fr": "Pipeline d'automatisation" },
+      "points": [
+        "Firebase",
+        "Cloud Functions",
+        "Automation"
+      ],
+      "media": [
+        "random-audit.webp",
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "alt": "Random audit automation pipeline",
+      "title": {
+        "en": "Random Audit",
+        "ar": "تدقيق عشوائي",
+        "de": "Random Audit",
+        "fr": "Audit aléatoire"
+      },
+      "tag": {
+        "en": "Automation pipeline",
+        "ar": "أتمتة",
+        "de": "Automatisierung",
+        "fr": "Pipeline d'automatisation"
+      },
       "result": "Internal system",
       "summary": {
         "en": "Cloud Functions automation for random audits and secure store transfers.",
@@ -222,11 +370,28 @@
       "order": 10,
       "year": "2022",
       "demoUrl": null,
-      "points": ["AI/ML", "Python", "React"],
-      "media": ["https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=1200&q=80"],
-      "alt": "X-ray images on a light board",
-      "title": { "en": "Bone Fracture AI", "ar": "كسور العظام AI", "de": "Bone Fracture AI", "fr": "IA fractures osseuses" },
-      "tag": { "en": "Medical imaging", "ar": "تصوير طبي", "de": "Medizinische Bildgebung", "fr": "Imagerie médicale" },
+      "points": [
+        "AI/ML",
+        "Python",
+        "React"
+      ],
+      "media": [
+        "bone-fracture-ai.webp",
+        "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "alt": "AI bone fracture detection on an X-ray",
+      "title": {
+        "en": "Bone Fracture AI",
+        "ar": "كسور العظام AI",
+        "de": "Bone Fracture AI",
+        "fr": "IA fractures osseuses"
+      },
+      "tag": {
+        "en": "Medical imaging",
+        "ar": "تصوير طبي",
+        "de": "Medizinische Bildgebung",
+        "fr": "Imagerie médicale"
+      },
       "result": "Research project",
       "summary": {
         "en": "Graduation project using AI to detect bone fractures from X-ray images.",
@@ -246,11 +411,28 @@
       "order": 11,
       "year": "2024",
       "demoUrl": null,
-      "points": ["Node.js", "Cloud Functions", "API"],
-      "media": ["https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80"],
-      "alt": "Invoices and a calculator on a desk",
-      "title": { "en": "Egypt ETA", "ar": "ETA المصرية", "de": "Egypt ETA", "fr": "ETA Égypte" },
-      "tag": { "en": "e-Receipt integration", "ar": "تكامل الإيصال الإلكتروني", "de": "E-Receipt-Integration", "fr": "Intégration e-Receipt" },
+      "points": [
+        "Node.js",
+        "Cloud Functions",
+        "API"
+      ],
+      "media": [
+        "egypt-eta.webp",
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "alt": "Egypt ETA e-Receipt integration",
+      "title": {
+        "en": "Egypt ETA",
+        "ar": "ETA المصرية",
+        "de": "Egypt ETA",
+        "fr": "ETA Égypte"
+      },
+      "tag": {
+        "en": "e-Receipt integration",
+        "ar": "تكامل الإيصال الإلكتروني",
+        "de": "E-Receipt-Integration",
+        "fr": "Intégration e-Receipt"
+      },
       "result": "Live in production",
       "summary": {
         "en": "Complete integration with the Egyptian ETA e-Receipt API via Node.js Cloud Functions for compliant invoice submission.",
@@ -268,10 +450,30 @@
   ],
   "dictionary": {
     "_comment": "Translations for the English `tag` and `result` strings above; applied to kf_site/src/lib/dict/{ar,de,fr}.json by scripts/apply-portfolio-dict.mjs",
-    "Live in production": { "ar": "يعمل الآن", "de": "Live im Einsatz", "fr": "En production" },
-    "Internal system": { "ar": "نظام داخلي", "de": "Internes System", "fr": "Système interne" },
-    "Private build": { "ar": "مشروع خاص", "de": "Privates Projekt", "fr": "Projet privé" },
-    "Hardware prototype": { "ar": "نموذج عتادي", "de": "Hardware-Prototyp", "fr": "Prototype matériel" },
-    "Research project": { "ar": "مشروع بحثي", "de": "Forschungsprojekt", "fr": "Projet de recherche" }
+    "Live in production": {
+      "ar": "يعمل الآن",
+      "de": "Live im Einsatz",
+      "fr": "En production"
+    },
+    "Internal system": {
+      "ar": "نظام داخلي",
+      "de": "Internes System",
+      "fr": "Système interne"
+    },
+    "Private build": {
+      "ar": "مشروع خاص",
+      "de": "Privates Projekt",
+      "fr": "Projet privé"
+    },
+    "Hardware prototype": {
+      "ar": "نموذج عتادي",
+      "de": "Hardware-Prototyp",
+      "fr": "Prototype matériel"
+    },
+    "Research project": {
+      "ar": "مشروع بحثي",
+      "de": "Forschungsprojekt",
+      "fr": "Projet de recherche"
+    }
   }
 }

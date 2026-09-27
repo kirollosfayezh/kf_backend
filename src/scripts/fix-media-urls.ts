@@ -8,6 +8,7 @@
  *
  *   npm run fix-media-urls -- --to https://kf-backend-tv5l.onrender.com            # dry run
  *   npm run fix-media-urls -- --to https://kf-backend-tv5l.onrender.com --apply
+ *   npm run fix-media-urls -- --from https://kf-backend-tv5l.onrender.com/files --to-base https://media.kftechsolutions.dev --apply
  *
  * --from defaults to CLOUDFLARE_R2_PUBLIC_URL.
  */
@@ -26,14 +27,21 @@ async function main() {
   const apply = process.argv.includes("--apply");
   const from = (arg("--from") ?? env.r2.publicUrl ?? "").replace(/\/+$/, "");
   const to = (arg("--to") ?? "").replace(/\/+$/, "");
-  if (!from || !/^https:\/\//.test(to)) {
-    console.error("usage: fix-media-urls --to https://<api origin> [--from https://<dead host>] [--apply]");
+  if (!from || !(/^https:\/\//.test(to) || /^https:\/\//.test(arg("--to-base") ?? ""))) {
+    console.error("usage: fix-media-urls (--to https://<api origin> | --to-base https://<new prefix>) [--from https://<old prefix>] [--apply]");
     process.exit(2);
   }
-  const rewrite = (u: string) => (u.startsWith(from + "/") ? `${to}/files/${u.slice(from.length + 1)}` : u);
+  // --to-base: plain prefix swap (e.g. the API's /files route → the media
+  // domain, once it exists). Otherwise the original mode: dead host → /files/.
+  const toBase = (arg("--to-base") ?? "").replace(/\/+$/, "");
+  const rewrite = (u: string) => {
+    if (!u.startsWith(from + "/")) return u;
+    const rest = u.slice(from.length + 1);
+    return toBase ? `${toBase}/${rest}` : `${to}/files/${rest}`;
+  };
 
   await connectDb();
-  console.log(`${apply ? "Rewriting" : "Dry run:"} ${from}/… → ${to}/files/…\n`);
+  console.log(`${apply ? "Rewriting" : "Dry run:"} ${from}/… → ${arg("--to-base") ? arg("--to-base") + "/…" : to + "/files/…"}\n`);
   let changes = 0;
 
   for (const m of await repos.media.list()) {

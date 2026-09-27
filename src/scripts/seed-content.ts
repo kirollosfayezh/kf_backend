@@ -14,6 +14,7 @@ import mongoose from "mongoose";
 import { connectDb } from "../db/connect.js";
 import { repos } from "../repositories/index.js";
 import { loadArticles } from "./seed-articles.js";
+import { loadServicePages, planServicePages } from "./seed-services.js";
 import type { ContentCollection, ContentItem, LocalizedText } from "../shared/types.js";
 
 interface SeedItem {
@@ -158,6 +159,23 @@ export async function seedContent(): Promise<{ created: number; updated: number 
     }
 
     console.log(`${collection}: ${items.length} items`);
+  }
+
+  // Service landing pages: the JSON loop above resets each English body to the
+  // card summary, so the Markdown pages are laid back over it here. A body an
+  // editor wrote in the dashboard is left alone (see planServicePages).
+  {
+    const repo = repos.content.services;
+    const pages = await loadServicePages();
+    const plan = planServicePages(await repo.list(), pages);
+    let written = 0;
+    for (const change of plan) {
+      if (change.patch && change.id) {
+        await repo.update(change.id, change.patch);
+        written++;
+      }
+    }
+    if (pages.length) console.log(`services: ${written} of ${pages.length} landing pages from Markdown`);
   }
 
   // Written last so a Markdown article wins over any JSON entry sharing its

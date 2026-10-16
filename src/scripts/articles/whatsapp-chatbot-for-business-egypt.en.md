@@ -1,5 +1,5 @@
 ---
-title: A WhatsApp chatbot for your business in Egypt: what it can do and how to start
+title: A WhatsApp chatbot for your business in Egypt: how to start
 summary: What a WhatsApp bot can and can't handle, the official API versus tools that get numbers banned, what to automate first, AI or rules, and how to start small.
 tag: AI
 tags: WhatsApp, chatbot, WhatsApp Business API, customer service, automation, AI, Egypt

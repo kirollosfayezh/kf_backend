@@ -1,5 +1,5 @@
 ---
-title: Why your ads get clicks but no sales, and what a landing page fixes
+title: Ads get clicks but no sales? What a landing page fixes
 summary: Sending ad traffic to your homepage wastes most of it. What a landing page is, what makes one convert, how to measure it, what it typically costs in Egypt, and the mistakes to avoid.
 tag: Web Development
 tags: landing page, Facebook ads, Google Ads, conversion, WhatsApp, Egypt

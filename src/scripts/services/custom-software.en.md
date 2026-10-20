@@ -1,7 +1,7 @@
 ---
 title: Custom Software Development
 summary: Business software built around how your company actually works — from the first workflow map to a system your team uses every day.
-seoTitle: Custom Software Development in Egypt | KF Tech Solutions
+seoTitle: Custom Software Company in Egypt | KF Tech Solutions
 seoDescription: Custom business software designed around your workflows — web platforms, internal systems and integrations, built and supported end to end from Cairo.
 ---
 

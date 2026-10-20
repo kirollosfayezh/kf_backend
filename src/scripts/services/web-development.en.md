@@ -1,7 +1,7 @@
 ---
 title: Web Development
 summary: Fast, secure websites and web applications that rank on Google, work on every phone and turn visitors into enquiries.
-seoTitle: Website & Web App Development in Egypt | KF Tech Solutions
+seoTitle: Web Development Company in Egypt | KF Tech Solutions
 seoDescription: Company websites, online stores and web applications built for speed, SEO and conversions — Arabic and English, managed from your own dashboard.
 ---
 

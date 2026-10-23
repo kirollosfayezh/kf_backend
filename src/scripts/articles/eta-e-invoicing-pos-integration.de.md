@@ -96,7 +96,7 @@ das Kassensystem, und die Compliance-Frist ist dann der Anlass, nicht das Projek
 | Ansatz | Am besten, wenn | Nachteil |
 |---|---|---|
 | **Modul des Anbieters** — Ihr Kassenanbieter liefert die Compliance mit | Ihr Kassensystem aktuell und der Anbieter aktiv ist | Sie übernehmen seine Roadmap und seinen Zeitplan |
-| **Middleware-Brücke** — ein Dienst sitzt zwischen Kassensystem und Behörde | das Kassensystem funktioniert, sich aber nicht ändern lässt | Laufende Kosten pro Dokument; ein weiteres System, das am Leben gehalten werden muss |
+| **Middleware-Brücke** — ein Dienst sitzt zwischen Kassensystem und Behörde | Das Kassensystem funktioniert, sich aber nicht ändern lässt | Laufende Kosten pro Dokument; ein weiteres System, das am Leben gehalten werden muss |
 | **Direkte Integration** — in Ihr eigenes System eingebaut | Sie bereits Individualsoftware betreiben oder das Kassensystem ohnehin ersetzen | Höhere Anfangskosten, keine laufende Gebühr pro Dokument |
 
 Es gibt keine allgemein richtige Antwort. Die eine durchweg falsche Antwort ist,

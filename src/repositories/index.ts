@@ -8,6 +8,7 @@ import { SubscriberRepository } from "./mongo/newsletter.repo.js";
 import { MongoSingletonRepository } from "./mongo/mongo-singleton-repo.js";
 import { ChatRepository } from "./mongo/chat.repo.js";
 import { AnalyticsRepository } from "./mongo/analytics.repo.js";
+import { ArticleImportRepository } from "./mongo/article-import.repo.js";
 import { LeadModel } from "../models/lead.model.js";
 import { contentModels } from "../models/content.model.js";
 import { SettingsModel } from "../models/settings.model.js";
@@ -87,4 +88,5 @@ export const repos = {
   quotes: new QuoteRepository(),
   bookings: new BookingRepository(),
   subscribers: new SubscriberRepository(),
+  articleImports: new ArticleImportRepository(),
 };

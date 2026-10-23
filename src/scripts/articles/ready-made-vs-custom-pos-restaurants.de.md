@@ -1,5 +1,5 @@
 ---
-title: Fertiges oder individuelles Kassensystem: so entscheiden Gastronomen
+title: Fertiges oder eigenes Kassensystem: so entscheiden Gastronomen
 summary: Ein Test, den Sie in einer Woche durchführen, bevor Sie mit einem einzigen Anbieter sprechen, und der Ihnen zeigt, welche der beiden Varianten Sie brauchen.
 ---
 
@@ -13,8 +13,8 @@ glauben.
 
 ## Beginnen Sie mit dem, was Standardlösungen wirklich gut können
 
-Kassensysteme (POS) von der Stange für die Gastronomie sind ausgereifte Software. Für
-einen einzelnen Standort mit einer normalen Speisekarte schlagen sie eine
+Kassensysteme (POS) von der Stange für die Gastronomie sind ausgereifte Software.
+Für einen einzelnen Standort mit einer normalen Speisekarte schlagen sie eine
 Individualentwicklung fast immer — bei den Kosten, beim Tempo und, was Betreiber
 unterschätzen, bei den tausend kleinen Details, die erst auftauchen, nachdem
 tausend Restaurants das System benutzt haben.

@@ -90,7 +90,7 @@ andere steht.
 bevor jemand mit den Daten gelebt hatte, und die Hälfte davon blieb ungenutzt. Die
 Version, die sich hielt, entstand im dritten Monat aus Fragen, die die Leute
 tatsächlich zu stellen begonnen hatten. Das ist die Falle, die in
-[Ihr Dashboard lügt Sie an](/blog/your-dashboard-is-lying-to-you) beschrieben wird —
+[Ihr Dashboard belügt Sie](/blog/your-dashboard-is-lying-to-you) beschrieben wird —
 wir sind selbst hineingetappt.
 
 ## Würde das bei Ihnen funktionieren?
@@ -103,7 +103,7 @@ für Ihr Unternehmen plausibel.
 Wenn Sie einen einzelnen Standort mit einfachem Bestand haben, bringt Ihnen ein
 gutes fertiges Kassensystem das meiste davon für einen Bruchteil der Kosten. Dieser
 Vergleich wird in
-[Fertiges oder individuelles Kassensystem](/blog/ready-made-vs-custom-pos-restaurants)
+[Fertiges oder eigenes Kassensystem](/blog/ready-made-vs-custom-pos-restaurants)
 durchgerechnet.
 
 ## Häufige Fragen

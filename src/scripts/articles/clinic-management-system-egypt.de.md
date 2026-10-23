@@ -55,8 +55,7 @@ Was den Unterschied macht:
 
 Ein WhatsApp-Assistent kann einfache Buchungen annehmen und die üblichen Fragen zu
 Preisen, Adresse und Öffnungszeiten beantworten, solange er bei allem Medizinischen
-an einen Menschen übergibt. Was sich automatisieren lässt und was nicht, lesen Sie
-in
+an einen Menschen übergibt. Was sich automatisieren lässt und was nicht, lesen Sie in
 [WhatsApp-Chatbots für Unternehmen in Ägypten](/blog/whatsapp-chatbot-for-business-egypt).
 
 ## Die Patientenakte
@@ -143,9 +142,9 @@ Buchungswebsites und [mobile Apps](/services/mobile-applications) für Unternehm
 
 ### Sollte das System online laufen oder auf dem Computer der Praxis installiert sein?
 
-Ein Online-System funktioniert von jedem Gerät und an jedem Standort, und um die
-Datensicherung wird sich für Sie gekümmert. Ein installiertes System läuft weiter,
-wenn das Internet ausfällt. Viele Praxen wollen beides: online, mit der Möglichkeit,
+Ein Online-System funktioniert von jedem Gerät und an jedem Standort, und die
+Datensicherung wird Ihnen abgenommen. Ein installiertes System läuft weiter, wenn
+das Internet ausfällt. Viele Praxen wollen beides: online, mit der Möglichkeit,
 bei einem Ausfall weiter zu buchen und abzurechnen.
 
 ### Können Patienten über eine App buchen?

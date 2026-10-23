@@ -3,8 +3,8 @@ title: Die Systeme verbinden, die Sie bereits betreiben
 summary: Warum Integration kostet, was sie kostet, die vier Wege, Systeme zu verbinden, und wie Sie vor der Zusage erkennen, welcher Fall bei Ihnen vorliegt.
 ---
 
-Die meisten Unternehmen brauchen keine neue Software. Sie brauchen Software, die sie
-bereits haben und die endlich aufhört, sich selbst zu widersprechen.
+Die meisten Unternehmen brauchen keine neue Software. Sie brauchen vielmehr, dass die
+Software, die sie bereits haben, aufhört, sich selbst zu widersprechen.
 
 Das Kassensystem weiß, was verkauft wurde. Die Buchhaltungssoftware weiß, was in
 Rechnung gestellt wurde. Die Lagerverwaltung weiß, was im Regal steht. Keines davon

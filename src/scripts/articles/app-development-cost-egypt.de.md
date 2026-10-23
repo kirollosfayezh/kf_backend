@@ -25,8 +25,8 @@ Systeme, die miteinander sprechen müssen.
 
 ### 1. Eine Plattform oder zwei
 
-Android und iOS aus einer gemeinsamen Codebasis (Flutter oder React Native) spart
-gegenüber zwei nativen Apps etwa 30–40 %. Wenn Ihre Nutzer in Ägypten sind und Sie
+Wer Android und iOS aus einer gemeinsamen Codebasis (Flutter oder React Native)
+entwickelt, spart gegenüber zwei nativen Apps etwa 30–40 %. Wenn Ihre Nutzer in Ägypten sind und Sie
 sich für eine Plattform entscheiden müssen, beginnen Sie mit Android.
 
 ### 2. Gibt es ein Backend?
@@ -102,8 +102,8 @@ oder wird nicht liefern.
 
 ## Bevor Sie ein Angebot anfragen
 
-Schreiben Sie eine Seite: wer der Nutzer ist, welche drei Dinge er am wichtigsten
-damit tun wird und mit welchen Systemen die App sprechen muss. Diese Seite verändert
+Schreiben Sie eine Seite: wer der Nutzer ist, welche drei Dinge er damit vor allem
+tun wird und mit welchen Systemen die App sprechen muss. Diese Seite verändert
 den Preis stärker als jede Verhandlung.
 
 ## Häufige Fragen

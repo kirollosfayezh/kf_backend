@@ -72,8 +72,8 @@ Besucher, bevor sie irgendetwas lesen.
 Terminbuchungssysteme, ein CRM, das Leads empfängt, Online-Zahlung, WhatsApp-Chat,
 ein Newsletter-Tool. Jedes davon ist ein eigenes kleines Projekt mit eigenen
 Fehlerfällen. Wenn Sie zusätzlich Produkte online verkaufen wollen, liegt die Arbeit
-näher an einem E-Commerce-Projekt, das wir in
-[einen Onlineshop in Ägypten aufbauen](/blog/online-store-egypt-payments-and-delivery)
+näher an einem E-Commerce-Projekt, das wir im Beitrag
+[Einen Onlineshop in Ägypten aufbauen](/blog/online-store-egypt-payments-and-delivery)
 behandelt haben.
 
 ## Laufende Kosten pro Jahr

@@ -25,6 +25,7 @@
     "optimize-media": "npm run build && node dist/scripts/optimize-media.js",
     "update-service-pages": "npm run build && node dist/scripts/update-service-pages.js",
     "add-articles": "npm run build && node dist/scripts/add-articles.js",
+    "add-article-photos": "npm run build && node dist/scripts/add-article-photos.js",
     "smoke-test": "tsx src/scripts/smoke-test.ts",
     "test": "tsx --test \"src/**/*.test.ts\""
   },

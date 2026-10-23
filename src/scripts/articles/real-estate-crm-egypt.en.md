@@ -4,6 +4,9 @@ summary: Why real estate leads get lost, and what a real estate CRM should do: c
 tag: Business Systems
 tags: real estate CRM, lead management, sales pipeline, payment plans, WhatsApp, Facebook ads, Egypt
 order: 28
+media: https://images.unsplash.com/photo-1781229771042-2a859f8f8022
+alt: Two men shaking hands over a model house and a set of keys
+caption: From the first ad lead to the signed contract, nothing gets lost on the way.
 stats: 1|record per client, whichever channel they came from; 0|leads left in a salesperson's personal WhatsApp; 1|view of every unit: available, reserved or sold
 ---
 

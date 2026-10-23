@@ -4,6 +4,9 @@ summary: The signs you have outgrown Excel, what an inventory system must record
 tag: Business Systems
 tags: inventory management, warehouse management, stock control, barcode, stock count, ERP, Egypt
 order: 27
+media: https://images.unsplash.com/photo-1648824572347-517357c9c44e
+alt: Two men checking boxes in a stockroom against a list on a tablet
+caption: One stock figure per item that every branch can trust.
 stats: 1|stock figure per item that every branch trusts; 0|stock moves without a document behind them; 1|count a month, at least, for the items that matter most
 ---
 

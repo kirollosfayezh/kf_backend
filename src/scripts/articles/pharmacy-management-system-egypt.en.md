@@ -4,6 +4,9 @@ summary: Why a general POS falls short in a pharmacy, and what pharmacy software
 tag: POS System
 tags: pharmacy system, pharmacy POS, pharmacy software, inventory, expiry dates, Egypt
 order: 26
+media: https://images.unsplash.com/photo-1580281657527-47f249e8f4df
+alt: A pharmacist reaching for a medicine box on a pharmacy shelf
+caption: Every box on the shelf, with its batch and expiry date, known to the till.
 stats: 1|stock figure per item, across every branch; 3 months|ahead: an expiry alert with time left to act; 1|price change that reaches every till at once
 ---
 

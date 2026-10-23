@@ -4,6 +4,9 @@ summary: How customers in Egypt now look for businesses, where AI assistants get
 tag: Web Development
 tags: SEO, AI search, ChatGPT, Gemini, Claude, Google Search Console, Bing Webmaster Tools, structured data, Egypt
 order: 29
+media: https://images.unsplash.com/photo-1687422808248-f807f4ea2a2e
+alt: A shop owner in an apron looking at his phone behind the counter
+caption: Customers ask Google and AI assistants first. Make sure they find you.
 stats: 1|official website everything else points to; 1|business name, written the same way everywhere; 2|consoles to register with: Google Search Console and Bing Webmaster Tools
 ---
 

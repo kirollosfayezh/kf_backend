@@ -4,6 +4,9 @@ summary: What a clinic system should handle, from WhatsApp bookings and reminder
 tag: Business Systems
 tags: clinic management system, medical software, appointment booking, patient records, healthcare, Egypt
 order: 25
+media: https://images.unsplash.com/photo-1758691462848-31a39258dbd8
+alt: A doctor on the phone with a patient while typing at her desk
+caption: Bookings, reminders and the patient file in one place, not on paper cards.
 stats: 1|patient file, shared by reception and the doctor; 1|reminder the day before, so a no-show becomes a free slot; 0|paper cards to search for when a patient comes back
 ---
 

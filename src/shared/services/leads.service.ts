@@ -3,7 +3,7 @@ import { AppError } from "../errors/app-error.js";
 import { normalizePhone } from "../phone.js";
 import { addActivity, resolveContact } from "./contacts.service.js";
 import { notify } from "./notify.service.js";
-import type { Lead, LeadStatus } from "../types.js";
+import type { Lead, LeadStatus } from "../types/index.js";
 
 export interface CreateLeadInput {
   source: Lead["source"];

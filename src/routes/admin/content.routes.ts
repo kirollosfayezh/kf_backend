@@ -10,7 +10,7 @@ import {
   listContent,
   updateContent,
 } from "../../shared/services/content.service.js";
-import type { ContentCollection } from "../../shared/types.js";
+import type { ContentCollection } from "../../shared/types/index.js";
 import { CONTENT_COLLECTIONS } from "../../models/content.model.js";
 
 

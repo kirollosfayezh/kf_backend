@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { CONTACT_STAGES, type Activity, type Contact } from "../shared/types.js";
+import { CONTACT_STAGES, type Activity, type Contact } from "../shared/types/index.js";
 
 const contactSchema = new Schema<Contact>(
   {

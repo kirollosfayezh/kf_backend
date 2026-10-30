@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import type { AdminNotification, CrmSettings } from "../shared/types.js";
+import type { AdminNotification, CrmSettings } from "../shared/types/index.js";
 
 const sub = (definition: Record<string, unknown>) => new Schema(definition, { _id: false });
 

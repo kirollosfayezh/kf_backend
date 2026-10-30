@@ -6,11 +6,22 @@ function required(name: string, fallback?: string): string {
   return value;
 }
 
+/** Render sets RENDER=true on every service, so production is detected even without NODE_ENV. */
+export function detectProduction(vars: NodeJS.ProcessEnv): boolean {
+  return vars.NODE_ENV === "production" || vars.RENDER === "true";
+}
+
+const isProduction = detectProduction(process.env);
+
 export const env = {
   port: Number(process.env.PORT ?? 4000),
   nodeEnv: process.env.NODE_ENV ?? "development",
+  isProduction,
   mongodbUri: required("MONGODB_URI", "mongodb://127.0.0.1:27017/kf_dev"),
-  jwtAdminSecret: required("JWT_ADMIN_SECRET", "dev-only-insecure-secret-change-me"),
+  // The dev fallback is public (this repo is open source), so production must set its own secret.
+  jwtAdminSecret: isProduction
+    ? required("JWT_ADMIN_SECRET")
+    : required("JWT_ADMIN_SECRET", "dev-only-insecure-secret-change-me"),
   jwtAdminTtl: process.env.JWT_ADMIN_TTL ?? "7d",
   corsOrigins: (process.env.CORS_ORIGINS ?? "")
     .split(",")

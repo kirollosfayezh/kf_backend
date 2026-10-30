@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import type { MediaItem } from "../shared/types.js";
+import type { MediaItem } from "../shared/types/index.js";
 
 const mediaSchema = new Schema<MediaItem>({
   url: { type: String, required: true },

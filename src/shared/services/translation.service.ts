@@ -1,7 +1,7 @@
 import { repos } from "../../repositories/index.js";
 import { AppError } from "../errors/app-error.js";
 import { requestSiteRebuild } from "./deploy-hook.service.js";
-import type { TranslationOverride } from "../types.js";
+import type { TranslationOverride } from "../types/index.js";
 
 const LANGS = ["en", "ar", "de", "fr"] as const;
 type Lang = (typeof LANGS)[number];

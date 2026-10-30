@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import type { Subscriber } from "../shared/types.js";
+import type { Subscriber } from "../shared/types/index.js";
 
 const subscriberSchema = new Schema<Subscriber>(
   {

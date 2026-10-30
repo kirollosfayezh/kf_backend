@@ -1,7 +1,7 @@
 import { repos } from "../../repositories/index.js";
 import { AppError } from "../errors/app-error.js";
 import { requestSiteRebuild } from "./deploy-hook.service.js";
-import type { ContentCollection, ContentItem } from "../types.js";
+import type { ContentCollection, ContentItem } from "../types/index.js";
 
 /** Generic CRUD used by every content type (projects, services, solutions, about, blog, testimonials, faq). */
 

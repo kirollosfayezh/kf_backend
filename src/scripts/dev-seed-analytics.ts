@@ -9,7 +9,7 @@
  */
 import { connectDb } from "../db/connect.js";
 import { AnalyticsModel } from "../models/analytics.model.js";
-import type { AnalyticsEvent } from "../shared/types.js";
+import type { AnalyticsEvent } from "../shared/types/index.js";
 
 const PATHS = ["/", "/services", "/solutions", "/projects", "/blog", "/contact", "/about"];
 const LABELS = ["hero.start-project", "hero.see-work", "contact.submit", "nav.lets-build", "footer.whatsapp"];

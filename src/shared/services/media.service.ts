@@ -7,7 +7,7 @@ import sharp from "sharp";
 import { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 import { env, r2Enabled } from "../../config/env.js";
 import { repos } from "../../repositories/index.js";
-import type { MediaItem } from "../types.js";
+import type { MediaItem } from "../types/index.js";
 
 const LOCAL_UPLOAD_DIR = path.resolve("uploads");
 
@@ -37,7 +37,7 @@ let hostCheck: { at: number; ok: boolean } | null = null;
 async function publicUrlWorks(): Promise<boolean> {
   if (!env.r2.publicUrl) return false;
   if (hostCheck && Date.now() - hostCheck.at < 10 * 60_000) return hostCheck.ok;
-  let ok = false;
+  let ok: boolean;
   try {
     await lookup(new URL(env.r2.publicUrl).hostname);
     ok = true;

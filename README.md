@@ -1,9 +1,40 @@
 # KF Backend
 
+[![CI](https://github.com/kirollosfayezh/kf_backend/actions/workflows/ci.yml/badge.svg)](https://github.com/kirollosfayezh/kf_backend/actions/workflows/ci.yml)
+
+> Part of the KF Tech Solutions platform, three repositories:
+> **kf_backend** (this API) ·
+> [kf_site](https://github.com/kirollosfayezh/kf_site) (public website) ·
+> [kf_dashboard](https://github.com/kirollosfayezh/kf_dashboard) (admin dashboard / CMS / CRM).
+
 Express 5 + MongoDB API for the KF Tech Solutions site and dashboard, deployed on
 **Render**. Realtime live chat runs over **Socket.io** on the same server. All
 database access is confined behind a repository layer, so MongoDB can be swapped
 later without touching routes or business logic.
+
+## Architecture
+
+```mermaid
+flowchart LR
+  site["kf_site<br/>(public website)"] -->|REST + beacons| api
+  dash["kf_dashboard<br/>(admin)"] -->|REST + JWT| api
+  site <-->|Socket.io chat| io
+  dash <-->|Socket.io chat + alerts| io
+  subgraph backend["kf_backend (Render)"]
+    api["routes/public · routes/admin<br/>helmet · CORS · rate limits · zod"] --> svc["shared/services<br/>(business logic)"]
+    io["realtime/io.ts"] --- svc
+    svc --> repo["repositories/<br/>(interfaces + Mongo impl)"]
+  end
+  repo --> mongo[(MongoDB Atlas)]
+  svc --> r2[(Cloudflare R2<br/>media)]
+  svc -.-> tg[Telegram alerts]
+  svc -.-> hook[Vercel deploy hook]
+```
+
+A request flows **route → service → repository**. Routes parse and validate
+input and shape the `{ success, data, errors, message }` envelope; services hold
+the rules; only `repositories/mongo/*` knows about Mongoose. Errors are thrown as
+`AppError` and turned into responses in one place (`shared/middleware/error-handler.ts`).
 
 ## Setup (local)
 
@@ -25,25 +56,46 @@ Runs on **http://localhost:4000**. Health check: `GET /api/healthz`.
 | `npm run dev` | Watch mode (`tsx`) |
 | `npm run build` | Compile to `dist/` |
 | `npm run start` | Run the compiled server (what Render runs) |
-| `npm run typecheck` | TypeScript check |
+| `npm run typecheck` | TypeScript check (includes tests and scripts) |
+| `npm run lint` | ESLint (typescript-eslint, recommended rules) |
 | `npm run seed-admin` | Create/ensure the first admin user (idempotent) |
 | `npm run seed-content` | Load the real site content — services, solutions, projects, blog posts, FAQs, about sections (idempotent, matches on `slug`) |
 | `npm run dev:memory` | Run the real server against a throwaway in-memory MongoDB, pre-seeded with the admin and all content — no MongoDB install needed |
 | `npm run smoke-test` | Full end-to-end test against a throwaway in-memory MongoDB |
-| `npm test` | Unit tests: phone rules for every country, identity matching, UA/UTM parsing, quote totals, booking slots |
+| `npm test` | Unit tests (node:test via `tsx`, no database) — see [Testing](#testing) |
 | `npm run backfill-contacts` | File existing leads and chats into CRM contacts (idempotent) — run once after deploying the CRM |
 | `npm run update-privacy-policy` | Refresh the stored Privacy Policy from `src/scripts/legal/` where the text is still the seeded wording; dry run by default, `-- --apply` writes |
 
-`npm run smoke-test` needs no configuration — it spins up its own MongoDB, boots
-the server, and exercises auth, content, leads, settings, the realtime chat
-round-trip and the whole CRM cycle (visitor → consent → lead/chat → contact →
-quote → booking → alerts). Run it after any backend change.
+## Testing
 
-Where MongoDB binaries cannot be downloaded, point it at any running server
-instead: `SMOKE_MONGODB_URI=mongodb://127.0.0.1:27017 npm run smoke-test` (each
+Two layers, both run from source with `tsx`:
+
+- **Unit tests — `npm test`** (node's built-in test runner; runs in CI). Pure
+  logic and security-sensitive code: phone rules for every country, contact
+  identity matching, UA/UTM parsing, quote totals, booking slots, the article
+  publisher, the deploy-hook debounce, JWT verification and login, the
+  `requireAdmin` guard, the error handler, CORS allowlisting, CSV/Telegram
+  escaping, and the zod schemas of the public form endpoints. Route tests mount
+  one real router on an ephemeral port with the repositories replaced in memory
+  (`src/testing/fake-repos.ts`), so they exercise the real route, schema and
+  service code with no database.
+- **End-to-end — `npm run smoke-test`** (local only, not in CI). Needs no
+  configuration — it spins up its own in-memory MongoDB, boots the real server
+  with Socket.io, and runs ~140 checks over HTTP and websockets: auth, content,
+  SEO and translation overrides, leads, settings, the realtime chat round-trip,
+  analytics, the whole CRM cycle (visitor → consent → lead/chat → contact →
+  quote → booking → alerts → erasure), the newsletter and rate limits. Each
+  area is a module in `src/scripts/smoke/`. Run it after any backend change.
+
+Where MongoDB binaries cannot be downloaded, point the smoke test at any running
+server instead: `SMOKE_MONGODB_URI=mongodb://127.0.0.1:27017 npm run smoke-test` (each
 run uses a fresh database). Against FerretDB add `SMOKE_SKIP_SEED=1` — it cannot
 store the seed data's nested arrays — and expect the analytics-summary checks to
 fail, as FerretDB lacks `$cond`.
+
+CI (`.github/workflows/ci.yml`) runs `npm ci` (which also runs the production
+build via `postinstall`), lint, typecheck, unit tests and build on every push
+and pull request, with placeholder env vars and no secrets.
 
 ## CRM
 
@@ -221,15 +273,40 @@ src/
   repositories/            # Repository interfaces + Mongo implementations + factory
   realtime/io.ts           # Socket.io server, rooms, emit helpers
   shared/
-    services/               # business logic (auth, leads, content, settings, media, chat)
-    middleware/              # requireAdmin (JWT), error handling
-    http/                    # response envelope, async handler
-    errors/                  # AppError
+    services/               # business logic (auth, leads, content, CRM, quotes, bookings, chat, …)
+    types/                  # domain types, one module per area (leads, content, crm, sales, …)
+    middleware/             # requireAdmin (JWT), rate limits, error handling
+    http/                   # response envelope, async handler, zod body parsing
+    errors/                 # AppError
+    *.ts                    # pure helpers: phone, slots, quote math, tracking, contact merge
   routes/
-    public/                  # site-facing endpoints
-    admin/                   # dashboard-facing endpoints
-  scripts/                   # seed-admin, smoke-test
+    public/                 # site-facing endpoints (+ zod schemas for the form writes)
+    admin/                  # dashboard-facing endpoints
+  scripts/                  # seed/maintenance scripts; smoke-test.ts + smoke/ sections
+  testing/                  # unit-test helpers (in-memory repos, router harness)
 ```
+
+Unit tests sit next to the code they test as `*.test.ts`.
+
+## Design decisions
+
+- **Repository seam.** Services call `repos.*` interfaces, never Mongoose, so the
+  database can change in one file — and unit tests can swap repositories in
+  memory instead of needing MongoDB. The cost is some hand-written mapping code.
+- **Validation split.** zod checks the *shape* of public request bodies at the
+  route; business rules and their user-facing messages stay in the services,
+  which scripts call too. Schemas were introduced to accept exactly what the
+  hand-written checks accepted, with tests over the site's real payloads.
+- **Push-only realtime.** Every chat write goes through REST and is then
+  broadcast over Socket.io, so a dropped socket never loses a message.
+- **Fail soft on side effects.** CRM filing, alerts (Telegram) and site-rebuild
+  hooks are wrapped so they can never fail the lead, booking or edit that
+  triggered them.
+- **Production build without devDependencies.** Render installs with
+  `NODE_ENV=production`, so the compiler and types are runtime dependencies and
+  `postinstall` builds; test and smoke-test code is excluded from `dist/`.
+- **In-memory rate limits.** Simple and sufficient on one instance; documented
+  as the thing to move to Redis before scaling out.
 
 ## Deploy to Render
 
@@ -263,7 +340,14 @@ Atlas connection string as `MONGODB_URI`.
 
 **CORS:** set `CORS_ORIGINS` to the deployed site + dashboard URLs
 (comma-separated, no trailing slash). It also governs which origins may open a
-Socket.io connection.
+Socket.io connection. When it is empty, production (`NODE_ENV=production` or
+Render's `RENDER=true`) falls back to the live site and dashboard origins and
+refuses everything else; only development reflects any origin, so any Vite port
+works. See `src/config/cors.ts`.
+
+**Secrets:** production refuses to start without its own `JWT_ADMIN_SECRET`
+(the development fallback is public in this repo), and `npm run seed-admin`
+refuses to create a production admin unless `SUPERADMIN_PASSWORD` is set.
 
 ### Site rebuilds after edits
 
@@ -278,3 +362,7 @@ requested.
 | Variable | Purpose |
 |---|---|
 | `VERCEL_DEPLOY_HOOK_URL` | Optional. Deploy Hook URL that rebuilds the site after CMS/SEO/settings edits |
+
+## License
+
+[MIT](LICENSE) © 2026 Kirollos Fayez

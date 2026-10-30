@@ -1,5 +1,5 @@
 import { normalizePhone } from "./phone.js";
-import type { Contact, ContactSource } from "./types.js";
+import type { Contact, ContactSource } from "./types/index.js";
 
 /**
  * Identity matching for the CRM, as pure functions so the rules are testable

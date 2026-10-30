@@ -1,6 +1,6 @@
 import type { FilterQuery } from "mongoose";
 import { BookingModel, QuoteModel } from "../../models/sales.model.js";
-import type { Booking, Quote } from "../../shared/types.js";
+import type { Booking, Quote } from "../../shared/types/index.js";
 import type { WithId } from "../types.js";
 
 function withId<T>(doc: Record<string, unknown> & { _id?: unknown }): WithId<T> {

@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import type { AnalyticsEvent } from "../shared/types.js";
+import type { AnalyticsEvent } from "../shared/types/index.js";
 
 const analyticsSchema = new Schema<AnalyticsEvent>({
   type: { type: String, enum: ["pageview", "click", "conversion"], required: true, index: true },

@@ -2,7 +2,7 @@ import type { FilterQuery } from "mongoose";
 import { VisitorModel, ConsentRecordModel } from "../../models/visitor.model.js";
 import { ActivityModel, ContactModel } from "../../models/contact.model.js";
 import { AnalyticsModel } from "../../models/analytics.model.js";
-import type { Activity, ConsentRecord, Contact, TouchInfo, Visitor } from "../../shared/types.js";
+import type { Activity, ConsentRecord, Contact, TouchInfo, Visitor } from "../../shared/types/index.js";
 import type { WithId } from "../types.js";
 
 /**

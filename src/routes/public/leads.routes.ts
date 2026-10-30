@@ -1,29 +1,19 @@
 import { Router } from "express";
 import { asyncHandler } from "../../shared/http/async-handler.js";
 import { ok } from "../../shared/http/api-response.js";
-import { createLead } from "../../shared/services/leads.service.js";
-import { AppError } from "../../shared/errors/app-error.js";
+import { parseBody } from "../../shared/http/validate.js";
+import { createLead, type CreateLeadInput } from "../../shared/services/leads.service.js";
+import { leadBodySchema } from "./schemas.js";
 
 export const publicLeadsRouter = Router();
 
 publicLeadsRouter.post(
   "/",
   asyncHandler(async (req, res) => {
-    const { source, name, email, phone, company, projectType, budget, message, visitorId } = req.body ?? {};
-    if (source !== "contact" && source !== "campaign") {
-      throw AppError.badRequest('source must be "contact" or "campaign"');
-    }
-    const lead = await createLead({
-      source,
-      name,
-      email,
-      phone,
-      company,
-      projectType,
-      budget,
-      message,
-      visitorId,
-    });
+    const body = parseBody(leadBodySchema, req.body);
+    // The schema guarantees the types; `createLead` owns the required-field
+    // checks ("Name is required", …) and their messages.
+    const lead = await createLead(body as CreateLeadInput);
     ok(res, lead, 201);
   })
 );

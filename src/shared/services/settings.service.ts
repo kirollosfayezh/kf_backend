@@ -1,7 +1,7 @@
 import { repos } from "../../repositories/index.js";
 import { AppError } from "../errors/app-error.js";
 import { requestSiteRebuild } from "./deploy-hook.service.js";
-import type { SiteSettings, SocialLinks } from "../types.js";
+import type { SiteSettings, SocialLinks } from "../types/index.js";
 
 export function getSettings() {
   return repos.settings.get();

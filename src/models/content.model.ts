@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 import type { Model } from "mongoose";
-import type { ContentCollection, ContentItem } from "../shared/types.js";
+import type { ContentCollection, ContentItem } from "../shared/types/index.js";
 
 // `_id: false` keeps Mongoose from stamping an _id onto these nested objects,
 // which would otherwise leak into every API response.

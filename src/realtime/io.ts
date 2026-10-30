@@ -1,6 +1,7 @@
 import { Server } from "socket.io";
 import type { Server as HttpServer } from "node:http";
 import { env } from "../config/env.js";
+import { allowedOrigins } from "../config/cors.js";
 import { verifyAdminToken } from "../shared/services/auth.service.js";
 
 /**
@@ -18,7 +19,7 @@ let io: Server | null = null;
 export function initIo(httpServer: HttpServer): Server {
   io = new Server(httpServer, {
     cors: {
-      origin: env.corsOrigins.length ? env.corsOrigins : true,
+      origin: allowedOrigins(env.corsOrigins, env.isProduction),
       credentials: true,
     },
   });

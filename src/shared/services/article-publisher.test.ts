@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { fillMissingTranslations, publishNewArticles, type PublisherDeps, type TranslationDeps } from "./article-publisher.service.js";
-import type { ContentItem } from "../types.js";
+import type { ContentItem } from "../types/index.js";
 
 /** An in-memory CMS + import log, so nothing touches a database. */
 function harness(options: { inCms?: string[]; imported?: string[]; files?: string[]; failCreate?: string } = {}) {

@@ -1,5 +1,5 @@
 import { CrmSettingsModel, CounterModel, NotificationModel } from "../../models/crm-settings.model.js";
-import type { AdminNotification, CrmSettings } from "../../shared/types.js";
+import type { AdminNotification, CrmSettings } from "../../shared/types/index.js";
 import type { WithId } from "../types.js";
 
 function withId<T>(doc: Record<string, unknown> & { _id?: unknown }): WithId<T> {

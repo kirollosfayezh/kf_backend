@@ -3,7 +3,7 @@ import { AppError } from "../errors/app-error.js";
 import { EMAIL } from "../contact-merge.js";
 import { addActivity, resolveContact } from "./contacts.service.js";
 import { notify } from "./notify.service.js";
-import type { Subscriber, SubscriberSource } from "../types.js";
+import type { Subscriber, SubscriberSource } from "../types/index.js";
 import type { WithId } from "../../repositories/types.js";
 
 /**
@@ -103,7 +103,7 @@ export function subscribersCsv(rows: Subscriber[]): string {
     return /[",\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
   };
   const lines = [CSV_COLUMNS.join(","), ...rows.map((r) => CSV_COLUMNS.map((k) => cell(r[k])).join(","))];
-  return `﻿${lines.join("\r\n")}\r\n`;
+  return `\uFEFF${lines.join("\r\n")}\r\n`;
 }
 
 export async function removeSubscriber(id: string): Promise<{ id: string }> {

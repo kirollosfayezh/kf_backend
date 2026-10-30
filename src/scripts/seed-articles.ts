@@ -52,7 +52,7 @@ interface ParsedArticle {
 
 /** Splits `---\nkey: value\n---\n<body>`. A file without front matter is all body. */
 export function parseArticle(source: string): ParsedArticle {
-  const text = source.replace(/^﻿/, "").replace(/\r\n?/g, "\n");
+  const text = source.replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n");
   const m = /^---\n([\s\S]*?)\n---\n?/.exec(text);
   if (!m) return { front: {}, body: text.trim() };
 

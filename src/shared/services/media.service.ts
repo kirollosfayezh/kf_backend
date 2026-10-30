@@ -37,7 +37,7 @@ let hostCheck: { at: number; ok: boolean } | null = null;
 async function publicUrlWorks(): Promise<boolean> {
   if (!env.r2.publicUrl) return false;
   if (hostCheck && Date.now() - hostCheck.at < 10 * 60_000) return hostCheck.ok;
-  let ok = false;
+  let ok: boolean;
   try {
     await lookup(new URL(env.r2.publicUrl).hostname);
     ok = true;

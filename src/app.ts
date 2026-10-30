@@ -38,6 +38,7 @@ import {
 } from "./shared/middleware/rate-limit.js";
 import { errorHandler, notFoundHandler } from "./shared/middleware/error-handler.js";
 import { env } from "./config/env.js";
+import { corsOptions } from "./config/cors.js";
 import { getMediaObject, SERVABLE_KEY } from "./shared/services/media.service.js";
 
 export const app = express();
@@ -47,15 +48,7 @@ export const app = express();
 app.set("trust proxy", 1);
 
 app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
-app.use(
-  cors({
-    origin: env.corsOrigins.length ? env.corsOrigins : true,
-    // `navigator.sendBeacon` issues credentialed requests, so without this the
-    // analytics preflight fails and every beacon is silently dropped. Safe
-    // because the allowlist is explicit — it is never the `*` wildcard.
-    credentials: true,
-  })
-);
+app.use(cors(corsOptions(env.corsOrigins)));
 app.use(express.json());
 
 // Dev-only local media fallback (production uses R2 — see media.service.ts)

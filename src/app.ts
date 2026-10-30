@@ -48,7 +48,7 @@ export const app = express();
 app.set("trust proxy", 1);
 
 app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
-app.use(cors(corsOptions(env.corsOrigins)));
+app.use(cors(corsOptions(env.corsOrigins, env.isProduction)));
 app.use(express.json());
 
 // Dev-only local media fallback (production uses R2 — see media.service.ts)

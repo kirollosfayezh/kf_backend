@@ -340,8 +340,14 @@ Atlas connection string as `MONGODB_URI`.
 
 **CORS:** set `CORS_ORIGINS` to the deployed site + dashboard URLs
 (comma-separated, no trailing slash). It also governs which origins may open a
-Socket.io connection. **Keep it set in production:** when it is empty the API
-reflects any origin (convenient for local Vite ports), see `src/config/cors.ts`.
+Socket.io connection. When it is empty, production (`NODE_ENV=production` or
+Render's `RENDER=true`) falls back to the live site and dashboard origins and
+refuses everything else; only development reflects any origin, so any Vite port
+works. See `src/config/cors.ts`.
+
+**Secrets:** production refuses to start without its own `JWT_ADMIN_SECRET`
+(the development fallback is public in this repo), and `npm run seed-admin`
+refuses to create a production admin unless `SUPERADMIN_PASSWORD` is set.
 
 ### Site rebuilds after edits
 

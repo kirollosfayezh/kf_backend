@@ -1,17 +1,27 @@
 import type { CorsOptions } from "cors";
 
+/** The live site (apex + www) and the dashboard. Used when production has no `CORS_ORIGINS`. */
+export const PRODUCTION_ORIGINS = [
+  "https://kftechsolutions.dev",
+  "https://www.kftechsolutions.dev",
+  "https://kf-dashboard-iota.vercel.app",
+];
+
 /**
- * CORS for the site and the dashboard, from the `CORS_ORIGINS` allowlist.
+ * The origins allowed to call the API (and open the Socket.io channel).
  *
- * An empty allowlist reflects any origin. That is convenient locally (any
- * Vite port works) but is also what production would do if `CORS_ORIGINS`
- * were ever unset on Render — so keep it set there (site, www and dashboard
- * origins). Tightening the fallback needs the dashboard's production origin,
- * which is not recorded in this repo.
+ * `CORS_ORIGINS` wins when set. Without it, production falls back to the known
+ * site and dashboard origins — it fails closed rather than reflecting any
+ * origin — while development reflects the caller so any Vite port works.
  */
-export function corsOptions(allowlist: string[]): CorsOptions {
+export function allowedOrigins(allowlist: string[], isProduction: boolean): string[] | true {
+  if (allowlist.length) return allowlist;
+  return isProduction ? PRODUCTION_ORIGINS : true;
+}
+
+export function corsOptions(allowlist: string[], isProduction = false): CorsOptions {
   return {
-    origin: allowlist.length ? allowlist : true,
+    origin: allowedOrigins(allowlist, isProduction),
     // `navigator.sendBeacon` issues credentialed requests, so without this the
     // analytics preflight fails and every beacon is silently dropped. Safe
     // because the allowlist is explicit — it is never the `*` wildcard.

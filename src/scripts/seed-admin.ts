@@ -11,6 +11,11 @@ import { hashPassword } from "../shared/services/auth.service.js";
 async function main() {
   await connectDb();
 
+  // The fallback password is public in this repo; never create a production admin with it.
+  if (env.isProduction && !process.env.SUPERADMIN_PASSWORD) {
+    throw new Error("Set SUPERADMIN_PASSWORD before seeding an admin in production.");
+  }
+
   const email = env.superadminEmail.trim().toLowerCase();
   const [existing] = await repos.adminUsers.list({ where: { email } });
 

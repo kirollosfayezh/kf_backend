@@ -24,7 +24,7 @@ import { readFile } from "node:fs/promises";
 import mongoose from "mongoose";
 import { connectDb } from "../db/connect.js";
 import { repos } from "../repositories/index.js";
-import type { ContentItem, LocalizedText } from "../shared/types.js";
+import type { ContentItem, LocalizedText } from "../shared/types/index.js";
 
 const DATA_URL = new URL("./import-portfolio.data.json", import.meta.url);
 const SEED_URL = new URL("./seed-content.data.json", import.meta.url);

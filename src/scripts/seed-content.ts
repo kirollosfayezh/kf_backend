@@ -15,7 +15,7 @@ import { connectDb } from "../db/connect.js";
 import { repos } from "../repositories/index.js";
 import { loadArticles } from "./seed-articles.js";
 import { loadServicePages, planServicePages } from "./seed-services.js";
-import type { ContentCollection, ContentItem, LocalizedText } from "../shared/types.js";
+import type { ContentCollection, ContentItem, LocalizedText } from "../shared/types/index.js";
 
 interface SeedItem {
   slug: string;

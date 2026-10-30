@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import type { AdminUser } from "../shared/types.js";
+import type { AdminUser } from "../shared/types/index.js";
 
 const adminUserSchema = new Schema<AdminUser>({
   email: { type: String, required: true, unique: true, lowercase: true, trim: true },

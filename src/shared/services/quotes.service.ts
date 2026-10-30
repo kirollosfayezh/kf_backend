@@ -4,7 +4,7 @@ import { AppError } from "../errors/app-error.js";
 import { quoteTotals } from "../quote-math.js";
 import { addActivity, updateContact } from "./contacts.service.js";
 import { notify } from "./notify.service.js";
-import type { Quote, QuoteLineItem, QuoteSettings, QuoteStatus } from "../types.js";
+import type { Quote, QuoteLineItem, QuoteSettings, QuoteStatus } from "../types/index.js";
 
 const LANGS = ["en", "ar", "de", "fr"];
 const text = (v: unknown, max: number) => (typeof v === "string" ? v.trim().slice(0, max) : undefined);

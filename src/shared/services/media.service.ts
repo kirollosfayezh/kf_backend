@@ -7,7 +7,7 @@ import sharp from "sharp";
 import { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 import { env, r2Enabled } from "../../config/env.js";
 import { repos } from "../../repositories/index.js";
-import type { MediaItem } from "../types.js";
+import type { MediaItem } from "../types/index.js";
 
 const LOCAL_UPLOAD_DIR = path.resolve("uploads");
 

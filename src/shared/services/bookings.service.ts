@@ -4,7 +4,7 @@ import { normalizePhone } from "../phone.js";
 import { computeSlots } from "../slots.js";
 import { addActivity, resolveContact } from "./contacts.service.js";
 import { notify } from "./notify.service.js";
-import type { BookingStatus } from "../types.js";
+import type { BookingStatus } from "../types/index.js";
 
 const STATUSES: BookingStatus[] = ["confirmed", "completed", "no_show", "cancelled"];
 const text = (v: unknown, max: number) => (typeof v === "string" ? v.trim().slice(0, max) : undefined);

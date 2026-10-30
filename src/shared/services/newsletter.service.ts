@@ -3,7 +3,7 @@ import { AppError } from "../errors/app-error.js";
 import { EMAIL } from "../contact-merge.js";
 import { addActivity, resolveContact } from "./contacts.service.js";
 import { notify } from "./notify.service.js";
-import type { Subscriber, SubscriberSource } from "../types.js";
+import type { Subscriber, SubscriberSource } from "../types/index.js";
 import type { WithId } from "../../repositories/types.js";
 
 /**

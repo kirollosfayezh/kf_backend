@@ -1,6 +1,6 @@
 import { AnalyticsModel } from "../../models/analytics.model.js";
 import { LeadModel } from "../../models/lead.model.js";
-import type { AnalyticsEvent, AnalyticsSummary } from "../../shared/types.js";
+import type { AnalyticsEvent, AnalyticsSummary } from "../../shared/types/index.js";
 
 /**
  * Analytics reads are aggregations, not row fetches, so this gets its own

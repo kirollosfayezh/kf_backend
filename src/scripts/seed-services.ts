@@ -1,4 +1,4 @@
-import type { ContentItem, LocalizedText } from "../shared/types.js";
+import type { ContentItem, LocalizedText } from "../shared/types/index.js";
 import { readFile, readdir } from "node:fs/promises";
 import { loadArticles, parseArticle } from "./seed-articles.js";
 

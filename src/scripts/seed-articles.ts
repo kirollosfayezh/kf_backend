@@ -1,5 +1,5 @@
 import { readFile, readdir } from "node:fs/promises";
-import type { ContentItem, LocalizedText } from "../shared/types.js";
+import type { ContentItem, LocalizedText } from "../shared/types/index.js";
 
 /**
  * Articles, authored as Markdown files rather than as JSON strings.

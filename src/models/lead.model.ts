@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import type { Lead } from "../shared/types.js";
+import type { Lead } from "../shared/types/index.js";
 
 const leadSchema = new Schema<Lead>({
   source: { type: String, enum: ["contact", "campaign"], required: true },

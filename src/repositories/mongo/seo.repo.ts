@@ -1,5 +1,5 @@
 import { SeoPageModel } from "../../models/seo.model.js";
-import type { SeoLocalizedText, SeoPage } from "../../shared/types.js";
+import type { SeoLocalizedText, SeoPage } from "../../shared/types/index.js";
 
 /**
  * SEO overrides are keyed by the site's page key, not by an ObjectId, and are

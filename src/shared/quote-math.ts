@@ -1,4 +1,4 @@
-import type { QuoteLineItem } from "./types.js";
+import type { QuoteLineItem } from "./types/index.js";
 
 /** Money is rounded to 2 decimals at each step a person would round on paper. */
 const r2 = (n: number) => Math.round((n + Number.EPSILON) * 100) / 100;

@@ -1,7 +1,7 @@
 import { repos } from "../../repositories/index.js";
 import { emitToAdmins } from "../../realtime/io.js";
 import { env } from "../../config/env.js";
-import type { AdminNotification, NotificationType } from "../types.js";
+import type { AdminNotification, NotificationType } from "../types/index.js";
 
 /**
  * One call for "tell the team": saved to the dashboard's alert feed, pushed

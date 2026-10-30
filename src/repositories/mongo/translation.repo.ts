@@ -1,5 +1,5 @@
 import { TranslationModel } from "../../models/translation.model.js";
-import type { TranslationOverride } from "../../shared/types.js";
+import type { TranslationOverride } from "../../shared/types/index.js";
 
 /**
  * Keyed by the English source string and written with upserts, like the SEO

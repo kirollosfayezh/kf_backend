@@ -1,7 +1,7 @@
 import { repos } from "../../repositories/index.js";
 import { AppError } from "../errors/app-error.js";
 import { requestSiteRebuild } from "./deploy-hook.service.js";
-import type { SeoLocalizedText, SeoPage } from "../types.js";
+import type { SeoLocalizedText, SeoPage } from "../types/index.js";
 
 /** Keys the site's PAGES table defines. Anything else is rejected, so a typo in
  *  the dashboard cannot create an override that silently never applies. */

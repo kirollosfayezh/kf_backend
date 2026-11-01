@@ -23,7 +23,7 @@ import type {
   SiteSettings,
   MediaItem,
   AdminUser,
-} from "../shared/types.js";
+} from "../shared/types/index.js";
 
 /**
  * THE seam. Everything above this file only knows about the `Repository` /

@@ -1,5 +1,5 @@
 import { getCountryForTimezone } from "countries-and-timezones";
-import type { TouchInfo } from "./types.js";
+import type { TouchInfo } from "./types/index.js";
 
 /**
  * Small, dependency-free readers for what a browser tells us about itself.

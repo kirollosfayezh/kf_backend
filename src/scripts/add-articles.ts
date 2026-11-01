@@ -16,7 +16,7 @@ import mongoose from "mongoose";
 import { connectDb } from "../db/connect.js";
 import { repos } from "../repositories/index.js";
 import { loadArticles } from "./seed-articles.js";
-import type { ContentItem } from "../shared/types.js";
+import type { ContentItem } from "../shared/types/index.js";
 
 const ARTICLES_URL = new URL("./articles/", import.meta.url);
 

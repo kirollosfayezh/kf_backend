@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import type { Booking, Quote } from "../shared/types.js";
+import type { Booking, Quote } from "../shared/types/index.js";
 
 const lineSchema = new Schema({ description: String, qty: Number, unitPrice: Number }, { _id: false });
 

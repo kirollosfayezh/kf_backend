@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import type { ChatMessage, ChatThread } from "../shared/types.js";
+import type { ChatMessage, ChatThread } from "../shared/types/index.js";
 
 const visitorMetaSchema = new Schema({ name: String, contact: String }, { _id: false });
 

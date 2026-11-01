@@ -20,7 +20,7 @@ import mongoose from "mongoose";
 import { connectDb } from "../db/connect.js";
 import { repos } from "../repositories/index.js";
 import { loadArticles } from "./seed-articles.js";
-import type { LocalizedText } from "../shared/types.js";
+import type { LocalizedText } from "../shared/types/index.js";
 
 const LEGAL_URL = new URL("./legal/", import.meta.url);
 const SLUG = "privacy-policy";

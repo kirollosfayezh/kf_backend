@@ -5,7 +5,7 @@ import { AppError } from "../errors/app-error.js";
 import { normalizePhone } from "../phone.js";
 import { addActivity, resolveContact } from "./contacts.service.js";
 import { notify } from "./notify.service.js";
-import type { ChatSender } from "../types.js";
+import type { ChatSender } from "../types/index.js";
 
 /** Browser-minted ids are UUIDs or a short fallback — never anything this long. */
 function assertVisitorId(visitorId: unknown): string {

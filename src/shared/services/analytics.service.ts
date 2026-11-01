@@ -1,7 +1,7 @@
 import { repos } from "../../repositories/index.js";
 import { AppError } from "../errors/app-error.js";
 import { cleanTouch, countryFromTimezone, parseUserAgent } from "../tracking.js";
-import type { AnalyticsEvent, AnalyticsEventType, ConsentStatus, DeviceKind } from "../types.js";
+import type { AnalyticsEvent, AnalyticsEventType, ConsentStatus, DeviceKind } from "../types/index.js";
 import type { VisitorTouch } from "../../repositories/mongo/crm.repo.js";
 
 const TYPES: AnalyticsEventType[] = ["pageview", "click", "conversion"];

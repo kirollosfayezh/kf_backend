@@ -2,7 +2,7 @@ import { repos } from "../../repositories/index.js";
 import { AppError } from "../errors/app-error.js";
 import { isHHMM, isValidTimeZone } from "../slots.js";
 import { formatTelegram, telegramSend } from "./notify.service.js";
-import type { CrmSettings, TimeWindow } from "../types.js";
+import type { CrmSettings, TimeWindow } from "../types/index.js";
 
 /**
  * The CRM settings as the dashboard sees them: the Telegram bot token is never

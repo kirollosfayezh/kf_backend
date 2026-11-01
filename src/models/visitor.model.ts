@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import type { ConsentRecord, Visitor } from "../shared/types.js";
+import type { ConsentRecord, Visitor } from "../shared/types/index.js";
 
 const touchSchema = new Schema(
   {

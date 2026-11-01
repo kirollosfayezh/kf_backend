@@ -1,4 +1,4 @@
-import type { ContentItem, LocalizedText } from "../shared/types.js";
+import type { ContentItem, LocalizedText } from "../shared/types/index.js";
 import { readFile, readdir } from "node:fs/promises";
 import { loadArticles, parseArticle } from "./seed-articles.js";
 
@@ -40,7 +40,7 @@ export async function loadServicePages(dir: URL = SERVICES_URL): Promise<Service
   const docs = await loadArticles(dir);
 
   const seo = new Map<string, { seoTitle: LocalizedText; seoDescription: LocalizedText }>();
-  let files: string[] = [];
+  let files: string[];
   try {
     files = (await readdir(dir)).filter((f) => f.endsWith(".md"));
   } catch {

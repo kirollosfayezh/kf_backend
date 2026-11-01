@@ -1,5 +1,5 @@
 import { ChatMessageModel, ChatThreadModel } from "../../models/chat.model.js";
-import type { ChatMessage, ChatSender, ChatThread } from "../../shared/types.js";
+import type { ChatMessage, ChatSender, ChatThread } from "../../shared/types/index.js";
 import type { WithId } from "../types.js";
 
 function plain<T extends Record<string, unknown>>(doc: {

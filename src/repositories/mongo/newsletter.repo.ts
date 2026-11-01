@@ -1,6 +1,6 @@
 import type { FilterQuery } from "mongoose";
 import { SubscriberModel } from "../../models/subscriber.model.js";
-import type { Subscriber } from "../../shared/types.js";
+import type { Subscriber } from "../../shared/types/index.js";
 import type { WithId } from "../types.js";
 
 function withId<T>(doc: Record<string, unknown> & { _id?: unknown }): WithId<T> {

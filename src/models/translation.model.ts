@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import type { TranslationOverride } from "../shared/types.js";
+import type { TranslationOverride } from "../shared/types/index.js";
 
 /**
  * Dashboard overrides for the site's interface copy.

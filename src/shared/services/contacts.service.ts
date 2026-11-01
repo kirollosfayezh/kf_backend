@@ -4,7 +4,7 @@ import { cleanIdentity, hasIdentity, mergeIdentity, pickMatch, type IdentityInpu
 import { channelOf } from "../tracking.js";
 import { ChatMessageModel, ChatThreadModel } from "../../models/chat.model.js";
 import { LeadModel } from "../../models/lead.model.js";
-import { CONTACT_STAGES, type Activity, type ActivityType, type Contact, type ContactStage } from "../types.js";
+import { CONTACT_STAGES, type Activity, type ActivityType, type Contact, type ContactStage } from "../types/index.js";
 import type { WithId } from "../../repositories/types.js";
 
 /**

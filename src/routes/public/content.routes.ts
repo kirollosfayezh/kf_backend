@@ -5,7 +5,7 @@ import { paramStr } from "../../shared/http/params.js";
 import { getSettings } from "../../shared/services/settings.service.js";
 import { getContent, listContent } from "../../shared/services/content.service.js";
 import { AppError } from "../../shared/errors/app-error.js";
-import type { ContentCollection } from "../../shared/types.js";
+import type { ContentCollection } from "../../shared/types/index.js";
 import { CONTENT_COLLECTIONS } from "../../models/content.model.js";
 
 

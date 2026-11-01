@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import type { SeoPage } from "../shared/types.js";
+import type { SeoPage } from "../shared/types/index.js";
 
 /**
  * Per-page SEO overrides, one document per entry in the site's `PAGES` table.

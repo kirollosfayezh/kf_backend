@@ -1,4 +1,4 @@
-import type { BookingSettings } from "./types.js";
+import type { BookingSettings } from "./types/index.js";
 
 /**
  * Bookable call slots, as pure functions of the settings and the clock.

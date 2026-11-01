@@ -8,7 +8,9 @@
     // run from source with tsx, never from dist.
     "src/scripts/dev-memory.ts",
     "src/scripts/smoke-test.ts",
-    // Unit tests run from source with `npm test`.
-    "src/**/*.test.ts"
+    "src/scripts/smoke/**",
+    // Unit tests and their helpers run from source with `npm test`.
+    "src/**/*.test.ts",
+    "src/testing/**"
   ]
 }

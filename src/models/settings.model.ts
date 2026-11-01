@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import type { SiteSettings } from "../shared/types.js";
+import type { SiteSettings } from "../shared/types/index.js";
 
 // `_id: false` keeps Mongoose from stamping an _id onto these nested objects,
 // which would otherwise leak into every API response.

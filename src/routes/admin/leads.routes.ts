@@ -4,7 +4,7 @@ import { ok } from "../../shared/http/api-response.js";
 import { paramStr } from "../../shared/http/params.js";
 import { listLeads, updateLeadStatus } from "../../shared/services/leads.service.js";
 import { AppError } from "../../shared/errors/app-error.js";
-import type { LeadStatus } from "../../shared/types.js";
+import type { LeadStatus } from "../../shared/types/index.js";
 
 const STATUSES: LeadStatus[] = ["new", "contacted", "won", "lost"];
 

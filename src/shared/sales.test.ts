@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { quoteTotals } from "./quote-math.js";
 import { computeSlots, zonedToUtc, zoneOffsetMinutes } from "./slots.js";
-import type { BookingSettings } from "./types.js";
+import type { BookingSettings } from "./types/index.js";
 
 test("quote totals: lines, percent discount, tax", () => {
   const t = quoteTotals(

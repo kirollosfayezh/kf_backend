@@ -1,7 +1,7 @@
 import { loadArticles } from "../../scripts/seed-articles.js";
 import { repos } from "../../repositories/index.js";
 import { requestSiteRebuild } from "./deploy-hook.service.js";
-import type { ContentItem, LocalizedText } from "../types.js";
+import type { ContentItem, LocalizedText } from "../types/index.js";
 
 /**
  * Publishes new articles from `scripts/articles/` when the server starts, so a

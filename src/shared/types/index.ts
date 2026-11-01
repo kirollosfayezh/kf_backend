@@ -11,3 +11,4 @@ export * from "./chat.js";
 export * from "./crm.js";
 export * from "./sales.js";
 export * from "./newsletter.js";
+export * from "./demos.js";

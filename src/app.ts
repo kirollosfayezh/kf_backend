@@ -27,6 +27,7 @@ import {
 import { publicBookingsRouter, publicQuotesRouter } from "./routes/public/sales.routes.js";
 import { publicNewsletterRouter } from "./routes/public/newsletter.routes.js";
 import { adminNewsletterRouter } from "./routes/admin/newsletter.routes.js";
+import { adminDemosRouter } from "./routes/admin/demos.routes.js";
 import { requireAdmin } from "./shared/middleware/auth.js";
 import {
   analyticsRateLimit,
@@ -40,6 +41,8 @@ import { errorHandler, notFoundHandler } from "./shared/middleware/error-handler
 import { env } from "./config/env.js";
 import { corsOptions } from "./config/cors.js";
 import { getMediaObject, SERVABLE_KEY } from "./shared/services/media.service.js";
+import { DEMO_CSP, renderDemo } from "./shared/services/demo.service.js";
+import { asyncHandler } from "./shared/http/async-handler.js";
 
 export const app = express();
 
@@ -49,6 +52,10 @@ app.set("trust proxy", 1);
 
 app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
 app.use(cors(corsOptions(env.corsOrigins, env.isProduction)));
+// A demo upload is a whole web page, far over the 100 kB the other routes
+// allow. The bigger parser runs only here and only after the admin check, and
+// the general parser below then skips the already-parsed body.
+app.use("/api/admin/demos", requireAdmin, express.json({ limit: "1.5mb" }));
 app.use(express.json());
 
 // Dev-only local media fallback (production uses R2 — see media.service.ts)
@@ -79,6 +86,24 @@ app.get("/files/*key", async (req, res) => {
   obj.body.on("error", () => res.destroy());
   obj.body.pipe(res);
 });
+
+// Demo websites (see demo.service.ts). The site proxies <site>/demos/<slug>
+// here, so visitors see them on the main domain — inside a sandbox CSP that
+// replaces helmet's, since a demo needs inline scripts and outside photos.
+app.get(
+  "/demos/:slug",
+  asyncHandler(async (req, res) => {
+    const page = await renderDemo(String(req.params.slug));
+    res.setHeader("Content-Security-Policy", DEMO_CSP);
+    res.setHeader("X-Robots-Tag", "noindex, nofollow");
+    if (!page) {
+      res.status(404).type("html").send("<!doctype html><title>Demo not found</title><p>This demo is not available.</p>");
+      return;
+    }
+    res.setHeader("Cache-Control", "public, max-age=60");
+    res.type("html").send(page);
+  })
+);
 
 const api = express.Router();
 
@@ -115,6 +140,7 @@ api.use("/admin/bookings", requireAdmin, adminBookingsRouter);
 api.use("/admin/notifications", requireAdmin, adminNotificationsRouter);
 api.use("/admin/crm-settings", requireAdmin, adminCrmSettingsRouter);
 api.use("/admin/newsletter", requireAdmin, adminNewsletterRouter);
+api.use("/admin/demos", requireAdmin, adminDemosRouter);
 
 app.use("/api", api);
 

@@ -5,6 +5,7 @@ import { ConsentRepository, ContactRepository, VisitorRepository } from "./mongo
 import { CrmSettingsRepository, NotificationRepository } from "./mongo/notifications.repo.js";
 import { BookingRepository, QuoteRepository } from "./mongo/sales.repo.js";
 import { SubscriberRepository } from "./mongo/newsletter.repo.js";
+import { DemoRepository } from "./mongo/demo.repo.js";
 import { MongoSingletonRepository } from "./mongo/mongo-singleton-repo.js";
 import { ChatRepository } from "./mongo/chat.repo.js";
 import { AnalyticsRepository } from "./mongo/analytics.repo.js";
@@ -89,6 +90,7 @@ export const repos = {
   quotes: new QuoteRepository(),
   bookings: new BookingRepository(),
   subscribers: new SubscriberRepository(),
+  demos: new DemoRepository(),
   articleImports: new ArticleImportRepository(),
   articleTranslations: new ArticleTranslationRepository(),
 };

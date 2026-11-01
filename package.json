@@ -21,6 +21,7 @@
     "update-privacy-policy": "npm run build && node dist/scripts/update-privacy-policy.js",
     "update-social-links": "npm run build && node dist/scripts/update-social-links.js",
     "import-portfolio": "npm run build && node dist/scripts/import-portfolio.js",
+    "import-demos": "npm run build && node dist/scripts/import-demos.js",
     "r2-upload": "npm run build && node dist/scripts/r2-upload.js",
     "fix-media-urls": "npm run build && node dist/scripts/fix-media-urls.js",
     "optimize-media": "npm run build && node dist/scripts/optimize-media.js",

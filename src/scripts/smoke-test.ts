@@ -20,6 +20,7 @@ import { analyticsSection } from "./smoke/analytics.js";
 import { crmSection } from "./smoke/crm.js";
 import { newsletterSection } from "./smoke/newsletter.js";
 import { abuseSection } from "./smoke/abuse.js";
+import { demosSection } from "./smoke/demos.js";
 
 async function main() {
   // SMOKE_MONGODB_URI points the run at an existing server (a local mongod,
@@ -95,6 +96,7 @@ async function main() {
   await analyticsSection(ctx);
   await crmSection(ctx);
   await newsletterSection(ctx);
+  await demosSection(ctx);
   await abuseSection(ctx);
 
   visitorSocket.close();

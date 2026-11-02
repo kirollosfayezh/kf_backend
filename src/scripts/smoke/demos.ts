@@ -44,6 +44,7 @@ export async function demosSection(ctx: Smoke) {
       body.includes('<head><meta name="robots" content="noindex, nofollow">') &&
       body.includes("<header>Lumina Dental</header>") &&
       body.includes("Concept demo by KF Tech Solutions") &&
+      body.includes("Back to KF Tech Solutions") &&
       body.indexOf("kf-demo-note") < body.lastIndexOf("</body>"),
     body.slice(0, 200)
   );

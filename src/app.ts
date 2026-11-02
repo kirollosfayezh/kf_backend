@@ -97,7 +97,7 @@ app.get(
     res.setHeader("Content-Security-Policy", DEMO_CSP);
     res.setHeader("X-Robots-Tag", "noindex, nofollow");
     if (!page) {
-      res.status(404).type("html").send("<!doctype html><title>Demo not found</title><p>This demo is not available.</p>");
+      res.status(404).type("html").send("<!doctype html><title>Demo not found</title><p>This demo is not available.</p><p><a href='/projects#concepts'>Back to KF Tech Solutions</a></p>");
       return;
     }
     res.setHeader("Cache-Control", "public, max-age=60");

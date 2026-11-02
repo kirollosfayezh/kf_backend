@@ -55,6 +55,39 @@ export async function contentSection(ctx: Smoke) {
   const byId = await call(`/api/content/services/${itemId}`);
   check("public item still resolves by id", byId.status === 200 && byId.body?.data?.id === itemId, byId);
 
+  // Card lists: the blog index and "related" rows load these instead of every
+  // post's full text.
+  const words = (n: number) => Array.from({ length: n }, () => "word").join(" ");
+  const post = await call("/api/admin/content/blogPosts", {
+    method: "POST",
+    headers: authHeaders,
+    body: JSON.stringify({
+      slug: "card-view-check",
+      published: true,
+      order: 1,
+      title: { en: "Card view", ar: "عرض البطاقة" },
+      body: { en: words(1000), ar: words(400), de: "" },
+      meta: { tag: "Test" },
+    }),
+  });
+  const card = (await call("/api/content/blogPosts?view=card")).body?.data?.find((x: { slug: string }) => x.slug === "card-view-check");
+  check(
+    "?view=card drops the body and gives reading minutes per language (empty de falls back to English)",
+    post.status === 201 && card && card.body === undefined && card.meta?.tag === "Test" &&
+      JSON.stringify(card.meta?.readingMinutes) === JSON.stringify({ en: 5, ar: 2, de: 5, fr: 5 }),
+    card
+  );
+  const full = (await call("/api/content/blogPosts")).body?.data?.find((x: { slug: string }) => x.slug === "card-view-check");
+  check("the plain list still carries the body (the site's build reads it)", Boolean(full?.body?.en), full);
+  const headers = (await fetch(`${ctx.base}/api/content/blogPosts?view=card`)).headers;
+  check(
+    "public content is cacheable for a minute",
+    headers.get("cache-control") === "public, max-age=60, stale-while-revalidate=600",
+    headers.get("cache-control")
+  );
+  await call(`/api/admin/content/blogPosts/${post.body?.data?.id}`, { method: "DELETE", headers: authHeaders });
+  await rebuildRequested();
+
   const missingSlug = await call("/api/content/services/no-such-slug");
   check("unknown slug returns 404", missingSlug.status === 404, missingSlug);
 

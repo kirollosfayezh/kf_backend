@@ -37,6 +37,31 @@ export function listContent(collection: ContentCollection, publishedOnly: boolea
   });
 }
 
+const CARD_LANGS = ["en", "ar", "de", "fr"] as const;
+
+/** Minutes at 200 words a minute, never under one: the site's `readingMinutes`. */
+function readingMinutes(text: string): number {
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / 200));
+}
+
+/**
+ * An item as a list card needs it: no body, and the reading time per language
+ * in `meta.readingMinutes` instead. The body is ~95% of a blog post, and the
+ * blog index and an article's "related" row only ever showed its length.
+ * Each language counts the body the site would show it (its own when written,
+ * else English, else Arabic), so a card and its article always agree.
+ */
+export function cardView(item: ContentItem): ContentItem {
+  const { body, ...rest } = item;
+  if (!body) return item;
+  const fallback = body.en?.trim() ? body.en : body.ar ?? "";
+  const readingMinutesByLang = Object.fromEntries(
+    CARD_LANGS.map((l) => [l, readingMinutes(body[l]?.trim() ? (body[l] as string) : fallback)]),
+  );
+  return { ...rest, meta: { ...(item.meta ?? {}), readingMinutes: readingMinutesByLang } };
+}
+
 /** A Mongo ObjectId is exactly 24 hex characters; no slug we generate is. */
 const OBJECT_ID = /^[a-f0-9]{24}$/i;
 

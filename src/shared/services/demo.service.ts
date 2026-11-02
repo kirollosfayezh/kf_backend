@@ -94,6 +94,7 @@ export async function renderDemo(slug: string): Promise<string | null> {
  */
 export function withConceptBar(html: string, slug: string, whatsapp: string): string {
   const project = `${SITE_URL}/projects/${slug}`;
+  const back = `${SITE_URL}/projects#${slug}`;
   const wa = `https://wa.me/${whatsapp}?text=${encodeURIComponent(`Hi KF Tech Solutions, I saw the ${slug} demo and want one like it.`)}`;
   const head = `<meta name="robots" content="noindex, nofollow">`;
   const note = `<kf-demo-note style="display:block"></kf-demo-note><script>(function(){
@@ -106,17 +107,28 @@ root.innerHTML='<style>:host{all:initial}*{box-sizing:border-box;font-family:sys
 +'.dot{flex:0 0 10px;height:10px;margin-top:5px;border-radius:50%;background:linear-gradient(135deg,#FF6A00,#FF0080)}'
 +'.t{font-size:14px;line-height:1.45}.t b{display:block;font-size:14px}.t span{color:#b9b9c4;font-size:13px}'
 +'.go{display:inline-block;margin-top:9px;padding:8px 14px;border-radius:99px;background:linear-gradient(100deg,#FF6A00,#FF0080);color:#fff;font-weight:700;font-size:13px;text-decoration:none}'
++'.acts{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:9px}'
++'.back{color:#fff;font-weight:600;font-size:13px;text-decoration:none;padding:8px 10px;border-radius:99px;border:1px solid rgba(255,255,255,.22)}'
 +'.x{all:unset;cursor:pointer;color:#9a9aa6;font-size:20px;line-height:1;padding:2px 4px}'
-+'.pill{all:unset;position:fixed;z-index:2147483646;left:16px;bottom:20px;cursor:pointer;background:#0A0A0D;color:#fff;font:600 12px system-ui,sans-serif;padding:8px 12px;border-radius:99px;box-shadow:0 10px 30px -10px rgba(0,0,0,.5);display:none}'
-+'.pill.on{display:block}'
-+'@media(max-width:760px){.card,.pill{bottom:86px}}</style>'
-+'<div class="card" role="note"><i class="dot"></i><div class="t"><b>Concept demo by KF Tech Solutions</b><span>Made-up business, built to show what we can build for you.</span><br><a class="go" target="_blank" rel="noopener" href=${JSON.stringify(wa)}>Get one like this</a></div><button class="x" aria-label="Hide">&times;</button></div>'
-+'<button class="pill">KF &middot; Concept demo</button>'
-+'<div class="foot">This is a concept demo designed by KF Tech Solutions. The business, prices and people are made up. <a target="_blank" rel="noopener" href=${JSON.stringify(project)}>About this demo</a> &middot; <a target="_blank" rel="noopener" href=${JSON.stringify(SITE_URL)}>kftechsolutions.dev</a></div>';
-var card=root.querySelector(".card"),pill=root.querySelector(".pill");
-function hide(){card.classList.add("off");pill.classList.add("on")}
-function show(){card.classList.remove("off");pill.classList.remove("on")}
-root.querySelector(".x").onclick=hide;pill.onclick=show;setTimeout(hide,9000);
++'.bar{position:fixed;z-index:2147483646;left:16px;bottom:20px;display:none;align-items:stretch;background:#0A0A0D;color:#fff;font:600 12px system-ui,sans-serif;border-radius:99px;box-shadow:0 10px 30px -10px rgba(0,0,0,.5);overflow:hidden}'
++'.bar.on{display:flex}'
++'.bar a,.bar button{all:unset;cursor:pointer;color:#fff;padding:9px 13px;font:600 12px system-ui,sans-serif}'
++'.bar button{border-left:1px solid rgba(255,255,255,.18);color:#c9c9d1}'
++'@media(max-width:760px){.card,.bar{bottom:86px}}</style>'
++'<div class="card" role="note"><i class="dot"></i><div class="t"><b>Concept demo by KF Tech Solutions</b><span>Made-up business, built to show what we can build for you.</span><div class="acts"><a class="go" target="_blank" rel="noopener" href=${JSON.stringify(wa)}>Get one like this</a><a class="back" href=${JSON.stringify(back)}>&larr; Back to KF Tech Solutions</a></div></div><button class="x" aria-label="Hide">&times;</button></div>'
++'<div class="bar"><a class="back2" href=${JSON.stringify(back)}>&larr; KF Tech Solutions</a><button>Concept demo</button></div>'
++'<div class="foot">This is a concept demo designed by KF Tech Solutions. The business, prices and people are made up. <a href=${JSON.stringify(project)}>About this demo</a> &middot; <a href=${JSON.stringify(SITE_URL)}>kftechsolutions.dev</a></div>';
+var card=root.querySelector(".card"),bar=root.querySelector(".bar");
+function hide(){card.classList.add("off");bar.classList.add("on")}
+function show(){card.classList.remove("off");bar.classList.remove("on")}
+root.querySelector(".x").onclick=hide;bar.querySelector("button").onclick=show;setTimeout(hide,9000);
+/* Back returns to the page the visitor came from (the card itself when that
+   was the projects list, in their language); a fresh load, not history.back(),
+   because the site only scrolls to an anchor on load. */
+var site=${JSON.stringify(SITE_URL)},ref=document.referrer.split("#")[0];
+if(ref.indexOf(site+"/")===0&&ref.indexOf("/demos/")<0){
+var p=ref.split("?")[0].replace(/[/]$/,""),to=p.slice(-9)==="/projects"?p+${JSON.stringify("#" + slug)}:ref;
+root.querySelectorAll(".back,.back2").forEach(function(a){a.href=to})}
 })();</script>`;
 
   let out = /<head(\s[^>]*)?>/i.test(html) ? html.replace(/<head(\s[^>]*)?>/i, (m) => `${m}${head}`) : `${head}${html}`;

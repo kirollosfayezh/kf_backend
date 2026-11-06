@@ -77,10 +77,10 @@ export async function seoAndTranslationsSection(ctx: Smoke) {
 
   // A row saved before per-language overrides holds plain strings. Inserted
   // straight into the collection, bypassing the schema, exactly as it sits in
-  // production.
+  // production. Not `home`/`about`: those two refuse a brandless title.
   const seoCollection = mongoose.connection.collection("seopages");
   await seoCollection.insertOne({
-    key: "about",
+    key: "contact",
     title: "Legacy title",
     description: "Legacy description",
     keywords: "",
@@ -88,18 +88,18 @@ export async function seoAndTranslationsSection(ctx: Smoke) {
     noindex: null,
     updatedAt: new Date().toISOString(),
   });
-  const seoLegacy = seoRow("about", (await call("/api/seo")).body?.data);
+  const seoLegacy = seoRow("contact", (await call("/api/seo")).body?.data);
   check(
     "a legacy string SEO row reads back as an object",
     seoLegacy?.title?.en === "Legacy title" && seoLegacy?.title?.ar === "" && seoLegacy?.description?.en === "Legacy description",
     seoLegacy
   );
-  const seoLegacyPatch = await call("/api/admin/seo/about", {
+  const seoLegacyPatch = await call("/api/admin/seo/contact", {
     method: "PATCH",
     headers: authHeaders,
     body: JSON.stringify({ title: { fr: "Titre" } }),
   });
-  const seoLegacyStored = await seoCollection.findOne({ key: "about" });
+  const seoLegacyStored = await seoCollection.findOne({ key: "contact" });
   check(
     "a legacy SEO row accepts a per-language save and is migrated in place",
     seoLegacyPatch.status === 200 &&
@@ -111,6 +111,30 @@ export async function seoAndTranslationsSection(ctx: Smoke) {
       seoLegacyStored?.description?.en === "Legacy description",
     seoLegacyStored
   );
+
+  // The home and about overrides are the site's name card: an editor who drops
+  // the brand from them is told now, not by a failed production build later.
+  const seoBrandless = await call("/api/admin/seo/home", {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ title: "Software studio in Cairo" }),
+  });
+  const seoBrandlessAr = await call("/api/admin/seo/about", {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ description: { ar: "شركة برمجيات في القاهرة" } }),
+  });
+  const seoBranded = await call("/api/admin/seo/home", {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ title: { fr: "KF Tech Solutions (KFTech) | Société logicielle au Caire" }, description: "" }),
+  });
+  check(
+    "a home or about SEO override without the brand is rejected; with it (or blank) it saves",
+    seoBrandless.status === 400 && seoBrandlessAr.status === 400 && seoBranded.status === 200,
+    { seoBrandless, seoBrandlessAr, seoBranded }
+  );
+  check("a rejected brandless override is not stored", !seoRow("home", (await call("/api/seo")).body?.data)?.title?.en, seoBrandless);
 
   const seoBadKey = await call("/api/admin/seo/not-a-page", {
     method: "PATCH",

@@ -66,6 +66,13 @@ const defaultSettings: SiteSettings = {
   pixels: {},
   contact: {},
   social: {},
+  brand: {
+    alternateNames: { en: [], ar: [], de: [], fr: [] },
+    foundingDate: "",
+    founderProfiles: [],
+    profiles: [],
+    notAffiliatedWith: [],
+  },
   updatedAt: new Date().toISOString(),
 };
 

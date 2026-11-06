@@ -52,6 +52,28 @@ export function mergeLocalized(current: SeoLocalizedText | undefined, incoming: 
   return merged;
 }
 
+/** The pages whose `<title>` and description are the site's own name card. */
+const BRAND_PAGES: ReadonlySet<SeoKey> = new Set(["home", "about"]);
+const BRAND = /KF ?Tech/i;
+
+/**
+ * The site's build fails when the home or about page stops naming the company
+ * (a page that does not say "KF Tech" is how search engines confuse it with a
+ * similarly named one). Rejecting the override here is the editor-facing half
+ * of that audit: otherwise a dashboard save turns the next production build
+ * red with no feedback. Blank still means "inherit the built-in text".
+ */
+function assertNamesBrand(key: SeoKey, title: SeoLocalizedText, description: SeoLocalizedText): void {
+  if (!BRAND_PAGES.has(key)) return;
+  for (const text of [title, description]) {
+    for (const lang of LANGS) {
+      if (text[lang] && !BRAND.test(text[lang])) {
+        throw AppError.badRequest("The home and about page title and description must name KF Tech Solutions.");
+      }
+    }
+  }
+}
+
 export async function upsertSeoPage(key: string, input: Partial<SeoPage>): Promise<SeoPage> {
   if (!isSeoKey(key)) throw AppError.notFound(`Unknown SEO page: ${key}`);
 
@@ -60,9 +82,12 @@ export async function upsertSeoPage(key: string, input: Partial<SeoPage>): Promi
   // Only the fields the dashboard owns — never let a request write `key` itself
   // or an arbitrary property onto the document. Title and description are
   // always written in full: that is what migrates a legacy string row.
+  const title = mergeLocalized(existing?.title, input.title);
+  const description = mergeLocalized(existing?.description, input.description);
+  assertNamesBrand(key, title, description);
   const patch: Partial<SeoPage> = {
-    title: mergeLocalized(existing?.title, input.title),
-    description: mergeLocalized(existing?.description, input.description),
+    title,
+    description,
     keywords: typeof input.keywords === "string" ? input.keywords.trim() : undefined,
     image: typeof input.image === "string" ? input.image.trim() : undefined,
     noindex:

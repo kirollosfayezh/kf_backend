@@ -88,6 +88,22 @@ export async function contentSection(ctx: Smoke) {
   await call(`/api/admin/content/blogPosts/${post.body?.data?.id}`, { method: "DELETE", headers: authHeaders });
   await rebuildRequested();
 
+  // About sections are baked into /about like every other prerendered
+  // collection, and used to be the one that never asked for a rebuild.
+  const aboutSection = await call("/api/admin/content/aboutSections", {
+    method: "POST",
+    headers: authHeaders,
+    body: JSON.stringify({ slug: "smoke-about-section", published: true, order: 99, title: { en: "Why us", ar: "لماذا نحن" } }),
+  });
+  await rebuildRequested();
+  rebuilds.length = 0;
+  await call(`/api/admin/content/aboutSections/${aboutSection.body?.data?.id}`, {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ summary: { en: "Edited", ar: "" } }),
+  });
+  check("an about-section edit asks the site to rebuild", aboutSection.status === 201 && (await rebuildRequested()) === 1, rebuilds);
+
   const missingSlug = await call("/api/content/services/no-such-slug");
   check("unknown slug returns 404", missingSlug.status === 404, missingSlug);
 

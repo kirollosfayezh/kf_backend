@@ -524,6 +524,27 @@
       "title": "Do you provide hosting and deployment?",
       "summary": "Yes. We handle deployment, hosting setup and monitoring, and can manage everything for you after launch.",
       "media": []
+    },
+    {
+      "slug": "what-is-the-official-website-of-kf-tech-solutions",
+      "order": 9,
+      "title": "What is the official website of KF Tech Solutions?",
+      "summary": "kftechsolutions.dev is the only official website of KF Tech Solutions, also written KF Tech or KFTech. The company is based in Cairo, Egypt, and the social profiles linked in the footer of this site are its only official ones.",
+      "media": []
+    },
+    {
+      "slug": "is-kf-tech-solutions-the-same-as-kftech-software-solutions",
+      "order": 10,
+      "title": "Is KF Tech Solutions the same as KFTECH Software Solutions?",
+      "summary": "No. KF Tech Solutions is an independent software company in Cairo, Egypt, founded in 2020 by Kirollos Fayez, and kftechsolutions.dev is its only website. KFTECH Software Solutions (kftechsols.com) is a different, unrelated company.",
+      "media": []
+    },
+    {
+      "slug": "who-founded-kf-tech-solutions",
+      "order": 11,
+      "title": "Who founded KF Tech Solutions?",
+      "summary": "Kirollos Fayez founded KF Tech Solutions in Cairo in 2020 and still leads every project as founder and lead engineer.",
+      "media": []
     }
   ],
   "testimonials": [

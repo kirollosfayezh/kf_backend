@@ -77,6 +77,23 @@ const settingsSchema = new Schema<SiteSettings>({
     }),
     default: () => ({}),
   },
+  // The facts that tell this company apart from others with a similar name;
+  // the site bakes them into its Organization schema and llms.txt. Every path
+  // is declared because `strict` drops the rest, and the nested defaults are
+  // what give a document saved before this block existed the empty shape.
+  brand: {
+    type: sub({
+      alternateNames: {
+        type: sub({ en: [String], ar: [String], de: [String], fr: [String] }),
+        default: () => ({}),
+      },
+      foundingDate: { type: String, default: "" },
+      founderProfiles: [String],
+      profiles: [String],
+      notAffiliatedWith: [sub({ name: String, url: String })],
+    }),
+    default: () => ({}),
+  },
   updatedAt: { type: String, required: true },
 });
 

@@ -57,6 +57,31 @@ export interface SocialLinks {
   tiktok?: string;
 }
 
+/** Other spellings of the company name, per site language. */
+export interface BrandNames {
+  en: string[];
+  ar: string[];
+  de: string[];
+  fr: string[];
+}
+
+/**
+ * The facts that tell this company apart from others with a similar name.
+ * The site publishes them in its Organization schema and llms.txt; the
+ * dashboard edits them. Every URL is a full https address. `profiles` are the
+ * company's own listings (directories, the GitHub organisation) and join the
+ * social links as `sameAs`; `founderProfiles` describe the founder, not the
+ * company, and land on the Person node only.
+ */
+export interface BrandIdentity {
+  alternateNames: BrandNames;
+  /** YYYY, YYYY-MM or YYYY-MM-DD; blank means the site's built-in default. */
+  foundingDate: string;
+  founderProfiles: string[];
+  profiles: string[];
+  notAffiliatedWith: { name: string; url: string }[];
+}
+
 export interface SiteSettings extends Record<string, unknown> {
   siteName: string;
   tagline: LocalizedText;
@@ -68,5 +93,7 @@ export interface SiteSettings extends Record<string, unknown> {
   pixels: TrackingSettings;
   contact: { email?: string; phone?: string; whatsapp?: string };
   social: SocialLinks;
+  /** Optional only for documents saved before the block existed; reads back as the empty shape. */
+  brand?: BrandIdentity;
   updatedAt: string;
 }

@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "what-is-the-official-website-of-kf-tech-solutions",
+    "order": 9,
+    "title": {
+      "en": "What is the official website of KF Tech Solutions?",
+      "ar": "ما هو الموقع الرسمي لشركة KF Tech Solutions؟",
+      "de": "Was ist die offizielle Website von KF Tech Solutions?",
+      "fr": "Quel est le site officiel de KF Tech Solutions ?"
+    },
+    "summary": {
+      "en": "kftechsolutions.dev is the only official website of KF Tech Solutions, also written KF Tech or KFTech. The company is based in Cairo, Egypt, and the social profiles linked in the footer of this site are its only official ones.",
+      "ar": "الموقع الرسمي الوحيد لشركة KF Tech Solutions (كي إف تك، وتُكتب أيضًا KF Tech أو KFTech) هو kftechsolutions.dev. مقر الشركة في القاهرة، مصر، والحسابات الاجتماعية المذكورة في أسفل هذا الموقع هي حساباتها الرسمية الوحيدة.",
+      "de": "kftechsolutions.dev ist die einzige offizielle Website von KF Tech Solutions, auch KF Tech oder KFTech geschrieben. Das Unternehmen sitzt in Kairo, Ägypten; die in der Fußzeile dieser Website verlinkten Profile sind seine einzigen offiziellen.",
+      "fr": "kftechsolutions.dev est le seul site officiel de KF Tech Solutions, aussi écrit KF Tech ou KFTech. L'entreprise est basée au Caire, en Égypte, et les profils sociaux liés en pied de page de ce site sont ses seuls profils officiels."
+    }
+  },
+  {
+    "slug": "is-kf-tech-solutions-the-same-as-kftech-software-solutions",
+    "order": 10,
+    "title": {
+      "en": "Is KF Tech Solutions the same as KFTECH Software Solutions?",
+      "ar": "هل KF Tech Solutions هي نفسها KFTECH Software Solutions؟",
+      "de": "Ist KF Tech Solutions dasselbe wie KFTECH Software Solutions?",
+      "fr": "KF Tech Solutions est-elle la même entreprise que KFTECH Software Solutions ?"
+    },
+    "summary": {
+      "en": "No. KF Tech Solutions is an independent software company in Cairo, Egypt, founded in 2020 by Kirollos Fayez, and kftechsolutions.dev is its only website. KFTECH Software Solutions (kftechsols.com) is a different, unrelated company.",
+      "ar": "لا. KF Tech Solutions شركة برمجيات مستقلة في القاهرة، مصر، أسسها كيرلس فايز عام 2020، وموقعها الوحيد هو kftechsolutions.dev. أما KFTECH Software Solutions (kftechsols.com) فهي شركة أخرى لا صلة لنا بها.",
+      "de": "Nein. KF Tech Solutions ist ein unabhängiges Softwareunternehmen in Kairo, Ägypten, 2020 von Kirollos Fayez gegründet; kftechsolutions.dev ist seine einzige Website. KFTECH Software Solutions (kftechsols.com) ist ein anderes, nicht verbundenes Unternehmen.",
+      "fr": "Non. KF Tech Solutions est une société de logiciels indépendante au Caire, en Égypte, fondée en 2020 par Kirollos Fayez, et kftechsolutions.dev est son seul site web. KFTECH Software Solutions (kftechsols.com) est une entreprise différente, sans lien avec nous."
+    }
+  },
+  {
+    "slug": "who-founded-kf-tech-solutions",
+    "order": 11,
+    "title": {
+      "en": "Who founded KF Tech Solutions?",
+      "ar": "من مؤسس KF Tech Solutions؟",
+      "de": "Wer hat KF Tech Solutions gegründet?",
+      "fr": "Qui a fondé KF Tech Solutions ?"
+    },
+    "summary": {
+      "en": "Kirollos Fayez founded KF Tech Solutions in Cairo in 2020 and still leads every project as founder and lead engineer.",
+      "ar": "أسس كيرلس فايز شركة KF Tech Solutions في القاهرة عام 2020، ولا يزال يقود كل مشروع بصفته المؤسس وكبير المهندسين.",
+      "de": "Kirollos Fayez gründete KF Tech Solutions 2020 in Kairo und leitet bis heute jedes Projekt als Gründer und leitender Entwickler.",
+      "fr": "Kirollos Fayez a fondé KF Tech Solutions au Caire en 2020 et dirige encore chaque projet en tant que fondateur et ingénieur principal."
+    }
+  }
+]

@@ -13,8 +13,8 @@ type NewContentItem = Pick<
 /**
  * Collections the site bakes into static HTML at build time (pages, sitemap,
  * feeds, JSON-LD). A write to one of these is invisible to crawlers until the
- * site rebuilds, so it asks for one. The rest — about sections, promos — are
- * only ever fetched at runtime.
+ * site rebuilds, so it asks for one. Promos are the exception: only ever
+ * fetched at runtime.
  */
 const PRERENDERED: ReadonlySet<ContentCollection> = new Set([
   "blogPosts",
@@ -24,6 +24,7 @@ const PRERENDERED: ReadonlySet<ContentCollection> = new Set([
   "solutions",
   "faqs",
   "testimonials",
+  "aboutSections",
 ]);
 
 function rebuildIfPrerendered(collection: ContentCollection, what: string): void {

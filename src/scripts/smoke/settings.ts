@@ -13,6 +13,11 @@ export async function settingsSection(ctx: Smoke) {
     !JSON.stringify(settings.body.data).includes("_id"),
     settings.body.data
   );
+  check(
+    "seeded defaults expose the empty brand block",
+    Array.isArray(settings.body?.data?.brand?.profiles) && Array.isArray(settings.body?.data?.brand?.alternateNames?.de),
+    settings.body?.data?.brand
+  );
 
   const patched = await call("/api/admin/settings", {
     method: "PATCH",
@@ -99,4 +104,59 @@ export async function settingsSection(ctx: Smoke) {
     body: JSON.stringify({ social: { x: "bad handle!" } }),
   });
   check("a malformed X handle is rejected", badHandle.status === 400, badHandle);
+
+  /**
+   * Brand identity: the Organization schema, the About page and llms.txt read
+   * these. Read back from the public endpoint and compared whole, so a path
+   * the model forgot to declare (which `strict` would drop silently) and an
+   * `_id` on an array row both show up.
+   */
+  const brand = {
+    alternateNames: { en: ["KF Tech", "KFTech"], ar: ["كي إف تك"], de: [], fr: ["KF Tech"] },
+    foundingDate: "2020",
+    founderProfiles: ["https://github.com/kirollosfayezh"],
+    profiles: ["https://www.snapchat.com/add/kftechsolutions", "https://clutch.co/profile/kf-tech"],
+    notAffiliatedWith: [{ name: "KFTECH Software Solutions", url: "https://kftechsols.com" }],
+  };
+  const brandSaved = await call("/api/admin/settings", {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ brand: { ...brand, alternateNames: { ...brand.alternateNames, en: [" KF Tech ", "KFTech", ""] } } }),
+  });
+  const brandPublic = (await call("/api/content/settings")).body?.data?.brand;
+  check(
+    "brand identity round-trips through the public settings, normalised",
+    brandSaved.status === 200 && JSON.stringify(brandPublic) === JSON.stringify(brand),
+    brandPublic
+  );
+  check("brand identity carries no _id noise", !JSON.stringify(brandPublic).includes("_id"), brandPublic);
+
+  const brandHttp = await call("/api/admin/settings", {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ brand: { ...brand, profiles: ["http://clutch.co/profile/kf-tech"] } }),
+  });
+  check("a non-https brand profile is rejected", brandHttp.status === 400, brandHttp);
+  const brandYear = await call("/api/admin/settings", {
+    method: "PATCH",
+    headers: authHeaders,
+    body: JSON.stringify({ brand: { ...brand, foundingDate: "twenty-twenty" } }),
+  });
+  check("a malformed founding date is rejected", brandYear.status === 400, brandYear);
+
+  // PATCH replaces top-level keys whole, so a save that does not mention the
+  // brand must leave it as it was.
+  await call("/api/admin/settings", { method: "PATCH", headers: authHeaders, body: JSON.stringify({ siteName: "KF Tech Solutions" }) });
+  const brandAfter = (await call("/api/content/settings")).body?.data?.brand;
+  check("a later settings save leaves the brand identity intact", JSON.stringify(brandAfter) === JSON.stringify(brand), brandAfter);
+
+  // A document saved before the block existed has no `brand` at all; the
+  // site expects the empty shape, not `undefined`.
+  await ctx.mongoose.connection.collection("siteSettings").updateOne({}, { $unset: { brand: "" } });
+  const legacyBrand = (await call("/api/content/settings")).body?.data?.brand;
+  check(
+    "a settings document without a brand block reads back with the empty shape",
+    Array.isArray(legacyBrand?.profiles) && Array.isArray(legacyBrand?.alternateNames?.ar) && legacyBrand?.foundingDate === "",
+    legacyBrand
+  );
 }

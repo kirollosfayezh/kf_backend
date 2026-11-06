@@ -35,6 +35,10 @@ Wir entwickeln mit plattformübergreifender Technologie, sodass iOS und Android 
 4. **Store-Release.** Prüfung, Veröffentlichung und der Eintrag in jedem Store.
 5. **Nach dem Launch.** Updates für neue Betriebssystemversionen, Fehlerbehebungen und neue Funktionen.
 
+## Für Unternehmen in Saudi-Arabien und den VAE
+
+Wir gestalten und entwickeln iOS- und Android-Apps auf Arabisch und Englisch für Unternehmen in Saudi-Arabien und den VAE, veröffentlicht unter Ihren eigenen Entwicklerkonten bei Apple und Google. Wir arbeiten in derselben Woche von Sonntag bis Donnerstag wie Saudi-Arabien, und alle ein bis zwei Wochen testen Sie einen lauffähigen Stand. Lesen Sie, [was eine App in Saudi-Arabien kostet](/blog/app-development-cost-saudi-arabia) und [in den VAE](/blog/app-development-cost-uae); mehr auf unseren Seiten zu [Saudi-Arabien](/saudi-arabia) und den [VAE](/uae).
+
 ## Häufige Fragen
 
 ### Wie lange dauert die Entwicklung einer App?

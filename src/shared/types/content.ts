@@ -11,7 +11,7 @@ export interface LocalizedText {
   fr?: string;
 }
 
-/** Shared shape for every "content" collection (projects, services, solutions, testimonials, faqs, blogPosts, about). */
+/** Shared shape for every "content" collection (projects, services, solutions, testimonials, faqs, blogPosts, about, markets). */
 export interface ContentItem extends Record<string, unknown> {
   slug: string;
   published: boolean;
@@ -34,7 +34,10 @@ export type ContentCollection =
   | "blogPosts"
   | "aboutSections"
   | "legalPages"
-  | "promos";
+  | "promos"
+  // The country landing pages (/saudi-arabia, /uae, /gulf). Their own
+  // collection rather than more services, so /services never lists them.
+  | "markets";
 
 export interface MediaItem extends Record<string, unknown> {
   url: string;

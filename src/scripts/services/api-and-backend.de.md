@@ -26,6 +26,10 @@ Wir konzipieren und entwickeln Backends, die sicher, schnell und leicht erweiter
 - **Dokumentation und Tests**, damit auch ein anderer Entwickler übernehmen kann.
 - **Hosting** auf zuverlässiger Cloud-Infrastruktur, in Konten, die Ihnen gehören.
 
+## Für Unternehmen in Saudi-Arabien und den VAE
+
+Projekte in Saudi-Arabien und den VAE binden meist lokale Dienste an: ein lizenziertes Zahlungs-Gateway, die E-Rechnungsplattform von ZATCA oder einen Login über die nationale digitale Identität. Wir bauen diese Anbindungen nach der veröffentlichten Dokumentation des jeweiligen Anbieters und hosten das Backend beim Anbieter und in der Region Ihrer Wahl. Lesen Sie zuerst [Zahlungs-Gateways in Saudi-Arabien](/blog/payment-gateways-saudi-arabia) und die [ZATCA-API-Checkliste für Entwickler](/blog/zatca-api-integration-developer-checklist); mehr auf unseren Seiten zu [Saudi-Arabien](/saudi-arabia) und den [VAE](/uae).
+
 ## Häufige Fragen
 
 ### Können Sie unser System an die API eines anderen Unternehmens anbinden?

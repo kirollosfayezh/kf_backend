@@ -26,6 +26,10 @@ Nous concevons et développons des backends sécurisés, rapides et faciles à f
 - **Documentation et tests**, pour qu'un autre développeur puisse reprendre le projet.
 - **Hébergement** sur une infrastructure cloud fiable, dans des comptes qui vous appartiennent.
 
+## Pour les entreprises d'Arabie saoudite et des Émirats
+
+Les projets en Arabie saoudite et aux Émirats se connectent généralement à des services locaux : une passerelle de paiement agréée, la plateforme de facturation électronique de la ZATCA ou une connexion par identité numérique nationale. Nous développons ces intégrations selon la documentation publiée par chaque fournisseur, et hébergeons le backend chez le fournisseur et dans la région de votre choix. Commencez par [les passerelles de paiement en Arabie saoudite](/blog/payment-gateways-saudi-arabia) et [la checklist API ZATCA pour les développeurs](/blog/zatca-api-integration-developer-checklist) ; voir aussi nos pages [Arabie saoudite](/saudi-arabia) et [Émirats arabes unis](/uae).
+
 ## Questions fréquentes
 
 ### Pouvez-vous connecter notre système à l'API d'une autre entreprise ?

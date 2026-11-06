@@ -46,5 +46,69 @@
       "de": "Kirollos Fayez gründete KF Tech Solutions 2020 in Kairo und leitet bis heute jedes Projekt als Gründer und leitender Entwickler.",
       "fr": "Kirollos Fayez a fondé KF Tech Solutions au Caire en 2020 et dirige encore chaque projet en tant que fondateur et ingénieur principal."
     }
+  },
+  {
+    "slug": "do-you-work-with-businesses-in-saudi-arabia-and-the-uae",
+    "order": 12,
+    "title": {
+      "en": "Do you work with businesses in Saudi Arabia and the UAE?",
+      "ar": "هل تعملون مع المنشآت في السعودية والإمارات؟",
+      "de": "Arbeiten Sie mit Unternehmen in Saudi-Arabien und den VAE?",
+      "fr": "Travaillez-vous avec des entreprises en Arabie saoudite et aux Émirats arabes unis ?"
+    },
+    "summary": {
+      "en": "Yes. We are based in Cairo and work remotely, Sunday to Thursday — the same working week as Saudi Arabia. Calls are in Arabic or English, and you see a working build every one to two weeks.",
+      "ar": "نعم. مقرّنا في القاهرة، ونعمل عن بُعد من الأحد إلى الخميس، وهو أسبوع العمل نفسه في السعودية. تُعقد الاجتماعات بالعربية أو الإنجليزية، وتطّلع على نسخة عاملة من مشروعك كل أسبوع إلى أسبوعين.",
+      "de": "Ja. Wir sitzen in Kairo und arbeiten remote, von Sonntag bis Donnerstag – dieselbe Arbeitswoche wie in Saudi-Arabien. Gespräche führen wir auf Arabisch oder Englisch, und alle ein bis zwei Wochen sehen Sie einen lauffähigen Zwischenstand.",
+      "fr": "Oui. Nous sommes basés au Caire et travaillons à distance, du dimanche au jeudi — la même semaine de travail qu'en Arabie saoudite. Les échanges se font en arabe ou en anglais, et vous voyez une version fonctionnelle toutes les une à deux semaines."
+    }
+  },
+  {
+    "slug": "which-currency-do-you-quote-in",
+    "order": 13,
+    "title": {
+      "en": "Which currency do you quote in?",
+      "ar": "بأي عملة تقدّمون عروض الأسعار؟",
+      "de": "In welcher Währung erstellen Sie Angebote?",
+      "fr": "Dans quelle devise établissez-vous vos devis ?"
+    },
+    "summary": {
+      "en": "In US dollars, with the Saudi riyal or UAE dirham equivalent shown at the official fixed rate. Projects start from $200 (about SAR 750 / AED 735); final price depends on scope, with a fixed written quote after a free call.",
+      "ar": "بالدولار الأمريكي، مع بيان ما يعادله بالريال السعودي أو الدرهم الإماراتي وفق سعر الصرف الرسمي الثابت. تبدأ المشاريع من 200 دولار (نحو 750 ريالًا سعوديًا / 735 درهمًا إماراتيًا)، ويتحدد السعر النهائي بحسب نطاق العمل، مع عرض سعر مكتوب وثابت بعد مكالمة مجانية.",
+      "de": "In US-Dollar, mit dem Gegenwert in Saudi-Riyal oder VAE-Dirham zum offiziellen festen Wechselkurs. Projekte beginnen ab 200 $ (etwa 750 SAR / 735 AED); der endgültige Preis hängt vom Umfang ab, mit einem festen schriftlichen Angebot nach einem kostenlosen Gespräch.",
+      "fr": "En dollars américains, avec l'équivalent en riyals saoudiens ou en dirhams émiratis au taux de change officiel fixe. Les projets démarrent à partir de 200 $ (environ 750 SAR / 735 AED) ; le prix final dépend du périmètre, avec un devis écrit et ferme après un appel gratuit."
+    }
+  },
+  {
+    "slug": "how-do-vat-and-withholding-tax-work-for-saudi-and-uae-clients",
+    "order": 14,
+    "title": {
+      "en": "How do VAT and withholding tax work if we pay you from Saudi Arabia or the UAE?",
+      "ar": "كيف تُطبَّق ضريبة القيمة المضافة وضريبة الاستقطاع إذا سدّدنا مستحقاتكم من السعودية أو الإمارات؟",
+      "de": "Wie funktionieren Mehrwertsteuer und Quellensteuer, wenn wir Sie aus Saudi-Arabien oder den VAE bezahlen?",
+      "fr": "Comment fonctionnent la TVA et la retenue à la source si nous vous payons depuis l'Arabie saoudite ou les Émirats ?"
+    },
+    "summary": {
+      "en": "General information, not tax advice: we invoice from Egypt, so a VAT-registered business in Saudi Arabia or the UAE accounts for the VAT itself under the reverse charge. In Saudi Arabia, payments to a non-resident for technical services may also carry 5% withholding tax, which the payer deducts. Please confirm the details with your accountant.",
+      "ar": "هذه معلومات عامة وليست استشارة ضريبية: نُصدر فواتيرنا من مصر، لذا تحتسب المنشأة المسجّلة في ضريبة القيمة المضافة في السعودية أو الإمارات الضريبةَ بنفسها وفق آلية الاحتساب العكسي. وفي السعودية، قد تخضع المدفوعات لغير المقيم مقابل الخدمات الفنية أيضًا لضريبة استقطاع بنسبة 5% يخصمها الدافع. يُرجى التحقق من التفاصيل مع محاسبكم.",
+      "de": "Allgemeine Information, keine Steuerberatung: Wir stellen unsere Rechnungen aus Ägypten, daher führt ein umsatzsteuerlich registriertes Unternehmen in Saudi-Arabien oder den VAE die Mehrwertsteuer im Reverse-Charge-Verfahren selbst ab. In Saudi-Arabien können Zahlungen an Gebietsfremde für technische Leistungen zudem einer Quellensteuer von 5 % unterliegen, die der Zahler einbehält. Bitte klären Sie die Einzelheiten mit Ihrer Steuerberatung.",
+      "fr": "Information générale, pas un conseil fiscal : nous facturons depuis l'Égypte, donc une entreprise immatriculée à la TVA en Arabie saoudite ou aux Émirats autoliquide elle-même la TVA. En Arabie saoudite, les paiements à un non-résident pour des services techniques peuvent en outre supporter une retenue à la source de 5 %, prélevée par le payeur. Vérifiez les détails avec votre comptable."
+    }
+  },
+  {
+    "slug": "who-owns-the-code-and-where-is-our-data-hosted",
+    "order": 15,
+    "title": {
+      "en": "Who owns the code, and where is our data hosted?",
+      "ar": "لمن تعود ملكية الكود المصدري، وأين تُستضاف بياناتنا؟",
+      "de": "Wem gehört der Code, und wo werden unsere Daten gehostet?",
+      "fr": "À qui appartient le code, et où nos données sont-elles hébergées ?"
+    },
+    "summary": {
+      "en": "You do. The source code and the store, cloud and domain accounts are yours. We deploy to the hosting provider and region you choose.",
+      "ar": "تعود إليكم. الكود المصدري وحسابات المتجر والخدمات السحابية والنطاق ملك لكم، ونُطلق النظام لدى مزوّد الاستضافة وفي المنطقة التي تختارونها.",
+      "de": "Ihnen. Der Quellcode sowie die Store-, Cloud- und Domain-Konten gehören Ihnen. Wir stellen das System bei dem Hosting-Anbieter und in der Region bereit, die Sie wählen.",
+      "fr": "À vous. Le code source ainsi que les comptes de la boutique, du cloud et du nom de domaine vous appartiennent. Nous déployons chez l'hébergeur et dans la région que vous choisissez."
+    }
   }
 ]

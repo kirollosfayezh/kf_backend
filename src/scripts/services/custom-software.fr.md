@@ -33,6 +33,10 @@ Si un produit existant vous convient vraiment, nous vous le dirons — et nous v
 4. **Mise en ligne et transfert.** Migration des données, formation, documentation et accès complet à votre code et à vos serveurs.
 5. **Accompagnement.** Corrections, supervision et nouvelles fonctionnalités après le lancement.
 
+## Pour les entreprises d'Arabie saoudite et des Émirats
+
+Nous développons des logiciels sur mesure pour les entreprises d'Arabie saoudite et des Émirats, à distance depuis Le Caire : d'abord un périmètre et un prix écrits, une version fonctionnelle à valider toutes les une à deux semaines, et le code et les comptes à votre nom. Nos guides pour [confier un projet à une société égyptienne depuis le Golfe](/blog/hire-egyptian-software-company-from-gulf) et sur [les clauses de contrat pour les clients saoudiens et émiratis](/blog/software-contract-saudi-uae-clients) listent les questions à poser avant de signer ; voir aussi nos pages [Arabie saoudite](/saudi-arabia) et [Émirats arabes unis](/uae).
+
 ## Questions fréquentes
 
 ### Combien de temps faut-il pour développer un système sur mesure ?

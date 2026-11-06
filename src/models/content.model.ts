@@ -48,6 +48,7 @@ export const CONTENT_COLLECTIONS: ContentCollection[] = [
   "aboutSections",
   "legalPages",
   "promos",
+  "markets",
 ];
 
 /** One Mongoose model per content collection, all sharing the same schema shape. */

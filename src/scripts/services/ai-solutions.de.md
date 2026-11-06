@@ -32,6 +32,10 @@ KI ist nützlich, wenn sie eine klar umrissene Aufgabe in einem Prozess übernim
 
 Mehr dazu in unserem [praktischen Leitfaden für den Einsatz von KI in Ihrem Unternehmen](/blog/a-practical-guide-to-adding-ai-to-your-business).
 
+## Für Unternehmen in Saudi-Arabien und den VAE
+
+Für Unternehmen in Saudi-Arabien und den VAE bauen wir KI-Werkzeuge, die auf Arabisch genauso funktionieren wie auf Englisch: einen Assistenten, der Kundenfragen aus Ihren eigenen Informationen auf Ihrer Website oder per WhatsApp beantwortet, oder einen, der Ihre Verträge und Richtlinien durchsucht – mit Übergabe an einen Menschen, wenn nötig. Lesen Sie über [einen KI-Assistenten, der aus Ihren eigenen Dokumenten antwortet](/blog/ai-assistant-own-documents) und [WhatsApp-Chatbots für saudische Unternehmen](/blog/whatsapp-chatbot-saudi-arabia); mehr auf unseren Seiten zu [Saudi-Arabien](/saudi-arabia) und den [VAE](/uae).
+
 ## Häufige Fragen
 
 ### Wird KI meine Mitarbeitenden ersetzen?

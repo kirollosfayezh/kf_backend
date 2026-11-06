@@ -33,6 +33,10 @@ Wenn ein fertiges Produkt wirklich passt, sagen wir Ihnen das – und helfen Ihn
 4. **Go-live und Übergabe.** Datenmigration, Schulung, Dokumentation und vollständiger Zugriff auf Ihren Code und Ihre Server.
 5. **Support.** Fehlerbehebung, Monitoring und neue Funktionen nach dem Go-live.
 
+## Für Unternehmen in Saudi-Arabien und den VAE
+
+Wir entwickeln Individualsoftware für Unternehmen in Saudi-Arabien und den VAE remote aus Kairo: zuerst ein schriftlicher Umfang und Preis, alle ein bis zwei Wochen ein lauffähiger Stand zur Prüfung, und Code und Konten auf Ihren Namen. Unsere Ratgeber zur [Beauftragung eines ägyptischen Softwareunternehmens aus der Golfregion](/blog/hire-egyptian-software-company-from-gulf) und zu [Vertragsklauseln für Kunden in Saudi-Arabien und den VAE](/blog/software-contract-saudi-uae-clients) zeigen, was Sie vor der Unterschrift klären sollten; mehr auf unseren Seiten zu [Saudi-Arabien](/saudi-arabia) und den [VAE](/uae).
+
 ## Häufige Fragen
 
 ### Wie lange dauert die Entwicklung eines individuellen Systems?

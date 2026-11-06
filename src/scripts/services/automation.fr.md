@@ -34,6 +34,10 @@ Une automatisation à laquelle personne ne fait confiance finit désactivée. Ch
 3. **Développer et faire tourner en parallèle du processus manuel** jusqu'à ce que les résultats concordent.
 4. **Basculer** puis passer à la tâche suivante.
 
+## Pour les entreprises d'Arabie saoudite et des Émirats
+
+Pour les entreprises d'Arabie saoudite et des Émirats, nous automatisons le même travail répétitif en arabe et en anglais : factures et reçus transformés en données, rapports envoyés à heure fixe, relances et validations. Avec les échéances de facturation électronique qui approchent dans les deux pays, des données de facturation propres sont un bon point de départ. Voir [lire les factures et reçus arabes avec l'IA](/blog/arabic-invoice-ocr-ai) et [où en est chaque pays du CCG sur la facturation électronique](/blog/gcc-e-invoicing-by-country) ; voir aussi nos pages [Arabie saoudite](/saudi-arabia) et [Émirats arabes unis](/uae).
+
 ## Questions fréquentes
 
 ### Faut-il un nouveau logiciel pour automatiser ?

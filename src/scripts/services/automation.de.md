@@ -34,6 +34,10 @@ Eine Automatisierung, der niemand vertraut, wird abgeschaltet. Jede Automatisier
 3. **Entwickeln und parallel zum manuellen Prozess betreiben**, bis die Ergebnisse übereinstimmen.
 4. **Umstellen** und zur nächsten Aufgabe übergehen.
 
+## Für Unternehmen in Saudi-Arabien und den VAE
+
+Für Unternehmen in Saudi-Arabien und den VAE automatisieren wir dieselbe Routinearbeit auf Arabisch und Englisch: Rechnungen und Belege werden zu Daten, Berichte gehen termingerecht hinaus, Erinnerungen und Freigaben laufen von selbst. Da in beiden Ländern Fristen für die E-Rechnung näher rücken, sind saubere Rechnungsdaten ein guter Anfang. Lesen Sie, wie man [arabische Rechnungen und Belege mit KI ausliest](/blog/arabic-invoice-ocr-ai) und [wo die einzelnen GCC-Staaten bei der E-Rechnung stehen](/blog/gcc-e-invoicing-by-country); mehr auf unseren Seiten zu [Saudi-Arabien](/saudi-arabia) und den [VAE](/uae).
+
 ## Häufige Fragen
 
 ### Brauchen wir neue Software, um zu automatisieren?

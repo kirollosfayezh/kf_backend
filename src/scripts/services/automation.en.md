@@ -34,6 +34,10 @@ An automation nobody trusts gets switched off. Every automation we build include
 3. **Build and run it alongside the manual process** until the results match.
 4. **Switch over** and move to the next task.
 
+## For Saudi and UAE businesses
+
+For businesses in Saudi Arabia and the UAE, we automate the same routine work in Arabic and English: invoices and receipts turned into data, reports sent on schedule, reminders and approvals. With e-invoicing deadlines approaching in both countries, clean invoice data is a good place to start. See [reading Arabic invoices and receipts with AI](/blog/arabic-invoice-ocr-ai) and [where each GCC country stands on e-invoicing](/blog/gcc-e-invoicing-by-country); see also our pages for [Saudi Arabia](/saudi-arabia) and the [UAE](/uae).
+
 ## Frequently asked questions
 
 ### Do we need new software to automate?

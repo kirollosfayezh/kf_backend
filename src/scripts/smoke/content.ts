@@ -1,8 +1,9 @@
 import { check } from "./harness.js";
 import type { Smoke } from "./harness.js";
 import { seoAndTranslationsSection } from "./seo-translations.js";
+import { marketsSection } from "./markets.js";
 
-/** Content CRUD, public visibility, slugs, de/fr and meta round-trips; then SEO and translations; then seeding. */
+/** Content CRUD, public visibility, slugs, de/fr and meta round-trips; then the markets collection, SEO and translations; then seeding. */
 export async function contentSection(ctx: Smoke) {
   const { call, authHeaders, rebuilds, rebuildRequested } = ctx;
   console.log("\nContent CRUD + public visibility");
@@ -151,6 +152,9 @@ export async function contentSection(ctx: Smoke) {
     rereadMeta
   );
 
+  // Before SEO and translations: that section switches the fake deploy hook
+  // off when it is done, and a market write must be seen asking for a rebuild.
+  await marketsSection(ctx);
   await seoAndTranslationsSection(ctx);
 
   const badCollection = await call("/api/content/not-a-collection");

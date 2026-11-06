@@ -3,7 +3,7 @@ import { AppError } from "../errors/app-error.js";
 import { requestSiteRebuild } from "./deploy-hook.service.js";
 import type { ContentCollection, ContentItem } from "../types/index.js";
 
-/** Generic CRUD used by every content type (projects, services, solutions, about, blog, testimonials, faq). */
+/** Generic CRUD used by every content type (projects, services, solutions, about, blog, testimonials, faq, markets). */
 
 type NewContentItem = Pick<
   ContentItem,
@@ -25,6 +25,7 @@ const PRERENDERED: ReadonlySet<ContentCollection> = new Set([
   "faqs",
   "testimonials",
   "aboutSections",
+  "markets",
 ]);
 
 function rebuildIfPrerendered(collection: ContentCollection, what: string): void {
@@ -47,20 +48,41 @@ function readingMinutes(text: string): number {
 }
 
 /**
+ * The `meta` keys a card reads: the category chip, and the tags behind the
+ * blog's region chips. Caption, alt text, stats and their translations
+ * (`meta.i18n`) are only read on the article page, which loads the whole item.
+ */
+const CARD_META = ["tag", "tags"] as const;
+
+/**
  * An item as a list card needs it: no body, and the reading time per language
  * in `meta.readingMinutes` instead. The body is ~95% of a blog post, and the
  * blog index and an article's "related" row only ever showed its length.
  * Each language counts the body the site would show it (its own when written,
  * else English, else Arabic), so a card and its article always agree.
+ *
+ * Only the `meta` a card reads is kept, and `published` goes (a public list
+ * holds nothing else): with ~100 posts the rest was a third of the payload.
+ * `meta.langs` names the languages a post is written in (title and body, as
+ * the site's `availableLangs` counts them) only when that is not all four, so
+ * the blog can leave an English-only post off `/de/blog`.
+ *
+ * The site's prerender builds the same shape (`cardView` in
+ * kf_site/src/lib/reading-time.ts); keep the two in step.
  */
 export function cardView(item: ContentItem): ContentItem {
-  const { body, ...rest } = item;
+  const { body, published: _published, ...rest } = item;
   if (!body) return item;
   const fallback = body.en?.trim() ? body.en : body.ar ?? "";
   const readingMinutesByLang = Object.fromEntries(
     CARD_LANGS.map((l) => [l, readingMinutes(body[l]?.trim() ? (body[l] as string) : fallback)]),
   );
-  return { ...rest, meta: { ...(item.meta ?? {}), readingMinutes: readingMinutesByLang } };
+  const langs = CARD_LANGS.filter((l) => l === "en" || (item.title?.[l]?.trim() && body[l]?.trim()));
+  const meta: Record<string, unknown> = {};
+  for (const k of CARD_META) if (item.meta?.[k] !== undefined) meta[k] = item.meta[k];
+  meta.readingMinutes = readingMinutesByLang;
+  if (langs.length < CARD_LANGS.length) meta.langs = langs;
+  return { ...rest, meta } as ContentItem;
 }
 
 /** A Mongo ObjectId is exactly 24 hex characters; no slug we generate is. */

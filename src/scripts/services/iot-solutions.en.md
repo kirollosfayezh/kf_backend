@@ -31,6 +31,10 @@ We work across the whole chain: the device and its firmware, the cloud backend t
 - **Cold chain and storage**: temperature and humidity monitoring with alerts.
 - **Facilities and factories**: machine status, counts and downtime.
 
+## For Saudi and UAE businesses
+
+An IoT system is run from its dashboard, so the devices can be in Riyadh or Dubai while we build and support the software from Cairo. We start with a few devices to prove the readings and alerts, then scale; the hardware is designed for the project or integrated with what you already have. Our guide to [hiring an Egyptian software company from the Gulf](/blog/hire-egyptian-software-company-from-gulf) covers how remote delivery works; see also our pages for [Saudi Arabia](/saudi-arabia) and the [UAE](/uae).
+
 ## Frequently asked questions
 
 ### Do you supply the hardware?

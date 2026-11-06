@@ -26,6 +26,10 @@ We design and build backends that are secure, fast and easy to extend.
 - **Documentation and tests**, so another developer can pick it up.
 - **Hosting** on reliable cloud infrastructure, in accounts you own.
 
+## For Saudi and UAE businesses
+
+Projects in Saudi Arabia and the UAE usually connect to local services: a licensed payment gateway, ZATCA's e-invoicing platform or a national digital-ID login. We build these integrations to each provider's published documentation, and host the backend with the provider and in the region you choose. Start with [payment gateways in Saudi Arabia](/blog/payment-gateways-saudi-arabia) and the [ZATCA API checklist for developers](/blog/zatca-api-integration-developer-checklist); see also our pages for [Saudi Arabia](/saudi-arabia) and the [UAE](/uae).
+
 ## Frequently asked questions
 
 ### Can you connect our system to another company's API?

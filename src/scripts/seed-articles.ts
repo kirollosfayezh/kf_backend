@@ -13,6 +13,13 @@ import type { ContentItem, LocalizedText } from "../shared/types/index.js";
  * the record; a missing translation falls back to English at render time, so a
  * language can be added later by dropping in a file.
  *
+ * A translation's front matter may also carry its own `caption`, `alt`,
+ * `stats` and `tags` (same format as English). Those go into
+ * `meta.i18n.<lang>`, only the keys the file has; English stays at the top of
+ * `meta`, so an article whose translations carry only title and summary is
+ * stored exactly as before and the site keeps translating its English extras
+ * through the dictionary.
+ *
  * Front matter is a deliberately tiny `key: value` block — no YAML dependency
  * for six keys, matching the site's own no-dependency Markdown renderer.
  */
@@ -77,6 +84,33 @@ const pairs = (v: string | undefined) =>
     .map((chunk) => chunk.split("|").map((s) => s.trim()))
     .filter((p) => p.length === 2 && p[0] && p[1]);
 
+/** A translation's own extras, in the shape English has at the top of `meta`. */
+interface Extras {
+  caption?: string;
+  alt?: string;
+  stats?: string[][];
+  tags?: string[];
+}
+
+/**
+ * The extras a translation wrote for itself — only the keys present, so `{}`
+ * means "nothing to store".
+ *
+ * Without this, those four keys were read from the `.en.md` file alone and a
+ * new caption reached `/ar` in English until someone added it to the site's
+ * dictionary by hand, one string at a time.
+ */
+function translatedExtras(front: Front): Extras {
+  const out: Extras = {};
+  if (front.caption) out.caption = front.caption;
+  if (front.alt) out.alt = front.alt;
+  const stats = pairs(front.stats);
+  if (stats.length) out.stats = stats;
+  const tags = list(front.tags);
+  if (tags.length) out.tags = tags;
+  return out;
+}
+
 /**
  * Reads `articles/` and returns one seedable item per slug, with every language
  * found folded into the localized fields.
@@ -118,6 +152,14 @@ export async function loadArticles(dir: URL): Promise<Partial<ContentItem>[]> {
       return value;
     };
 
+    const i18n: Partial<Record<Lang, Extras>> = {};
+    for (const l of LANGS) {
+      const p = langs[l];
+      if (l === "en" || !p) continue;
+      const extras = translatedExtras(p.front);
+      if (Object.keys(extras).length) i18n[l] = extras;
+    }
+
     out.push({
       slug,
       published: true,
@@ -135,6 +177,10 @@ export async function loadArticles(dir: URL): Promise<Partial<ContentItem>[]> {
         ...Object.fromEntries(
           PASSTHROUGH.filter((k) => en.front[k]).map((k) => [k, en.front[k]]),
         ),
+        // Absent rather than `{}` when no translation has extras: the earlier
+        // articles, and the legal, promo and service files read through here,
+        // come out exactly as they did.
+        ...(Object.keys(i18n).length ? { i18n } : {}),
       },
     });
   }

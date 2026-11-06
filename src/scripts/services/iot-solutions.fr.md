@@ -31,6 +31,10 @@ Nous intervenons sur toute la chaîne : l'appareil et son firmware, le backend c
 - **Chaîne du froid et stockage** : surveillance de la température et de l'humidité, avec alertes.
 - **Sites et usines** : état des machines, comptages et temps d'arrêt.
 
+## Pour les entreprises d'Arabie saoudite et des Émirats
+
+Un système IoT se pilote depuis son tableau de bord : les appareils peuvent être à Riyad ou à Dubaï pendant que nous développons et maintenons le logiciel depuis Le Caire. Nous commençons avec quelques appareils pour valider les mesures et les alertes, puis nous passons à l'échelle ; le matériel est conçu pour le projet ou intégré à celui que vous avez déjà. Notre guide pour [confier un projet à une société égyptienne depuis le Golfe](/blog/hire-egyptian-software-company-from-gulf) explique comment se déroule une collaboration à distance ; voir aussi nos pages [Arabie saoudite](/saudi-arabia) et [Émirats arabes unis](/uae).
+
 ## Questions fréquentes
 
 ### Fournissez-vous le matériel ?

@@ -24,6 +24,10 @@ Nous développons des systèmes de gestion qui réunissent ces éléments en un 
 - **Multi-sites** dès le départ, avec des droits d'accès pour chaque rôle.
 - **Compatibles avec votre matériel** : imprimantes de tickets, lecteurs de codes-barres, tiroirs-caisses et tablettes.
 
+## Pour les entreprises d'Arabie saoudite et des Émirats
+
+En Arabie saoudite, les entreprises immatriculées à la TVA rejoignent par vagues la phase 2 de la facturation électronique de la ZATCA, et aux Émirats la facturation électronique via des prestataires accrédités démarre en 2027. Nous développons l'intégration de votre propre caisse ou ERP selon les spécifications publiées, en nous appuyant sur notre intégration des reçus électroniques pour [Egypt ETA](/projects/egypt-eta), avec reçus et rapports en arabe et en anglais. Commencez par [l'intégration ZATCA phase 2 pour votre caisse ou votre ERP](/blog/zatca-phase-2-integration-custom-pos-erp) ou [caisse prête à l'emploi ou sur mesure en Arabie saoudite](/blog/ready-made-vs-custom-pos-saudi-arabia) ; voir aussi nos pages [Arabie saoudite](/saudi-arabia) et [Émirats arabes unis](/uae).
+
 ## Sur mesure ou prêt à l'emploi ?
 
 Une caisse ou un ERP prêt à l'emploi est souvent le bon point de départ pour une petite entreprise. Un système sur mesure se justifie lorsque votre façon de travailler ne correspond à aucun logiciel standard, lorsque vous payez plusieurs outils qui ne communiquent pas entre eux, ou lorsque vous avez besoin de rapports qu'aucun logiciel ne fournit. Nous vous dirons honnêtement ce qui vous convient — consultez notre guide [caisse prête à l'emploi ou sur mesure pour les restaurants](/blog/ready-made-vs-custom-pos-restaurants).
@@ -33,7 +37,7 @@ Une caisse ou un ERP prêt à l'emploi est souvent le bon point de départ pour 
 1. **Observation sur le terrain.** Nous observons le processus réel au comptoir, en cuisine et au bureau.
 2. **Périmètre et prix écrits** pour la première phase.
 3. **Développement et tests** avec votre équipe, sur des données réelles.
-4. **Mise en service** avec migration des données, formation et assistance sur site les premiers jours.
+4. **Mise en service** avec migration des données, formation, et assistance sur site en Égypte ou accompagnement à distance ailleurs.
 5. **Accompagnement continu** et nouveaux modules au fil de votre croissance.
 
 ## Questions fréquentes

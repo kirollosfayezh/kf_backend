@@ -32,6 +32,10 @@ AI is useful when it does one clear job inside a process that already exists. It
 
 Read more in our [practical guide to adding AI to your business](/blog/a-practical-guide-to-adding-ai-to-your-business).
 
+## For Saudi and UAE businesses
+
+We build AI tools that work in Arabic as well as English for businesses in Saudi Arabia and the UAE: an assistant that answers customers from your own information on your website or WhatsApp, or one that searches your contracts and policies, handing over to a person when needed. See [an AI assistant that answers from your own documents](/blog/ai-assistant-own-documents) and [WhatsApp chatbots for Saudi businesses](/blog/whatsapp-chatbot-saudi-arabia); see also our pages for [Saudi Arabia](/saudi-arabia) and the [UAE](/uae).
+
 ## Frequently asked questions
 
 ### Will AI replace my staff?

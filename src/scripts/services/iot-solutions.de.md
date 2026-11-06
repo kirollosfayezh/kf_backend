@@ -31,6 +31,10 @@ Wir arbeiten entlang der gesamten Kette: das Gerät und seine Firmware, das Clou
 - **Kühlkette und Lagerung**: Temperatur- und Feuchtigkeitsüberwachung mit Alarmen.
 - **Gebäude und Fabriken**: Maschinenstatus, Stückzahlen und Stillstandszeiten.
 
+## Für Unternehmen in Saudi-Arabien und den VAE
+
+Ein IoT-System wird über sein Dashboard betrieben – die Geräte können also in Riad oder Dubai stehen, während wir die Software in Kairo entwickeln und betreuen. Wir starten mit wenigen Geräten, um Messwerte und Alarme zu prüfen, und skalieren dann; die Hardware wird für das Projekt ausgelegt oder mit Ihrer vorhandenen verbunden. Unser Ratgeber zur [Beauftragung eines ägyptischen Softwareunternehmens aus der Golfregion](/blog/hire-egyptian-software-company-from-gulf) erklärt, wie die Zusammenarbeit aus der Ferne läuft; mehr auf unseren Seiten zu [Saudi-Arabien](/saudi-arabia) und den [VAE](/uae).
+
 ## Häufige Fragen
 
 ### Liefern Sie die Hardware?

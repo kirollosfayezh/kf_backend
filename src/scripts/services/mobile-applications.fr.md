@@ -35,6 +35,10 @@ Nous développons avec une technologie multiplateforme : iOS et Android partagen
 4. **Publication sur les stores.** Validation, publication et fiche de chaque store.
 5. **Après le lancement.** Mises à jour pour les nouvelles versions des systèmes, corrections et nouvelles fonctionnalités.
 
+## Pour les entreprises d'Arabie saoudite et des Émirats
+
+Nous concevons et développons des applications iOS et Android en arabe et en anglais pour les entreprises d'Arabie saoudite et des Émirats, publiées sous vos propres comptes développeur Apple et Google. Nous travaillons sur la même semaine, du dimanche au jeudi, qu'en Arabie saoudite, et vous testez une version fonctionnelle toutes les une à deux semaines. Découvrez [le coût d'une application en Arabie saoudite](/blog/app-development-cost-saudi-arabia) et [aux Émirats](/blog/app-development-cost-uae) ; voir aussi nos pages [Arabie saoudite](/saudi-arabia) et [Émirats arabes unis](/uae).
+
 ## Questions fréquentes
 
 ### Combien de temps faut-il pour développer une application ?

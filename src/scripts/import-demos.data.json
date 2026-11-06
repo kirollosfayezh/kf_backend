@@ -1,77 +1,379 @@
 {
-  "_comment": "The 18 concept demo websites (designed Nov 2026 for the social reels; source pages in KF/social/concepts/<concept>/index.html). Each becomes a project flagged meta.concept = true, with its page uploaded as a demo under the same slug and served at <site>/demos/<slug>. `tag` is stored in English and translated by kf_site/src/lib/dict. English and Arabic copy are written here; German and French fall back to the English text. Screenshots: kf_site/public/projects/concepts/<slug>-desktop.webp and -mobile.webp.",
+  "_comment": "The 22 concept demo websites (designed Nov 2026 for the social reels; source pages in KF/social/concepts/<concept>/index.html). Each becomes a project flagged meta.concept = true, with its page uploaded as a demo under the same slug and served at <site>/demos/<slug>. `tag` is stored in English and translated by kf_site/src/lib/dict. English and Arabic copy are written here; German and French fall back to the English text. Screenshots: kf_site/public/projects/concepts/<slug>-desktop.webp and -mobile.webp.",
   "projects": [
-    {"concept": "dental", "slug": "dental-clinic-website", "tag": "Dental clinic website",
-     "title": {"en": "Lumina Dental: clinic website with online booking", "ar": "لومينا دنتال: موقع عيادة أسنان بحجز أونلاين"},
-     "summary": {"en": "A dental clinic site where patients pick a treatment, a day and a time, and get the confirmation on WhatsApp.", "ar": "موقع عيادة أسنان يختار فيه المريض العلاج واليوم والميعاد، ويوصله التأكيد على واتساب."},
-     "body": {"en": "Lumina Dental is a made-up clinic we designed to show what a modern dental website can do.\n\nPatients compare treatments with clear prices, book a check-up in a few taps and get the confirmation on WhatsApp. A before and after slider shows real results, and an aligner plan explains the treatment step by step.\n\nOpen the live demo and book a visit yourself.", "ar": "لومينا دنتال عيادة خيالية صممناها علشان نوضح موقع عيادة الأسنان الحديث ممكن يعمل إيه.\n\nالمريض يقارن العلاجات بأسعار واضحة، ويحجز كشف في كام ضغطة، ويوصله التأكيد على واتساب. وفيه سلايدر قبل وبعد يعرض النتائج، وخطة تقويم شفاف بتشرح العلاج خطوة بخطوة.\n\nافتح النسخة الحية واحجز بنفسك."}},
-    {"concept": "restaurant", "slug": "restaurant-qr-ordering", "tag": "Restaurant ordering",
-     "title": {"en": "Ember & Salt: restaurant with QR table ordering", "ar": "إمبر آند سولت: مطعم بطلب من الترابيزة بالـ QR"},
-     "summary": {"en": "Guests scan the code on their table, order from the menu and the ticket goes straight to the kitchen.", "ar": "الزبون يمسح الكود اللي على الترابيزة، يطلب من المنيو، والطلب يروح للمطبخ على طول."},
-     "body": {"en": "Ember & Salt is a made-up grill restaurant we designed to show table ordering without waiting for a waiter.\n\nGuests scan the QR code, browse the menu with photos, add notes and send the order. The kitchen gets a ticket at once and the guest follows its status from the phone. Table bookings work from the same site.\n\nOpen the live demo and place an order.", "ar": "إمبر آند سولت مطعم مشويات خيالي صممناه علشان نوضح الطلب من الترابيزة من غير ما تستنى الجرسون.\n\nالزبون يمسح الـ QR، يتصفح المنيو بالصور، يضيف ملاحظاته ويبعت الطلب. المطبخ يستلم التذكرة فورًا والزبون يتابع حالة طلبه من الموبايل. وحجز الترابيزات من نفس الموقع.\n\nافتح النسخة الحية واطلب بنفسك."}},
-    {"concept": "realestate", "slug": "real-estate-sales-website", "tag": "Real estate website",
-     "title": {"en": "Palm Ridge: compound sales website", "ar": "بالم ريدج: موقع مبيعات كمبوند"},
-     "summary": {"en": "Buyers pick a unit on the plan, work out the installments and book a viewing online.", "ar": "المشتري يختار الوحدة من الماستر بلان، يحسب الأقساط، ويحجز معاينة أونلاين."},
-     "body": {"en": "Palm Ridge Residences is a made-up compound we designed to show how a real estate site can sell units on its own.\n\nBuyers choose a unit on the interactive plan, see its size, view and price, set the down payment and the years, and get the monthly installment at once. A viewing is booked in the same flow and the lead lands with the sales team.\n\nOpen the live demo and pick a unit.", "ar": "بالم ريدج ريزيدنسز كمبوند خيالي صممناه علشان نوضح إزاي موقع العقارات يبيع الوحدات لوحده.\n\nالمشتري يختار الوحدة من الخريطة التفاعلية، يشوف المساحة والفيو والسعر، يحدد المقدم وعدد السنين ويطلعله القسط الشهري فورًا. وحجز المعاينة في نفس الخطوات، والعميل يوصل لفريق المبيعات.\n\nافتح النسخة الحية واختار وحدتك."}},
-    {"concept": "gym", "slug": "gym-class-booking", "tag": "Gym website",
-     "title": {"en": "Pulse Athletic Club: gym with class booking", "ar": "بالس أثلتيك كلوب: جيم بحجز الكلاسات"},
-     "summary": {"en": "Members book a class from the weekly schedule, choose a plan and get a digital member pass.", "ar": "العضو يحجز كلاس من جدول الأسبوع، يختار الاشتراك، وياخد كارنيه ديجيتال."},
-     "body": {"en": "Pulse Athletic Club is a made-up gym we designed to show online class booking and memberships.\n\nMembers see the week's classes with coaches and free spots, book a place in a tap, compare monthly and yearly plans and get a digital pass with a QR code for the door.\n\nOpen the live demo and book a class.", "ar": "بالس أثلتيك كلوب جيم خيالي صممناه علشان نوضح حجز الكلاسات والاشتراكات أونلاين.\n\nالعضو يشوف كلاسات الأسبوع بالمدربين والأماكن الفاضية، يحجز مكانه بضغطة، يقارن الاشتراك الشهري والسنوي، وياخد كارنيه ديجيتال بكود QR للدخول.\n\nافتح النسخة الحية واحجز كلاس."}},
-    {"concept": "fashion", "slug": "fashion-online-store", "tag": "Online store",
-     "title": {"en": "Nova Studio: fashion online store", "ar": "نوفا ستوديو: متجر أزياء أونلاين"},
-     "summary": {"en": "Shoppers browse the collection, quick view a piece, fill the bag and check out alone.", "ar": "الزبون يتصفح الكوليكشن، يشوف القطعة بسرعة، يملا الشنطة ويكمل الشراء لوحده."},
-     "body": {"en": "Nova Studio is a made-up clothing brand we designed to show a store that sells without anyone answering DMs.\n\nShoppers filter the collection, open a quick view with sizes and colours, add to the bag and see the free shipping bar fill up. Checkout ends with an order confirmation, any time of day.\n\nOpen the live demo and shop the edit.", "ar": "نوفا ستوديو براند ملابس خيالي صممناه علشان نوضح متجر بيبيع من غير ما حد يرد على الرسايل.\n\nالزبون يفلتر الكوليكشن، يفتح عرض سريع بالمقاسات والألوان، يضيف للشنطة ويشوف شريط الشحن المجاني بيتملي. والشراء بيخلص بتأكيد الطلب في أي وقت.\n\nافتح النسخة الحية وجرب تشتري."}},
-    {"concept": "pharmacy", "slug": "pharmacy-delivery-app", "tag": "Pharmacy delivery",
-     "title": {"en": "CarePlus: pharmacy delivery in 45 minutes", "ar": "كير بلس: توصيل صيدلية في ٤٥ دقيقة"},
-     "summary": {"en": "Customers search medicines, upload a prescription and follow the rider to the door.", "ar": "العميل يدور على الدوا، يرفع الروشتة، ويتابع المندوب لحد الباب."},
-     "body": {"en": "CarePlus is a made-up pharmacy we designed to show ordering medicine online.\n\nCustomers search thousands of products, upload a prescription photo for the pharmacist to check, and follow the delivery on a live tracker. Repeat orders and a pharmacist chat keep them coming back.\n\nOpen the live demo and place an order.", "ar": "كير بلس صيدلية خيالية صممناها علشان نوضح طلب الأدوية أونلاين.\n\nالعميل يدور بين آلاف المنتجات، يرفع صورة الروشتة للصيدلي يراجعها، ويتابع التوصيل لحظة بلحظة. وإعادة الطلب والشات مع الصيدلي بيخلوه يرجع تاني.\n\nافتح النسخة الحية واطلب بنفسك."}},
-    {"concept": "carservice", "slug": "car-service-booking", "tag": "Car service booking",
-     "title": {"en": "AutoPro: car service booking and live status", "ar": "أوتو برو: حجز صيانة عربيات ومتابعة مباشرة"},
-     "summary": {"en": "Drivers pick their car and a service package, book a slot and watch the job until it is ready.", "ar": "صاحب العربية يختار عربيته وباقة الصيانة، يحجز ميعاد، ويتابع الشغل لحد ما تجهز."},
-     "body": {"en": "AutoPro is a made-up service centre we designed to show bookings and live job status for a workshop.\n\nDrivers choose the car type, compare service packages with fixed prices and book a time. During the visit a live tracker shows each step, from inspection to ready for pickup.\n\nOpen the live demo and book a service.", "ar": "أوتو برو مركز صيانة خيالي صممناه علشان نوضح الحجز ومتابعة الشغل لحظة بلحظة.\n\nصاحب العربية يختار نوعها، يقارن باقات الصيانة بأسعار ثابتة ويحجز ميعاد. وأثناء الزيارة يتابع كل خطوة من الفحص لحد ما العربية تجهز للاستلام.\n\nافتح النسخة الحية واحجز صيانة."}},
-    {"concept": "salon", "slug": "beauty-salon-booking", "tag": "Salon booking",
-     "title": {"en": "Velvet Beauty Lounge: salon booking with rewards", "ar": "فيلفت بيوتي لاونج: حجز صالون بنقاط مكافآت"},
-     "summary": {"en": "Clients choose a ritual and a stylist, book a time and earn loyalty points.", "ar": "العميلة تختار الخدمة والستايلست، تحجز ميعاد، وتكسب نقاط ولاء."},
-     "body": {"en": "Velvet is a made-up beauty salon we designed to show booking and loyalty in one place.\n\nClients browse services with prices and durations, choose a stylist and a free slot, and earn points with every visit. Fewer phone calls for the front desk and fewer empty chairs.\n\nOpen the live demo and reserve a ritual.", "ar": "فيلفت صالون تجميل خيالي صممناه علشان نوضح الحجز والولاء في مكان واحد.\n\nالعميلة تتصفح الخدمات بالأسعار والمدة، تختار الستايلست والميعاد الفاضي، وتكسب نقاط مع كل زيارة. مكالمات أقل للاستقبال وكراسي فاضية أقل.\n\nافتح النسخة الحية واحجزي بنفسك."}},
-    {"concept": "school", "slug": "school-parent-portal", "tag": "School portal",
-     "title": {"en": "Brightpath: school parent portal", "ar": "برايت باث: بوابة أولياء الأمور للمدرسة"},
-     "summary": {"en": "Parents see attendance, grades and the school bus live, and pay fees online.", "ar": "ولي الأمر يشوف الحضور والدرجات وأتوبيس المدرسة لحظيًا، ويدفع المصاريف أونلاين."},
-     "body": {"en": "Brightpath is a made-up international school we designed to show a parent portal.\n\nParents check attendance the moment it is taken, see grades and homework, follow the school bus on a map and pay fees in two taps. The school spends less time answering the same questions.\n\nOpen the live demo and open the parent portal.", "ar": "برايت باث مدرسة دولية خيالية صممناها علشان نوضح بوابة أولياء الأمور.\n\nولي الأمر يشوف الحضور أول ما يتسجل، والدرجات والواجبات، ويتابع الأتوبيس على الخريطة، ويدفع المصاريف في ضغطتين. والمدرسة توفر وقت الرد على نفس الأسئلة.\n\nافتح النسخة الحية وادخل بوابة أولياء الأمور."}},
-    {"concept": "hotel", "slug": "hotel-booking-website", "tag": "Hotel booking",
-     "title": {"en": "Coral Bay Resort: hotel direct booking", "ar": "كورال باي ريزورت: حجز فندق مباشر"},
-     "summary": {"en": "Guests pick dates, choose a suite, add experiences and get a booking number.", "ar": "الضيف يختار التواريخ والجناح، يضيف تجارب، وياخد رقم حجز."},
-     "body": {"en": "Coral Bay is a made-up Red Sea resort we designed to show direct bookings without booking site commissions.\n\nGuests check availability for their dates, compare rooms with photos, add experiences like snorkeling and confirm with a booking number. Every direct booking is one the hotel does not share with a middleman.\n\nOpen the live demo and check availability.", "ar": "كورال باي منتجع خيالي على البحر الأحمر صممناه علشان نوضح الحجز المباشر من غير عمولات مواقع الحجز.\n\nالضيف يشوف المتاح في تواريخه، يقارن الغرف بالصور، يضيف تجارب زي السنوركلينج ويأكد برقم حجز. وكل حجز مباشر الفندق مش بيقسمه مع وسيط.\n\nافتح النسخة الحية وشوف المتاح."}},
-    {"concept": "courses", "slug": "online-courses-platform", "tag": "E-learning platform",
-     "title": {"en": "SkillForge Academy: online courses platform", "ar": "سكيل فورج أكاديمي: منصة كورسات أونلاين"},
-     "summary": {"en": "Learners search a course, enroll, watch lessons and earn XP from quizzes.", "ar": "المتعلم يدور على كورس، يشترك، يتفرج على الدروس ويكسب نقاط من الكويزات."},
-     "body": {"en": "SkillForge is a made-up academy we designed to show an e-learning platform.\n\nLearners search the catalogue, enroll in a course, follow video lessons and answer quick quizzes that award XP and keep a learning streak going. Progress and certificates live in one dashboard.\n\nOpen the live demo and start a course.", "ar": "سكيل فورج أكاديمية خيالية صممناها علشان نوضح منصة تعليم أونلاين.\n\nالمتعلم يدور في الكورسات، يشترك، يتابع دروس الفيديو ويحل كويزات سريعة بتديله نقاط وتحافظ على استمراره. والتقدم والشهادات في داشبورد واحدة.\n\nافتح النسخة الحية وابدأ كورس."}},
-    {"concept": "logistics", "slug": "shipment-tracking-system", "tag": "Logistics platform",
-     "title": {"en": "SwiftLine: shipment tracking and instant quotes", "ar": "سويفت لاين: تتبع شحنات وتسعير فوري"},
-     "summary": {"en": "Customers track a shipment on a live map and get a shipping quote in seconds.", "ar": "العميل يتتبع شحنته على خريطة مباشرة وياخد سعر الشحن في ثواني."},
-     "body": {"en": "SwiftLine is a made-up courier we designed to show tracking and pricing for a logistics company.\n\nCustomers enter a tracking number and follow the shipment hub by hub on a live map. Business clients get an instant quote by weight, size and route, without calling sales.\n\nOpen the live demo and track a shipment.", "ar": "سويفت لاين شركة شحن خيالية صممناها علشان نوضح التتبع والتسعير لشركات اللوجستيات.\n\nالعميل يكتب رقم الشحنة ويتابعها من مخزن لمخزن على خريطة مباشرة. والشركات تاخد سعر فوري حسب الوزن والحجم والمسار من غير ما تكلم المبيعات.\n\nافتح النسخة الحية وتتبع شحنة."}},
-    {"concept": "furniture", "slug": "furniture-store-website", "tag": "Furniture store",
-     "title": {"en": "Oak & Linen: furniture store with a sofa designer", "ar": "أوك آند لينين: متجر أثاث بمصمم كنب"},
-     "summary": {"en": "Shoppers change the sofa fabric, see it in a room and add it to the cart.", "ar": "الزبون يغير قماش الكنبة، يشوفها في أوضة، ويضيفها للعربة."},
-     "body": {"en": "Oak & Linen is a made-up furniture maker we designed to show an online store for made-to-order pieces.\n\nShoppers recolour a sofa in different fabrics, see it styled in a room, pick a size and add it to the cart with the delivery time. Fewer showroom visits, more confident orders.\n\nOpen the live demo and design your sofa.", "ar": "أوك آند لينين صانع أثاث خيالي صممناه علشان نوضح متجر أونلاين للقطع اللي بتتعمل حسب الطلب.\n\nالزبون يغير لون الكنبة بأقمشة مختلفة، يشوفها في أوضة، يختار المقاس ويضيفها للعربة بميعاد التوصيل. زيارات أقل للمعرض وطلبات بثقة أكتر.\n\nافتح النسخة الحية وصمم كنبتك."}},
-    {"concept": "consult", "slug": "consulting-firm-website", "tag": "Consulting firm website",
-     "title": {"en": "Ledger & Co.: accounting firm website", "ar": "ليدجر آند كو: موقع مكتب محاسبة"},
-     "summary": {"en": "Business owners compare packages, book a consultation and get the meeting link.", "ar": "صاحب الشركة يقارن الباقات، يحجز استشارة، وياخد لينك الميتنج."},
-     "body": {"en": "Ledger & Co. is a made-up accounting firm we designed to show a professional services site that books meetings.\n\nVisitors read the services, compare monthly packages and book a free consultation in the calendar. The confirmation arrives with a video meeting link, so the first call needs no back and forth.\n\nOpen the live demo and book a consultation.", "ar": "ليدجر آند كو مكتب محاسبة خيالي صممناه علشان نوضح موقع خدمات مهنية بيحجز اجتماعات.\n\nالزائر يقرا الخدمات، يقارن الباقات الشهرية، ويحجز استشارة مجانية من الكالندر. والتأكيد بيوصل بلينك اجتماع فيديو، فأول مكالمة من غير لف ودوران.\n\nافتح النسخة الحية واحجز استشارة."}},
-    {"concept": "pos", "slug": "pos-inventory-system", "tag": "POS and inventory",
-     "title": {"en": "StockPilot: POS and inventory system", "ar": "ستوك بايلوت: نظام كاشير ومخزون"},
-     "summary": {"en": "Shops sell from the register, print the receipt and reorder low stock from one dashboard.", "ar": "المحل يبيع من الكاشير، يطبع الفاتورة، ويطلب النواقص من داشبورد واحدة."},
-     "body": {"en": "StockPilot is a made-up retail system we designed to show a point of sale with live inventory.\n\nThe dashboard shows today's sales and orders, the register rings up a basket and prints the receipt, and stock updates with every sale. Items running low are flagged and reordered from the supplier in a click.\n\nOpen the live demo and make a sale.", "ar": "ستوك بايلوت نظام محلات خيالي صممناه علشان نوضح كاشير بمخزون لحظي.\n\nالداشبورد تعرض مبيعات وطلبات النهارده، والكاشير يحسب السلة ويطبع الفاتورة، والمخزون يتحدث مع كل بيعة. والأصناف اللي قربت تخلص بتتعلم وتتطلب من المورد بضغطة.\n\nافتح النسخة الحية واعمل بيعة."}},
-    {"concept": "aibot", "slug": "ai-whatsapp-assistant", "tag": "AI assistant",
-     "title": {"en": "Avri: AI assistant that books on WhatsApp", "ar": "أفري: مساعد ذكاء اصطناعي بيحجز على واتساب"},
-     "summary": {"en": "An AI assistant answers prices and opening hours and books appointments, day and night.", "ar": "مساعد ذكاء اصطناعي بيرد على الأسعار والمواعيد وبيحجز، ليل ونهار."},
-     "body": {"en": "Avri is a made-up AI assistant we designed to show what a WhatsApp bot can do for a clinic or a shop.\n\nIt answers the questions every business gets all day, shares prices and opening hours, offers free slots and books the appointment. Anything unusual is handed to a person on the team.\n\nOpen the live demo and chat with it.", "ar": "أفري مساعد ذكاء اصطناعي خيالي صممناه علشان نوضح بوت الواتساب ممكن يعمل إيه لعيادة أو محل.\n\nبيرد على الأسئلة اللي بتتكرر طول اليوم، يقول الأسعار والمواعيد، يعرض الأوقات الفاضية ويحجز. وأي حاجة غير معتادة بيحولها لحد من الفريق.\n\nافتح النسخة الحية واتكلم معاه."}},
-    {"concept": "cafe", "slug": "cafe-order-ahead-app", "tag": "Café ordering",
-     "title": {"en": "Copper Crema: café order ahead and loyalty", "ar": "كوبر كريما: طلب مسبق ونقاط ولاء لكافيه"},
-     "summary": {"en": "Customers build their drink, order ahead, collect a stamp and pick up without the queue.", "ar": "العميل يظبط مشروبه، يطلب قبلها، ياخد ختم، ويستلم من غير طابور."},
-     "body": {"en": "Copper Crema is a made-up café we designed to show ordering ahead with a digital loyalty card.\n\nCustomers build their drink, choose a branch and a pickup time, and collect a stamp with every cup until the free one. The barista sees the order before they arrive.\n\nOpen the live demo and order a latte.", "ar": "كوبر كريما كافيه خيالي صممناه علشان نوضح الطلب المسبق مع كارت ولاء ديجيتال.\n\nالعميل يظبط مشروبه، يختار الفرع وميعاد الاستلام، وياخد ختم مع كل كوباية لحد المجانية. والباريستا بيشوف الطلب قبل ما يوصل.\n\nافتح النسخة الحية واطلب لاتيه."}},
-    {"concept": "travel", "slug": "travel-trip-builder", "tag": "Travel booking",
-     "title": {"en": "Horizon Trips Egypt: build your own trip", "ar": "هورايزن تريبس إيجيبت: صمم رحلتك بنفسك"},
-     "summary": {"en": "Travellers pick destinations, build a day by day itinerary and see the price as they go.", "ar": "المسافر يختار الأماكن، يبني برنامج يوم بيوم، ويشوف السعر وهو بيختار."},
-     "body": {"en": "Horizon Trips is a made-up travel agency we designed to show a trip builder for tours in Egypt.\n\nTravellers choose destinations, nights and extras, and the itinerary and total price update as they go. The finished plan is sent for booking with a guide, ready for the agency to confirm.\n\nOpen the live demo and build a trip.", "ar": "هورايزن تريبس شركة سياحة خيالية صممناها علشان نوضح أداة تصميم رحلات في مصر.\n\nالمسافر يختار الأماكن وعدد الليالي والإضافات، والبرنامج والسعر الكلي بيتحدثوا مع كل اختيار. والخطة النهائية بتتبعت للحجز مع مرشد، جاهزة الشركة تأكدها.\n\nافتح النسخة الحية وصمم رحلتك."}}
+    {
+      "concept": "dental",
+      "slug": "dental-clinic-website",
+      "tag": "Dental clinic website",
+      "title": {
+        "en": "Lumina Dental: clinic website with online booking",
+        "ar": "لومينا دنتال: موقع عيادة أسنان بحجز أونلاين"
+      },
+      "summary": {
+        "en": "A dental clinic site where patients pick a treatment, a day and a time, and get the confirmation on WhatsApp.",
+        "ar": "موقع عيادة أسنان يختار فيه المريض العلاج واليوم والميعاد، ويوصله التأكيد على واتساب."
+      },
+      "body": {
+        "en": "Lumina Dental is a made-up clinic we designed to show what a modern dental website can do.\n\nPatients compare treatments with clear prices, book a check-up in a few taps and get the confirmation on WhatsApp. A before and after slider shows real results, and an aligner plan explains the treatment step by step.\n\nOpen the live demo and book a visit yourself.",
+        "ar": "لومينا دنتال عيادة خيالية صممناها علشان نوضح موقع عيادة الأسنان الحديث ممكن يعمل إيه.\n\nالمريض يقارن العلاجات بأسعار واضحة، ويحجز كشف في كام ضغطة، ويوصله التأكيد على واتساب. وفيه سلايدر قبل وبعد يعرض النتائج، وخطة تقويم شفاف بتشرح العلاج خطوة بخطوة.\n\nافتح النسخة الحية واحجز بنفسك."
+      }
+    },
+    {
+      "concept": "restaurant",
+      "slug": "restaurant-qr-ordering",
+      "tag": "Restaurant ordering",
+      "title": {
+        "en": "Ember & Salt: restaurant with QR table ordering",
+        "ar": "إمبر آند سولت: مطعم بطلب من الترابيزة بالـ QR"
+      },
+      "summary": {
+        "en": "Guests scan the code on their table, order from the menu and the ticket goes straight to the kitchen.",
+        "ar": "الزبون يمسح الكود اللي على الترابيزة، يطلب من المنيو، والطلب يروح للمطبخ على طول."
+      },
+      "body": {
+        "en": "Ember & Salt is a made-up grill restaurant we designed to show table ordering without waiting for a waiter.\n\nGuests scan the QR code, browse the menu with photos, add notes and send the order. The kitchen gets a ticket at once and the guest follows its status from the phone. Table bookings work from the same site.\n\nOpen the live demo and place an order.",
+        "ar": "إمبر آند سولت مطعم مشويات خيالي صممناه علشان نوضح الطلب من الترابيزة من غير ما تستنى الجرسون.\n\nالزبون يمسح الـ QR، يتصفح المنيو بالصور، يضيف ملاحظاته ويبعت الطلب. المطبخ يستلم التذكرة فورًا والزبون يتابع حالة طلبه من الموبايل. وحجز الترابيزات من نفس الموقع.\n\nافتح النسخة الحية واطلب بنفسك."
+      }
+    },
+    {
+      "concept": "realestate",
+      "slug": "real-estate-sales-website",
+      "tag": "Real estate website",
+      "title": {
+        "en": "Palm Ridge: compound sales website",
+        "ar": "بالم ريدج: موقع مبيعات كمبوند"
+      },
+      "summary": {
+        "en": "Buyers pick a unit on the plan, work out the installments and book a viewing online.",
+        "ar": "المشتري يختار الوحدة من الماستر بلان، يحسب الأقساط، ويحجز معاينة أونلاين."
+      },
+      "body": {
+        "en": "Palm Ridge Residences is a made-up compound we designed to show how a real estate site can sell units on its own.\n\nBuyers choose a unit on the interactive plan, see its size, view and price, set the down payment and the years, and get the monthly installment at once. A viewing is booked in the same flow and the lead lands with the sales team.\n\nOpen the live demo and pick a unit.",
+        "ar": "بالم ريدج ريزيدنسز كمبوند خيالي صممناه علشان نوضح إزاي موقع العقارات يبيع الوحدات لوحده.\n\nالمشتري يختار الوحدة من الخريطة التفاعلية، يشوف المساحة والفيو والسعر، يحدد المقدم وعدد السنين ويطلعله القسط الشهري فورًا. وحجز المعاينة في نفس الخطوات، والعميل يوصل لفريق المبيعات.\n\nافتح النسخة الحية واختار وحدتك."
+      }
+    },
+    {
+      "concept": "gym",
+      "slug": "gym-class-booking",
+      "tag": "Gym website",
+      "title": {
+        "en": "Pulse Athletic Club: gym with class booking",
+        "ar": "بالس أثلتيك كلوب: جيم بحجز الكلاسات"
+      },
+      "summary": {
+        "en": "Members book a class from the weekly schedule, choose a plan and get a digital member pass.",
+        "ar": "العضو يحجز كلاس من جدول الأسبوع، يختار الاشتراك، وياخد كارنيه ديجيتال."
+      },
+      "body": {
+        "en": "Pulse Athletic Club is a made-up gym we designed to show online class booking and memberships.\n\nMembers see the week's classes with coaches and free spots, book a place in a tap, compare monthly and yearly plans and get a digital pass with a QR code for the door.\n\nOpen the live demo and book a class.",
+        "ar": "بالس أثلتيك كلوب جيم خيالي صممناه علشان نوضح حجز الكلاسات والاشتراكات أونلاين.\n\nالعضو يشوف كلاسات الأسبوع بالمدربين والأماكن الفاضية، يحجز مكانه بضغطة، يقارن الاشتراك الشهري والسنوي، وياخد كارنيه ديجيتال بكود QR للدخول.\n\nافتح النسخة الحية واحجز كلاس."
+      }
+    },
+    {
+      "concept": "fashion",
+      "slug": "fashion-online-store",
+      "tag": "Online store",
+      "title": {
+        "en": "Nova Studio: fashion online store",
+        "ar": "نوفا ستوديو: متجر أزياء أونلاين"
+      },
+      "summary": {
+        "en": "Shoppers browse the collection, quick view a piece, fill the bag and check out alone.",
+        "ar": "الزبون يتصفح الكوليكشن، يشوف القطعة بسرعة، يملا الشنطة ويكمل الشراء لوحده."
+      },
+      "body": {
+        "en": "Nova Studio is a made-up clothing brand we designed to show a store that sells without anyone answering DMs.\n\nShoppers filter the collection, open a quick view with sizes and colours, add to the bag and see the free shipping bar fill up. Checkout ends with an order confirmation, any time of day.\n\nOpen the live demo and shop the edit.",
+        "ar": "نوفا ستوديو براند ملابس خيالي صممناه علشان نوضح متجر بيبيع من غير ما حد يرد على الرسايل.\n\nالزبون يفلتر الكوليكشن، يفتح عرض سريع بالمقاسات والألوان، يضيف للشنطة ويشوف شريط الشحن المجاني بيتملي. والشراء بيخلص بتأكيد الطلب في أي وقت.\n\nافتح النسخة الحية وجرب تشتري."
+      }
+    },
+    {
+      "concept": "pharmacy",
+      "slug": "pharmacy-delivery-app",
+      "tag": "Pharmacy delivery",
+      "title": {
+        "en": "CarePlus: pharmacy delivery in 45 minutes",
+        "ar": "كير بلس: توصيل صيدلية في ٤٥ دقيقة"
+      },
+      "summary": {
+        "en": "Customers search medicines, upload a prescription and follow the rider to the door.",
+        "ar": "العميل يدور على الدوا، يرفع الروشتة، ويتابع المندوب لحد الباب."
+      },
+      "body": {
+        "en": "CarePlus is a made-up pharmacy we designed to show ordering medicine online.\n\nCustomers search thousands of products, upload a prescription photo for the pharmacist to check, and follow the delivery on a live tracker. Repeat orders and a pharmacist chat keep them coming back.\n\nOpen the live demo and place an order.",
+        "ar": "كير بلس صيدلية خيالية صممناها علشان نوضح طلب الأدوية أونلاين.\n\nالعميل يدور بين آلاف المنتجات، يرفع صورة الروشتة للصيدلي يراجعها، ويتابع التوصيل لحظة بلحظة. وإعادة الطلب والشات مع الصيدلي بيخلوه يرجع تاني.\n\nافتح النسخة الحية واطلب بنفسك."
+      }
+    },
+    {
+      "concept": "carservice",
+      "slug": "car-service-booking",
+      "tag": "Car service booking",
+      "title": {
+        "en": "AutoPro: car service booking and live status",
+        "ar": "أوتو برو: حجز صيانة عربيات ومتابعة مباشرة"
+      },
+      "summary": {
+        "en": "Drivers pick their car and a service package, book a slot and watch the job until it is ready.",
+        "ar": "صاحب العربية يختار عربيته وباقة الصيانة، يحجز ميعاد، ويتابع الشغل لحد ما تجهز."
+      },
+      "body": {
+        "en": "AutoPro is a made-up service centre we designed to show bookings and live job status for a workshop.\n\nDrivers choose the car type, compare service packages with fixed prices and book a time. During the visit a live tracker shows each step, from inspection to ready for pickup.\n\nOpen the live demo and book a service.",
+        "ar": "أوتو برو مركز صيانة خيالي صممناه علشان نوضح الحجز ومتابعة الشغل لحظة بلحظة.\n\nصاحب العربية يختار نوعها، يقارن باقات الصيانة بأسعار ثابتة ويحجز ميعاد. وأثناء الزيارة يتابع كل خطوة من الفحص لحد ما العربية تجهز للاستلام.\n\nافتح النسخة الحية واحجز صيانة."
+      }
+    },
+    {
+      "concept": "salon",
+      "slug": "beauty-salon-booking",
+      "tag": "Salon booking",
+      "title": {
+        "en": "Velvet Beauty Lounge: salon booking with rewards",
+        "ar": "فيلفت بيوتي لاونج: حجز صالون بنقاط مكافآت"
+      },
+      "summary": {
+        "en": "Clients choose a ritual and a stylist, book a time and earn loyalty points.",
+        "ar": "العميلة تختار الخدمة والستايلست، تحجز ميعاد، وتكسب نقاط ولاء."
+      },
+      "body": {
+        "en": "Velvet is a made-up beauty salon we designed to show booking and loyalty in one place.\n\nClients browse services with prices and durations, choose a stylist and a free slot, and earn points with every visit. Fewer phone calls for the front desk and fewer empty chairs.\n\nOpen the live demo and reserve a ritual.",
+        "ar": "فيلفت صالون تجميل خيالي صممناه علشان نوضح الحجز والولاء في مكان واحد.\n\nالعميلة تتصفح الخدمات بالأسعار والمدة، تختار الستايلست والميعاد الفاضي، وتكسب نقاط مع كل زيارة. مكالمات أقل للاستقبال وكراسي فاضية أقل.\n\nافتح النسخة الحية واحجزي بنفسك."
+      }
+    },
+    {
+      "concept": "school",
+      "slug": "school-parent-portal",
+      "tag": "School portal",
+      "title": {
+        "en": "Brightpath: school parent portal",
+        "ar": "برايت باث: بوابة أولياء الأمور للمدرسة"
+      },
+      "summary": {
+        "en": "Parents see attendance, grades and the school bus live, and pay fees online.",
+        "ar": "ولي الأمر يشوف الحضور والدرجات وأتوبيس المدرسة لحظيًا، ويدفع المصاريف أونلاين."
+      },
+      "body": {
+        "en": "Brightpath is a made-up international school we designed to show a parent portal.\n\nParents check attendance the moment it is taken, see grades and homework, follow the school bus on a map and pay fees in two taps. The school spends less time answering the same questions.\n\nOpen the live demo and open the parent portal.",
+        "ar": "برايت باث مدرسة دولية خيالية صممناها علشان نوضح بوابة أولياء الأمور.\n\nولي الأمر يشوف الحضور أول ما يتسجل، والدرجات والواجبات، ويتابع الأتوبيس على الخريطة، ويدفع المصاريف في ضغطتين. والمدرسة توفر وقت الرد على نفس الأسئلة.\n\nافتح النسخة الحية وادخل بوابة أولياء الأمور."
+      }
+    },
+    {
+      "concept": "hotel",
+      "slug": "hotel-booking-website",
+      "tag": "Hotel booking",
+      "title": {
+        "en": "Coral Bay Resort: hotel direct booking",
+        "ar": "كورال باي ريزورت: حجز فندق مباشر"
+      },
+      "summary": {
+        "en": "Guests pick dates, choose a suite, add experiences and get a booking number.",
+        "ar": "الضيف يختار التواريخ والجناح، يضيف تجارب، وياخد رقم حجز."
+      },
+      "body": {
+        "en": "Coral Bay is a made-up Red Sea resort we designed to show direct bookings without booking site commissions.\n\nGuests check availability for their dates, compare rooms with photos, add experiences like snorkeling and confirm with a booking number. Every direct booking is one the hotel does not share with a middleman.\n\nOpen the live demo and check availability.",
+        "ar": "كورال باي منتجع خيالي على البحر الأحمر صممناه علشان نوضح الحجز المباشر من غير عمولات مواقع الحجز.\n\nالضيف يشوف المتاح في تواريخه، يقارن الغرف بالصور، يضيف تجارب زي السنوركلينج ويأكد برقم حجز. وكل حجز مباشر الفندق مش بيقسمه مع وسيط.\n\nافتح النسخة الحية وشوف المتاح."
+      }
+    },
+    {
+      "concept": "courses",
+      "slug": "online-courses-platform",
+      "tag": "E-learning platform",
+      "title": {
+        "en": "SkillForge Academy: online courses platform",
+        "ar": "سكيل فورج أكاديمي: منصة كورسات أونلاين"
+      },
+      "summary": {
+        "en": "Learners search a course, enroll, watch lessons and earn XP from quizzes.",
+        "ar": "المتعلم يدور على كورس، يشترك، يتفرج على الدروس ويكسب نقاط من الكويزات."
+      },
+      "body": {
+        "en": "SkillForge is a made-up academy we designed to show an e-learning platform.\n\nLearners search the catalogue, enroll in a course, follow video lessons and answer quick quizzes that award XP and keep a learning streak going. Progress and certificates live in one dashboard.\n\nOpen the live demo and start a course.",
+        "ar": "سكيل فورج أكاديمية خيالية صممناها علشان نوضح منصة تعليم أونلاين.\n\nالمتعلم يدور في الكورسات، يشترك، يتابع دروس الفيديو ويحل كويزات سريعة بتديله نقاط وتحافظ على استمراره. والتقدم والشهادات في داشبورد واحدة.\n\nافتح النسخة الحية وابدأ كورس."
+      }
+    },
+    {
+      "concept": "logistics",
+      "slug": "shipment-tracking-system",
+      "tag": "Logistics platform",
+      "title": {
+        "en": "SwiftLine: shipment tracking and instant quotes",
+        "ar": "سويفت لاين: تتبع شحنات وتسعير فوري"
+      },
+      "summary": {
+        "en": "Customers track a shipment on a live map and get a shipping quote in seconds.",
+        "ar": "العميل يتتبع شحنته على خريطة مباشرة وياخد سعر الشحن في ثواني."
+      },
+      "body": {
+        "en": "SwiftLine is a made-up courier we designed to show tracking and pricing for a logistics company.\n\nCustomers enter a tracking number and follow the shipment hub by hub on a live map. Business clients get an instant quote by weight, size and route, without calling sales.\n\nOpen the live demo and track a shipment.",
+        "ar": "سويفت لاين شركة شحن خيالية صممناها علشان نوضح التتبع والتسعير لشركات اللوجستيات.\n\nالعميل يكتب رقم الشحنة ويتابعها من مخزن لمخزن على خريطة مباشرة. والشركات تاخد سعر فوري حسب الوزن والحجم والمسار من غير ما تكلم المبيعات.\n\nافتح النسخة الحية وتتبع شحنة."
+      }
+    },
+    {
+      "concept": "furniture",
+      "slug": "furniture-store-website",
+      "tag": "Furniture store",
+      "title": {
+        "en": "Oak & Linen: furniture store with a sofa designer",
+        "ar": "أوك آند لينين: متجر أثاث بمصمم كنب"
+      },
+      "summary": {
+        "en": "Shoppers change the sofa fabric, see it in a room and add it to the cart.",
+        "ar": "الزبون يغير قماش الكنبة، يشوفها في أوضة، ويضيفها للعربة."
+      },
+      "body": {
+        "en": "Oak & Linen is a made-up furniture maker we designed to show an online store for made-to-order pieces.\n\nShoppers recolour a sofa in different fabrics, see it styled in a room, pick a size and add it to the cart with the delivery time. Fewer showroom visits, more confident orders.\n\nOpen the live demo and design your sofa.",
+        "ar": "أوك آند لينين صانع أثاث خيالي صممناه علشان نوضح متجر أونلاين للقطع اللي بتتعمل حسب الطلب.\n\nالزبون يغير لون الكنبة بأقمشة مختلفة، يشوفها في أوضة، يختار المقاس ويضيفها للعربة بميعاد التوصيل. زيارات أقل للمعرض وطلبات بثقة أكتر.\n\nافتح النسخة الحية وصمم كنبتك."
+      }
+    },
+    {
+      "concept": "consult",
+      "slug": "consulting-firm-website",
+      "tag": "Consulting firm website",
+      "title": {
+        "en": "Ledger & Co.: accounting firm website",
+        "ar": "ليدجر آند كو: موقع مكتب محاسبة"
+      },
+      "summary": {
+        "en": "Business owners compare packages, book a consultation and get the meeting link.",
+        "ar": "صاحب الشركة يقارن الباقات، يحجز استشارة، وياخد لينك الميتنج."
+      },
+      "body": {
+        "en": "Ledger & Co. is a made-up accounting firm we designed to show a professional services site that books meetings.\n\nVisitors read the services, compare monthly packages and book a free consultation in the calendar. The confirmation arrives with a video meeting link, so the first call needs no back and forth.\n\nOpen the live demo and book a consultation.",
+        "ar": "ليدجر آند كو مكتب محاسبة خيالي صممناه علشان نوضح موقع خدمات مهنية بيحجز اجتماعات.\n\nالزائر يقرا الخدمات، يقارن الباقات الشهرية، ويحجز استشارة مجانية من الكالندر. والتأكيد بيوصل بلينك اجتماع فيديو، فأول مكالمة من غير لف ودوران.\n\nافتح النسخة الحية واحجز استشارة."
+      }
+    },
+    {
+      "concept": "pos",
+      "slug": "pos-inventory-system",
+      "tag": "POS and inventory",
+      "title": {
+        "en": "StockPilot: POS and inventory system",
+        "ar": "ستوك بايلوت: نظام كاشير ومخزون"
+      },
+      "summary": {
+        "en": "Shops sell from the register, print the receipt and reorder low stock from one dashboard.",
+        "ar": "المحل يبيع من الكاشير، يطبع الفاتورة، ويطلب النواقص من داشبورد واحدة."
+      },
+      "body": {
+        "en": "StockPilot is a made-up retail system we designed to show a point of sale with live inventory.\n\nThe dashboard shows today's sales and orders, the register rings up a basket and prints the receipt, and stock updates with every sale. Items running low are flagged and reordered from the supplier in a click.\n\nOpen the live demo and make a sale.",
+        "ar": "ستوك بايلوت نظام محلات خيالي صممناه علشان نوضح كاشير بمخزون لحظي.\n\nالداشبورد تعرض مبيعات وطلبات النهارده، والكاشير يحسب السلة ويطبع الفاتورة، والمخزون يتحدث مع كل بيعة. والأصناف اللي قربت تخلص بتتعلم وتتطلب من المورد بضغطة.\n\nافتح النسخة الحية واعمل بيعة."
+      }
+    },
+    {
+      "concept": "aibot",
+      "slug": "ai-whatsapp-assistant",
+      "tag": "AI assistant",
+      "title": {
+        "en": "Avri: AI assistant that books on WhatsApp",
+        "ar": "أفري: مساعد ذكاء اصطناعي بيحجز على واتساب"
+      },
+      "summary": {
+        "en": "An AI assistant answers prices and opening hours and books appointments, day and night.",
+        "ar": "مساعد ذكاء اصطناعي بيرد على الأسعار والمواعيد وبيحجز، ليل ونهار."
+      },
+      "body": {
+        "en": "Avri is a made-up AI assistant we designed to show what a WhatsApp bot can do for a clinic or a shop.\n\nIt answers the questions every business gets all day, shares prices and opening hours, offers free slots and books the appointment. Anything unusual is handed to a person on the team.\n\nOpen the live demo and chat with it.",
+        "ar": "أفري مساعد ذكاء اصطناعي خيالي صممناه علشان نوضح بوت الواتساب ممكن يعمل إيه لعيادة أو محل.\n\nبيرد على الأسئلة اللي بتتكرر طول اليوم، يقول الأسعار والمواعيد، يعرض الأوقات الفاضية ويحجز. وأي حاجة غير معتادة بيحولها لحد من الفريق.\n\nافتح النسخة الحية واتكلم معاه."
+      }
+    },
+    {
+      "concept": "cafe",
+      "slug": "cafe-order-ahead-app",
+      "tag": "Café ordering",
+      "title": {
+        "en": "Copper Crema: café order ahead and loyalty",
+        "ar": "كوبر كريما: طلب مسبق ونقاط ولاء لكافيه"
+      },
+      "summary": {
+        "en": "Customers build their drink, order ahead, collect a stamp and pick up without the queue.",
+        "ar": "العميل يظبط مشروبه، يطلب قبلها، ياخد ختم، ويستلم من غير طابور."
+      },
+      "body": {
+        "en": "Copper Crema is a made-up café we designed to show ordering ahead with a digital loyalty card.\n\nCustomers build their drink, choose a branch and a pickup time, and collect a stamp with every cup until the free one. The barista sees the order before they arrive.\n\nOpen the live demo and order a latte.",
+        "ar": "كوبر كريما كافيه خيالي صممناه علشان نوضح الطلب المسبق مع كارت ولاء ديجيتال.\n\nالعميل يظبط مشروبه، يختار الفرع وميعاد الاستلام، وياخد ختم مع كل كوباية لحد المجانية. والباريستا بيشوف الطلب قبل ما يوصل.\n\nافتح النسخة الحية واطلب لاتيه."
+      }
+    },
+    {
+      "concept": "travel",
+      "slug": "travel-trip-builder",
+      "tag": "Travel booking",
+      "title": {
+        "en": "Horizon Trips Egypt: build your own trip",
+        "ar": "هورايزن تريبس إيجيبت: صمم رحلتك بنفسك"
+      },
+      "summary": {
+        "en": "Travellers pick destinations, build a day by day itinerary and see the price as they go.",
+        "ar": "المسافر يختار الأماكن، يبني برنامج يوم بيوم، ويشوف السعر وهو بيختار."
+      },
+      "body": {
+        "en": "Horizon Trips is a made-up travel agency we designed to show a trip builder for tours in Egypt.\n\nTravellers choose destinations, nights and extras, and the itinerary and total price update as they go. The finished plan is sent for booking with a guide, ready for the agency to confirm.\n\nOpen the live demo and build a trip.",
+        "ar": "هورايزن تريبس شركة سياحة خيالية صممناها علشان نوضح أداة تصميم رحلات في مصر.\n\nالمسافر يختار الأماكن وعدد الليالي والإضافات، والبرنامج والسعر الكلي بيتحدثوا مع كل اختيار. والخطة النهائية بتتبعت للحجز مع مرشد، جاهزة الشركة تأكدها.\n\nافتح النسخة الحية وصمم رحلتك."
+      }
+    },
+    {
+      "concept": "oud",
+      "slug": "perfume-oud-store",
+      "tag": "Perfume & oud store",
+      "title": {
+        "en": "Dar Al Nadd: online perfume and oud store for the Gulf",
+        "ar": "دار النَّد: متجر إلكتروني للعطور والعود في الخليج"
+      },
+      "summary": {
+        "en": "A Riyadh oud house that sells online in Saudi riyals, delivers the same day in Riyadh and ships to all six GCC countries.",
+        "ar": "دار عود في الرياض تبيع عبر الإنترنت بالريال السعودي، وتوصّل في اليوم نفسه داخل الرياض، وتشحن إلى دول الخليج الست."
+      },
+      "body": {
+        "en": "Dar Al Nadd is a made-up perfume house in Riyadh. We designed it to show what an Arabic-first online store for oud, bakhoor and mukhallat can do for a Gulf brand.\n\nVisitors filter the collection by note and type. Each product page shows sizes in tola and ml and a notes pyramid. Prices are in Saudi riyals including 15% VAT, and a switcher shows indicative prices in AED, KWD, QAR, BHD and OMR. When an order ships to another GCC country, checkout removes the Saudi VAT and explains the import tax in that country. Checkout offers mada, Apple Pay, STC Pay, cards and pay in 4 with Tabby or Tamara, plus gift wrapping with a personal card, same-day delivery in Riyadh, 2–4 day shipping across the GCC and a WhatsApp order button.\n\nOpen the live demo and place a gift order yourself.",
+        "ar": "دار النَّد دار عطور خيالية في الرياض، صمّمناها لنُظهر ما يمكن أن يقدّمه متجر إلكتروني يضع العربية أولًا، للعود والبخور والمخلّطات، لعلامة خليجية.\n\nيصفّي الزائر المجموعة بحسب النفحة والنوع. وتعرض صفحة كل منتج الأحجام بالتولة والمليلتر مع هرم المكوّنات. والأسعار بالريال السعودي شاملة ضريبة القيمة المضافة 15%، مع محوّل يعرض أسعارًا تقديرية بالدرهم الإماراتي والدينار الكويتي والريال القطري والدينار البحريني والريال العُماني. وعند الشحن إلى دولة خليجية أخرى تُخصم الضريبة السعودية تلقائيًا، مع توضيح ضريبة الاستيراد في بلد الاستلام. ويقدّم إتمام الطلب الدفع عبر مدى وApple Pay وSTC Pay والبطاقات، أو التقسيط على 4 دفعات مع تابي أو تمارا. ويتيح كذلك تغليف الهدية مع بطاقة إهداء، والتوصيل في اليوم نفسه داخل الرياض، والشحن إلى دول الخليج خلال 2–4 أيام، والطلب عبر واتساب.\n\nافتح النسخة الحية وجرّب طلب هدية بنفسك."
+      }
+    },
+    {
+      "concept": "offplan",
+      "slug": "dubai-offplan-sales",
+      "tag": "Off-plan sales",
+      "title": {
+        "en": "Samiq Residences: off-plan sales website",
+        "ar": "مساكن سامِق: موقع مبيعات لمشروع على الخارطة"
+      },
+      "summary": {
+        "en": "Buyers compare unit types, explore the floor plans, build their payment plan in AED and book a viewing or message sales on WhatsApp.",
+        "ar": "يقارن المشتري أنواع الوحدات، ويتصفّح المخططات، ويحسب خطة السداد بالدرهم، ثم يحجز معاينة أو يراسل فريق المبيعات عبر واتساب."
+      },
+      "body": {
+        "en": "Samiq Residences is a made-up off-plan tower in Dubai that we designed to show how a developer's sales site can turn visitors into qualified leads, in Arabic and English, with prices in UAE dirhams.\n\nVisitors compare studios through to the penthouse by size in sq ft and starting price, open an interactive floor plan, and set the booking, construction and handover percentages to see every instalment in AED. They can then book a viewing in a few steps or send a prefilled WhatsApp message to the sales team. A placeholder shows where the advertising permit number would go.\n\nOpen the live demo and build your own payment plan.",
+        "ar": "مساكن سامِق برجٌ سكني خيالي على الخارطة في دبي، صمّمناه لنُبيّن كيف يحوّل موقعُ مبيعات المطوّر الزوارَ إلى عملاء جادّين، باللغتين العربية والإنجليزية وبالأسعار بالدرهم الإماراتي.\n\nيقارن الزائر الوحدات من الاستوديو حتى البنتهاوس بالمساحة بالقدم المربعة وبسعر البداية، ويتصفّح مخططاً تفاعلياً لكل وحدة، ويضبط نسب الحجز والبناء والتسليم ليرى جدول الدفعات كاملاً بالدرهم. ثم يحجز معاينة في خطوات قليلة أو يرسل إلى فريق المبيعات رسالة واتساب جاهزة. ويوضّح حقلٌ تجريبي موضع رقم تصريح الإعلان.\n\nافتح النسخة الحية وصمّم خطة سدادك بنفسك."
+      }
+    },
+    {
+      "concept": "homeservices",
+      "slug": "home-services-booking-kuwait",
+      "tag": "Home services booking",
+      "title": {
+        "en": "Mutqan: home-services booking site for Kuwait",
+        "ar": "مُتقَن: موقع لحجز الخدمات المنزلية في الكويت"
+      },
+      "summary": {
+        "en": "A Kuwaiti home-services site where customers book AC maintenance, cleaning, plumbing, electrical work or pest control in under a minute, see the final price in KWD and follow the technician live to their door.",
+        "ar": "موقع خدمات منزلية في الكويت يحجز فيه العميل صيانة المكيّفات أو التنظيف أو السباكة أو الكهرباء أو مكافحة الحشرات في أقل من دقيقة، ويطّلع على السعر النهائي بالدينار الكويتي، ثم يتابع الفني مباشرةً حتى يصل إلى بابه."
+      },
+      "body": {
+        "en": "Mutqan is a made-up Kuwaiti company we designed to show how a home-services business in the Gulf can take bookings and payments online, in Arabic first with English one tap away.\n\nPick a service such as AC cleaning before the summer heat, choose your area in any of Kuwait's six governorates, then a day and a two-hour slot shown with both the Gregorian and Hijri dates. Enter a +965 mobile number and see an itemised total in Kuwaiti dinars. You can choose KNET, Visa/Mastercard, Apple Pay or cash on the visit, then watch a simulated technician drive to your home and rate the job when it is finished. There are also annual AC maintenance plans with monthly or yearly pricing, and a WhatsApp button for quick questions.\n\nOpen the live demo and book a visit yourself.",
+        "ar": "مُتقَن شركة كويتية افتراضية صمّمناها لنُبيّن كيف تستقبل شركات الخدمات المنزلية في الخليج الحجوزات والمدفوعات عبر الإنترنت، بالعربية أولًا والإنجليزية متاحة بضغطة واحدة.\n\nاختر الخدمة، مثل تنظيف المكيّفات قبل حرّ الصيف، ثم منطقتك في أيٍّ من محافظات الكويت الست، ثم اليوم وفترة زمنية مدتها ساعتان يظهر معها التاريخان الميلادي والهجري. أدخل رقم جوالك بمفتاح ‎+965 لتطّلع على إجمالي مفصّل بالدينار الكويتي، وادفع عبر KNET أو Visa/Mastercard أو Apple Pay أو نقدًا عند الزيارة. بعد ذلك تابع الفني في محاكاة حيّة وهو في طريقه إلى منزلك، وقيّم الخدمة عند انتهائها. ويضم الموقع أيضًا عقود صيانة سنوية للمكيّفات بتسعير شهري أو سنوي، وزرّ واتساب للاستفسارات السريعة.\n\nافتح النسخة الحيّة وجرّب الحجز بنفسك."
+      }
+    },
+    {
+      "concept": "wholesale",
+      "slug": "b2b-wholesale-ordering",
+      "tag": "B2B ordering portal",
+      "title": {
+        "en": "Wasq Food Supplies: B2B wholesale ordering portal",
+        "ar": "وسق للتموين الغذائي: بوابة طلبات الجملة للشركات"
+      },
+      "summary": {
+        "en": "A wholesale ordering portal where restaurants, cafés and grocery stores in Saudi Arabia order for each branch at tiered case prices, track their 30-day credit and get VAT invoices in SAR.",
+        "ar": "بوابة لطلبات الجملة تتيح للمطاعم والمقاهي والتموينات في المملكة العربية السعودية الطلب لكل فرع بأسعار الكرتون المتدرجة، ومتابعة حدها الائتماني بأجل 30 يومًا، واستلام فواتير ضريبية بالريال السعودي."
+      },
+      "body": {
+        "en": "Wasq Food Supplies is a made-up Saudi food and beverage distributor. We designed it to show how a B2B ordering portal can serve customers with several branches across Riyadh, Jeddah and Dammam.\n\nSwitch between demo accounts, reorder a past order in one tap, and fill a separate cart for each branch with its own delivery date and route slot. You can order by the case or by the unit, and case prices drop at volume tiers. A credit panel tracks the 30-day balance and warns you before an order goes over the limit. You can pay on account, with mada on delivery or by bank transfer. Each order has a status timeline, and the invoice follows the Saudi tax invoice layout: seller and buyer VAT numbers, 15% VAT lines, totals in SAR and a demo e-invoice QR. The layout was designed around ZATCA e-invoicing (FATOORA) requirements, but it has no live connection to the platform.\n\nOpen the live demo and place an order for a branch yourself.",
+        "ar": "وسق للتموين الغذائي موزّع أغذية ومشروبات سعودي من نسج الخيال، صممناه لنُبيّن كيف تخدم بوابة طلبات الجملة العملاء الذين يملكون عدة فروع في الرياض وجدة والدمام.\n\nيمكنك التنقل بين حسابات تجريبية، وإعادة طلب سابق بضغطة واحدة، وتعبئة سلة مستقلة لكل فرع بتاريخ توصيل وموعد مسار خاص به. ويمكن الطلب بالكرتون أو بالوحدة، وتنخفض أسعار الكرتون مع شرائح الكمية. وتعرض لوحة الائتمان الرصيد المستحق بأجل 30 يومًا، وتنبّهك قبل أن يتجاوز الطلب الحد المتاح. ويمكن الدفع على الحساب أو بمدى عند الاستلام أو بالتحويل البنكي. ولكل طلب مسار حالة واضح، وتتبع الفاتورة نموذج الفاتورة الضريبية السعودية: الرقم الضريبي للبائع والمشتري، وبنود ضريبة القيمة المضافة 15%، والإجماليات بالريال السعودي، ورمز QR توضيحي للفاتورة الإلكترونية. صُمّم النموذج ليراعي متطلبات الفوترة الإلكترونية (فاتورة) الصادرة عن هيئة الزكاة والضريبة والجمارك، دون أي ربط فعلي بمنصتها.\n\nافتح النسخة الحية وجرّب إنشاء طلب لأحد الفروع بنفسك."
+      }
+    }
   ]
 }

@@ -35,6 +35,10 @@ We build with cross-platform technology, so iOS and Android share one codebase. 
 4. **Store release.** Review, publishing and the listing for each store.
 5. **After launch.** Updates for new OS versions, fixes and new features.
 
+## For Saudi and UAE businesses
+
+We design and build iOS and Android apps in Arabic and English for businesses in Saudi Arabia and the UAE, published under your own Apple and Google developer accounts. We work the same Sunday–Thursday week as Saudi Arabia, and you test a working build every one to two weeks. Read [what an app costs in Saudi Arabia](/blog/app-development-cost-saudi-arabia) and [in the UAE](/blog/app-development-cost-uae); see also our pages for [Saudi Arabia](/saudi-arabia) and the [UAE](/uae).
+
 ## Frequently asked questions
 
 ### How long does it take to build an app?

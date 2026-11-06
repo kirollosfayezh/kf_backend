@@ -32,6 +32,10 @@ Aktuelle Beispiele sind die Exportplattform für [Alkhameesi](/projects/alkhamee
 4. **Go-live.** Domain, Hosting, SSL-Zertifikate, Google Search Console und Analytics.
 5. **Nach dem Go-live.** Updates, neue Seiten und Performance-Checks.
 
+## Für Unternehmen in Saudi-Arabien und den VAE
+
+Wir gestalten Websites und Onlineshops für Unternehmen in Saudi-Arabien und den VAE mit Arabisch an erster Stelle: von der ersten Skizze an von rechts nach links, schnell auch über mobile Daten und so gebaut, dass sie bei arabischen und englischen Suchanfragen gefunden werden. Angebote erstellen wir in US-Dollar mit dem Gegenwert in Riyal oder Dirham. Lesen Sie, was die [Kosten einer Website in Saudi-Arabien](/blog/website-design-cost-saudi-arabia) und [in den VAE](/blog/website-design-cost-uae) bestimmt; mehr auf unseren Seiten zu [Saudi-Arabien](/saudi-arabia) und den [VAE](/uae).
+
 ## Häufige Fragen
 
 ### Wie lange dauert die Erstellung einer Website?

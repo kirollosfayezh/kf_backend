@@ -33,6 +33,10 @@ If a ready-made product genuinely fits, we will tell you — and help you set it
 4. **Launch and handover.** Data migration, training, documentation and full access to your code and servers.
 5. **Support.** Fixes, monitoring and new features after launch.
 
+## For Saudi and UAE businesses
+
+We build custom systems for businesses in Saudi Arabia and the UAE remotely from Cairo: a written scope and price first, a working build to review every one to two weeks, and the code and accounts in your name. Our guides on [hiring an Egyptian software company from the Gulf](/blog/hire-egyptian-software-company-from-gulf) and [contract clauses for Saudi and UAE clients](/blog/software-contract-saudi-uae-clients) cover what to ask before you sign; see also our pages for [Saudi Arabia](/saudi-arabia) and the [UAE](/uae).
+
 ## Frequently asked questions
 
 ### How long does a custom system take to build?

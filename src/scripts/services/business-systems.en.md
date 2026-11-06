@@ -24,6 +24,10 @@ We build business systems that bring those pieces into one place — so the owne
 - **Multi-branch** from the start, with permissions for each role.
 - **Works on your hardware**: receipt printers, barcode scanners, cash drawers and tablets.
 
+## For Saudi and UAE businesses
+
+In Saudi Arabia, VAT-registered businesses are joining ZATCA's Phase 2 e-invoicing in waves, and UAE e-invoicing through accredited service providers begins in 2027. We build the integration for your own POS or ERP to the published specifications, drawing on our e-receipt integration for [Egypt ETA](/projects/egypt-eta), with Arabic and English receipts and reports throughout. Start with [ZATCA Phase 2 integration for your own POS or ERP](/blog/zatca-phase-2-integration-custom-pos-erp) or [ready-made or custom POS in Saudi Arabia](/blog/ready-made-vs-custom-pos-saudi-arabia); see also our pages for [Saudi Arabia](/saudi-arabia) and the [UAE](/uae).
+
 ## Custom or ready-made?
 
 A ready-made POS or ERP is often the right start for a small business. A custom system makes sense when your workflow doesn't fit a package, when you are paying for several tools that don't connect, or when you need reports no package gives you. We will tell you honestly which fits — see our guide on [ready-made vs custom POS for restaurants](/blog/ready-made-vs-custom-pos-restaurants).
@@ -33,7 +37,7 @@ A ready-made POS or ERP is often the right start for a small business. A custom 
 1. **Walk the floor.** We watch the real process at the counter, in the kitchen and in the office.
 2. **Written scope and price** for the first phase.
 3. **Build and test** with your team using real data.
-4. **Go-live** with data migration, training and on-site support in the first days.
+4. **Go-live** with data migration, training, and on-site support in Egypt or remote go-live support elsewhere.
 5. **Ongoing support** and new modules as you grow.
 
 ## Frequently asked questions

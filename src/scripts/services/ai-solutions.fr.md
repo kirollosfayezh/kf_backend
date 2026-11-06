@@ -32,6 +32,10 @@ L'IA est utile lorsqu'elle accomplit une tâche précise au sein d'un processus 
 
 Pour aller plus loin, lisez notre [guide pratique pour intégrer l'IA dans votre entreprise](/blog/a-practical-guide-to-adding-ai-to-your-business).
 
+## Pour les entreprises d'Arabie saoudite et des Émirats
+
+Pour les entreprises d'Arabie saoudite et des Émirats, nous créons des outils d'IA qui fonctionnent en arabe comme en anglais : un assistant qui répond à vos clients à partir de vos propres informations, sur votre site ou sur WhatsApp, ou un assistant qui recherche dans vos contrats et vos politiques internes, avec passage à un humain si nécessaire. Voir [un assistant IA qui répond à partir de vos propres documents](/blog/ai-assistant-own-documents) et [les chatbots WhatsApp pour les entreprises saoudiennes](/blog/whatsapp-chatbot-saudi-arabia) ; voir aussi nos pages [Arabie saoudite](/saudi-arabia) et [Émirats arabes unis](/uae).
+
 ## Questions fréquentes
 
 ### L'IA va-t-elle remplacer mes collaborateurs ?

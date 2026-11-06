@@ -32,6 +32,10 @@ Recent examples include the export platform for [Alkhameesi](/projects/alkhamees
 4. **Launch.** Domain, hosting, security certificates, Google Search Console and analytics.
 5. **After launch.** Updates, new pages and performance checks.
 
+## For Saudi and UAE businesses
+
+We design Arabic-first websites and online stores for businesses in Saudi Arabia and the UAE: right-to-left from the first sketch, fast on mobile data, and built to be found in Arabic and English searches. Quotes are in US dollars with the riyal or dirham equivalent. See what drives [website design cost in Saudi Arabia](/blog/website-design-cost-saudi-arabia) and [in the UAE](/blog/website-design-cost-uae); see also our pages for [Saudi Arabia](/saudi-arabia) and the [UAE](/uae).
+
 ## Frequently asked questions
 
 ### How long does a website take?

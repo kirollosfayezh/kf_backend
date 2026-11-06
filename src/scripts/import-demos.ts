@@ -1,10 +1,11 @@
 /**
- * Imports the 18 concept demo websites as projects, from `import-demos.data.json`,
+ * Imports the concept demo websites as projects, from `import-demos.data.json`,
  * and uploads each page as a demo under the project's slug (served at <site>/demos/<slug>).
  *
  *   npm run import-demos                        # dry run: what would be created/updated
  *   npm run import-demos -- --apply             # write, projects as unpublished drafts
  *   npm run import-demos -- --apply --publish   # write and publish
+ *   npm run import-demos -- --slugs a,b --apply # only these slugs (leaves the rest untouched)
  *
  * Options:
  *   --from <dir>   folder holding <concept>/index.html. Default ../social/concepts.
@@ -54,7 +55,13 @@ async function main() {
   const from = path.resolve(arg("--from") ?? "../social/concepts");
   const site = (arg("--site") ?? "https://kftechsolutions.dev").replace(/\/+$/, "");
 
-  const { projects: entries } = JSON.parse(await readFile(DATA_URL, "utf8")) as { projects: Entry[] };
+  const { projects: all } = JSON.parse(await readFile(DATA_URL, "utf8")) as { projects: Entry[] };
+  // `--slugs a,b` imports only those, so adding new concepts never rewrites the
+  // copy, tag or page of the ones already live (which may have dashboard edits).
+  const only = (arg("--slugs") ?? "").split(",").map((s) => s.trim()).filter(Boolean);
+  const unknown = only.filter((s) => !all.some((e) => e.slug === s));
+  if (unknown.length) throw new Error(`Not in import-demos.data.json: ${unknown.join(", ")}`);
+  const entries = only.length ? all.filter((e) => only.includes(e.slug)) : all;
   const pages = await Promise.all(entries.map((e) => readFile(path.join(from, e.concept, "index.html"), "utf8")));
 
   await connectDb();
@@ -80,7 +87,9 @@ async function main() {
     const now = new Date().toISOString();
     const payload: Partial<ContentItem> = {
       slug: e.slug,
-      order: 101 + i,
+      // Position in the whole data file, not in the --slugs selection, so a
+      // partial import never reuses the order of a demo already live.
+      order: 101 + all.indexOf(e),
       published: publish ? true : (match?.published ?? false),
       title: text(e.title),
       summary: text(e.summary),

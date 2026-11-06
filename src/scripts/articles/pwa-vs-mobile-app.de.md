@@ -2,6 +2,8 @@
 title: PWA, Web-App oder Mobile App: Was braucht Ihr Unternehmen?
 summary: Ein klarer Vergleich von PWA, Web-App und Store-App: Installation, Offline-Nutzung, Benachrichtigungen, App-Store-Präsenz, Kosten und die Entscheidung.
 tags: PWA, Web-App, Mobile App, App Store, Push-Benachrichtigungen, Ägypten, Golfstaaten
+alt: Hände halten ein Smartphone über einen aufgeklappten Laptop auf einem Cafétisch
+caption: Derselbe Kunde wechselt zwischen Laptop und Smartphone – die eigentliche Frage ist, ob er überhaupt etwas installieren muss.
 stats: $99|Apple-Entwicklermitgliedschaft pro Jahr; $25|Google-Play-Registrierung, einmalig; 16.4|iOS-Version mit Web-Push für Home-Bildschirm-Web-Apps
 ---
 

@@ -2,6 +2,8 @@
 title: Contrat de maintenance logicielle : ce qu'un contrat juste inclut
 summary: Délai de réponse ou de résolution, bugs ou évolutions, hébergement, mises à jour, sauvegardes et tarifs : ce qu'un contrat de maintenance juste précise.
 tags: maintenance logicielle, contrat de support, SLA, logiciel sur mesure, hébergement, Égypte
+alt: Un technicien en gilet haute visibilité intervient dans une baie de serveurs ouverte
+caption: Un logiciel demande des soins après sa mise en ligne : mises à jour, sauvegardes et supervision relèvent d’un contrat de maintenance écrit.
 stats: 3|modèles de tarification courants : forfait mensuel, banque d'heures, par incident; 2|délais pour chaque problème : réponse et résolution; 36|niveau d'API Android exigé par Google Play pour les nouvelles applis et mises à jour dès le 31 août 2026
 ---
 

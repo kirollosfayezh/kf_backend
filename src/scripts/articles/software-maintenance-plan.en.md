@@ -4,6 +4,9 @@ summary: Response vs resolution times, bugs vs changes, hosting, updates, backup
 tag: Business Systems
 tags: software maintenance, support contract, SLA, custom software, hosting, Egypt
 order: 100
+media: https://images.unsplash.com/photo-1785682117028-6fcf2c0b515b
+alt: A technician in a high-visibility vest works inside an open server rack
+caption: Software keeps needing care after launch: updates, backups and monitoring belong in a written maintenance plan.
 stats: 3|common pricing models: retainer, bank of hours, per incident; 2|clocks for every issue: response time and resolution time; 36|Android API level new Play apps and updates must target from 31 Aug 2026
 ---
 

@@ -4,6 +4,9 @@ summary: A practical checklist for apps under Egypt's Law 151 of 2020: consent r
 tag: Business Systems
 tags: data protection, Law 151 of 2020, PDPC, app compliance, privacy, Egypt
 order: 95
+media: https://images.unsplash.com/photo-1615985250204-b48c0936d4fc
+alt: A hand holds a smartphone showing a large padlock icon on a dark screen
+caption: Under Law 151/2020, protecting users' personal data is a design requirement, not a setting added at the end.
 stats: 151|of 2020: the number of Egypt's Personal Data Protection Law; 72|hours to report a personal data breach to the PDPC; 3|working days to tell the affected people after the report
 ---
 

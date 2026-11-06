@@ -2,6 +2,8 @@
 title: Ägyptens Datenschutzgesetz: Was Ihre App leisten muss
 summary: Eine praktische Checkliste für Apps nach Ägyptens Gesetz 151/2020: Einwilligungsnachweise, Nutzerrechte, Sicherheit, Datenpannen und die Lizenz des PDPC.
 tags: Datenschutz, Gesetz 151/2020, PDPC, App-Compliance, Privatsphäre, Ägypten
+alt: Eine Hand hält ein Smartphone, auf dessen dunklem Bildschirm ein großes Schlosssymbol zu sehen ist
+caption: Nach Gesetz 151/2020 ist der Schutz personenbezogener Daten eine Designanforderung, keine nachträgliche Einstellung.
 stats: 151|von 2020: die Nummer des ägyptischen Datenschutzgesetzes; 72|Stunden, um eine Datenpanne beim PDPC zu melden; 3|Arbeitstage, um danach die Betroffenen zu informieren
 ---
 

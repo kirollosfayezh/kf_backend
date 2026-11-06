@@ -2,6 +2,8 @@
 title: Logiciel de laboratoire d'analyses médicales en Égypte : l'essentiel
 summary: Suivi des échantillons, connexion des automates, comptes rendus validés et résultats par WhatsApp : ce qu'un logiciel de labo doit faire en Égypte.
 tags: logiciel de laboratoire, SIL, laboratoire médical, interface automate, résultats WhatsApp, Égypte
+alt: Main gantée plaçant un tube de sang à côté de tubes étiquetés par code-barres dans un portoir blanc
+caption: Le code-barres du tube relie l’échantillon au patient, au passage sur l’automate et au compte rendu remis.
 stats: 2|documents CLSI pour connecter les automates : LIS01 et LIS02; 1|code-barres par échantillon, de l'accueil au compte rendu; 0|résultat qui devrait être saisi deux fois
 ---
 

@@ -4,6 +4,9 @@ summary: A plain comparison of PWAs, web apps and store apps: installing, offlin
 tag: Mobile
 tags: PWA, web app, mobile app, app store, push notifications, Egypt, GCC
 order: 101
+media: https://images.unsplash.com/photo-1745474633597-be94033b16d6
+alt: Hands holding a smartphone above an open laptop on a café table
+caption: The same customer moves between laptop and phone; the real question is whether they need to install anything at all.
 stats: $99|Apple developer membership, per year; $25|Google Play registration, paid once; 16.4|iOS version that added web push for Home Screen web apps
 ---
 

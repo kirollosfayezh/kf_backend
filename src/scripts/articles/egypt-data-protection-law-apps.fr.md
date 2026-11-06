@@ -2,6 +2,8 @@
 title: Loi égyptienne sur les données : ce que votre application doit faire
 summary: Une liste pratique pour les applications selon la loi égyptienne 151/2020 : consentements, droits des utilisateurs, sécurité, violations et licence du PDPC.
 tags: protection des données, loi 151 de 2020, PDPC, conformité des applications, vie privée, Égypte
+alt: Une main tient un smartphone affichant un grand cadenas sur un écran sombre
+caption: Selon la loi 151/2020, protéger les données personnelles est une exigence de conception, pas un réglage ajouté à la fin.
 stats: 151|de 2020 : le numéro de la loi égyptienne sur la protection des données personnelles; 72|heures pour signaler une violation de données au PDPC; 3|jours ouvrables pour prévenir ensuite les personnes concernées
 ---
 

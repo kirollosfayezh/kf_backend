@@ -2,6 +2,8 @@
 title: PWA, application web ou mobile : laquelle vous faut-il ?
 summary: Une comparaison claire entre PWA, application web et application mobile : installation, hors ligne, notifications, stores, coût et comment choisir.
 tags: PWA, application web, application mobile, App Store, notifications push, Égypte, pays du Golfe
+alt: Des mains tiennent un smartphone au-dessus d’un ordinateur portable ouvert sur une table de café
+caption: Le même client passe de l’ordinateur au téléphone. La vraie question est de savoir s’il doit installer quoi que ce soit.
 stats: 99 $|adhésion développeur Apple, par an; 25 $|inscription Google Play, payée une fois; 16.4|version d’iOS qui a ajouté le push web pour les apps de l’écran d’accueil
 ---
 

@@ -2,6 +2,8 @@
 title: Software-Wartungsvertrag: Was ein fairer Vertrag enthält
 summary: Reaktions- vs. Lösungszeit, Fehler vs. Änderungen, Hosting, Updates, Backups und Preise: Was ein fairer Wartungsvertrag für Software festlegen sollte.
 tags: Softwarewartung, Supportvertrag, SLA, Individualsoftware, Hosting, Ägypten
+alt: Ein Techniker in Warnweste arbeitet an einem geöffneten Serverschrank
+caption: Software braucht nach dem Start weiter Pflege: Updates, Backups und Monitoring gehören in einen schriftlichen Wartungsplan.
 stats: 3|übliche Preismodelle: Pauschale, Stundenkontingent, pro Vorfall; 2|Uhren für jedes Problem: Reaktionszeit und Lösungszeit; 36|Android-API-Level, das neue Apps und Updates bei Google Play ab 31. Aug. 2026 brauchen
 ---
 

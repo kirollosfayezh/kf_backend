@@ -2,6 +2,8 @@
 title: Laborsoftware für medizinische Labore in Ägypten: worauf es ankommt
 summary: Probenverfolgung, Geräteanbindung, freigegebene Befunde und Ergebnisse per WhatsApp: was Laborsoftware in Ägypten leisten muss und wann sich Eigenbau lohnt.
 tags: Laborsoftware, LIS, medizinisches Labor, Geräteschnittstelle, Befunde per WhatsApp, Ägypten
+alt: Behandschuhte Hand stellt ein Blutprobenröhrchen neben Röhrchen mit Barcode in ein weißes Laborgestell
+caption: Der Barcode am Röhrchen verbindet die Probe mit dem Patienten, dem Analysegerät und dem fertigen Befund.
 stats: 2|CLSI-Dokumente für die Geräteanbindung: LIS01 und LIS02; 1|Barcode pro Probe, vom Empfang bis zum Befund; 0|Ergebnisse, die zweimal abgetippt werden sollten
 ---
 

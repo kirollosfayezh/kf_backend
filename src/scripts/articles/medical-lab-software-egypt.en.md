@@ -4,6 +4,9 @@ summary: Sample tracking, analyser interfaces, approved reports and WhatsApp res
 tag: Business Systems
 tags: laboratory software, LIS, medical lab, analyser interface, WhatsApp results, Egypt
 order: 96
+media: https://images.unsplash.com/photo-1639772823849-6efbd173043c
+alt: Gloved hand placing a blood sample tube beside barcoded test tubes in a white lab rack
+caption: A barcode on the tube is what ties a sample to its patient, its analyser run and the report that goes out.
 stats: 2|CLSI documents for analyser links: LIS01 and LIS02; 1|barcode per sample, from reception to report; 0|results that should be typed in twice
 ---
 

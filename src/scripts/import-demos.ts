@@ -44,9 +44,14 @@ function pad(s: string, n: number): string {
   return s.length >= n ? s : s + " ".repeat(n - s.length);
 }
 
-/** English and Arabic from the data file; German and French stay empty and fall back to English. */
+/**
+ * The languages the data file has. German and French are optional: left out,
+ * they stay empty and the site falls back to English. A demo listed under
+ * /de/projects needs its German text, or the list links to a page that is not
+ * prerendered — so the newer entries carry all four.
+ */
 function text(t: LocalizedText): LocalizedText {
-  return { en: t.en, ar: t.ar ?? "", de: "", fr: "" };
+  return { en: t.en, ar: t.ar ?? "", de: t.de ?? "", fr: t.fr ?? "" };
 }
 
 async function main() {

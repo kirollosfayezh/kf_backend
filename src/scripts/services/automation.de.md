@@ -1,7 +1,7 @@
 ---
 title: Prozessautomatisierung
 summary: Ersetzen Sie wiederkehrende Handarbeit – Daten kopieren, Freigaben nachverfolgen, Erinnerungen verschicken – durch Automatisierungen, die zuverlässig von selbst laufen.
-seoTitle: Prozess- & Workflow-Automatisierung | KF Tech Solutions
+seoTitle: Prozessautomatisierung aus Ägypten | KF Tech Solutions
 seoDescription: Automatisieren Sie wiederkehrende Abläufe, Berichte, Erinnerungen und Dateneingaben zwischen Ihren Tools – mit Alarmen, Logs und menschlicher Freigabe.
 ---
 
@@ -38,6 +38,34 @@ Eine Automatisierung, der niemand vertraut, wird abgeschaltet. Jede Automatisier
 
 Für Unternehmen in Saudi-Arabien und den VAE automatisieren wir dieselbe Routinearbeit auf Arabisch und Englisch: Rechnungen und Belege werden zu Daten, Berichte gehen termingerecht hinaus, Erinnerungen und Freigaben laufen von selbst. Da in beiden Ländern Fristen für die E-Rechnung näher rücken, sind saubere Rechnungsdaten ein guter Anfang. Lesen Sie, wie man [arabische Rechnungen und Belege mit KI ausliest](/blog/arabic-invoice-ocr-ai) und [wo die einzelnen GCC-Staaten bei der E-Rechnung stehen](/blog/gcc-e-invoicing-by-country); mehr auf unseren Seiten zu [Saudi-Arabien](/saudi-arabia) und den [VAE](/uae).
 
+## Vom ersten Gespräch bis zum Launch
+
+Die Schritte oben legen fest, was automatisiert wird. Jede Automatisierung wird dann in denselben fünf Phasen umgesetzt, die wir bei jedem Projekt nutzen:
+
+1. **Entdecken.** Wir sehen uns an, wie die Aufgabe heute erledigt wird: welche Tools und Dateien beteiligt sind, wer freigibt und wo Fehler entstehen.
+2. **Planen.** Wir halten Auslöser, Schritte, Regeln und Alarmempfänger schriftlich fest und stimmen das mit Ihnen ab, bevor wir entwickeln.
+3. **Design.** Wir gestalten die Teile, mit denen Menschen arbeiten: Freigabemasken, Berichtslayouts sowie die Erinnerungen und Nachrichten, die sie erhalten.
+4. **Entwickeln.** Wir verbinden Ihre Tools und lassen die Automatisierung parallel zum manuellen Prozess laufen, bis die Ergebnisse übereinstimmen. Sie sehen alle ein bis zwei Wochen einen funktionierenden Zwischenstand.
+5. **Launch.** Wir stellen um, beobachten Protokolle und Alarme und passen die Automatisierung an, wenn sich Ihr Prozess ändert.
+
+## Was Automatisierung kostet
+
+Projekte beginnen bei 200 $ (etwa 750 SAR / 735 AED); der Endpreis hängt vom Umfang ab, mit einem festen schriftlichen Angebot nach einem kostenlosen Gespräch. Bei Automatisierungen hängt der Preis vor allem ab von:
+
+- **Der Zahl der Abläufe**, die Sie automatisieren, und wie viele Schritte und Regeln jeder davon hat.
+- **Der Zahl der angebundenen Tools** und ob sie eine dokumentierte API haben. Ein Tool mit API ist schneller angebunden als eines, das nur Dateien exportiert.
+- **Der Dokumentenverarbeitung**: Rechnungen oder Formulare mit KI auszulesen verursacht geringe laufende Kosten pro Dokument.
+- **Freigaben und Sonderfällen**: Jeder Sonderfall, den der Prozess abdecken muss, bedeutet zusätzlichen Aufwand.
+
+Die meisten Unternehmen beginnen mit einem Ablauf mit hohem Volumen und nehmen den nächsten hinzu, sobald sich der erste bezahlt macht. Unser Ratgeber zur [Automatisierung für kleine und mittlere Unternehmen](/blog/business-automation-small-business) zeigt, wo Sie anfangen.
+
+## Was Sie bei der Übergabe erhalten
+
+- **Ihr Code und Ihre Konten**: Der Code der Automatisierungen und alle Cloud-Konten, auf denen sie laufen, gehören Ihnen.
+- **Bereitstellung nach Ihrer Wahl**: Die Automatisierungen laufen beim Hosting-Anbieter und in der Region Ihrer Wahl.
+- **Dokumentation** darüber, was jede Automatisierung tut, wann sie läuft und wen sie alarmiert.
+- **Wartung und Support nach dem Launch**: Ändert sich ein angebundenes Tool, passen wir die Automatisierung an, und wir können die nächsten Abläufe ergänzen, sobald Sie so weit sind.
+
 ## Häufige Fragen
 
 ### Brauchen wir neue Software, um zu automatisieren?
@@ -51,3 +79,15 @@ Jede Automatisierung protokolliert ihre Aktionen und alarmiert jemanden, wenn ei
 ### Wie schnell sehen wir Ergebnisse?
 
 Eine erste Automatisierung läuft oft schon innerhalb von zwei bis vier Wochen, und die eingesparte Zeit ist sofort sichtbar.
+
+### Wer wartet die Automatisierungen nach dem Launch?
+
+Das können wir übernehmen. Angebundene Tools ändern sich mit der Zeit, deshalb beobachten wir Protokolle und Alarme, beheben Fehler und passen die Automatisierung an, wenn sich Ihr Prozess ändert. Wenn Sie möchten, kann auch Ihr eigenes Team sie anhand der Dokumentation übernehmen.
+
+### Können Sie Automatisierungen reparieren, die jemand anderes gebaut hat?
+
+Ja. Ob Skript, Tabellen-Makro oder No-Code-Workflow: Wir prüfen den Bestand, reparieren ihn oder bauen die fehleranfälligen Teile neu und übernehmen anschließend die Wartung.
+
+### Funktionieren die Automatisierungen mit arabischen Dokumenten und Nachrichten?
+
+Ja. Wir bauen Automatisierungen, die Arabisch und Englisch lesen und versenden, einschließlich Rechnungen, Formularen, E-Mails und WhatsApp-Nachrichten.

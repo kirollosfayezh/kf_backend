@@ -1,7 +1,7 @@
 ---
 title: Apps and websites for Kuwait, Qatar, Bahrain and Oman
 summary: Apps, websites and business systems for companies in Kuwait, Qatar, Bahrain and Oman, built from Cairo to each country's payment, tax and data rules.
-seoTitle: Software for Kuwait, Qatar, Bahrain and Oman | KF Tech
+seoTitle: Software Company for Kuwait, Qatar, Bahrain & Oman | KF Tech
 seoDescription: KF Tech Solutions, a Cairo software studio, builds apps, websites and business systems for companies in Kuwait, Qatar, Bahrain and Oman, in Arabic and English.
 ---
 

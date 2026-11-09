@@ -36,11 +36,40 @@ Parmi nos réalisations récentes : la plateforme export d'[Alkhameesi](/project
 
 Nous concevons pour les entreprises d'Arabie saoudite et des Émirats des sites web et des boutiques en ligne pensés d'abord en arabe : de droite à gauche dès la première maquette, rapides sur les données mobiles et conçus pour être trouvés dans les recherches en arabe et en anglais. Nos devis sont en dollars américains, avec l'équivalent en riyals ou en dirhams. Découvrez ce qui détermine [le coût d'un site web en Arabie saoudite](/blog/website-design-cost-saudi-arabia) et [aux Émirats](/blog/website-design-cost-uae) ; voir aussi nos pages [Arabie saoudite](/saudi-arabia) et [Émirats arabes unis](/uae).
 
+## De la découverte à la mise en ligne
+
+Chaque site suit les cinq mêmes étapes, et pendant le développement vous consultez une version fonctionnelle toutes les une à deux semaines, sur votre propre téléphone.
+
+1. **Découverte.** Un appel gratuit sur vos clients, vos services et ce que le visiteur doit faire : appeler, envoyer un message WhatsApp, demander un devis ou acheter.
+2. **Planification.** L'arborescence, les pages par langue, le contenu de chaque page et qui le rédige, ainsi que les éventuelles fonctions de boutique ou de réservation, validés par écrit.
+3. **Conception.** Des maquettes mobile et ordinateur en arabe et en anglais, que vous approuvez avant le développement.
+4. **Développement.** Le site, le tableau de bord de contenu, le SEO technique et les statistiques, testés sur de vrais téléphones et navigateurs.
+5. **Mise en ligne.** Nom de domaine, hébergement, SSL, Google Search Console et statistiques sont activés, puis viennent la supervision, les mises à jour et les nouvelles pages.
+
+## Combien coûte un site web
+
+Les projets démarrent à partir de 200 dollars américains, et le prix final dépend du périmètre. En tant qu'entreprise de développement web en Égypte, nous vous remettons un devis écrit à prix fixe après un appel gratuit, pour que vous connaissiez le coût avant le début des travaux. Le prix d'un site dépend surtout de :
+
+- **Le nombre de pages et de langues.** Un site de cinq pages dans une seule langue n'est pas le même projet qu'un site bilingue avec des pages de services et un blog.
+- **L'état du contenu.** Vos textes et photos sont-ils prêts, ou faut-il encore les rédiger et les trouver ?
+- **Le tableau de bord.** Les parties du site que vous voulez modifier vous-même : pages, projets, articles, offres.
+- **Les fonctions de boutique et de réservation.** Nombre de produits et de variantes, passerelles de paiement et options de livraison pour une boutique en ligne ; comptes et réservations pour une application web.
+- **Les intégrations** avec WhatsApp, un CRM, des cartes ou votre propre système.
+
+Consultez notre guide [combien coûte un site d'entreprise en Égypte](/blog/company-website-cost-egypt) pour une analyse détaillée.
+
+## Ce que vous recevez à la livraison
+
+- **Un site qui vous appartient.** Le code, le nom de domaine, le compte d'hébergement et les statistiques sont enregistrés à votre nom.
+- **L'hébergement de votre choix.** Nous déployons chez l'hébergeur et dans la région que vous choisissez, avec SSL et supervision.
+- **Le tableau de bord de contenu**, pour modifier vous-même textes, photos et articles dans chaque langue.
+- **La maintenance après la mise en ligne.** Mises à jour, corrections, nouvelles pages et contrôles de performance, ou nous gérons entièrement le site pour vous.
+
 ## Questions fréquentes
 
 ### Combien de temps faut-il pour créer un site web ?
 
-Un site d'entreprise demande généralement trois à six semaines, selon le nombre de pages et l'état d'avancement du contenu. Les applications web prennent plus de temps et font l'objet d'un cadrage séparé.
+Un site d'entreprise ciblé demande généralement deux à quatre semaines, une fois le contenu prêt. Un site bilingue sur mesure avec tableau de bord prend en général six à douze semaines. Les applications web prennent plus de temps et font l'objet d'un cadrage séparé.
 
 ### Mon site apparaîtra-t-il sur Google ?
 
@@ -53,3 +82,15 @@ Oui. Chaque site est livré avec un tableau de bord qui vous permet de modifier 
 ### Vous occupez-vous de l'hébergement et du nom de domaine ?
 
 Oui. Nous configurons le nom de domaine, l'hébergement et le certificat SSL, et les comptes sont enregistrés à votre nom.
+
+### Pouvez-vous refondre ou reprendre notre site actuel ?
+
+Oui. Nous auditons votre site actuel, corrigeons ce qui ne fonctionne pas, le faisons évoluer ou le reconstruisons, et pouvons reprendre le code d'un précédent développeur. Avant d'établir le devis, nous vous disons honnêtement si une refonte en vaut la peine.
+
+### Proposez-vous la maintenance du site après la mise en ligne ?
+
+Oui. Après la mise en ligne, nous assurons les mises à jour, les corrections, les nouvelles pages et la supervision de l'hébergement, tandis que vous modifiez vous-même le contenu et faites appel à nous pour les changements plus importants.
+
+### Le site peut-il être relié à WhatsApp, aux paiements ou à nos autres systèmes ?
+
+Oui. Nous intégrons des passerelles de paiement, des messageries comme WhatsApp, des cartes, des outils de statistiques et des API tierces dans la plupart des projets, pour que les demandes et les commandes arrivent au bon endroit.

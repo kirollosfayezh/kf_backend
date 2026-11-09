@@ -37,11 +37,39 @@ Si un produit existant vous convient vraiment, nous vous le dirons — et nous v
 
 Nous développons des logiciels sur mesure pour les entreprises d'Arabie saoudite et des Émirats, à distance depuis Le Caire : d'abord un périmètre et un prix écrits, une version fonctionnelle à valider toutes les une à deux semaines, et le code et les comptes à votre nom. Nos guides pour [confier un projet à une société égyptienne depuis le Golfe](/blog/hire-egyptian-software-company-from-gulf) et sur [les clauses de contrat pour les clients saoudiens et émiratis](/blog/software-contract-saudi-uae-clients) listent les questions à poser avant de signer ; voir aussi nos pages [Arabie saoudite](/saudi-arabia) et [Émirats arabes unis](/uae).
 
+## Déroulement d'un projet de logiciel sur mesure
+
+Chaque projet suit les cinq mêmes étapes, et vous voyez une version fonctionnelle toutes les une à deux semaines dès le début du développement, pas seulement à la fin.
+
+1. **Découverte.** Un appel gratuit, puis des séances avec les personnes qui utiliseront le système. Nous rassemblons les documents, tableurs et circuits de validation que vous utilisez aujourd'hui, et nous définissons ce que la première version doit résoudre.
+2. **Planification.** Nous en tirons un périmètre écrit : rôles utilisateurs, écrans, règles métier, intégrations et données à migrer, avec un prix fixe et un plan par phases.
+3. **Conception.** Des écrans pour chaque rôle, en arabe et en anglais, que vous relisez et modifiez avant le développement.
+4. **Développement.** Des cycles courts. Chaque version fonctionnelle est testée et vous est présentée, pour que vos retours nourrissent le cycle suivant plutôt que la fin du projet.
+5. **Mise en ligne.** Déploiement, migration des données et formation de votre équipe, puis supervision et améliorations selon l'usage réel du système.
+
+## Combien coûte un logiciel sur mesure
+
+Les projets démarrent à partir de 200 dollars américains. Le prix final dépend du périmètre ; en tant que société de développement de logiciels sur mesure en Égypte, nous vous remettons un devis écrit à prix fixe après un appel gratuit. Pour un logiciel sur mesure, le prix dépend surtout de :
+
+- **Les rôles et les écrans.** Un outil pour un seul service coûte moins cher qu'un système utilisé par les employés, les responsables et les clients, chacun avec sa propre vue.
+- **Les règles métier.** Validations, logique tarifaire, commissions et exceptions demandent plus de travail qu'une simple saisie de données.
+- **Les intégrations.** Logiciel comptable, passerelles de paiement, WhatsApp et systèmes de facture et de reçu électroniques de l'administration fiscale égyptienne élargissent chacun le périmètre.
+- **La migration des données.** Reprendre proprement des années de tableurs ou une ancienne base de données.
+- **Le matériel et les données en temps réel**, comme pour [GenTrack](/projects/gentrack), où chaque unité transmet ses données depuis un matériel conçu sur mesure.
+
+Les grands systèmes sont découpés en phases : vous payez d'abord la partie la plus utile. Notre guide [combien coûte un logiciel sur mesure en Égypte](/blog/custom-software-cost-egypt) détaille chacun de ces facteurs.
+
+## Ce que vous recevez à la livraison
+
+- **Le code source et les comptes.** Le dépôt, la base de données, les comptes cloud, le nom de domaine et les éventuels comptes des stores sont au nom de votre entreprise.
+- **Un déploiement là où vous le choisissez.** Nous déployons chez l'hébergeur et dans la région de votre choix, et mettons en place la supervision.
+- **Un accompagnement après le lancement.** Corrections, mises à jour et nouvelles fonctionnalités, ou nous gérons l'ensemble du système pour vous.
+
 ## Questions fréquentes
 
 ### Combien de temps faut-il pour développer un système sur mesure ?
 
-Une première version ciblée demande généralement six à douze semaines. Les plateformes plus importantes sont livrées par phases : la partie la plus utile est mise en ligne en premier et le reste suit.
+Une première version ciblée demande généralement huit à seize semaines. Les plateformes plus importantes sont livrées par phases : la partie la plus utile est mise en ligne en premier et le reste suit.
 
 ### Sommes-nous propriétaires du code source ?
 
@@ -54,3 +82,15 @@ Oui. La plupart des projets se connectent à quelque chose qui existe déjà —
 ### Prenez-vous en charge l'arabe et l'anglais ?
 
 Oui. Nous développons en standard des interfaces en arabe, de droite à gauche, aux côtés de l'anglais, y compris pour les rapports et les documents imprimés.
+
+### Pouvez-vous reprendre un logiciel commencé par une autre équipe ?
+
+Oui. Nous auditons d'abord le code existant, nous vous disons clairement ce qui peut être conservé et ce qui doit être corrigé, puis nous le faisons évoluer et en assurons la maintenance.
+
+### Assurez-vous la maintenance après le lancement ?
+
+Oui. L'accompagnement ne s'arrête pas au lancement : nous supervisons le système, corrigeons les anomalies, le tenons à jour et ajoutons des fonctionnalités à mesure que votre activité évolue. Si vous le souhaitez, nous prenons en charge l'hébergement et la maintenance dans leur ensemble.
+
+### Devons-nous être au Caire pour travailler avec vous ?
+
+Non. Nous sommes basés au Caire et travaillons à distance avec des clients en Égypte et à l'étranger, du dimanche au jeudi. Les échanges se font en arabe ou en anglais, et vous validez une version fonctionnelle toutes les une à deux semaines.

@@ -1,7 +1,7 @@
 ---
 title: Software, apps and POS systems for companies in Saudi Arabia
 summary: Arabic-first apps, websites, cashier and business systems for Saudi businesses, built remotely from Cairo on the same Sunday-to-Thursday week.
-seoTitle: Software & App Development for Saudi Businesses | KF Tech
+seoTitle: Software Development Company for Saudi Businesses | KF Tech
 seoDescription: KF Tech Solutions, a Cairo software studio, builds Arabic-first apps, websites and POS systems for Saudi businesses, remotely, on Saudi working days.
 ---
 

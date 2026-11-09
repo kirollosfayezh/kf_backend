@@ -1,7 +1,7 @@
 ---
 title: Apps, websites and business systems for UAE companies
 summary: Arabic and English apps, websites and business systems for UAE companies, built remotely from Cairo, with working software every one to two weeks.
-seoTitle: Software & App Development for UAE Businesses | KF Tech
+seoTitle: Software Development Company for UAE Businesses | KF Tech
 seoDescription: KF Tech Solutions, a Cairo software studio, builds bilingual apps, websites and business systems for UAE companies, remotely, with full code ownership.
 ---
 

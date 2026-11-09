@@ -1,7 +1,7 @@
 ---
 title: KI-Lösungen für Unternehmen
 summary: Praxistaugliche KI in Ihren echten Abläufen – Assistenten, Dokumentenverarbeitung und intelligente Automatisierung, die Zeit sparen, während Menschen die Kontrolle behalten.
-seoTitle: KI-Lösungen & KI-Integration | KF Tech Solutions
+seoTitle: KI-Lösungen für Unternehmen aus Ägypten | KF Tech Solutions
 seoDescription: Praxistaugliche KI für Unternehmen – Chat-Assistenten, Dokumenten- und Rechnungsverarbeitung, Klassifizierung und Automatisierung in Ihren Systemen.
 ---
 
@@ -36,6 +36,35 @@ Mehr dazu in unserem [praktischen Leitfaden für den Einsatz von KI in Ihrem Unt
 
 Für Unternehmen in Saudi-Arabien und den VAE bauen wir KI-Werkzeuge, die auf Arabisch genauso funktionieren wie auf Englisch: einen Assistenten, der Kundenfragen aus Ihren eigenen Informationen auf Ihrer Website oder per WhatsApp beantwortet, oder einen, der Ihre Verträge und Richtlinien durchsucht – mit Übergabe an einen Menschen, wenn nötig. Lesen Sie über [einen KI-Assistenten, der aus Ihren eigenen Dokumenten antwortet](/blog/ai-assistant-own-documents) und [WhatsApp-Chatbots für saudische Unternehmen](/blog/whatsapp-chatbot-saudi-arabia); mehr auf unseren Seiten zu [Saudi-Arabien](/saudi-arabia) und den [VAE](/uae).
 
+## Vom ersten Gespräch bis zum Launch
+
+Der Test oben entscheidet, ob KI die Aufgabe gut genug erledigt. Das Projekt selbst läuft in denselben fünf Phasen wie alle unsere Arbeiten:
+
+1. **Entdecken.** Wir wählen die Aufgabe, sammeln echte Beispiele aus Ihrem Unternehmen und legen gemeinsam fest, was „gut genug“ bedeutet.
+2. **Planen.** Wir entscheiden, welches KI-Modell zum Einsatz kommt, welche Daten es sieht, wohin diese Daten gehen und wo ein Mensch das Ergebnis prüft.
+3. **Design.** Wir gestalten die Oberflächen, mit denen Menschen arbeiten: das Chatfenster des Assistenten, eine Prüfliste oder die Ergebnisse in Ihrem bestehenden System.
+4. **Entwickeln.** Wir bauen die Integration mit Protokollen und Prüfschritten und messen die Genauigkeit an Ihren Beispielen. Sie sehen alle ein bis zwei Wochen einen funktionierenden Zwischenstand.
+5. **Launch.** Wir gehen live, beobachten Genauigkeit und laufende Kosten und verbessern Anweisungen und Regeln mit der Zeit.
+
+## Was ein KI-Projekt kostet
+
+Projekte beginnen bei 200 $ (etwa 750 SAR / 735 AED); der Endpreis hängt vom Umfang ab, mit einem festen schriftlichen Angebot nach einem kostenlosen Gespräch. Bei KI-Projekten hängt der Preis vor allem ab von:
+
+- **Der Aufgabe**: Nachrichten zu sortieren ist einfacher, als viele unterschiedliche Dokumentlayouts auszulesen oder aus einer großen Dokumentensammlung zu antworten.
+- **Der nötigen Genauigkeit**: Je mehr auf dem Spiel steht, desto mehr Tests und Prüfschritte braucht das Projekt.
+- **Den Integrationen**: wohin die Ergebnisse gehen, etwa in Ihre Buchhaltung, Ihr CRM, Ihre Website oder WhatsApp.
+- **Dem Volumen**: KI-Anbieter rechnen nach Nutzung ab, die laufenden Kosten wachsen also mit der Zahl der Dokumente oder Nachrichten.
+- **Den Sprachen**: Arabisch und Englisch zu unterstützen heißt, mit echten Beispielen in beiden Sprachen zu testen.
+
+Wie aus dem Umfang ein Preis wird, lesen Sie in [Was Individualsoftware in Ägypten kostet](/blog/custom-software-cost-egypt).
+
+## Was Sie bei der Übergabe erhalten
+
+- **Ihr Code und Ihre Konten**: Quellcode, Datenbank und Cloud-Konten, einschließlich des Kontos beim KI-Anbieter, laufen auf Ihren Namen.
+- **Bereitstellung nach Ihrer Wahl**: Wir stellen das System beim Hosting-Anbieter und in der Region Ihrer Wahl bereit.
+- **Die Testergebnisse**: Beispiele und Genauigkeitsmessungen, damit Sie wissen, was das System gut kann und wo weiterhin ein Mensch prüft.
+- **Wartung und Support nach dem Launch**: Monitoring, Fehlerbehebung und Anpassungen, wenn sich KI-Modelle oder Ihre Abläufe ändern.
+
 ## Häufige Fragen
 
 ### Wird KI meine Mitarbeitenden ersetzen?
@@ -49,3 +78,15 @@ Bei den meisten Geschäftsaufgaben sind die laufenden Kosten pro Dokument oder N
 ### Kann der Assistent auf Arabisch antworten?
 
 Ja. Wir entwickeln Assistenten, die Arabisch und Englisch verstehen und in beiden Sprachen antworten.
+
+### Wie lange dauert ein KI-Projekt?
+
+Der Test an echten Beispielen kommt zuerst, sodass Sie früh wissen, ob die Idee funktioniert. Danach hängt die Entwicklungszeit vom Umfang und den beteiligten Systemen ab; einen realistischen Zeitplan nennen wir Ihnen vor dem Start.
+
+### Wo werden unsere Daten verarbeitet und gespeichert?
+
+Ihre Anwendung und Ihre Datenbank laufen beim Hosting-Anbieter und in der Region Ihrer Wahl. Bevor etwas gebaut wird, legen wir gemeinsam fest, welche Daten an das KI-Modell gehen und welche in Ihren eigenen Systemen bleiben.
+
+### Können Sie KI in unser bestehendes System einbauen?
+
+Ja. KI wirkt meist am besten in den Tools, die Ihr Team ohnehin nutzt. Wir prüfen Ihr bestehendes System, ergänzen den KI-Schritt mit Protokollen und Prüfmasken und warten ihn nach dem Launch.

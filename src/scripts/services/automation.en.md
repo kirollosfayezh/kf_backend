@@ -1,7 +1,7 @@
 ---
 title: Business Automation
 summary: Replace repetitive manual work — copying data, chasing approvals, sending reminders — with automations that run on their own, reliably.
-seoTitle: Business Process & Workflow Automation | KF Tech Solutions
+seoTitle: Business Automation Services in Egypt | KF Tech Solutions
 seoDescription: Automate repetitive workflows, reports, reminders and data entry between your tools — with alerts, logs and a human in the loop where it matters.
 ---
 
@@ -38,6 +38,34 @@ An automation nobody trusts gets switched off. Every automation we build include
 
 For businesses in Saudi Arabia and the UAE, we automate the same routine work in Arabic and English: invoices and receipts turned into data, reports sent on schedule, reminders and approvals. With e-invoicing deadlines approaching in both countries, clean invoice data is a good place to start. See [reading Arabic invoices and receipts with AI](/blog/arabic-invoice-ocr-ai) and [where each GCC country stands on e-invoicing](/blog/gcc-e-invoicing-by-country); see also our pages for [Saudi Arabia](/saudi-arabia) and the [UAE](/uae).
 
+## From first call to launch
+
+The steps above decide what to automate. Each automation is then delivered in the same five stages we use for every project:
+
+1. **Discover.** We look at how the task is done today: which tools and files are involved, who approves, and where it goes wrong.
+2. **Plan.** We write down the trigger, the steps, the rules and who gets alerted, and agree it with you before building.
+3. **Design.** We design the parts people touch: approval screens, report layouts, and the reminders and messages they receive.
+4. **Build.** We connect your tools and run the automation alongside the manual process until the results match. You see a working build every one to two weeks.
+5. **Launch.** We switch over, watch the logs and alerts, and adjust the automation as your process changes.
+
+## What automation costs
+
+Projects start from $200 (about SAR 750 / AED 735), and the final price depends on scope, with a fixed written quote after a free call. For automation, the price depends mainly on:
+
+- **How many workflows** you automate, and how many steps and rules each one has.
+- **How many tools are connected**, and whether they have a documented API. A tool with an API is quicker to connect than one that only exports files.
+- **Document processing**: reading invoices or forms with AI adds a small running cost per document.
+- **Approvals and exceptions**: every special case the process has to handle adds work.
+
+Most businesses start with one high-volume workflow and add the next once the first one pays off. Our guide to [business automation for small and medium businesses](/blog/business-automation-small-business) shows where to start.
+
+## What you get at handover
+
+- **Your code and accounts**: the automation code and any cloud accounts it runs on are yours.
+- **Deployment where you choose**: the automations run with the hosting provider and in the region you choose.
+- **Documentation** of what each automation does, when it runs and who it alerts.
+- **Maintenance and support after launch**: when a connected tool changes, we update the automation, and we can add the next workflows when you are ready.
+
 ## Frequently asked questions
 
 ### Do we need new software to automate?
@@ -51,3 +79,15 @@ Each automation logs its actions and alerts someone when a step fails. For impor
 ### How quickly can we see results?
 
 A first automation is often running within two to four weeks, and the time saved is visible immediately.
+
+### Who maintains the automations after launch?
+
+We can. Connected tools change over time, so we watch the logs and alerts, fix what breaks and update the automation when your process changes. If you prefer, your own team can take it over using the documentation.
+
+### Can you fix automations someone else built?
+
+Yes. Whether it is a script, a spreadsheet macro or a no-code workflow, we audit what exists, fix it or rebuild the fragile parts, and then maintain it.
+
+### Do automations work with Arabic documents and messages?
+
+Yes. We build automations that read and send Arabic and English, including invoices, forms, emails and WhatsApp messages.

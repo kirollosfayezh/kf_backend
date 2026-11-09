@@ -1,7 +1,7 @@
 ---
 title: Automatisation des processus métier
 summary: Remplacez le travail manuel répétitif — ressaisie de données, relances de validation, rappels — par des automatisations qui tournent seules, de manière fiable.
-seoTitle: Automatisation des processus métier | KF Tech Solutions
+seoTitle: Automatisation des processus en Égypte | KF Tech Solutions
 seoDescription: Automatisez workflows, rapports, relances et saisie de données entre vos outils, avec alertes, journaux et validation humaine là où c'est important.
 ---
 
@@ -38,6 +38,34 @@ Une automatisation à laquelle personne ne fait confiance finit désactivée. Ch
 
 Pour les entreprises d'Arabie saoudite et des Émirats, nous automatisons le même travail répétitif en arabe et en anglais : factures et reçus transformés en données, rapports envoyés à heure fixe, relances et validations. Avec les échéances de facturation électronique qui approchent dans les deux pays, des données de facturation propres sont un bon point de départ. Voir [lire les factures et reçus arabes avec l'IA](/blog/arabic-invoice-ocr-ai) et [où en est chaque pays du CCG sur la facturation électronique](/blog/gcc-e-invoicing-by-country) ; voir aussi nos pages [Arabie saoudite](/saudi-arabia) et [Émirats arabes unis](/uae).
 
+## Du premier appel au lancement
+
+Les étapes ci-dessus déterminent ce qu'il faut automatiser. Chaque automatisation est ensuite réalisée selon les cinq mêmes étapes que tous nos projets :
+
+1. **Découverte.** Nous regardons comment la tâche est faite aujourd'hui : quels outils et fichiers interviennent, qui valide, et où les erreurs se produisent.
+2. **Planification.** Nous décrivons par écrit le déclencheur, les étapes, les règles et les destinataires des alertes, et nous les validons avec vous avant de développer.
+3. **Conception.** Nous concevons les éléments que les personnes utilisent : écrans de validation, mise en page des rapports, rappels et messages qu'elles reçoivent.
+4. **Développement.** Nous connectons vos outils et faisons tourner l'automatisation en parallèle du processus manuel jusqu'à ce que les résultats concordent. Vous voyez une version fonctionnelle toutes les une à deux semaines.
+5. **Lancement.** Nous basculons, surveillons les journaux et les alertes, et ajustons l'automatisation quand votre processus évolue.
+
+## Combien coûte l'automatisation
+
+Les projets commencent à 200 $ (environ 750 SAR / 735 AED) ; le prix final dépend du périmètre, avec un devis écrit et ferme après un appel gratuit. Pour l'automatisation, le prix dépend surtout :
+
+- **Du nombre de processus** à automatiser, et du nombre d'étapes et de règles de chacun.
+- **Du nombre d'outils à connecter**, et de l'existence d'une API documentée. Un outil doté d'une API se connecte plus vite qu'un outil qui ne fait qu'exporter des fichiers.
+- **Du traitement de documents** : lire des factures ou des formulaires avec l'IA ajoute un petit coût d'exploitation par document.
+- **Des validations et des exceptions** : chaque cas particulier que le processus doit gérer ajoute du travail.
+
+La plupart des entreprises commencent par un processus à fort volume et ajoutent le suivant une fois le premier rentabilisé. Notre guide sur [l'automatisation pour les petites et moyennes entreprises](/blog/business-automation-small-business) indique par où commencer.
+
+## Ce que vous recevez à la livraison
+
+- **Votre code et vos comptes** : le code des automatisations et les comptes cloud sur lesquels elles tournent vous appartiennent.
+- **Un déploiement là où vous le décidez** : les automatisations tournent chez l'hébergeur et dans la région de votre choix.
+- **Une documentation** de ce que fait chaque automatisation, quand elle s'exécute et qui elle alerte.
+- **Maintenance et support après le lancement** : quand un outil connecté change, nous mettons l'automatisation à jour, et nous pouvons ajouter les processus suivants quand vous êtes prêt.
+
 ## Questions fréquentes
 
 ### Faut-il un nouveau logiciel pour automatiser ?
@@ -51,3 +79,15 @@ Chaque automatisation enregistre ses actions et alerte quelqu'un lorsqu'une éta
 ### En combien de temps verrons-nous des résultats ?
 
 Une première automatisation est souvent opérationnelle en deux à quatre semaines, et le temps gagné est visible immédiatement.
+
+### Qui assure la maintenance des automatisations après le lancement ?
+
+Nous pouvons nous en charger. Les outils connectés évoluent avec le temps : nous surveillons donc les journaux et les alertes, corrigeons ce qui casse et mettons l'automatisation à jour quand votre processus change. Si vous préférez, votre propre équipe peut la reprendre grâce à la documentation.
+
+### Pouvez-vous corriger des automatisations construites par quelqu'un d'autre ?
+
+Oui. Qu'il s'agisse d'un script, d'une macro de tableur ou d'un workflow no-code, nous auditons l'existant, le corrigeons ou reconstruisons les parties fragiles, puis nous en assurons la maintenance.
+
+### Les automatisations fonctionnent-elles avec des documents et des messages en arabe ?
+
+Oui. Nous développons des automatisations qui lisent et envoient en arabe et en anglais, y compris factures, formulaires, e-mails et messages WhatsApp.

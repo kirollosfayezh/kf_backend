@@ -145,3 +145,9 @@ export function getSummary(days: number) {
   const window = Number.isFinite(days) ? Math.min(Math.max(Math.trunc(days), 1), 365) : 30;
   return repos.analytics.summary(window);
 }
+
+/** Sources, funnel, contact taps and the Google Ads visitor list for the dashboard. */
+export function getInsights(days: number) {
+  const window = Number.isFinite(days) ? Math.min(Math.max(Math.trunc(days), 1), 365) : 30;
+  return repos.analytics.insights(window);
+}

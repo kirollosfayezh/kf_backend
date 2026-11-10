@@ -147,6 +147,16 @@ export function getSummary(days: number) {
 }
 
 /** Sources, funnel, contact taps and the Google Ads visitor list for the dashboard. */
+/** The phrase the dashboard makes the admin type before wiping analytics. */
+export const RESET_CONFIRMATION = "RESET";
+
+export async function resetAnalytics(confirm: unknown) {
+  if (confirm !== RESET_CONFIRMATION) {
+    throw AppError.badRequest(`Type ${RESET_CONFIRMATION} to confirm deleting all analytics`);
+  }
+  return repos.analytics.reset();
+}
+
 export function getInsights(days: number) {
   const window = Number.isFinite(days) ? Math.min(Math.max(Math.trunc(days), 1), 365) : 30;
   return repos.analytics.insights(window);

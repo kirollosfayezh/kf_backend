@@ -74,6 +74,7 @@ const settingsSchema = new Schema<SiteSettings>({
       github: String,
       youtube: String,
       tiktok: String,
+      snapchat: String,
     }),
     default: () => ({}),
   },

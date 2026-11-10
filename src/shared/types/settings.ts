@@ -55,6 +55,7 @@ export interface SocialLinks {
   github?: string;
   youtube?: string;
   tiktok?: string;
+  snapchat?: string;
 }
 
 /** Other spellings of the company name, per site language. */

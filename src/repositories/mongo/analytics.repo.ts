@@ -110,6 +110,16 @@ export class AnalyticsRepository {
     return docs.length;
   }
 
+  /**
+   * Deletes every recorded event and visitor profile: "start analytics from
+   * zero". Leads, contacts, chats and consent records are left alone — they
+   * are CRM and legal records, not traffic.
+   */
+  async reset(): Promise<{ events: number; visitors: number }> {
+    const [events, visitors] = await Promise.all([AnalyticsModel.deleteMany({}), VisitorModel.deleteMany({})]);
+    return { events: events.deletedCount ?? 0, visitors: visitors.deletedCount ?? 0 };
+  }
+
   async summary(days: number): Promise<AnalyticsSummary> {
     const to = new Date();
     const from = new Date(to.getTime() - (days - 1) * 24 * 60 * 60 * 1000);

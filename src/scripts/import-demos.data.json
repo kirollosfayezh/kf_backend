@@ -1,5 +1,5 @@
 {
-  "_comment": "The 22 concept demo websites (designed Nov 2026 for the social reels; source pages in KF/social/concepts/<concept>/index.html). Each becomes a project flagged meta.concept = true, with its page uploaded as a demo under the same slug and served at <site>/demos/<slug>. `tag` is stored in English and translated by kf_site/src/lib/dict. English and Arabic copy are written here; German and French fall back to the English text. Screenshots: kf_site/public/projects/concepts/<slug>-desktop.webp and -mobile.webp.",
+  "_comment": "The 29 concept demo websites (designed Nov 2026 for the social reels; source pages in KF/social/concepts/<concept>/index.html). Each becomes a project flagged meta.concept = true, with its page uploaded as a demo under the same slug and served at <site>/demos/<slug>. `tag` is stored in English and translated by kf_site/src/lib/dict. English and Arabic copy are written here; German and French fall back to the English text. Screenshots: kf_site/public/projects/concepts/<slug>-desktop.webp and -mobile.webp.",
   "projects": [
     {
       "concept": "dental",
@@ -397,6 +397,167 @@
         "ar": "وسق للتموين الغذائي موزّع أغذية ومشروبات سعودي من نسج الخيال، صممناه لنُبيّن كيف تخدم بوابة طلبات الجملة العملاء الذين يملكون عدة فروع في الرياض وجدة والدمام.\n\nيمكنك التنقل بين حسابات تجريبية، وإعادة طلب سابق بضغطة واحدة، وتعبئة سلة مستقلة لكل فرع بتاريخ توصيل وموعد مسار خاص به. ويمكن الطلب بالكرتون أو بالوحدة، وتنخفض أسعار الكرتون مع شرائح الكمية. وتعرض لوحة الائتمان الرصيد المستحق بأجل 30 يومًا، وتنبّهك قبل أن يتجاوز الطلب الحد المتاح. ويمكن الدفع على الحساب أو بمدى عند الاستلام أو بالتحويل البنكي. ولكل طلب مسار حالة واضح، وتتبع الفاتورة نموذج الفاتورة الضريبية السعودية: الرقم الضريبي للبائع والمشتري، وبنود ضريبة القيمة المضافة 15%، والإجماليات بالريال السعودي، ورمز QR توضيحي للفاتورة الإلكترونية. صُمّم النموذج ليراعي متطلبات الفوترة الإلكترونية (فاتورة) الصادرة عن هيئة الزكاة والضريبة والجمارك، دون أي ربط فعلي بمنصتها.\n\nافتح النسخة الحية وجرّب إنشاء طلب لأحد الفروع بنفسك.",
         "de": "Wasq Food Supplies ist ein erfundener saudischer Lebensmittel- und Getränkehändler. Wir haben ihn gestaltet, um zu zeigen, wie ein B2B-Bestellportal Kunden mit mehreren Filialen in Riad, Dschidda und Dammam bedient.\n\nWechseln Sie zwischen Demo-Konten, bestellen Sie eine frühere Bestellung mit einem Tippen erneut und füllen Sie für jede Filiale einen eigenen Warenkorb mit eigenem Liefertermin und Tourenfenster. Bestellt wird nach Karton oder Stück, und die Kartonpreise sinken ab bestimmten Mengen. Eine Kreditanzeige verfolgt den 30-Tage-Saldo und warnt, bevor eine Bestellung das Limit überschreitet. Bezahlt wird auf Rechnung, mit mada bei Lieferung oder per Überweisung. Jede Bestellung hat eine Statusübersicht, und die Rechnung folgt dem saudischen Steuerrechnungsformat: Umsatzsteuernummern von Verkäufer und Käufer, Positionen mit 15 % Mehrwertsteuer, Summen in SAR und ein Demo-QR-Code der E-Rechnung. Das Layout wurde nach den Anforderungen der ZATCA an die E-Rechnung (FATOORA) gestaltet, ist aber nicht mit der Plattform verbunden.\n\nÖffnen Sie die Live-Demo und bestellen Sie selbst für eine Filiale.",
         "fr": "Wasq Food Supplies est un distributeur saoudien imaginaire d’alimentation et de boissons. Nous l’avons conçu pour montrer comment un portail de commande B2B peut servir des clients ayant plusieurs points de vente à Riyad, Djeddah et Dammam.\n\nPassez d’un compte de démonstration à l’autre, recommandez une commande passée en un geste et remplissez un panier distinct pour chaque point de vente, avec sa date de livraison et son créneau de tournée. On commande au carton ou à l’unité, et le prix du carton baisse par paliers de volume. Un panneau de crédit suit le solde à 30 jours et prévient avant qu’une commande ne dépasse la limite. Le paiement se fait sur compte, par mada à la livraison ou par virement. Chaque commande a son suivi d’étapes, et la facture suit le modèle de facture fiscale saoudienne : numéros de TVA du vendeur et de l’acheteur, lignes à 15 % de TVA, totaux en SAR et QR code de facture électronique de démonstration. La mise en page a été conçue d’après les exigences de la ZATCA pour la facturation électronique (FATOORA), mais elle n’est pas reliée à la plateforme.\n\nOuvrez la démo en ligne et passez vous-même une commande pour un point de vente."
+      }
+    },
+    {
+      "concept": "noirtower",
+      "slug": "luxury-tower-3d-website",
+      "tag": "Real estate website",
+      "title": {
+        "en": "NOIR — The Tower: luxury residential tower with an interactive 3D building",
+        "ar": "NOIR — البرج: موقع برج سكني فاخر بمبنى ثلاثي الأبعاد تفاعلي",
+        "de": "NOIR — The Tower: Luxus-Wohnturm mit interaktivem 3D-Gebäude",
+        "fr": "NOIR — The Tower : tour résidentielle de luxe avec un bâtiment 3D interactif"
+      },
+      "summary": {
+        "en": "A black-and-gold tower website where buyers turn a 3D building, open it floor by floor and see each floor's plan, size and price.",
+        "ar": "موقع برج بالأسود والذهبي، يدير فيه المشتري مبنى ثلاثي الأبعاد ويفتحه دورًا دورًا، ويرى مخطط كل دور ومساحته وسعره.",
+        "de": "Eine Turm-Website in Schwarz und Gold: Käufer drehen ein 3D-Gebäude, öffnen es Etage für Etage und sehen Grundriss, Fläche und Preis jeder Etage.",
+        "fr": "Un site de tour en noir et or : l’acheteur fait tourner un bâtiment 3D, l’ouvre étage par étage et voit le plan, la surface et le prix de chaque étage."
+      },
+      "body": {
+        "en": "NOIR is a made-up residential tower in Sheikh Zayed. We designed it to show how a premium real estate project can sell before anyone visits the site.\n\nThe tower is built in 3D right on the page. It turns as you scroll, then its floors open apart. Click any floor and it lifts out with its floor plan, bedrooms, size and price, ready to reserve. Below are the residences, the amenities and a payment plan that recalculates the instalment as you change the down payment and years. Everything works the same on a phone.\n\nOpen the live demo and pick your floor.",
+        "ar": "NOIR برج سكني خيالي في الشيخ زايد، صمّمناه لنُظهر كيف يمكن لمشروع عقاري فاخر أن يبيع قبل أن يزور العميل الموقع.\n\nالبرج مبني بتقنية ثلاثية الأبعاد داخل الصفحة نفسها؛ يدور مع التمرير ثم تنفصل أدواره. وعند الضغط على أي دور يرتفع ويظهر مخططه وعدد الغرف والمساحة والسعر مع زر للحجز. وتحته الوحدات والمرافق وخطة سداد تحسب القسط فور تغيير المقدّم وعدد السنوات. وكل ذلك يعمل بالطريقة نفسها على الهاتف.\n\nافتح العرض الحي واختر دورك بنفسك.",
+        "de": "NOIR ist ein erfundener Wohnturm in Sheikh Zayed. Wir haben ihn entworfen, um zu zeigen, wie ein hochwertiges Immobilienprojekt verkaufen kann, bevor jemand die Baustelle besucht.\n\nDer Turm ist direkt auf der Seite in 3D gebaut. Er dreht sich beim Scrollen, dann öffnen sich seine Etagen. Ein Klick auf eine Etage hebt sie heraus – mit Grundriss, Schlafzimmern, Fläche und Preis, bereit zur Reservierung. Darunter folgen die Wohnungen, die Ausstattung und ein Zahlungsplan, der die Rate neu berechnet, wenn Anzahlung und Laufzeit geändert werden. Auf dem Handy funktioniert alles genauso.\n\nÖffnen Sie die Live-Demo und wählen Sie Ihre Etage.",
+        "fr": "NOIR est une tour résidentielle imaginaire à Sheikh Zayed. Nous l’avons conçue pour montrer comment un projet immobilier haut de gamme peut vendre avant même la visite du chantier.\n\nLa tour est construite en 3D directement dans la page. Elle tourne au défilement, puis ses étages s’écartent. Cliquez sur un étage : il se soulève avec son plan, ses chambres, sa surface et son prix, prêt à être réservé. Suivent les résidences, les équipements et un plan de paiement qui recalcule la mensualité quand on change l’apport et la durée. Tout fonctionne de la même façon sur mobile.\n\nOuvrez la démo en direct et choisissez votre étage."
+      }
+    },
+    {
+      "concept": "emberdining",
+      "slug": "fine-dining-restaurant-website",
+      "tag": "Restaurant website",
+      "title": {
+        "en": "Ember: fine-dining restaurant website with an animated menu and table booking",
+        "ar": "Ember: موقع مطعم راقٍ بقائمة طعام متحركة وحجز طاولات",
+        "de": "Ember: Website für ein Fine-Dining-Restaurant mit animierter Speisekarte und Tischreservierung",
+        "fr": "Ember : site de restaurant gastronomique avec carte animée et réservation de table"
+      },
+      "summary": {
+        "en": "A wood-fire restaurant site where the menu comes alive: dishes rise in 3D, every plate opens with its details, and guests book a table in a few taps.",
+        "ar": "موقع مطعم على نار الحطب تنبض فيه قائمة الطعام بالحياة: الأطباق تظهر بتقنية ثلاثية الأبعاد، وكل طبق يُفتح بتفاصيله، ويحجز الضيف طاولته بلمسات قليلة.",
+        "de": "Eine Restaurant-Website mit Holzfeuerküche, deren Speisekarte lebt: Gerichte erscheinen in 3D, jeder Teller öffnet sich mit Details, und Gäste reservieren mit wenigen Tipps.",
+        "fr": "Un site de restaurant au feu de bois où la carte prend vie : les plats apparaissent en 3D, chaque assiette s’ouvre avec ses détails et les clients réservent en quelques gestes."
+      },
+      "body": {
+        "en": "Ember is a made-up wood-fire restaurant in Zamalek. We designed it to show what a restaurant website can do instead of a PDF menu.\n\nThe menu is split into tabs, and each dish card rises in with steam. Open a dish and the plate turns slowly beside its ingredients and price. A seven-course tasting menu draws itself as you scroll. Guests pick a night, the number of people and a time, and get a confirmation ticket straight away. It is just as smooth on a phone.\n\nOpen the live demo and book a table yourself.",
+        "ar": "Ember مطعم خيالي على نار الحطب في الزمالك، صمّمناه لنُظهر ما يمكن أن يقدّمه موقع المطعم بدلًا من قائمة طعام بصيغة PDF.\n\nالقائمة مقسّمة إلى تبويبات، وتظهر بطاقة كل طبق مع البخار المتصاعد. وعند فتح الطبق يدور ببطء بجوار مكوّناته وسعره. وترسم قائمة التذوّق ذات الأطباق السبعة نفسها مع التمرير. ويختار الضيف الليلة وعدد الأفراد والموعد، ويحصل على تذكرة تأكيد فورًا. والتجربة سلسة بالقدر نفسه على الهاتف.\n\nافتح العرض الحي واحجز طاولتك بنفسك.",
+        "de": "Ember ist ein erfundenes Holzfeuer-Restaurant in Zamalek. Wir haben es entworfen, um zu zeigen, was eine Restaurant-Website statt einer PDF-Speisekarte leisten kann.\n\nDie Karte ist in Tabs gegliedert, jede Gerichtekarte erscheint mit aufsteigendem Dampf. Ein geöffnetes Gericht dreht sich langsam neben Zutaten und Preis. Ein Degustationsmenü mit sieben Gängen zeichnet sich beim Scrollen. Gäste wählen Abend, Personenzahl und Uhrzeit und erhalten sofort ein Bestätigungsticket. Auf dem Handy ist es genauso flüssig.\n\nÖffnen Sie die Live-Demo und reservieren Sie selbst einen Tisch.",
+        "fr": "Ember est un restaurant imaginaire au feu de bois à Zamalek. Nous l’avons conçu pour montrer ce qu’un site de restaurant peut offrir à la place d’une carte en PDF.\n\nLa carte est organisée en onglets et chaque plat apparaît avec sa vapeur. Ouvrez un plat : l’assiette tourne lentement à côté de ses ingrédients et de son prix. Un menu dégustation en sept services se dessine au défilement. Le client choisit la soirée, le nombre de couverts et l’heure, et reçoit aussitôt un ticket de confirmation. C’est tout aussi fluide sur mobile.\n\nOuvrez la démo en direct et réservez vous-même une table."
+      }
+    },
+    {
+      "concept": "aurelclinic",
+      "slug": "aesthetic-clinic-website",
+      "tag": "Dental clinic website",
+      "title": {
+        "en": "Aurel Clinic: aesthetic and dental clinic website with a before/after slider",
+        "ar": "عيادة أوريل: موقع عيادة تجميل وأسنان بشريط مقارنة قبل وبعد",
+        "de": "Aurel Clinic: Website für eine Ästhetik- und Zahnklinik mit Vorher-Nachher-Regler",
+        "fr": "Aurel Clinic : site de clinique esthétique et dentaire avec curseur avant/après"
+      },
+      "summary": {
+        "en": "A calm, premium clinic site where patients compare results with a before/after slider, find the right treatment and book a slot.",
+        "ar": "موقع عيادة هادئ وفاخر يقارن فيه المريض النتائج بشريط قبل وبعد، ويجد العلاج المناسب، ويحجز موعده.",
+        "de": "Eine ruhige, hochwertige Klinik-Website: Patienten vergleichen Ergebnisse mit einem Vorher-Nachher-Regler, finden die passende Behandlung und buchen einen Termin.",
+        "fr": "Un site de clinique calme et haut de gamme : le patient compare les résultats avec un curseur avant/après, trouve le bon soin et réserve un créneau."
+      },
+      "body": {
+        "en": "Aurel Clinic is a made-up aesthetic and dental clinic in New Cairo. We designed it to show how a clinic website can earn a patient's trust before the first visit.\n\nA before/after slider shows whitening, veneers and aligner results side by side. A short treatment finder turns what bothers the patient into a suggested plan with steps and a price. The doctors are introduced, and booking takes a day, a time and one tap. Everything works the same on a phone.\n\nOpen the live demo and try the treatment finder.",
+        "ar": "أوريل عيادة تجميل وأسنان خيالية في القاهرة الجديدة، صمّمناها لنُظهر كيف يكسب موقع العيادة ثقة المريض قبل زيارته الأولى.\n\nيعرض شريط قبل وبعد نتائج التبييض والقشور والتقويم الشفاف جنبًا إلى جنب. ويحوّل أداة صغيرة لاختيار العلاج ما يزعج المريض إلى خطة مقترحة بخطواتها وسعرها. ويعرّف الموقع بالأطباء، ويتم الحجز باختيار اليوم والموعد ولمسة واحدة. وكل ذلك يعمل بالطريقة نفسها على الهاتف.\n\nافتح العرض الحي وجرّب أداة اختيار العلاج.",
+        "de": "Aurel Clinic ist eine erfundene Ästhetik- und Zahnklinik in New Cairo. Wir haben sie entworfen, um zu zeigen, wie eine Klinik-Website schon vor dem ersten Besuch Vertrauen gewinnt.\n\nEin Vorher-Nachher-Regler zeigt Ergebnisse von Bleaching, Veneers und Alignern nebeneinander. Ein kurzer Behandlungsfinder macht aus dem, was den Patienten stört, einen Vorschlag mit Schritten und Preis. Die Ärzte werden vorgestellt, und die Buchung braucht nur Tag, Uhrzeit und einen Tipp. Auf dem Handy funktioniert alles genauso.\n\nÖffnen Sie die Live-Demo und probieren Sie den Behandlungsfinder.",
+        "fr": "Aurel Clinic est une clinique esthétique et dentaire imaginaire au Nouveau Caire. Nous l’avons conçue pour montrer comment un site de clinique gagne la confiance du patient avant sa première visite.\n\nUn curseur avant/après montre côte à côte les résultats du blanchiment, des facettes et des aligneurs. Un court outil d’orientation transforme ce qui gêne le patient en un plan proposé, avec ses étapes et son prix. Les médecins sont présentés et la réservation se fait avec un jour, une heure et un geste. Tout fonctionne de la même façon sur mobile.\n\nOuvrez la démo en direct et essayez l’outil d’orientation."
+      }
+    },
+    {
+      "concept": "flowstock",
+      "slug": "distribution-business-system",
+      "tag": "Logistics platform",
+      "title": {
+        "en": "Flowstock: business system for a distribution company, with a live delivery map",
+        "ar": "Flowstock: نظام إدارة لشركة توزيع بخريطة توصيل مباشرة",
+        "de": "Flowstock: Unternehmenssystem für einen Großhändler mit Live-Lieferkarte",
+        "fr": "Flowstock : système de gestion pour un distributeur, avec carte des livraisons en direct"
+      },
+      "summary": {
+        "en": "The dashboard a wholesale company runs on: sales, orders and stock in one screen, trucks moving on a map of Egypt, invoices in one click and low-stock alerts.",
+        "ar": "لوحة التحكم التي تدير بها شركة الجملة عملها: المبيعات والطلبات والمخزون في شاشة واحدة، والشاحنات تتحرك على خريطة مصر، والفواتير بضغطة واحدة، وتنبيهات نقص المخزون.",
+        "de": "Das Dashboard, mit dem ein Großhändler arbeitet: Umsatz, Bestellungen und Lager auf einem Bildschirm, Lkw auf einer Ägyptenkarte, Rechnungen mit einem Klick und Warnungen bei niedrigem Bestand.",
+        "fr": "Le tableau de bord d’un grossiste : ventes, commandes et stock sur un seul écran, camions en mouvement sur une carte de l’Égypte, factures en un clic et alertes de stock bas."
+      },
+      "body": {
+        "en": "Flowstock is a made-up wholesale and distribution company in Egypt. We designed its system to show what a custom business system looks like when spreadsheets are left behind. All figures are demo data.\n\nThe overview counts up revenue, orders, on-time delivery and low-stock items. A live map draws the delivery routes from the main warehouse, with trucks moving between cities. Open any order to see its status timeline, create its invoice and send it in one click. Low-stock items pulse until someone reorders them. On a phone the same system works with a bottom tab bar.\n\nOpen the live demo and send an invoice yourself.",
+        "ar": "Flowstock شركة جملة وتوزيع خيالية في مصر، صمّمنا نظامها لنُظهر شكل نظام الإدارة المخصّص عندما تُترك جداول البيانات خلفنا. وكل الأرقام بيانات تجريبية.\n\nتعرض الشاشة الرئيسية الإيرادات والطلبات ونسبة التوصيل في الموعد والأصناف الناقصة وهي تتصاعد أمامك. وترسم خريطة مباشرة خطوط التوصيل من المخزن الرئيسي، والشاحنات تتحرك بين المدن. وعند فتح أي طلب تظهر مراحله، ويمكن إنشاء فاتورته وإرسالها بضغطة واحدة. وتنبض الأصناف الناقصة حتى يُعاد طلبها. وعلى الهاتف يعمل النظام نفسه بشريط تبويبات سفلي.\n\nافتح العرض الحي وأرسل فاتورة بنفسك.",
+        "de": "Flowstock ist ein erfundener Groß- und Vertriebshändler in Ägypten. Wir haben sein System entworfen, um zu zeigen, wie ein maßgeschneidertes Unternehmenssystem aussieht, wenn Tabellen der Vergangenheit angehören. Alle Zahlen sind Demodaten.\n\nDie Übersicht zählt Umsatz, Bestellungen, pünktliche Lieferungen und Artikel mit niedrigem Bestand hoch. Eine Live-Karte zeichnet die Lieferrouten vom Hauptlager, Lkw fahren zwischen den Städten. Jede Bestellung zeigt ihren Statusverlauf; die Rechnung wird mit einem Klick erstellt und versendet. Artikel mit niedrigem Bestand pulsieren, bis jemand nachbestellt. Auf dem Handy läuft dasselbe System mit einer Tab-Leiste unten.\n\nÖffnen Sie die Live-Demo und versenden Sie selbst eine Rechnung.",
+        "fr": "Flowstock est une entreprise imaginaire de gros et de distribution en Égypte. Nous avons conçu son système pour montrer à quoi ressemble un logiciel de gestion sur mesure quand on abandonne les tableurs. Tous les chiffres sont des données de démonstration.\n\nL’accueil fait défiler le chiffre d’affaires, les commandes, les livraisons à l’heure et les articles en rupture. Une carte en direct trace les tournées depuis l’entrepôt principal, avec des camions qui circulent entre les villes. Chaque commande affiche son suivi ; sa facture se crée et s’envoie en un clic. Les articles en stock bas clignotent jusqu’au réapprovisionnement. Sur mobile, le même système fonctionne avec une barre d’onglets en bas.\n\nOuvrez la démo en direct et envoyez vous-même une facture."
+      }
+    },
+    {
+      "concept": "saltresort",
+      "slug": "red-sea-resort-website",
+      "tag": "Hotel booking",
+      "title": {
+        "en": "Salt & Stone: Red Sea resort website with direct booking",
+        "ar": "Salt & Stone: موقع منتجع على البحر الأحمر بحجز مباشر",
+        "de": "Salt & Stone: Website für ein Resort am Roten Meer mit Direktbuchung",
+        "fr": "Salt & Stone : site d’un resort sur la mer Rouge avec réservation directe"
+      },
+      "summary": {
+        "en": "A boutique resort site that tells a whole day by the sea as you scroll, lets guests flip through the rooms and book nights directly with the price shown live.",
+        "ar": "موقع منتجع بوتيك يحكي يومًا كاملًا على البحر مع التمرير، ويتيح للضيف تصفّح الغرف وحجز الليالي مباشرة مع ظهور السعر فورًا.",
+        "de": "Eine Boutique-Resort-Website, die beim Scrollen einen ganzen Tag am Meer erzählt, Gäste durch die Zimmer blättern lässt und Nächte direkt mit Live-Preis bucht.",
+        "fr": "Un site de resort boutique qui raconte une journée entière au bord de la mer au défilement, fait feuilleter les chambres et réserver des nuits en direct avec le prix affiché."
+      },
+      "body": {
+        "en": "Salt & Stone is a made-up boutique resort on Egypt's Red Sea coast. We designed it to show how a hotel can win direct bookings instead of paying commission on every stay.\n\nThe page opens on the coast and tells the day from sunrise to a starry night as you scroll. Room cards tilt and flip to show what is included. Guests choose their nights on a calendar and watch the total update, and longer stays unlock extras. Experiences sit in one carousel. Everything works the same on a phone.\n\nOpen the live demo and plan a stay.",
+        "ar": "Salt & Stone منتجع بوتيك خيالي على ساحل البحر الأحمر في مصر، صمّمناه لنُظهر كيف يحصل الفندق على حجوزات مباشرة بدلًا من دفع عمولة عن كل إقامة.\n\nتبدأ الصفحة بالساحل، وتحكي اليوم من الشروق حتى ليلة مليئة بالنجوم مع التمرير. وتميل بطاقات الغرف وتنقلب لتعرض ما تتضمّنه. ويختار الضيف لياليه من التقويم ويرى الإجمالي يتحدّث أمامه، وتفتح الإقامات الأطول مزايا إضافية. وتجتمع التجارب والأنشطة في شريط واحد. وكل ذلك يعمل بالطريقة نفسها على الهاتف.\n\nافتح العرض الحي وخطّط لإقامتك.",
+        "de": "Salt & Stone ist ein erfundenes Boutique-Resort an Ägyptens Rotmeerküste. Wir haben es entworfen, um zu zeigen, wie ein Hotel Direktbuchungen gewinnt, statt für jeden Aufenthalt Provision zu zahlen.\n\nDie Seite beginnt an der Küste und erzählt beim Scrollen den Tag vom Sonnenaufgang bis zur Sternennacht. Zimmerkarten neigen sich und drehen sich um, um die Leistungen zu zeigen. Gäste wählen ihre Nächte im Kalender und sehen den Gesamtpreis mitlaufen; längere Aufenthalte schalten Extras frei. Die Erlebnisse liegen in einem Karussell. Auf dem Handy funktioniert alles genauso.\n\nÖffnen Sie die Live-Demo und planen Sie einen Aufenthalt.",
+        "fr": "Salt & Stone est un resort boutique imaginaire sur la côte égyptienne de la mer Rouge. Nous l’avons conçu pour montrer comment un hôtel peut obtenir des réservations directes au lieu de payer une commission sur chaque séjour.\n\nLa page s’ouvre sur la côte et raconte la journée, du lever du soleil à une nuit étoilée, au fil du défilement. Les cartes des chambres s’inclinent et se retournent pour montrer ce qui est inclus. Le client choisit ses nuits dans un calendrier et voit le total se mettre à jour ; les séjours plus longs débloquent des extras. Les expériences sont réunies dans un carrousel. Tout fonctionne de la même façon sur mobile.\n\nOuvrez la démo en direct et préparez un séjour."
+      }
+    },
+    {
+      "concept": "velourstore",
+      "slug": "fashion-brand-3d-store",
+      "tag": "Online store",
+      "title": {
+        "en": "VELOUR: fashion brand online store with a 3D product ring",
+        "ar": "VELOUR: متجر إلكتروني لعلامة أزياء بحلقة منتجات ثلاثية الأبعاد",
+        "de": "VELOUR: Onlineshop einer Modemarke mit 3D-Produktring",
+        "fr": "VELOUR : boutique en ligne d’une marque de mode avec anneau de produits 3D"
+      },
+      "summary": {
+        "en": "An editorial fashion store where products turn in a 3D ring, colours change the photo instantly and the cart adds itself up as you shop.",
+        "ar": "متجر أزياء بطابع مجلّات، تدور فيه المنتجات في حلقة ثلاثية الأبعاد، ويغيّر اختيار اللون الصورة فورًا، وتُحسب السلة تلقائيًا أثناء التسوّق.",
+        "de": "Ein Mode-Shop im Magazinstil: Produkte drehen sich in einem 3D-Ring, Farben ändern das Foto sofort und der Warenkorb rechnet beim Einkaufen mit.",
+        "fr": "Une boutique de mode au style magazine : les produits tournent dans un anneau 3D, les couleurs changent la photo aussitôt et le panier se calcule pendant les achats."
+      },
+      "body": {
+        "en": "VELOUR is a made-up fashion label in Cairo. We designed its store to show how an online shop can feel like walking into the boutique.\n\nThe new drop turns in a 3D ring at the top of the page. Hover a piece to swap its photo. On the product page, colour swatches recolour the item instantly, sizes update the price, and Add to bag sends it flying into the cart. The cart drawer shows the total and a free-delivery bar, and checkout is a few clear steps. Everything works the same on a phone.\n\nOpen the live demo and fill your bag.",
+        "ar": "VELOUR علامة أزياء خيالية في القاهرة، صمّمنا متجرها لنُظهر كيف يمكن لمتجر إلكتروني أن يمنح إحساس الدخول إلى البوتيك.\n\nتدور المجموعة الجديدة في حلقة ثلاثية الأبعاد أعلى الصفحة، وتتبدّل صورة القطعة عند المرور عليها. وفي صفحة المنتج تغيّر عيّنات الألوان لون القطعة فورًا، ويحدّث اختيار المقاس السعر، وينقل زر الإضافة القطعة إلى السلة بحركة سلسة. وتعرض نافذة السلة الإجمالي وشريط التوصيل المجاني، ويتم الدفع في خطوات قليلة وواضحة. وكل ذلك يعمل بالطريقة نفسها على الهاتف.\n\nافتح العرض الحي واملأ سلتك.",
+        "de": "VELOUR ist ein erfundenes Modelabel in Kairo. Wir haben seinen Shop entworfen, um zu zeigen, wie sich ein Onlineshop wie der Besuch einer Boutique anfühlen kann.\n\nDie neue Kollektion dreht sich oben auf der Seite in einem 3D-Ring. Beim Überfahren wechselt das Foto eines Teils. Auf der Produktseite färben Farbmuster das Teil sofort um, Größen aktualisieren den Preis, und „In die Tasche“ lässt es in den Warenkorb fliegen. Die Warenkorb-Leiste zeigt Summe und Gratisversand-Balken, der Checkout besteht aus wenigen klaren Schritten. Auf dem Handy funktioniert alles genauso.\n\nÖffnen Sie die Live-Demo und füllen Sie Ihre Tasche.",
+        "fr": "VELOUR est une marque de mode imaginaire au Caire. Nous avons conçu sa boutique pour montrer qu’un site marchand peut donner l’impression d’entrer dans la boutique.\n\nLa nouvelle collection tourne dans un anneau 3D en haut de la page. Au survol, la photo d’une pièce change. Sur la fiche produit, les pastilles de couleur recolorent l’article aussitôt, la taille met à jour le prix et « Ajouter au sac » l’envoie dans le panier. Le panier affiche le total et une barre de livraison offerte, et le paiement tient en quelques étapes claires. Tout fonctionne de la même façon sur mobile.\n\nOuvrez la démo en direct et remplissez votre sac."
+      }
+    },
+    {
+      "concept": "oudhouse",
+      "slug": "luxury-perfume-3d-store",
+      "tag": "Perfume & oud store",
+      "title": {
+        "en": "SAHAR: luxury oud and perfume store with a 3D bottle",
+        "ar": "سحر: متجر عود وعطور فاخر بزجاجة ثلاثية الأبعاد",
+        "de": "SAHAR: Luxus-Shop für Oud und Parfüm mit 3D-Flakon",
+        "fr": "SAHAR : boutique de luxe d’oud et de parfums avec un flacon 3D"
+      },
+      "summary": {
+        "en": "A dark, golden perfume store where a 3D bottle follows the visitor down the page, the scent notes light up inside it and adding to the bag takes one tap.",
+        "ar": "متجر عطور بالأسود والذهبي تتبع فيه زجاجة ثلاثية الأبعاد الزائر على طول الصفحة، وتضيء نفحات العطر داخلها، وتتم الإضافة إلى السلة بلمسة واحدة.",
+        "de": "Ein Parfüm-Shop in Schwarz und Gold: Ein 3D-Flakon begleitet den Besucher die Seite hinunter, die Duftnoten leuchten darin auf und der Warenkorb braucht nur einen Tipp.",
+        "fr": "Une parfumerie noire et dorée : un flacon 3D accompagne le visiteur le long de la page, les notes s’illuminent à l’intérieur et l’ajout au panier se fait d’un geste."
+      },
+      "body": {
+        "en": "SAHAR is a made-up maison d'oud. We designed its store to show how a perfume brand can make visitors feel the scent before they smell it.\n\nA 3D bottle sits beside the headline and drifts with the visitor as they scroll. In the notes section its liquid splits into the top, heart and base notes, and each one lights up on hover. Choosing a size changes the bottle and the price, and Add to bag sends a drop of gold into the cart. The collection cards tilt in 3D. Everything works the same on a phone.\n\nOpen the live demo and choose your scent.",
+        "ar": "سحر دار عود خيالية، صمّمنا متجرها لنُظهر كيف يمكن لعلامة عطور أن تجعل الزائر يشعر بالعطر قبل أن يشمّه.\n\nتقف زجاجة ثلاثية الأبعاد بجوار العنوان وتتحرك مع الزائر أثناء التمرير. وفي قسم النفحات ينقسم سائلها إلى النفحات العليا والقلب والقاعدة، وتضيء كل نفحة عند المرور عليها. ويغيّر اختيار الحجم الزجاجة والسعر، ويرسل زر الإضافة قطرة ذهبية إلى السلة. وتميل بطاقات المجموعة بتقنية ثلاثية الأبعاد. وكل ذلك يعمل بالطريقة نفسها على الهاتف.\n\nافتح العرض الحي واختر عطرك.",
+        "de": "SAHAR ist ein erfundenes Oud-Haus. Wir haben seinen Shop entworfen, um zu zeigen, wie eine Parfümmarke den Duft spürbar macht, bevor man ihn riecht.\n\nEin 3D-Flakon steht neben der Überschrift und begleitet den Besucher beim Scrollen. Im Bereich der Duftnoten teilt sich seine Flüssigkeit in Kopf-, Herz- und Basisnote, die beim Überfahren aufleuchten. Die Wahl der Größe ändert Flakon und Preis, und „In die Tasche“ schickt einen goldenen Tropfen in den Warenkorb. Die Kollektionskarten neigen sich in 3D. Auf dem Handy funktioniert alles genauso.\n\nÖffnen Sie die Live-Demo und wählen Sie Ihren Duft.",
+        "fr": "SAHAR est une maison d’oud imaginaire. Nous avons conçu sa boutique pour montrer comment une marque de parfum peut faire ressentir une fragrance avant même qu’on la sente.\n\nUn flacon 3D se tient à côté du titre et accompagne le visiteur au défilement. Dans la partie des notes, son liquide se divise en notes de tête, de cœur et de fond, qui s’illuminent au survol. Le choix de la contenance change le flacon et le prix, et « Ajouter au sac » envoie une goutte d’or dans le panier. Les cartes de la collection s’inclinent en 3D. Tout fonctionne de la même façon sur mobile.\n\nOuvrez la démo en direct et choisissez votre parfum."
       }
     }
   ]

@@ -2,7 +2,7 @@
  * Writes reviewed translations into existing content documents: one language
  * of one field at a time, from a JSON list of patches —
  *
- *   [{ "collection": "projects", "id": "…", "field": "summary" | "meta.points[2]",
+ *   [{ "collection": "projects", "id": "…", "field": "summary" | "meta.points[2]" | "meta.seoTitle",
  *      "lang": "de", "from": "<value the reviewer saw>", "to": "<new value>" }]
  *
  * A patch is skipped when the field no longer holds `from`: an editor changed it
@@ -25,7 +25,7 @@ interface Patch {
   collection: ContentCollection;
   id: string;
   field: string;
-  lang: "ar" | "de" | "fr";
+  lang: "en" | "ar" | "de" | "fr";
   from: string;
   to: string;
 }
@@ -46,6 +46,18 @@ function locate(doc: Record<string, unknown>, field: string): { get: () => Local
         points[i] = v;
         return { meta: { ...meta, points } };
       },
+    };
+  }
+  // `meta.seoTitle`, `meta.seoDescription`: a localized text stored in `meta`.
+  const metaKey = /^meta\.([A-Za-z]+)$/.exec(field);
+  if (metaKey) {
+    const key = metaKey[1];
+    const meta = (doc.meta ?? {}) as Record<string, unknown>;
+    const value = meta[key];
+    return {
+      get: () => (value && typeof value === "object" && !Array.isArray(value) ? (value as Localized) : undefined),
+      // `meta` is replaced wholesale on update, so the whole object goes back.
+      set: (v) => ({ meta: { ...meta, [key]: v } }),
     };
   }
   return {

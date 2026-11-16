@@ -21,6 +21,7 @@
     "update-privacy-policy": "npm run build && node dist/scripts/update-privacy-policy.js",
     "update-social-links": "npm run build && node dist/scripts/update-social-links.js",
     "set-brand-identity": "npm run build && node dist/scripts/set-brand-identity.js",
+    "add-brand-profiles": "npm run build && node dist/scripts/add-brand-profiles.js",
     "import-portfolio": "npm run build && node dist/scripts/import-portfolio.js",
     "import-demos": "npm run build && node dist/scripts/import-demos.js",
     "r2-upload": "npm run build && node dist/scripts/r2-upload.js",

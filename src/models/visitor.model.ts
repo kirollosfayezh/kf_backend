@@ -11,7 +11,12 @@ const touchSchema = new Schema(
     utmTerm: String,
     utmContent: String,
     gclid: String,
+    gbraid: String,
+    wbraid: String,
     fbclid: String,
+    matchType: String,
+    network: String,
+    adId: String,
     at: String,
   },
   { _id: false }

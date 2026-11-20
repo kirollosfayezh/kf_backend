@@ -15,6 +15,9 @@ test("contact taps are read from the site's click labels", () => {
 test("a Google ad is a gclid, or google + cpc tags", () => {
   assert.equal(isGoogleAd({ gclid: "abc" }), true);
   assert.equal(isGoogleAd({ utmSource: "google", utmMedium: "cpc" }), true);
+  // iOS: Google withholds the gclid and sends gbraid / wbraid.
+  assert.equal(isGoogleAd({ gbraid: "abc" }), true);
+  assert.equal(isGoogleAd({ wbraid: "abc" }), true);
   assert.equal(isGoogleAd({ utmSource: "google", utmMedium: "organic" }), false);
   assert.equal(isGoogleAd({ referrer: "www.google.com" }), false);
   assert.equal(isGoogleAd(undefined), false);

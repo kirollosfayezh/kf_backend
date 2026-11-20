@@ -6,6 +6,7 @@ import { publicContentRouter } from "./routes/public/content.routes.js";
 import { publicLeadsRouter } from "./routes/public/leads.routes.js";
 import { publicChatRouter } from "./routes/public/chat.routes.js";
 import { publicAnalyticsRouter } from "./routes/public/analytics.routes.js";
+import { publicIntegrationsRouter } from "./routes/public/integrations.routes.js";
 import { publicSeoRouter } from "./routes/public/seo.routes.js";
 import { publicTranslationsRouter } from "./routes/public/translations.routes.js";
 import { adminAuthRouter } from "./routes/admin/auth.routes.js";
@@ -31,6 +32,7 @@ import { adminDemosRouter } from "./routes/admin/demos.routes.js";
 import { requireAdmin } from "./shared/middleware/auth.js";
 import {
   analyticsRateLimit,
+  integrationsRateLimit,
   chatRateLimit,
   leadsRateLimit,
   loginRateLimit,
@@ -122,6 +124,8 @@ api.use("/newsletter", newsletterRateLimit, publicNewsletterRouter);
 api.use("/chat", chatRateLimit, publicChatRouter);
 // Beacons arrive in batches and are cheap to write; the ceiling only stops floods.
 api.use("/analytics", analyticsRateLimit, publicAnalyticsRouter);
+// Machine-to-machine uploads, each proving itself with its own key (Google Ads search terms).
+api.use("/integrations", integrationsRateLimit, publicIntegrationsRouter);
 
 // Admin (dashboard)
 api.use("/admin/auth", loginRateLimit, adminAuthRouter);

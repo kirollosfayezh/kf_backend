@@ -2,6 +2,7 @@ import { AnalyticsModel } from "../../models/analytics.model.js";
 import { LeadModel } from "../../models/lead.model.js";
 import { VisitorModel } from "../../models/visitor.model.js";
 import { ContactModel } from "../../models/contact.model.js";
+import { AdsSyncModel } from "../../models/ads.model.js";
 import { channelOf } from "../../shared/tracking.js";
 import type { AdVisitor, AnalyticsEvent, AnalyticsInsights, AnalyticsSummary, DailyInsight, InsightRow, SeriesChannel, TouchInfo } from "../../shared/types/index.js";
 
@@ -13,10 +14,13 @@ export function contactKind(label: string | undefined): string | null {
   return m ? m[2] : null;
 }
 
-/** A touch that came from a Google ad: auto-tagged (gclid) or tagged google + cpc by hand. */
+/**
+ * A touch that came from a Google ad: auto-tagged (gclid, or gbraid / wbraid
+ * on iOS) or tagged google + cpc by the Final URL suffix.
+ */
 export function isGoogleAd(t: TouchInfo | undefined): boolean {
   if (!t) return false;
-  return !!t.gclid || (/google/i.test(t.utmSource ?? "") && /cpc|ppc|paid/i.test(t.utmMedium ?? ""));
+  return !!(t.gclid || t.gbraid || t.wbraid) || (/google/i.test(t.utmSource ?? "") && /cpc|ppc|paid/i.test(t.utmMedium ?? ""));
 }
 
 /** The traffic group for the dashboard, with Google Ads split out from other paid traffic. */
@@ -330,8 +334,15 @@ export class AnalyticsRepository {
     const contactFor = (vid: string, cid?: string) =>
       contacts.find((c) => String(c._id) === cid) ?? contacts.find((c) => (c.visitorIds ?? []).includes(vid));
 
+    // `utm_campaign={campaignid}` arrives as a number; the Ads script's sync knows its name.
+    const adsSync = adVisitors.length ? await AdsSyncModel.findById("google").select("campaigns adGroups").lean() : null;
+    const campaignName = (v?: string) => (v ? ((adsSync?.campaigns as Record<string, string> | undefined)?.[v] ?? v) : undefined);
+    const adGroupName = (v?: string) => (v ? ((adsSync?.adGroups as Record<string, string> | undefined)?.[v] ?? v) : undefined);
+
     const campaigns = new Map<string, { visitors: number; leads: number }>();
     const keywords = new Map<string, { visitors: number; leads: number }>();
+    const matchTypes = new Map<string, { visitors: number; leads: number }>();
+    const networks = new Map<string, { visitors: number; leads: number }>();
     const adLanding = new Map<string, { visitors: number; leads: number }>();
     let adLeads = 0;
     let adTaps = 0;
@@ -343,8 +354,10 @@ export class AnalyticsRepository {
         const tapsOf = [...new Set(((e?.clicksAt ?? []) as { label?: string }[]).map((c) => contactKind(c.label)).filter(Boolean) as string[])];
         if (lead) adLeads++;
         if (tapsOf.length) adTaps++;
-        bump(campaigns, t?.utmCampaign || "(not tagged)", lead);
+        bump(campaigns, campaignName(t?.utmCampaign) || "(not tagged)", lead);
         bump(keywords, t?.utmTerm || "(not tagged)", lead);
+        bump(matchTypes, t?.matchType, lead);
+        bump(networks, t?.network, lead);
         bump(adLanding, t?.landingPath, lead);
         const c = contactFor(v.visitorId, v.contactId);
         return {
@@ -352,9 +365,12 @@ export class AnalyticsRepository {
           firstSeenAt: v.firstSeenAt,
           lastSeenAt: v.lastSeenAt,
           landingPath: t?.landingPath,
-          campaign: t?.utmCampaign,
+          campaign: campaignName(t?.utmCampaign),
           keyword: t?.utmTerm,
-          adGroup: t?.utmContent,
+          adGroup: adGroupName(t?.utmContent),
+          matchType: t?.matchType,
+          network: t?.network,
+          adId: t?.adId,
           device: v.device,
           country: v.country,
           lang: v.lang,
@@ -433,6 +449,8 @@ export class AnalyticsRepository {
         contactTaps: adTaps,
         campaigns: rows(campaigns),
         keywords: rows(keywords, 30),
+        matchTypes: rows(matchTypes),
+        networks: rows(networks),
         landingPages: rows(adLanding, 10),
         people,
       },

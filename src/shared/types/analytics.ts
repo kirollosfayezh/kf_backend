@@ -60,9 +60,15 @@ export interface AdVisitor {
   firstSeenAt: string;
   lastSeenAt: string;
   landingPath?: string;
+  /** The campaign's name once the Ads script has synced it; the raw tag (an id) until then. */
   campaign?: string;
+  /** The keyword that was bid on — not the words the person typed. */
   keyword?: string;
   adGroup?: string;
+  matchType?: "exact" | "phrase" | "broad";
+  /** Google's network code (g, s, d, ytv, x…). */
+  network?: string;
+  adId?: string;
   device?: string;
   country?: string;
   lang?: string;
@@ -123,6 +129,10 @@ export interface AnalyticsInsights extends Record<string, unknown> {
     contactTaps: number;
     campaigns: InsightRow[];
     keywords: InsightRow[];
+    /** Visitors by how their keyword matched; empty until the Final URL suffix carries `kf_mt`. */
+    matchTypes: InsightRow[];
+    /** Visitors by Google network code; empty until the suffix carries `kf_net`. */
+    networks: InsightRow[];
     landingPages: InsightRow[];
     people: AdVisitor[];
   };

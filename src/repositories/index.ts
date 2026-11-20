@@ -11,6 +11,7 @@ import { ChatRepository } from "./mongo/chat.repo.js";
 import { AnalyticsRepository } from "./mongo/analytics.repo.js";
 import { ArticleImportRepository } from "./mongo/article-import.repo.js";
 import { ArticleTranslationRepository } from "./mongo/article-translation.repo.js";
+import { AdsRepository } from "./mongo/ads.repo.js";
 import { LeadModel } from "../models/lead.model.js";
 import { contentModels } from "../models/content.model.js";
 import { SettingsModel } from "../models/settings.model.js";
@@ -101,4 +102,5 @@ export const repos = {
   demos: new DemoRepository(),
   articleImports: new ArticleImportRepository(),
   articleTranslations: new ArticleTranslationRepository(),
+  ads: new AdsRepository(),
 };

@@ -70,3 +70,15 @@ export const analyticsRateLimit = rateLimit({
   legacyHeaders: false,
   handler: limitReached,
 });
+
+/**
+ * The Google Ads script: one run is a handful of requests, once a day. The
+ * ceiling is for whoever is guessing at the sync key, not for the script.
+ */
+export const integrationsRateLimit = rateLimit({
+  windowMs: 60 * 1000,
+  limit: 120,
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: limitReached,
+});

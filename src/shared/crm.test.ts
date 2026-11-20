@@ -64,3 +64,27 @@ test("tracking: touch cleaning and channels", () => {
   assert.equal(channelOf({ utmCampaign: "ramadan" }), "campaign");
   assert.equal(channelOf(undefined), "direct");
 });
+
+test("tracking: Google Ads details from the Final URL suffix", () => {
+  const t = cleanTouch(
+    { utmSource: "google", utmMedium: "cpc", utmCampaign: "2199", utmTerm: "pos system egypt", utmContent: "77", matchType: "p", network: "G", adId: "70012", gbraid: "0AAAA" },
+    "2026-01-01"
+  );
+  assert.equal(t?.matchType, "phrase");
+  assert.equal(t?.network, "g");
+  assert.equal(t?.adId, "70012");
+  assert.equal(t?.gbraid, "0AAAA");
+  assert.equal(cleanTouch({ matchType: "e" }, "x")?.matchType, "exact");
+  assert.equal(cleanTouch({ matchType: "b" }, "x")?.matchType, "broad");
+  // Anything Google would not send is dropped rather than stored.
+  assert.deepEqual(cleanTouch({ matchType: "fuzzy", network: "g<script>", adId: "12ab" }, "x"), { at: "x" });
+  // iOS clicks carry gbraid / wbraid in place of a gclid; they are still paid.
+  assert.equal(channelOf({ gbraid: "0AAAA" }), "paid");
+  assert.equal(channelOf({ wbraid: "0BBBB" }), "paid");
+});
+
+test("tracking: an unfilled {placeholder} is not a tag", () => {
+  // Someone opening the tracking template by hand, not a real ad click.
+  const t = cleanTouch({ utmSource: "google", utmMedium: "cpc", utmTerm: "{keyword}", utmCampaign: "{campaignid}", matchType: "{matchtype}", adId: "{creative}" }, "x");
+  assert.deepEqual(t, { utmSource: "google", utmMedium: "cpc", at: "x" });
+});

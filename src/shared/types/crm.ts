@@ -13,7 +13,18 @@ export interface TouchInfo {
   utmContent?: string;
   /** Google Ads / Meta click ids — present when the visit came from a paid ad. */
   gclid?: string;
+  /** Google's click ids on iOS, where a `gclid` is often withheld. */
+  gbraid?: string;
+  wbraid?: string;
   fbclid?: string;
+  /**
+   * Google Ads details from the Final URL suffix (`kf_mt`, `kf_net`, `kf_ad`):
+   * how the keyword matched, which network showed the ad, and which ad it was.
+   */
+  matchType?: "exact" | "phrase" | "broad";
+  /** Google's own code: g search, s search partners, d display, ytv YouTube, x Performance Max… */
+  network?: string;
+  adId?: string;
   at?: string;
 }
 

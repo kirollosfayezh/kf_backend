@@ -20,6 +20,16 @@ Last checked: 6 November 2026.
 - **Payment and API integrations** between your store, app, payment gateway and back office. See [API and backend development](/services/api-and-backend) and our guide to [payment gateways in the UAE](/blog/payment-gateways-uae).
 - **WhatsApp assistants** that answer in Arabic and English and hand the conversation to your team when needed. See [AI solutions](/services/ai-solutions).
 
+## Website design and app development in Dubai, Abu Dhabi and Sharjah
+
+We work remotely with companies in all seven emirates: Dubai, Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah, Fujairah and Umm Al Quwain, on the mainland or in a free zone. We have no office in the UAE, and the steps are the same in every emirate: a free call, a written quote, then a working version you can try every one to two weeks.
+
+- **Website design and development** for companies, in Arabic and English, with an admin panel so you can update the content yourself. For budgets: [website design cost in the UAE](/blog/website-design-cost-uae).
+- **E-commerce website development**, custom or on Shopify, with the payment gateway your company contracts. See [Shopify or a custom online store in the UAE](/blog/shopify-vs-custom-online-store-uae).
+- **Mobile app development** for iOS and Android, with the backend and admin dashboard. For budgets: [app development cost in the UAE](/blog/app-development-cost-uae).
+- **AI automation**: WhatsApp assistants, document reading and reports that pull from your own systems. See [AI solutions](/services/ai-solutions).
+- **Custom software** such as POS, ERP, CRM and booking systems, built around how your company works.
+
 ## UAE rules we design for
 
 ### E-invoicing from 2027

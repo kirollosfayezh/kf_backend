@@ -36,7 +36,7 @@ const isMarketLang = (s: string): s is MarketLang => (MARKET_LANGS as readonly s
  * `src/lib/seo/market-page.ts`), in the order the dashboard lists them. A file
  * for any other slug is still written, but the site cannot show it.
  */
-export const KNOWN_MARKETS = ["saudi-arabia", "uae", "kuwait", "qatar", "gulf"] as const;
+export const KNOWN_MARKETS = ["saudi-arabia", "uae", "kuwait", "qatar", "oman", "gulf", "jordan"] as const;
 
 export interface MarketPage {
   slug: string;

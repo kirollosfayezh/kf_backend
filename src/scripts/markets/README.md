@@ -8,6 +8,8 @@ The copy for the country landing pages, one file per page and language:
 | `uae.en.md`, `uae.ar.md` | `/uae` (English first) |
 | `kuwait.en.md`, `kuwait.ar.md` | `/kuwait` |
 | `qatar.en.md`, `qatar.ar.md` | `/qatar` |
+| `oman.en.md`, `oman.ar.md` | `/oman` |
+| `jordan.en.md`, `jordan.ar.md` | `/jordan` (not a Gulf country; same format) |
 | `gulf.en.md`, `gulf.ar.md` | `/gulf` (Kuwait, Qatar, Bahrain and Oman) |
 
 Market pages are written in English and Arabic only; a German or French file
@@ -44,7 +46,7 @@ The same as `../services/*.md`:
 - Arabic is formal Modern Standard Arabic written for Gulf readers, never
   dialect; titles and headings start with an Arabic word.
 - Links go to existing pages only: `/blog/<slug>`, `/services/<slug>`,
-  `/projects/<slug>`, `/saudi-arabia`, `/uae`, `/kuwait`, `/qatar`, `/gulf`, `/about`, `/contact`
+  `/projects/<slug>`, `/saudi-arabia`, `/uae`, `/kuwait`, `/qatar`, `/oman`, `/jordan`, `/gulf`, `/about`, `/contact`
   and `/book`.
 
 ## Importing

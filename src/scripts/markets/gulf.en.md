@@ -7,7 +7,7 @@ seoDescription: KF Tech Solutions, a Cairo software studio, builds apps, website
 
 KF Tech Solutions is an independent software studio in Cairo, founded in 2020 by Kirollos Fayez. We design and build apps, websites and business systems for companies in the Gulf, in Arabic and English, working remotely. We have no office in any Gulf country. We already work with clients in the Gulf, and we don't name a client publicly without their permission.
 
-Saudi Arabia and the UAE have their own pages: [Saudi businesses](/saudi-arabia) and [UAE companies](/uae). This page covers Kuwait, Qatar, Bahrain and Oman, four markets whose rules differ more than they seem: one charges 10% VAT, two charge none, and one starts mandatory e-invoicing in 2027. Each outside fact links to its source, and the full list is at the end. Kuwait and Qatar now also have pages of their own, with more detail on each: [Kuwait](/kuwait) and [Qatar](/qatar).
+Saudi Arabia and the UAE have their own pages: [Saudi businesses](/saudi-arabia) and [UAE companies](/uae). This page covers Kuwait, Qatar, Bahrain and Oman, four markets whose rules differ more than they seem: one charges 10% VAT, two charge none, and one starts mandatory e-invoicing in 2027. Each outside fact links to its source, and the full list is at the end. Kuwait and Qatar now also have pages of their own, with more detail on each: [Kuwait](/kuwait) and [Qatar](/qatar). Oman has its own page too: [Oman](/oman).
 
 Last checked: 6 November 2026.
 
